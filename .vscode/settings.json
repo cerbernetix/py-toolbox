@@ -1,0 +1,18 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.fixAll": true
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.defaultInterpreterPath": "${workspaceRoot}/.venv/bin/python",
+    "python.terminal.focusAfterLaunch": true,
+    "python.testing.unittestEnabled": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.autoImportCompletions": true,
+    "autoDocstring.startOnNewLine": true
+}
