@@ -32,10 +32,7 @@ def get_module_folder_path(name: str) -> PurePath():
     Returns:
         PurePath: The path to the folder containing the given module.
     """
-    if name in sys.modules:
-        return PurePath(sys.modules[name].__path__)
-
-    return PurePath()
+    return get_module_path(name).parent
 
 
 def get_application_path(name: str) -> PurePath:
