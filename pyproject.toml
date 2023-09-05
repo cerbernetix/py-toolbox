@@ -4,17 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "py-toolbox"
-version = "0.0.0"
-authors = [
-  { name="Jean-Sébastien CONAN", email="jsconan@gmail.com" },
-]
+version = "0.1.0"
+authors = [{ name = "Jean-Sébastien CONAN", email = "jsconan@gmail.com" }]
 description = "A set of utilities for Python projects"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
 ]
 
 [project.urls]
