@@ -75,9 +75,13 @@ The package `toolbox.files` offers file related utilities.
 
     ***
 
--   `get_application_name() -> str`:
+-   `get_application_name(name: str) -> str`:
 
     Gets the name of the application, based on the root folder.
+
+    Args:
+
+    -   name (`str`): The main package of the application.
 
     Returns:
 
@@ -85,9 +89,13 @@ The package `toolbox.files` offers file related utilities.
 
     ***
 
--   `get_application_path() -> PurePath`:
+-   `get_application_path(name: str) -> PurePath`:
 
     Gets the path to the application's root.
+
+    Args:
+
+    -   name (`str`): The main package of the application.
 
     Returns:
 
@@ -95,13 +103,14 @@ The package `toolbox.files` offers file related utilities.
 
     ***
 
--   `get_file_path(relative) -> PurePath`:
+-   `get_file_path(relative: str, name: str) -> PurePath`:
 
     Gets a full path for a file inside the application.
 
     Args:
 
     -   relative (`str`): The internal path the file from the application's root.
+    -   name (`str`): The main package of the application.
 
     Returns:
 

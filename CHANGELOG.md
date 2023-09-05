@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2023-09-05
+
+### Changed
+
+-   `get_application_path()`, `get_application_name()`, and `get_file_path()` now all require the name of the main package for getting the application's path.
+
+### Fixed
+
+-   Wrong detection of the application path (`__main__` has no attribute)"
+
 ## [0.1.0] - 2023-09-05
 
 ### Added

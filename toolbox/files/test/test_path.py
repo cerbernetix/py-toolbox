@@ -20,14 +20,20 @@ class TestFilePaths(unittest.TestCase):
         """
         mock_namespace = "app.package.module"
         mock_path = "/root/app/package/module.py"
+        mock_folder = "/root/app/package"
 
         module_mock = Mock()
         module_mock.__file__ = mock_path
+        module_mock.__path__ = mock_folder
 
         with patch.dict(sys.modules, {mock_namespace: module_mock}):
             result = path.get_module_path(mock_namespace)
             self.assertIsInstance(result, PurePath)
             self.assertEqual(str(result), mock_path)
+
+        result = path.get_module_path("foo")
+        self.assertIsInstance(result, PurePath)
+        self.assertEqual(str(result), ".")
 
     def test_get_module_folder(self):
         """
@@ -39,60 +45,82 @@ class TestFilePaths(unittest.TestCase):
 
         module_mock = Mock()
         module_mock.__file__ = mock_path
+        module_mock.__path__ = mock_folder
 
         with patch.dict(sys.modules, {mock_namespace: module_mock}):
             result = path.get_module_folder_path(mock_namespace)
             self.assertIsInstance(result, PurePath)
             self.assertEqual(str(result), mock_folder)
 
+        result = path.get_module_folder_path("foo")
+        self.assertIsInstance(result, PurePath)
+        self.assertEqual(str(result), ".")
+
     def test_get_application_path(self):
         """
         Tests the helper get_application_path().
         """
-        mock_namespace = "__main__"
-        mock_path = "/root/app/main.py"
+        mock_namespace = "app"
+        mock_path = "/root/app/package/module.py"
+        mock_folder = "/root/app/package"
         mock_root = "/root/app"
 
         module_mock = Mock()
         module_mock.__file__ = mock_path
+        module_mock.__path__ = mock_folder
 
         with patch.dict(sys.modules, {mock_namespace: module_mock}):
-            result = path.get_application_path()
+            result = path.get_application_path(mock_namespace)
             self.assertIsInstance(result, PurePath)
             self.assertEqual(str(result), mock_root)
+
+        result = path.get_application_path("foo")
+        self.assertIsInstance(result, PurePath)
+        self.assertEqual(str(result), ".")
 
     def test_get_application_name(self):
         """
         Tests the helper get_application_name().
         """
-        mock_namespace = "__main__"
-        mock_path = "/root/app/main.py"
+        mock_namespace = "app"
+        mock_path = "/root/app/package/module.py"
+        mock_folder = "/root/app/package"
         mock_name = "app"
 
         module_mock = Mock()
         module_mock.__file__ = mock_path
+        module_mock.__path__ = mock_folder
 
         with patch.dict(sys.modules, {mock_namespace: module_mock}):
-            result = path.get_application_name()
+            result = path.get_application_name(mock_namespace)
             self.assertIsInstance(result, str)
             self.assertEqual(result, mock_name)
+
+        result = path.get_application_name("foo")
+        self.assertEqual(result, "")
 
     def test_get_file_path(self):
         """
         Tests the helper get_file_path().
         """
-        mock_namespace = "__main__"
-        mock_path = "/root/app/main.py"
+        mock_namespace = "app"
+        mock_path = "/root/app/package/module.py"
+        mock_folder = "/root/app/package"
         mock_root = "/root/app"
-        test_param = "subfolder/file"
+        file_path = "subfolder/file"
 
         module_mock = Mock()
         module_mock.__file__ = mock_path
+        module_mock.__path__ = mock_folder
 
         with patch.dict(sys.modules, {mock_namespace: module_mock}):
-            result = path.get_file_path(test_param)
+            result = path.get_file_path(file_path, mock_namespace)
             self.assertIsInstance(result, PurePath)
-            self.assertEqual(str(result), f"{mock_root}/{test_param}")
+            self.assertEqual(str(result), f"{mock_root}/{file_path}")
+
+        result = path.get_file_path(file_path, "foo")
+        self.assertIsInstance(result, PurePath)
+        self.assertEqual(str(result), file_path)
 
     def test_create_file_path(self):
         """
