@@ -30,42 +30,52 @@ def get_module_folder_path(name: str) -> PurePath():
         - name (str): The module for which get the path.
 
     Returns:
-        PurePath|None: The path to the folder containing the given module.
+        PurePath: The path to the folder containing the given module.
     """
-    return get_module_path(name).parent
+    if name in sys.modules:
+        return PurePath(sys.modules[name].__path__)
+
+    return PurePath()
 
 
-def get_application_path() -> PurePath:
+def get_application_path(name: str) -> PurePath:
     """
     Gets the path to the application's root.
+
+    Args:
+        - name (str): The main package of the application.
 
     Returns:
         PurePath: The path to the application's root.
     """
-    return get_module_folder_path("__main__")
+    return get_module_folder_path(name).parent
 
 
-def get_application_name() -> str:
+def get_application_name(name: str) -> str:
     """
     Gets the name of the application, based on the root folder.
+
+    Args:
+        - name (str): The main package of the application.
 
     Returns:
         - str: The name of the application.
     """
-    return get_application_path().name
+    return get_application_path(name).name
 
 
-def get_file_path(relative) -> PurePath:
+def get_file_path(relative: str, name: str) -> PurePath:
     """
     Gets a full path for a file inside the application.
 
     Args:
         - relative (str): The internal path the file from the application's root.
+        - name (str): The main package of the application.
 
     Returns:
         PurePath: The full path.
     """
-    return get_application_path().joinpath(relative)
+    return get_application_path(name).joinpath(relative)
 
 
 def create_file_path(path: str) -> bool:
