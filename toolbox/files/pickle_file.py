@@ -45,35 +45,35 @@ class PickleFile(FileManager):
         Creates a file manager for pickle files.
 
         Args:
-            - filename (str): The path to the file to manage.
-            - create (bool, optional): Expect to create the file. If it exists, it will be replaced.
+            filename (str): The path to the file to manage.
+            create (bool, optional): Expect to create the file. If it exists, it will be replaced.
             Defaults to False.
-            - append (bool, optional): Expect to extend the file. Data will be added at the end.
+            append (bool, optional): Expect to extend the file. Data will be added at the end.
             Defaults to False.
-            - read (bool, optional): Expect to also read the file.
+            read (bool, optional): Expect to also read the file.
             Defaults to False.
-            - write (bool, optional): Expect to also write to the file.
+            write (bool, optional): Expect to also write to the file.
             Defaults to False.
-            - protocol (int, optional): Tells the pickle writer to use the given protocol; supported
+            protocol (int, optional): Tells the pickle writer to use the given protocol; supported
             protocols are 0 to HIGHEST_PROTOCOL. If a negative number is specified, HIGHEST_PROTOCOL
             is selected. When reading, the protocol version of the pickle is detected automatically.
             Defaults is DEFAULT_PROTOCOL.
-            - fix_imports (bool, optional): If fix_imports is true and protocol is less than 3,
+            fix_imports (bool, optional): If fix_imports is true and protocol is less than 3,
             pickle will try to map the new Python 3 names to the old module names used in Python 2,
             so that the pickle data stream is readable with Python 2. Defaults to True.
-            - encoding (str, optional): Tell pickle how to decode 8-bit string instances pickled by
+            encoding (str, optional): Tell pickle how to decode 8-bit string instances pickled by
             Python 2. The encoding can be ‘bytes’ to read these 8-bit string instances as bytes objects.
             Using encoding='latin1' is required for unpickling NumPy arrays and instances of datetime,
             date and time pickled by Python 2. Defaults to ‘ASCII’.
-            - errors (str, optional): Tell pickle how to decode 8-bit string instances pickled by
+            errors (str, optional): Tell pickle how to decode 8-bit string instances pickled by
             Python 2. Defaults to ‘strict’.
-            - buffers (optional): If buffers is None (the default), then all data necessary for
+            buffers (optional): If buffers is None (the default), then all data necessary for
             deserialization must be contained in the pickle stream. This means that the buffer_callback
             argument was None when a Pickler was instantiated (or when dump() or dumps() was called). If
             buffers is not None, it should be an iterable of buffer-enabled objects that is consumed
             each time the pickle stream references an out-of-band buffer view. Such buffers have been
             given in order to the buffer_callback of a Pickler object.
-            - buffer_callback (optional): If buffer_callback is None (the default), buffer views are
+            buffer_callback (optional): If buffer_callback is None (the default), buffer views are
             serialized into file as part of the pickle stream. If buffer_callback is not None, then
             it can be called any number of times with a buffer view. If the callback returns a false
             value (such as None), the given buffer is out-of-band; otherwise the buffer is
@@ -119,7 +119,7 @@ class PickleFile(FileManager):
         Note: If the file was already opened, it is first closed, then opened in write mode.
 
         Args:
-            - data (Iterable): The content to write to the file.
+            data (Iterable): The content to write to the file.
 
         Raises:
             OSError: If the file cannot be written.
@@ -162,7 +162,7 @@ class PickleFile(FileManager):
         Note: the file must be opened upfront.
 
         Args:
-            - data (object): The object to write to the file.
+            data (object): The object to write to the file.
 
         Raises:
             ValueError: If the file is not opened.
@@ -182,17 +182,17 @@ def read_pickle_file(filename: str, **kwargs) -> list:
     Loads a list of objects from a file.
 
     Args:
-        - filename (str): The path to the file to read.
-        - fix_imports (bool, optional): If fix_imports is true and protocol is less than 3,
+        filename (str): The path to the file to read.
+        fix_imports (bool, optional): If fix_imports is true and protocol is less than 3,
         pickle will try to map the new Python 3 names to the old module names used in Python 2,
         so that the pickle data stream is readable with Python 2. Defaults to True.
-        - encoding (str, optional): Tell pickle how to decode 8-bit string instances pickled by
+        encoding (str, optional): Tell pickle how to decode 8-bit string instances pickled by
         Python 2. The encoding can be ‘bytes’ to read these 8-bit string instances as bytes objects.
         Using encoding='latin1' is required for unpickling NumPy arrays and instances of datetime,
         date and time pickled by Python 2. Defaults to ‘ASCII’.
-        - errors (str, optional): Tell pickle how to decode 8-bit string instances pickled by
+        errors (str, optional): Tell pickle how to decode 8-bit string instances pickled by
         Python 2. Defaults to ‘strict’.
-        - buffers (optional): If buffers is None (the default), then all data necessary for
+        buffers (optional): If buffers is None (the default), then all data necessary for
         deserialization must be contained in the pickle stream. This means that the buffer_callback
         argument was None when a Pickler was instantiated (or when dump() or dumps() was called). If
         buffers is not None, it should be an iterable of buffer-enabled objects that is consumed
@@ -217,15 +217,15 @@ def write_pickle_file(filename: str, data: Iterable, **kwargs) -> int:
     Writes a list of objects to a file.
 
     Args:
-        - filename (str): The path to the file to write.
-        - data (Iterable): The list of objects to write to the file.
-        - protocol (int, optional): Tells the pickle writer to use the given protocol; supported
+        filename (str): The path to the file to write.
+        data (Iterable): The list of objects to write to the file.
+        protocol (int, optional): Tells the pickle writer to use the given protocol; supported
         protocols are 0 to HIGHEST_PROTOCOL. If a negative number is specified, HIGHEST_PROTOCOL
         is selected. Defaults is DEFAULT_PROTOCOL.
-        - fix_imports (bool, optional): If fix_imports is true and protocol is less than 3,
+        fix_imports (bool, optional): If fix_imports is true and protocol is less than 3,
         pickle will try to map the new Python 3 names to the old module names used in Python 2,
         so that the pickle data stream is readable with Python 2. Defaults to True.
-        - buffer_callback (optional): If buffer_callback is None (the default), buffer views are
+        buffer_callback (optional): If buffer_callback is None (the default), buffer views are
         serialized into file as part of the pickle stream. If buffer_callback is not None, then
         it can be called any number of times with a buffer view. If the callback returns a false
         value (such as None), the given buffer is out-of-band; otherwise the buffer is

@@ -17,15 +17,15 @@ def get_file_mode(
     More info at https://docs.python.org/3/library/functions.html#open
 
     Args:
-        - create (bool, optional): Expect to create the file. If it exists, it will be replaced.
+        create (bool, optional): Expect to create the file. If it exists, it will be replaced.
         Defaults to False.
-        - append (bool, optional): Expect to extend the file. Data will be added at the end.
+        append (bool, optional): Expect to extend the file. Data will be added at the end.
         Defaults to False.
-        - read (bool, optional): Expect to also read the file.
+        read (bool, optional): Expect to also read the file.
         Defaults to False.
-        - write (bool, optional): Expect to also write to the file.
+        write (bool, optional): Expect to also write to the file.
         Defaults to False.
-        - binary (bool, optional): Expect the file to be binary (text otherwise).
+        binary (bool, optional): Expect the file to be binary (text otherwise).
         Defaults to False.
 
     Returns:
@@ -67,10 +67,10 @@ def read_file(
     Reads a content from a file.
 
     Args:
-        - filename (str): The path to the file to read.
-        - binary (bool, optional): The type of file: binary (True) or text (False).
+        filename (str): The path to the file to read.
+        binary (bool, optional): The type of file: binary (True) or text (False).
         Defaults to False.
-        - encoding (str, optional): The file encoding, only needed for text files.
+        encoding (str, optional): The file encoding, only needed for text files.
         Defaults to None.
 
     Raises:
@@ -100,11 +100,11 @@ def write_file(
     Writes a content to a file.
 
     Args:
-        - filename (str): The path to the file to write.
-        - data (str|bytes): The content to write to the file.
-        - binary (bool, optional): The type of file: binary (True) or text (False).
+        filename (str): The path to the file to write.
+        data (str|bytes): The content to write to the file.
+        binary (bool, optional): The type of file: binary (True) or text (False).
         Defaults to False.
-        - encoding (str, optional): The file encoding, only needed for text files.
+        encoding (str, optional): The file encoding, only needed for text files.
         Defaults to None.
 
     Raises:

@@ -33,17 +33,17 @@ class JSONFile(FileManager):
         Creates a file manager for JSON files.
 
         Args:
-            - filename (str): The path to the file to manage.
-            - create (bool, optional): Expect to create the file. If it exists, it will be replaced.
+            filename (str): The path to the file to manage.
+            create (bool, optional): Expect to create the file. If it exists, it will be replaced.
             Defaults to False.
-            - append (bool, optional): Expect to extend the file. Data will be added at the end.
+            append (bool, optional): Expect to extend the file. Data will be added at the end.
             Defaults to False.
-            - read (bool, optional): Expect to also read the file.
+            read (bool, optional): Expect to also read the file.
             Defaults to False.
-            - write (bool, optional): Expect to also write to the file.
+            write (bool, optional): Expect to also write to the file.
             Defaults to False.
-            - encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
-            - indent (int, optional): The line indent. Defaults to JSON_INDENT.
+            encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
+            indent (int, optional): The line indent. Defaults to JSON_INDENT.
         """
         super().__init__(
             filename,
@@ -84,7 +84,7 @@ class JSONFile(FileManager):
         Note: the file must be opened upfront.
 
         Args:
-            - data (Any): The content to write to the file.
+            data (Any): The content to write to the file.
 
         Raises:
             ValueError: If the file is not opened.
@@ -110,8 +110,8 @@ def read_json_file(
     Reads a JSON content from a file.
 
     Args:
-        - filename (str): The path to the file to read.
-        - encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
+        filename (str): The path to the file to read.
+        encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
 
     Raises:
         OSError: If the file cannot be read.
@@ -134,10 +134,10 @@ def write_json_file(
     Writes a JSON content to a file.
 
     Args:
-        - filename (str): The path to the file to write.
-        - data (Any): The content to write to the file.
-        - encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
-        - indent (int, optional): The line indent. Defaults to JSON_INDENT.
+        filename (str): The path to the file to write.
+        data (Any): The content to write to the file.
+        encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
+        indent (int, optional): The line indent. Defaults to JSON_INDENT.
 
     Raises:
         OSError: If the file cannot be written.

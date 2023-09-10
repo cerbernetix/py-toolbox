@@ -28,18 +28,18 @@ class FileManager:
         Creates a file manager.
 
         Args:
-            - filename (str): The path to the file to manage.
-            - binary (bool, optional): The type of file: binary (True) or text (False).
+            filename (str): The path to the file to manage.
+            binary (bool, optional): The type of file: binary (True) or text (False).
             Defaults to False.
-            - create (bool, optional): Expect to create the file. If it exists, it will be replaced.
+            create (bool, optional): Expect to create the file. If it exists, it will be replaced.
             Defaults to False.
-            - append (bool, optional): Expect to extend the file. Data will be added at the end.
+            append (bool, optional): Expect to extend the file. Data will be added at the end.
             Defaults to False.
-            - read (bool, optional): Expect to also read the file.
+            read (bool, optional): Expect to also read the file.
             Defaults to False.
-            - write (bool, optional): Expect to also write to the file.
+            write (bool, optional): Expect to also write to the file.
             Defaults to False.
-            - encoding (str, optional): The file encoding, only needed for text files.
+            encoding (str, optional): The file encoding, only needed for text files.
             Defaults to None.
         """
         self.filename = filename
@@ -64,13 +64,13 @@ class FileManager:
         Note: If the file was already opened, it is first closed.
 
         Args:
-            - create (bool, optional): Expect to create the file. If it exists, it will be replaced.
+            create (bool, optional): Expect to create the file. If it exists, it will be replaced.
             Defaults to False.
-            - append (bool, optional): Expect to extend the file. Data will be added at the end.
+            append (bool, optional): Expect to extend the file. Data will be added at the end.
             Defaults to False.
-            - read (bool, optional): Expect to also read the file.
+            read (bool, optional): Expect to also read the file.
             Defaults to False.
-            - write (bool, optional): Expect to also write to the file.
+            write (bool, optional): Expect to also write to the file.
             Defaults to False.
 
         Returns:
@@ -126,7 +126,7 @@ class FileManager:
         Note: If the file was already opened, it is first closed, then opened in write mode.
 
         Args:
-            - data (str|bytes): The content to write to the file.
+            data (str|bytes): The content to write to the file.
 
         Raises:
             OSError: If the file cannot be written.
@@ -162,7 +162,7 @@ class FileManager:
         Note: the file must be opened upfront.
 
         Args:
-            - data (str|bytes): The content to write to the file.
+            data (str|bytes): The content to write to the file.
 
         Raises:
             ValueError: If the file is not opened.
@@ -189,13 +189,13 @@ class FileManager:
         Note: If the file was already opened, it is first closed.
 
         Args:
-            - create (bool, optional): Expect to create the file. If it exists, it will be replaced.
+            create (bool, optional): Expect to create the file. If it exists, it will be replaced.
             Defaults to False.
-            - append (bool, optional): Expect to extend the file. Data will be added at the end.
+            append (bool, optional): Expect to extend the file. Data will be added at the end.
             Defaults to False.
-            - read (bool, optional): Expect to also read the file.
+            read (bool, optional): Expect to also read the file.
             Defaults to False.
-            - write (bool, optional): Expect to also write to the file.
+            write (bool, optional): Expect to also write to the file.
             Defaults to False.
 
         Returns:
