@@ -1,6 +1,4 @@
-"""
-A collection of utilities for accessing files.
-"""
+"""A collection of utilities for accessing files."""
 
 
 def get_file_mode(
@@ -10,8 +8,7 @@ def get_file_mode(
     write: bool = False,
     binary: bool = False,
 ) -> str:
-    """
-    Gets the file access mode given the expectations.
+    """Gets the file access mode given the expectations.
 
     The file access mode is defined by a string that contains flags for selecting the modes.
     More info at https://docs.python.org/3/library/functions.html#open
@@ -63,8 +60,7 @@ def read_file(
     encoding: str = None,
     **kwargs,
 ) -> str | bytes:
-    """
-    Reads a content from a file.
+    """Reads a content from a file.
 
     Args:
         filename (str): The path to the file to read.
@@ -96,8 +92,7 @@ def write_file(
     encoding: str = None,
     **kwargs,
 ) -> int:
-    """
-    Writes a content to a file.
+    """Writes a content to a file.
 
     Args:
         filename (str): The path to the file to write.

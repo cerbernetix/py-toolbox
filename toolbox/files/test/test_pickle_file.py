@@ -1,6 +1,4 @@
-"""
-Test the class for reading and writing pickle files.
-"""
+"""Test the class for reading and writing pickle files."""
 import pickle
 import unittest
 from unittest.mock import Mock, mock_open, patch
@@ -19,9 +17,7 @@ DATA_LIST = [
 
 
 class TestPickleFile(unittest.TestCase):
-    """
-    Test suite for the class for reading and writing pickle files.
-    """
+    """Test suite for the class for reading and writing pickle files."""
 
     def test_construction_default(self):
         """
@@ -40,9 +36,7 @@ class TestPickleFile(unittest.TestCase):
         self.assertEqual(file._writer_args, {})
 
     def test_construction_params(self):
-        """
-        Tests the construction of a pickle file manager with specific parameters
-        """
+        """Tests the construction of a pickle file manager with specific parameters."""
         file_path = "/root/folder/file"
         buffering = 100
         protocol = 3
@@ -76,9 +70,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_construction_open(self, mock_file_open):
-        """
-        Tests the construction of a pickle file manager with opening
-        """
+        """Tests the construction of a pickle file manager with opening."""
         file_path = "/root/folder/file"
         encoding = "ascii"
 
@@ -106,9 +98,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open(self, mock_file_open):
-        """
-        Test a file can be opened
-        """
+        """Test a file can be opened."""
         file_path = "/root/folder/file"
         encoding = "ascii"
 
@@ -129,9 +119,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_create(self, mock_file_open):
-        """
-        Test a file can be opened for writing
-        """
+        """Test a file can be opened for writing."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -151,9 +139,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_close(self, mock_file_open):
-        """
-        Tests a file is closed before opening again
-        """
+        """Tests a file is closed before opening again."""
         file_path = "/root/folder/file"
 
         file = PickleFile(file_path)
@@ -170,9 +156,7 @@ class TestPickleFile(unittest.TestCase):
         mock_file_open.assert_called_once()
 
     def test_close_explicit(self):
-        """
-        Tests an opened file can be closed explicitly
-        """
+        """Tests an opened file can be closed explicitly."""
         file_path = "/root/folder/file"
 
         file = PickleFile(file_path)
@@ -188,9 +172,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_close_auto(self, mock_file_open):
-        """
-        Tests an opened file is automatically closed
-        """
+        """Tests an opened file is automatically closed."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -205,9 +187,7 @@ class TestPickleFile(unittest.TestCase):
         mock_file.close.assert_called_once()
 
     def test_read_file(self):
-        """
-        Tests a file can be read at once
-        """
+        """Tests a file can be read at once."""
         file_path = "/root/folder/file"
         data = (
             pickle.dumps(DATA_DICT)
@@ -224,9 +204,7 @@ class TestPickleFile(unittest.TestCase):
             mock_file_open.assert_called_once()
 
     def test_write_file(self):
-        """
-        Tests a file can be written at once
-        """
+        """Tests a file can be written at once."""
         file_path = "/root/folder/file"
 
         data = [DATA_DICT, DATA_LIST, DATA_STRING]
@@ -263,9 +241,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_read(self, mock_file_open):
-        """
-        Tests a file can be read line by line
-        """
+        """Tests a file can be read line by line."""
         file_path = "/root/folder/file"
 
         data = (
@@ -290,9 +266,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_write(self, mock_file_open):
-        """
-        Tests a file can be written line by line
-        """
+        """Tests a file can be written line by line."""
         file_path = "/root/folder/file"
 
         data = [DATA_STRING, DATA_DICT, DATA_LIST]
@@ -330,9 +304,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_call(self, mock_file_open):
-        """
-        Test a file can be opened by calling the instance
-        """
+        """Test a file can be opened by calling the instance."""
         file_path = "/root/folder/file"
         encoding = "ascii"
 
@@ -349,9 +321,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_context(self, mock_file_open):
-        """
-        Tests an opened file is automatically closed
-        """
+        """Tests an opened file is automatically closed."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -369,9 +339,7 @@ class TestPickleFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_iterator(self, mock_file_open):
-        """
-        Tests a file can be read as an iterable
-        """
+        """Tests a file can be read as an iterable."""
         file_path = "/root/folder/file"
 
         data = (
@@ -397,15 +365,11 @@ class TestPickleFile(unittest.TestCase):
 
 
 class TestPickleFileHelpers(unittest.TestCase):
-    """
-    Test suite for the pickle file helpers.
-    """
+    """Test suite for the pickle file helpers."""
 
     @patch("builtins.open")
     def test_read_pickle_file(self, mock_file_open):
-        """
-        Tests a pickle file can be read at once
-        """
+        """Tests a pickle file can be read at once."""
         file_path = "/root/folder/file"
         data = (
             pickle.dumps(DATA_DICT)
@@ -421,9 +385,7 @@ class TestPickleFileHelpers(unittest.TestCase):
 
     @patch("builtins.open")
     def test_write_pickle_file(self, mock_file_open):
-        """
-        Tests a pickle file can be written at once
-        """
+        """Tests a pickle file can be written at once."""
         file_path = "/root/folder/file"
 
         data = [DATA_DICT, DATA_LIST, DATA_STRING]

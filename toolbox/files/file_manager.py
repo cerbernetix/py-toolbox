@@ -1,6 +1,4 @@
-"""
-A simple class for reading and writing files.
-"""
+"""A simple class for reading and writing files."""
 from __future__ import annotations
 
 from typing import Iterator
@@ -9,8 +7,7 @@ from toolbox.files.file import get_file_mode
 
 
 class FileManager:
-    """
-    Offers a simple API for reading and writing files.
+    """Offers a simple API for reading and writing files.
 
     The class binds a filename with a set of properties so that it can be opened in a consistent
     way.
@@ -53,8 +50,7 @@ class FileManager:
         encoding: str = None,
         **kwargs,
     ):
-        """
-        Creates a file manager.
+        """Creates a file manager.
 
         Args:
             filename (str): The path to the file to manage.
@@ -87,8 +83,7 @@ class FileManager:
         read: bool = False,
         write: bool = False,
     ) -> FileManager:
-        """
-        Opens the file for access.
+        """Opens the file for access.
 
         Note: If the file was already opened, it is first closed.
 
@@ -117,8 +112,7 @@ class FileManager:
         return self
 
     def close(self) -> FileManager:
-        """
-        Closes the file.
+        """Closes the file.
 
         Note: it does nothing if the file is already closed.
 
@@ -133,8 +127,7 @@ class FileManager:
         return self
 
     def read_file(self) -> str | bytes:
-        """
-        Reads all the content from the file.
+        """Reads all the content from the file.
 
         Note: If the file was already opened, it is first closed, then opened in read mode.
 
@@ -149,8 +142,7 @@ class FileManager:
             return self.read()
 
     def write_file(self, data: str | bytes) -> int:
-        """
-        Writes whole content to the file.
+        """Writes whole content to the file.
 
         Note: If the file was already opened, it is first closed, then opened in write mode.
 
@@ -167,8 +159,7 @@ class FileManager:
             return self.write(data)
 
     def read(self) -> str | bytes:
-        """
-        Reads the next content from the file.
+        """Reads the next content from the file.
 
         Note: the file must be opened upfront.
 
@@ -185,8 +176,7 @@ class FileManager:
         return self._file.read() or None
 
     def write(self, data: str | bytes) -> int:
-        """
-        Writes content to the file.
+        """Writes content to the file.
 
         Note: the file must be opened upfront.
 
@@ -212,8 +202,7 @@ class FileManager:
         read: bool = False,
         write: bool = False,
     ) -> FileManager:
-        """
-        Opens the file for access.
+        """Opens the file for access.
 
         Note: If the file was already opened, it is first closed.
 
@@ -233,8 +222,7 @@ class FileManager:
         return self.open(create, append, read, write)
 
     def __enter__(self) -> FileManager:
-        """
-        Opens the context for accessing the file.
+        """Opens the context for accessing the file.
 
         Note: it does nothing if the file is already open.
 
@@ -247,8 +235,7 @@ class FileManager:
         return self
 
     def __exit__(self, exc_type, exc_value, exc_traceback) -> bool:
-        """
-        Closes the context for accessing the file.
+        """Closes the context for accessing the file.
 
         Note: it does nothing if the file is already closed.
 
@@ -262,8 +249,7 @@ class FileManager:
         return False
 
     def __iter__(self) -> Iterator:
-        """
-        Turns the FileManager into an iterator for reading the file chunk by chunk.
+        """Turns the FileManager into an iterator for reading the file chunk by chunk.
 
         Note: If the file was already opened, it is first closed, then opened in read mode.
 
@@ -277,8 +263,7 @@ class FileManager:
         return self.open()
 
     def __next__(self) -> str | bytes:
-        """
-        Gets the next chunk from the file.
+        """Gets the next chunk from the file.
 
         Note: the file must be opened upfront.
 

@@ -1,5 +1,4 @@
-"""
-The `files` package provides several utilities for handling files.
+"""The `files` package provides several utilities for handling files.
 
 It contains:
 - File manager for various types:

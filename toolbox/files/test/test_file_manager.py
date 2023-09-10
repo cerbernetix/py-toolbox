@@ -1,6 +1,4 @@
-"""
-Test the base class for reading and writing files.
-"""
+"""Test the base class for reading and writing files."""
 import unittest
 from unittest.mock import Mock, patch
 
@@ -10,14 +8,10 @@ from toolbox.files import FileManager
 
 
 class TestFileManager(unittest.TestCase):
-    """
-    Test suite for the base class for reading and writing files.
-    """
+    """Test suite for the base class for reading and writing files."""
 
     def test_construction_default(self):
-        """
-        Tests the construction of a file manager with default parameters
-        """
+        """Tests the construction of a file manager with default parameters."""
         file_path = "/root/folder/file"
 
         file = FileManager(file_path)
@@ -29,9 +23,7 @@ class TestFileManager(unittest.TestCase):
         self.assertEqual(file._open_args, {})
 
     def test_construction_text(self):
-        """
-        Tests the construction of a file manager for a text file
-        """
+        """Tests the construction of a file manager for a text file."""
         file_path = "/root/folder/file"
         encoding = "ascii"
         newline = "\n"
@@ -45,9 +37,7 @@ class TestFileManager(unittest.TestCase):
         self.assertEqual(file._open_args, {"newline": newline})
 
     def test_construction_binary(self):
-        """
-        Tests the construction of a file manager for a binary file
-        """
+        """Tests the construction of a file manager for a binary file."""
         file_path = "/root/folder/file"
         encoding = "ascii"
 
@@ -61,9 +51,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_construction_open(self, mock_file_open):
-        """
-        Tests the construction of a file manager with opening
-        """
+        """Tests the construction of a file manager with opening."""
         file_path = "/root/folder/file"
         encoding = "ascii"
         newline = "\n"
@@ -97,9 +85,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open(self, mock_file_open):
-        """
-        Test a file can be opened
-        """
+        """Test a file can be opened."""
         file_path = "/root/folder/file"
         encoding = "ascii"
         newline = "\n"
@@ -122,9 +108,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_create(self, mock_file_open):
-        """
-        Test a file can be opened for writing
-        """
+        """Test a file can be opened for writing."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -144,9 +128,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_append(self, mock_file_open):
-        """
-        Test a file can be opened for writing
-        """
+        """Test a file can be opened for writing."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -166,9 +148,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_text(self, mock_file_open):
-        """
-        Test a file can be opened with text mode
-        """
+        """Test a file can be opened with text mode."""
         file_path = "/root/folder/file"
         encoding = "ascii"
 
@@ -189,9 +169,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_binary(self, mock_file_open):
-        """
-        Test a file can be opened with binary mode
-        """
+        """Test a file can be opened with binary mode."""
         file_path = "/root/folder/file"
         encoding = "ascii"
 
@@ -212,9 +190,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_close(self, mock_file_open):
-        """
-        Tests a file is closed before opening again
-        """
+        """Tests a file is closed before opening again."""
         file_path = "/root/folder/file"
 
         file = FileManager(file_path)
@@ -231,9 +207,7 @@ class TestFileManager(unittest.TestCase):
         mock_file_open.assert_called_once()
 
     def test_close_explicit(self):
-        """
-        Tests an opened file can be closed explicitly
-        """
+        """Tests an opened file can be closed explicitly."""
         file_path = "/root/folder/file"
 
         file = FileManager(file_path)
@@ -249,9 +223,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_close_auto(self, mock_file_open):
-        """
-        Tests an opened file is automatically closed
-        """
+        """Tests an opened file is automatically closed."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -267,9 +239,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_read_file(self, mock_file_open):
-        """
-        Tests a file can be read at once
-        """
+        """Tests a file can be read at once."""
         file_path = "/root/folder/file"
         content = "foo"
         encoding = "ascii"
@@ -293,9 +263,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_read_file_opened(self, mock_file_open):
-        """
-        Tests a file can be read at once even if file is already opened
-        """
+        """Tests a file can be read at once even if file is already opened."""
         file_path = "/root/folder/file"
         content = "foo"
 
@@ -316,9 +284,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_write_file(self, mock_file_open):
-        """
-        Tests a file can be written at once
-        """
+        """Tests a file can be written at once."""
         file_path = "/root/folder/file"
         content = "foo"
         encoding = "ascii"
@@ -343,9 +309,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_write_file_opened(self, mock_file_open):
-        """
-        Tests a file can be written at once even if file is already opened
-        """
+        """Tests a file can be written at once even if file is already opened."""
         file_path = "/root/folder/file"
         content = "foo"
 
@@ -367,9 +331,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_read(self, mock_file_open):
-        """
-        Tests a file can be read
-        """
+        """Tests a file can be read."""
         file_path = "/root/folder/file"
         content = "foo"
 
@@ -394,9 +356,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_write(self, mock_file_open):
-        """
-        Tests a file can be written
-        """
+        """Tests a file can be written."""
         file_path = "/root/folder/file"
         content = "foo"
 
@@ -419,9 +379,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_call(self, mock_file_open):
-        """
-        Test a file can be opened by calling the instance
-        """
+        """Test a file can be opened by calling the instance."""
         file_path = "/root/folder/file"
         encoding = "ascii"
 
@@ -438,9 +396,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_context(self, mock_file_open):
-        """
-        Tests an opened file is automatically closed
-        """
+        """Tests an opened file is automatically closed."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -458,9 +414,7 @@ class TestFileManager(unittest.TestCase):
 
     @patch("builtins.open")
     def test_iterator(self, mock_file_open):
-        """
-        Tests a file can be read as an iterable
-        """
+        """Tests a file can be read as an iterable."""
         file_path = "/root/folder/file"
         content = "foo"
         count = 1

@@ -1,6 +1,4 @@
-"""
-A simple API for reading and writing JSON files.
-"""
+"""A simple API for reading and writing JSON files."""
 import json
 from typing import Any
 
@@ -14,8 +12,7 @@ JSON_INDENT = 4
 
 
 class JSONFile(FileManager):
-    """
-    Offers a simple API for reading and writing JSON files.
+    """Offers a simple API for reading and writing JSON files.
 
     The class binds a filename with a set of properties so that it can be opened in a consistent
     way.
@@ -59,8 +56,7 @@ class JSONFile(FileManager):
         indent: int = JSON_INDENT,
         **kwargs,
     ):
-        """
-        Creates a file manager for JSON files.
+        """Creates a file manager for JSON files.
 
         Args:
             filename (str): The path to the file to manage.
@@ -88,8 +84,7 @@ class JSONFile(FileManager):
         self.indent = indent
 
     def read(self) -> Any:
-        """
-        Reads the content from the file.
+        """Reads the content from the file.
 
         Note: the file must be opened upfront.
 
@@ -108,8 +103,7 @@ class JSONFile(FileManager):
         return json.JSONDecoder().decode(data)
 
     def write(self, data: Any) -> int:
-        """
-        Writes content to the file.
+        """Writes content to the file.
 
         Note: the file must be opened upfront.
 
@@ -136,8 +130,7 @@ def read_json_file(
     encoding: str = JSON_ENCODING,
     **kwargs,
 ) -> Any:
-    """
-    Reads a JSON content from a file.
+    """Reads a JSON content from a file.
 
     Args:
         filename (str): The path to the file to read.
@@ -160,8 +153,7 @@ def write_json_file(
     indent: int = JSON_INDENT,
     **kwargs,
 ) -> int:
-    """
-    Writes a JSON content to a file.
+    """Writes a JSON content to a file.
 
     Args:
         filename (str): The path to the file to write.

@@ -1,6 +1,4 @@
-"""
-Test the utilities for accessing files.
-"""
+"""Test the utilities for accessing files."""
 import unittest
 from unittest.mock import Mock, patch
 
@@ -8,14 +6,10 @@ from toolbox.files import get_file_mode, read_file, write_file
 
 
 class TestFileHelpers(unittest.TestCase):
-    """
-    Test suite for the file helpers.
-    """
+    """Test suite for the file helpers."""
 
     def test_get_file_mode(self):
-        """
-        Tests the helper get_file_mode()
-        """
+        """Tests the helper get_file_mode()."""
         test_cases = [
             {
                 "message": "default",
@@ -118,9 +112,7 @@ class TestFileHelpers(unittest.TestCase):
                 )
 
     def test_read_file(self):
-        """
-        Tests a file can be read at once
-        """
+        """Tests a file can be read at once."""
         file_path = "/root/folder/file"
         content = "foo"
 
@@ -193,9 +185,7 @@ class TestFileHelpers(unittest.TestCase):
                     mock_file.read.assert_called_once()
 
     def test_write_file(self):
-        """
-        Tests that a file can be written
-        """
+        """Tests that a file can be written."""
         file_path = "/root/folder/file"
         content = "foo"
         count = 4

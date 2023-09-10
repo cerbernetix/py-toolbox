@@ -1,6 +1,4 @@
-"""
-A simple API for reading and writing CSV files.
-"""
+"""A simple API for reading and writing CSV files."""
 from __future__ import annotations
 
 import csv
@@ -51,8 +49,7 @@ FILE_OPEN_PARAMS = ["buffering", "errors", "closefd", "opener"]
 
 
 class CSVFile(FileManager):
-    """
-    Offers a simple API for reading and writing CSV files.
+    """Offers a simple API for reading and writing CSV files.
 
     The class binds a filename with a set of properties so that it can be opened in a consistent
     way.
@@ -101,8 +98,7 @@ class CSVFile(FileManager):
         dialect: str = CSV_DIALECT,
         **kwargs,
     ):
-        """
-        Creates a file manager for CSV files.
+        r"""Creates a file manager for CSV files.
 
         Args:
             filename (str): The path to the file to manage.
@@ -128,7 +124,7 @@ class CSVFile(FileManager):
             On reading, the escapechar removes any special meaning from the following character.
             Defaults to None, which disables escaping.
             lineterminator (str, optional): The string used to terminate lines produced by the
-            writer. Defaults to "\\r\\n".
+            writer. Defaults to "\r\n".
             quotechar (str, optional): A one-character string used to quote fields containing
             special characters, such as the delimiter or quotechar, or which contain new-line
             characters. Defaults to '"'.
@@ -189,8 +185,7 @@ class CSVFile(FileManager):
         self._writer = None
 
     def close(self) -> CSVFile:
-        """
-        Closes the file.
+        """Closes the file.
 
         Note: it does nothing if the file is already closed.
 
@@ -205,8 +200,7 @@ class CSVFile(FileManager):
         return self
 
     def read_file(self) -> list[dict | list]:
-        """
-        Reads all the content from the file.
+        """Reads all the content from the file.
 
         Note: If the file was already opened, it is first closed, then opened in read mode.
 
@@ -220,8 +214,7 @@ class CSVFile(FileManager):
         return list(self)
 
     def write_file(self, data: Iterable[dict | list]) -> int:
-        """
-        Writes whole content to the file.
+        """Writes whole content to the file.
 
         Note: If the file was already opened, it is first closed, then opened in write mode.
 
@@ -242,8 +235,7 @@ class CSVFile(FileManager):
         return size
 
     def read(self) -> dict | list:
-        """
-        Reads the next content from the file.
+        """Reads the next content from the file.
 
         Note: the file must be opened upfront.
 
@@ -279,8 +271,7 @@ class CSVFile(FileManager):
             return None
 
     def write(self, data: dict | list) -> int:
-        """
-        Writes content to the file.
+        """Writes content to the file.
 
         Note: the file must be opened upfront.
 
@@ -335,8 +326,7 @@ def read_csv_file(
     dialect: str = CSV_DIALECT,
     **kwargs,
 ) -> list[dict | list]:
-    """
-    Reads a CSV content from a file.
+    """Reads a CSV content from a file.
 
     Args:
         filename (str): The path to the file to read.
@@ -392,8 +382,7 @@ def write_csv_file(
     dialect: str = CSV_DIALECT,
     **kwargs,
 ) -> int:
-    """
-    Writes a CSV content to a file.
+    r"""Writes a CSV content to a file.
 
     Args:
         filename (str): The path to the file to write.
@@ -409,7 +398,7 @@ def write_csv_file(
         delimiter if quoting is set to QUOTE_NONE and the quotechar if doublequote is False.
         Defaults to None, which disables escaping.
         lineterminator (str, optional): The string used to terminate lines produced by the
-        writer. Defaults to "\\r\\n".
+        writer. Defaults to "\r\n".
         quotechar (str, optional): A one-character string used to quote fields containing
         special characters, such as the delimiter or quotechar, or which contain new-line
         characters. Defaults to '"'.

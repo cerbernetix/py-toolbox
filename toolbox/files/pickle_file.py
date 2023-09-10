@@ -1,6 +1,4 @@
-"""
-A simple API for reading and writing pickle files.
-"""
+"""A simple API for reading and writing pickle files."""
 from __future__ import annotations
 
 import pickle
@@ -28,8 +26,7 @@ FILE_OPEN_PARAMS = ["buffering", "errors", "closefd", "opener"]
 
 
 class PickleFile(FileManager):
-    """
-    Offers a simple API for reading and writing pickle files.
+    """Offers a simple API for reading and writing pickle files.
 
     The class binds a filename with a set of properties so that it can be opened in a consistent
     way.
@@ -75,8 +72,7 @@ class PickleFile(FileManager):
         write: bool = False,
         **kwargs,
     ):
-        """
-        Creates a file manager for pickle files.
+        """Creates a file manager for pickle files.
 
         Args:
             filename (str): The path to the file to manage.
@@ -132,8 +128,7 @@ class PickleFile(FileManager):
         }
 
     def read_file(self) -> list:
-        """
-        Reads all the content from the file.
+        """Reads all the content from the file.
 
         Note: If the file was already opened, it is first closed, then opened in read mode.
 
@@ -147,8 +142,7 @@ class PickleFile(FileManager):
         return list(self)
 
     def write_file(self, data: Iterable) -> int:
-        """
-        Writes whole content to the file.
+        """Writes whole content to the file.
 
         Note: If the file was already opened, it is first closed, then opened in write mode.
 
@@ -169,8 +163,7 @@ class PickleFile(FileManager):
         return size
 
     def read(self) -> object:
-        """
-        Reads the next object from the file.
+        """Reads the next object from the file.
 
         Note: the file must be opened upfront.
 
@@ -190,8 +183,7 @@ class PickleFile(FileManager):
             return None
 
     def write(self, data: object) -> int:
-        """
-        Writes an object to the file.
+        """Writes an object to the file.
 
         Note: the file must be opened upfront.
 
@@ -212,8 +204,7 @@ class PickleFile(FileManager):
 
 
 def read_pickle_file(filename: str, **kwargs) -> list:
-    """
-    Loads a list of objects from a file.
+    """Loads a list of objects from a file.
 
     Args:
         filename (str): The path to the file to read.
@@ -247,8 +238,7 @@ def read_pickle_file(filename: str, **kwargs) -> list:
 
 
 def write_pickle_file(filename: str, data: Iterable, **kwargs) -> int:
-    """
-    Writes a list of objects to a file.
+    """Writes a list of objects to a file.
 
     Args:
         filename (str): The path to the file to write.

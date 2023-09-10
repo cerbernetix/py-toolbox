@@ -1,14 +1,11 @@
-"""
-A collection of utilities around file paths.
-"""
+"""A collection of utilities around file paths."""
 import os
 import sys
 from pathlib import PurePath
 
 
 def get_module_path(name: str) -> PurePath():
-    """
-    Gets the path to the given module.
+    """Gets the path to the given module.
 
     Args:
         name (str): The module for which get the path.
@@ -23,8 +20,7 @@ def get_module_path(name: str) -> PurePath():
 
 
 def get_module_folder_path(name: str) -> PurePath():
-    """
-    Gets the path to the folder containing the given module.
+    """Gets the path to the folder containing the given module.
 
     Args:
         name (str): The module for which get the path.
@@ -36,8 +32,7 @@ def get_module_folder_path(name: str) -> PurePath():
 
 
 def get_application_path(name: str) -> PurePath:
-    """
-    Gets the path to the application's root.
+    """Gets the path to the application's root.
 
     Args:
         name (str): The main package of the application.
@@ -49,8 +44,7 @@ def get_application_path(name: str) -> PurePath:
 
 
 def get_application_name(name: str) -> str:
-    """
-    Gets the name of the application, based on the root folder.
+    """Gets the name of the application, based on the root folder.
 
     Args:
         name (str): The main package of the application.
@@ -62,8 +56,7 @@ def get_application_name(name: str) -> str:
 
 
 def get_file_path(relative: str, name: str) -> PurePath:
-    """
-    Gets a full path for a file inside the application.
+    """Gets a full path for a file inside the application.
 
     Args:
         relative (str): The internal path the file from the application's root.
@@ -76,8 +69,7 @@ def get_file_path(relative: str, name: str) -> PurePath:
 
 
 def create_file_path(path: str) -> bool:
-    """
-    Creates the parent path for a file.
+    """Creates the parent path for a file.
 
     Note: exceptions are caught internally, the function will always
     return either with `True` in case of success, or `False` otherwise.
@@ -102,8 +94,7 @@ def create_file_path(path: str) -> bool:
 
 
 def delete_path(path: str) -> bool:
-    """
-    Deletes the file or the folder at the given path.
+    """Deletes the file or the folder at the given path.
 
     If this is a folder, it must be empty.
 
