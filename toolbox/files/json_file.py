@@ -1,5 +1,5 @@
 """
-Defines a class for reading and writing JSON files.
+A simple API for reading and writing JSON files.
 """
 import json
 from typing import Any
@@ -15,7 +15,37 @@ JSON_INDENT = 4
 
 class JSONFile(FileManager):
     """
-    Defines a class for reading and writing JSON files.
+    Offers a simple API for reading and writing JSON files.
+
+    The class binds a filename with a set of properties so that it can be opened in a consistent
+    way.
+
+    The read API reads all the content at once, and so do the write API too.
+
+    Attributes:
+        filename (str): The path to the file to manage.
+        binary (bool): The type of file, say text. It must always be False.
+        encoding (str, optional): The file encoding.
+        indent (int, optional): The line indent.
+
+    Examples:
+    ```
+    file = JSONFile("path/to/the/file.json", indent=4, encoding="UTF-8")
+
+    # write content to the file
+    file.write_file(json)
+
+    # open the file, then read its content
+    with file:
+        json = file.read()
+
+    # write data to the file
+    with file(create=True):
+        file.write(json)
+
+    # load the whole file, handling internally its opening
+    json = file.read_file()
+    ```
     """
 
     def __init__(

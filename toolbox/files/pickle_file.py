@@ -1,5 +1,5 @@
 """
-Defines a class for reading and writing pickle files.
+A simple API for reading and writing pickle files.
 """
 from __future__ import annotations
 
@@ -29,7 +29,41 @@ FILE_OPEN_PARAMS = ["buffering", "errors", "closefd", "opener"]
 
 class PickleFile(FileManager):
     """
-    Defines a class for reading and writing pickle files.
+    Offers a simple API for reading and writing pickle files.
+
+    The class binds a filename with a set of properties so that it can be opened in a consistent
+    way.
+
+    The read API does not allow to size the data to read. However, it reads the file record by
+    record.
+
+    Attributes:
+        filename (str): The path to the file to manage.
+        binary (bool): The type of file, say binary. It must always be True.
+
+    Examples:
+    ```
+    file = PickleFile("path/to/the/file")
+
+    # write some objects to the file
+    with file(create=True):
+        file.write(users)
+        file.write(profiles)
+
+    # read the records from the file
+    with file:
+        users = file.read()
+        profiles = file.read()
+
+    # gets the records in a list
+    data = [obj for obj in file]
+
+    # write records to the file
+    file.write_file(data)
+
+    # load the whole file, handling internally its opening
+    data = file.read_file()
+    ```
     """
 
     def __init__(

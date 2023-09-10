@@ -1,5 +1,5 @@
 """
-Defines a class for reading and writing CSV files.
+A simple API for reading and writing CSV files.
 """
 from __future__ import annotations
 
@@ -52,7 +52,42 @@ FILE_OPEN_PARAMS = ["buffering", "errors", "closefd", "opener"]
 
 class CSVFile(FileManager):
     """
-    Defines a class for reading and writing CSV files.
+    Offers a simple API for reading and writing CSV files.
+
+    The class binds a filename with a set of properties so that it can be opened in a consistent
+    way.
+
+    The read API does not allow to size the data to read. However, it reads the file row by row.
+
+    Attributes:
+        filename (str): The path to the file to manage.
+        binary (bool): The type of file, say text. It must always be False.
+        encoding (str, optional): The file encoding.
+        dialect (str, optional): The CSV dialect to use. If 'auto' is given, the reader will try
+        detecting the CSV dialect by reading a sample at the head of the file.
+
+    Examples:
+    ```
+    file = CSVFile("path/to/the/file", dialect='excel', encoding="UTF-8")
+
+    # write rows to the file
+    file.write_file(csv)
+
+    # read the first row of the CSV
+    with file:
+        first = file.read()
+
+    # gets the CSV in a list
+    csv = [row for row in file]
+
+    # write data to the file
+    with file(create=True):
+        for row in csv:
+            file.write(row)
+
+    # load the whole file, handling internally its opening
+    csv = file.read_file()
+    ```
     """
 
     def __init__(

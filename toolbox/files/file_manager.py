@@ -1,5 +1,5 @@
 """
-Defines a base class for reading and writing files.
+A simple class for reading and writing files.
 """
 from __future__ import annotations
 
@@ -10,7 +10,36 @@ from toolbox.files.file import get_file_mode
 
 class FileManager:
     """
-    Defines a base class for reading and writing files.
+    Offers a simple API for reading and writing files.
+
+    The class binds a filename with a set of properties so that it can be opened in a consistent
+    way.
+
+    The read API does not allow to size the data to read. The FileManager reads all the content.
+    However, it comes better with the specialized child classes, which can read chunks of the file
+    based on a specific format. See CSVFile, JSONFile, or PickleFile for more information.
+
+    Attributes:
+        filename (str): The path to the file to manage.
+        binary (bool): The type of file: binary (True) or text (False).
+        encoding (str, optional): The file encoding, only needed for text files.
+
+    Examples:
+    ```
+    file = FileManager("path/to/the/file", binary=False, encoding="UTF-8")
+
+    # open the file, then read its content
+    with file:
+        content = file.read()
+
+    # write data to the file
+    with file(create=True):
+        for chunk in data:
+            file.write(chunk)
+
+    # load the whole file, handling internally its opening
+    content = file.read_file()
+    ```
     """
 
     def __init__(
