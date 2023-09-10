@@ -84,7 +84,7 @@ class CSVFile(FileManager):
             try detecting the CSV dialect by reading a sample at the head of the file.
             Defaults to CSV_DIALECT.
             - delimiter (str, optional): A one-character string used to separate fields.
-            Defaults to ','.
+            Defaults to ",".
             - doublequote (bool, optional): Controls how instances of quotechar appearing inside a
             field should themselves be quoted. When True, the character is doubled. When False, the
             escapechar is used as a prefix to the quotechar. Defaults to True.
@@ -93,7 +93,7 @@ class CSVFile(FileManager):
             On reading, the escapechar removes any special meaning from the following character.
             Defaults to None, which disables escaping.
             - lineterminator (str, optional): The string used to terminate lines produced by the
-            writer. Defaults to '\r\n'.
+            writer. Defaults to "\\r\\n".
             - quotechar (str, optional): A one-character string used to quote fields containing
             special characters, such as the delimiter or quotechar, or which contain new-line
             characters. Defaults to '"'.
@@ -374,7 +374,7 @@ def write_csv_file(
         delimiter if quoting is set to QUOTE_NONE and the quotechar if doublequote is False.
         Defaults to None, which disables escaping.
         - lineterminator (str, optional): The string used to terminate lines produced by the
-        writer. Defaults to '\r\n'.
+        writer. Defaults to "\\r\\n".
         - quotechar (str, optional): A one-character string used to quote fields containing
         special characters, such as the delimiter or quotechar, or which contain new-line
         characters. Defaults to '"'.
