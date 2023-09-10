@@ -13,7 +13,7 @@ A simple API for reading and writing pickle files.
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L206"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L208"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_pickle_file`
 
@@ -49,7 +49,7 @@ Loads a list of objects from a file.
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L240"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L242"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_pickle_file`
 
@@ -104,6 +104,8 @@ The read API does not allow to size the data to read. However, it reads the file
 
 **Examples:**
  ```python
+from toolbox.files import PickleFile
+
 file = PickleFile("path/to/the/file")
 
 # write some objects to the file
@@ -126,7 +128,7 @@ file.write_file(data)
 data = file.read_file()
 ``` 
 
-<a href="../toolbox/files/pickle_file.py#L66"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -164,7 +166,7 @@ Creates a file manager for pickle files.
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L165"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L167"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -191,7 +193,7 @@ Note: the file must be opened upfront.
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L130"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L132"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -218,7 +220,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L185"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -251,7 +253,7 @@ Note: the file must be opened upfront.
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L144"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L146"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 

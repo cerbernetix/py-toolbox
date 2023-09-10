@@ -23,6 +23,8 @@ class FileManager:
 
     Examples:
     ```python
+    from toolbox.files import FileManager
+
     file = FileManager("path/to/the/file", binary=False, encoding="UTF-8")
 
     # open the file, then read its content

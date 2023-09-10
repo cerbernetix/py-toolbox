@@ -65,6 +65,8 @@ class CSVFile(FileManager):
 
     Examples:
     ```python
+    from toolbox.files import CSVFile
+
     file = CSVFile("path/to/the/file", dialect='excel', encoding="UTF-8")
 
     # write rows to the file

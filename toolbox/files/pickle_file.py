@@ -40,6 +40,8 @@ class PickleFile(FileManager):
 
     Examples:
     ```python
+    from toolbox.files import PickleFile
+
     file = PickleFile("path/to/the/file")
 
     # write some objects to the file

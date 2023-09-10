@@ -30,6 +30,8 @@ The read API does not allow to size the data to read. The FileManager reads all 
 
 **Examples:**
  ```python
+from toolbox.files import FileManager
+
 file = FileManager("path/to/the/file", binary=False, encoding="UTF-8")
 
 # open the file, then read its content
@@ -45,7 +47,7 @@ with file(create=True):
 content = file.read_file()
 ``` 
 
-<a href="../toolbox/files/file_manager.py#L42"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -81,7 +83,7 @@ Creates a file manager.
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L114"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L116"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -101,7 +103,7 @@ Note: it does nothing if the file is already closed.
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L79"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L81"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `open`
 
@@ -135,7 +137,7 @@ Note: If the file was already opened, it is first closed.
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L161"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L163"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -162,7 +164,7 @@ Note: the file must be opened upfront.
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L129"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L131"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -189,7 +191,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L178"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L180"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -222,7 +224,7 @@ Note: the file must be opened upfront.
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L144"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L146"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 

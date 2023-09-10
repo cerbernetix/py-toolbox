@@ -16,7 +16,7 @@ A simple API for reading and writing CSV files.
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L323"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L325"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_csv_file`
 
@@ -65,7 +65,7 @@ For reading headless CSV, set fieldnames to False.
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L378"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L380"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_csv_file`
 
@@ -138,6 +138,8 @@ The read API does not allow to size the data to read. However, it reads the file
 
 **Examples:**
  ```python
+from toolbox.files import CSVFile
+
 file = CSVFile("path/to/the/file", dialect='excel', encoding="UTF-8")
 
 # write rows to the file
@@ -159,7 +161,7 @@ with file(create=True):
 csv = file.read_file()
 ``` 
 
-<a href="../toolbox/files/csv_file.py#L90"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L92"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -214,7 +216,7 @@ The fieldnames sequence identify the order in which values from the rows are wri
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L189"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -234,7 +236,7 @@ Note: it does nothing if the file is already closed.
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L237"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L239"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -261,7 +263,7 @@ Note: the file must be opened upfront.
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L202"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L204"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -288,7 +290,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L273"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L275"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -321,7 +323,7 @@ Note: the file must be opened upfront.
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L216"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L218"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 

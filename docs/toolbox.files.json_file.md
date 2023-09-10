@@ -12,7 +12,7 @@ A simple API for reading and writing JSON files.
 
 ---
 
-<a href="../toolbox/files/json_file.py#L128"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L130"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_json_file`
 
@@ -45,7 +45,7 @@ Reads a JSON content from a file.
 
 ---
 
-<a href="../toolbox/files/json_file.py#L149"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L151"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_json_file`
 
@@ -107,6 +107,8 @@ The read API reads all the content at once, and so do the write API too.
 
 **Examples:**
  ```python
+from toolbox.files import JSONFile
+
 file = JSONFile("path/to/the/file.json", indent=4, encoding="UTF-8")
 
 # write content to the file
@@ -124,7 +126,7 @@ with file(create=True):
 json = file.read_file()
 ``` 
 
-<a href="../toolbox/files/json_file.py#L48"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -160,7 +162,7 @@ Creates a file manager for JSON files.
 
 ---
 
-<a href="../toolbox/files/json_file.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L88"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -187,7 +189,7 @@ Note: the file must be opened upfront.
 
 ---
 
-<a href="../toolbox/files/json_file.py#L105"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L107"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
