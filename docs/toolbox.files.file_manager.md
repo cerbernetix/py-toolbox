@@ -29,7 +29,7 @@ The read API does not allow to size the data to read. The FileManager reads all 
 
 
 **Examples:**
- ```
+ ```python
 file = FileManager("path/to/the/file", binary=False, encoding="UTF-8")
 
 # open the file, then read its content

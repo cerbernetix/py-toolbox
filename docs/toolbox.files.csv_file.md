@@ -137,7 +137,7 @@ The read API does not allow to size the data to read. However, it reads the file
 
 
 **Examples:**
- ```
+ ```python
 file = CSVFile("path/to/the/file", dialect='excel', encoding="UTF-8")
 
 # write rows to the file

@@ -22,7 +22,7 @@ class FileManager:
         encoding (str, optional): The file encoding, only needed for text files.
 
     Examples:
-    ```
+    ```python
     file = FileManager("path/to/the/file", binary=False, encoding="UTF-8")
 
     # open the file, then read its content

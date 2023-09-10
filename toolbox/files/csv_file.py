@@ -64,7 +64,7 @@ class CSVFile(FileManager):
         detecting the CSV dialect by reading a sample at the head of the file.
 
     Examples:
-    ```
+    ```python
     file = CSVFile("path/to/the/file", dialect='excel', encoding="UTF-8")
 
     # write rows to the file

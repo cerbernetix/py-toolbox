@@ -106,7 +106,7 @@ The read API reads all the content at once, and so do the write API too.
 
 
 **Examples:**
- ```
+ ```python
 file = JSONFile("path/to/the/file.json", indent=4, encoding="UTF-8")
 
 # write content to the file

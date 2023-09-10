@@ -103,7 +103,7 @@ The read API does not allow to size the data to read. However, it reads the file
 
 
 **Examples:**
- ```
+ ```python
 file = PickleFile("path/to/the/file")
 
 # write some objects to the file

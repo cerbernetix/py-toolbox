@@ -39,7 +39,7 @@ class PickleFile(FileManager):
         binary (bool): The type of file, say binary. It must always be True.
 
     Examples:
-    ```
+    ```python
     file = PickleFile("path/to/the/file")
 
     # write some objects to the file
