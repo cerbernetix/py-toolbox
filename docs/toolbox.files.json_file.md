@@ -5,6 +5,43 @@
 # <kbd>module</kbd> `toolbox.files.json_file`
 A simple API for reading and writing JSON files. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import JSONFile, read_json_file, write_json_file
+
+filename = 'path/to/file.json'
+json_data = [
+     {'date': '2023-09-10', 'value': 42},
+     {'date': '2023-09-11', 'value': 24},
+     {'date': '2023-09-12', 'value': 44},
+]
+
+# Create a JSON file from the given data
+write_json_file(filename, json_data, encoding='UTF-8', indent=2)
+
+# Read the JSON data from an existing file
+json_data = read_json_file(filename, encoding='UTF-8', indent=2)
+
+# Use a file manager
+json = JSONFile(filename, encoding='UTF-8', indent=2)
+
+# Create a JSON file from the given data
+json.write_file(json_data)
+
+# Read the JSON data from an existing file
+json_data = json.read_file()
+
+# Write JSON content
+with json.open(create=True):
+     json.write(json_data)
+
+# Read JSON content
+with file:
+     json_data = file.read()
+``` 
+
 **Global Variables**
 ---------------
 - **JSON_ENCODING**
@@ -12,7 +49,7 @@ A simple API for reading and writing JSON files.
 
 ---
 
-<a href="../toolbox/files/json_file.py#L130"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_json_file`
 
@@ -43,9 +80,18 @@ Reads a JSON content from a file.
  - <b>`Any`</b>:  The data read from the JSON file. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import read_json_file
+
+json_data = read_json_file('path/to/file', encoding='UTF-8')
+``` 
+
+
 ---
 
-<a href="../toolbox/files/json_file.py#L151"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L249"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_json_file`
 
@@ -83,9 +129,24 @@ Writes a JSON content to a file.
  - <b>`int`</b>:  The number of bytes written to the file. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import write_json_file
+
+json_data = [
+    {'date': '2023-09-10', 'value': 42},
+    {'date': '2023-09-11', 'value': 24},
+    {'date': '2023-09-12', 'value': 44},
+]
+
+write_json_file('path/to/file', json_data, encoding='UTF-8', indent=2)
+``` 
+
+
 ---
 
-<a href="../toolbox/files/json_file.py#L14"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `JSONFile`
 Offers a simple API for reading and writing JSON files. 
@@ -126,7 +187,7 @@ with file(create=True):
 json = file.read_file()
 ``` 
 
-<a href="../toolbox/files/json_file.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -159,10 +220,45 @@ Creates a file manager for JSON files.
 
 
 
+**Examples:**
+ ```python
+from toolbox.files import JSONFile
+
+# Create a file manager
+file = JSONFile('path/to/filename')
+
+# File can be opened directly as the manager is created
+with JSONFile('path/to/filename') as file:
+    data = file.read()
+
+with JSONFile('path/to/filename', create=True) as file:
+    file.write(data)
+
+# A file manager can open explicitly a file
+with file.open():
+    data = file.read()
+
+with file.open(create=True):
+    file.write(data)
+
+# It can also be opened implicitly
+with file:
+    data = file.read()
+
+# To create the file while opening implicitly
+with file(create=True):
+    file.write(data)
+
+# The file is also (re)opened when using the iteration protocol
+data = [dat for dat in file]
+``` 
+
+
+
 
 ---
 
-<a href="../toolbox/files/json_file.py#L88"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -187,9 +283,22 @@ Note: the file must be opened upfront.
  
  - <b>`Any`</b>:  The data read from the file. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import JSONFile
+
+file = JSONFile('path/to/filename')
+
+# When calling the read API, the whole JSON content is read from the file.
+with file:
+    json = file.read()
+``` 
+
 ---
 
-<a href="../toolbox/files/json_file.py#L107"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/json_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -219,6 +328,19 @@ Note: the file must be opened upfront.
 **Returns:**
  
  - <b>`int`</b>:  The number of bytes written. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import JSONFile
+
+file = JSONFile('path/to/filename')
+
+# When calling the write API, the whole JSON is written to the file.
+with file(create=True):
+    file.write(json)
+``` 
 
 
 

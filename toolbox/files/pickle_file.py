@@ -1,4 +1,44 @@
-"""A simple API for reading and writing pickle files."""
+"""A simple API for reading and writing pickle files.
+
+Examples:
+```python
+from toolbox.files import PickleFile, read_pickle_file, write_pickle_file
+
+filename = 'path/to/file.pkl'
+data = [
+    {'date': '2023-09-10', 'value': 42},
+    {'date': '2023-09-11', 'value': 24},
+    {'date': '2023-09-12', 'value': 44},
+]
+
+# Create a Pickle file from the given data
+write_pickle_file(filename, data)
+
+# Read the Pickle data from an existing file
+data = read_pickle_file(filename)
+
+# Use a file manager
+pickle = PickleFile(filename)
+
+# Create a Pickle file from the given data
+pickle.write_file(data)
+
+# Read the Pickle data from an existing file
+data = pickle.read_file()
+
+# Write Pickle object by object
+with pickle.open(create=True):
+    for obj in data:
+        pickle.write(obj)
+
+# Read all objects from the Pickle
+data = [obj for obj in pickle]
+
+# Read the first object
+with file:
+    first = file.read()
+```
+"""
 from __future__ import annotations
 
 import pickle
@@ -111,6 +151,39 @@ class PickleFile(FileManager):
             value (such as None), the given buffer is out-of-band; otherwise the buffer is
             serialized in-band, i.e. inside the pickle stream. It is an error if buffer_callback is
             not None and protocol is None or smaller than 5. Defaults to None.
+
+        Examples:
+        ```python
+        from toolbox.files import PickleFile
+
+        # Create a file manager
+        file = PickleFile('path/to/filename')
+
+        # File can be opened directly as the manager is created
+        with PickleFile('path/to/filename') as file:
+            data = file.read()
+
+        with PickleFile('path/to/filename', create=True) as file:
+            file.write(data)
+
+        # A file manager can open explicitly a file
+        with file.open():
+            obj = file.read()
+
+        with file.open(create=True):
+            file.write(obj)
+
+        # It can also be opened implicitly
+        with file:
+            obj = file.read()
+
+        # To create the file while opening implicitly
+        with file(create=True):
+            file.write(obj)
+
+        # The file is also (re)opened when using the iteration protocol
+        data = [obj for obj in file]
+        ```
         """
         super().__init__(
             filename,
@@ -140,6 +213,16 @@ class PickleFile(FileManager):
 
         Returns:
             list: The content read from the file.
+
+        Examples:
+        ```python
+        from toolbox.files import PickleFile
+
+        file = PickleFile('path/to/filename')
+
+        # A file can be read all at once
+        data = file.read_file()
+        ```
         """
         return list(self)
 
@@ -156,6 +239,16 @@ class PickleFile(FileManager):
 
         Returns:
             int: The number of bytes written.
+
+        Examples:
+        ```python
+        from toolbox.files import PickleFile
+
+        file = PickleFile('path/to/filename')
+
+        # A file can be written all at once
+        file.write_file(data)
+        ```
         """
         size = 0
         with self.open(create=True):
@@ -175,6 +268,21 @@ class PickleFile(FileManager):
 
         Returns:
             object: The object loaded from the file, or None if the file is at EOF.
+
+        Examples:
+        ```python
+        from toolbox.files import PickleFile
+
+        file = PickleFile('path/to/filename')
+
+        # When calling the read API, the next object in the file is read.
+        with file:
+            obj1 = file.read()
+            obj2 = file.read()
+
+        # The objects can also be read using the iteration protocol
+        data = [obj for obj in file]
+        ```
         """
         if self._file is None:
             raise ValueError("The file must be opened before reading from it!")
@@ -198,6 +306,18 @@ class PickleFile(FileManager):
 
         Returns:
             int: The number of bytes written.
+
+        Examples:
+        ```python
+        from toolbox.files import PickleFile
+
+        file = PickleFile('path/to/filename')
+
+        # When calling the write API, an object is written to the file.
+        with file(create=True):
+            file.write(object1)
+            file.write(object2)
+        ```
         """
         if self._file is None:
             raise ValueError("The file must be opened before writing to it!")
@@ -232,6 +352,13 @@ def read_pickle_file(filename: str, **kwargs) -> list:
 
     Returns:
         list: The list of objects read from the file.
+
+    Examples:
+    ```python
+    from toolbox.files import read_pickle_file
+
+    data = read_pickle_file('path/to/file')
+    ```
     """
     return PickleFile(
         filename,
@@ -263,6 +390,19 @@ def write_pickle_file(filename: str, data: Iterable, **kwargs) -> int:
 
     Returns:
         int: The number of bytes written to the file.
+
+    Examples:
+    ```python
+    from toolbox.files import write_pickle_file
+
+    data = [
+        {'date': '2023-09-10', 'value': 42},
+        {'date': '2023-09-11', 'value': 24},
+        {'date': '2023-09-12', 'value': 44},
+    ]
+
+    write_pickle_file('path/to/file', data)
+    ```
     """
     return PickleFile(
         filename,

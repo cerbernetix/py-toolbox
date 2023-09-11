@@ -5,6 +5,47 @@
 # <kbd>module</kbd> `toolbox.files.pickle_file`
 A simple API for reading and writing pickle files. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import PickleFile, read_pickle_file, write_pickle_file
+
+filename = 'path/to/file.pkl'
+data = [
+     {'date': '2023-09-10', 'value': 42},
+     {'date': '2023-09-11', 'value': 24},
+     {'date': '2023-09-12', 'value': 44},
+]
+
+# Create a Pickle file from the given data
+write_pickle_file(filename, data)
+
+# Read the Pickle data from an existing file
+data = read_pickle_file(filename)
+
+# Use a file manager
+pickle = PickleFile(filename)
+
+# Create a Pickle file from the given data
+pickle.write_file(data)
+
+# Read the Pickle data from an existing file
+data = pickle.read_file()
+
+# Write Pickle object by object
+with pickle.open(create=True):
+     for obj in data:
+         pickle.write(obj)
+
+# Read all objects from the Pickle
+data = [obj for obj in pickle]
+
+# Read the first object
+with file:
+     first = file.read()
+``` 
+
 **Global Variables**
 ---------------
 - **PICKLE_READER_PARAMS**
@@ -13,7 +54,7 @@ A simple API for reading and writing pickle files.
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L208"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L325"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_pickle_file`
 
@@ -47,9 +88,18 @@ Loads a list of objects from a file.
  - <b>`list`</b>:  The list of objects read from the file. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import read_pickle_file
+
+data = read_pickle_file('path/to/file')
+``` 
+
+
 ---
 
-<a href="../toolbox/files/pickle_file.py#L242"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L366"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_pickle_file`
 
@@ -82,9 +132,24 @@ Writes a list of objects to a file.
  - <b>`int`</b>:  The number of bytes written to the file. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import write_pickle_file
+
+data = [
+    {'date': '2023-09-10', 'value': 42},
+    {'date': '2023-09-11', 'value': 24},
+    {'date': '2023-09-12', 'value': 44},
+]
+
+write_pickle_file('path/to/file', data)
+``` 
+
+
 ---
 
-<a href="../toolbox/files/pickle_file.py#L28"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `PickleFile`
 Offers a simple API for reading and writing pickle files. 
@@ -128,7 +193,7 @@ file.write_file(data)
 data = file.read_file()
 ``` 
 
-<a href="../toolbox/files/pickle_file.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L108"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -163,10 +228,45 @@ Creates a file manager for pickle files.
 
 
 
+**Examples:**
+ ```python
+from toolbox.files import PickleFile
+
+# Create a file manager
+file = PickleFile('path/to/filename')
+
+# File can be opened directly as the manager is created
+with PickleFile('path/to/filename') as file:
+    data = file.read()
+
+with PickleFile('path/to/filename', create=True) as file:
+    file.write(data)
+
+# A file manager can open explicitly a file
+with file.open():
+    obj = file.read()
+
+with file.open(create=True):
+    file.write(obj)
+
+# It can also be opened implicitly
+with file:
+    obj = file.read()
+
+# To create the file while opening implicitly
+with file(create=True):
+    file.write(obj)
+
+# The file is also (re)opened when using the iteration protocol
+data = [obj for obj in file]
+``` 
+
+
+
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L167"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L260"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -191,9 +291,23 @@ Note: the file must be opened upfront.
  
  - <b>`object`</b>:  The object loaded from the file, or None if the file is at EOF. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import PickleFile
+
+file = PickleFile('path/to/filename')
+
+# When calling the read API, the next object in the file is read.
+with file:
+    obj1 = file.read()
+    obj2 = file.read()
+``` 
+
 ---
 
-<a href="../toolbox/files/pickle_file.py#L132"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L205"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -218,9 +332,21 @@ Note: If the file was already opened, it is first closed, then opened in read mo
  
  - <b>`list`</b>:  The content read from the file. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import PickleFile
+
+file = PickleFile('path/to/filename')
+
+# A file can be read all at once
+data = file.read_file()
+``` 
+
 ---
 
-<a href="../toolbox/files/pickle_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L292"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -251,9 +377,23 @@ Note: the file must be opened upfront.
  
  - <b>`int`</b>:  The number of bytes written. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import PickleFile
+
+file = PickleFile('path/to/filename')
+
+# When calling the write API, an object is written to the file.
+with file(create=True):
+    file.write(object1)
+    file.write(object2)
+``` 
+
 ---
 
-<a href="../toolbox/files/pickle_file.py#L146"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L229"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
@@ -282,6 +422,18 @@ Note: If the file was already opened, it is first closed, then opened in write m
 **Returns:**
  
  - <b>`int`</b>:  The number of bytes written. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import PickleFile
+
+file = PickleFile('path/to/filename')
+
+# A file can be written all at once
+file.write_file(data)
+``` 
 
 
 

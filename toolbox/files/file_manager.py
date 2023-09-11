@@ -1,4 +1,30 @@
-"""A simple class for reading and writing files."""
+"""A simple class for reading and writing files.
+
+Examples:
+```python
+from toolbox.files import FileManager
+
+filename = 'path/to/file.txt'
+data = "Some content"
+
+# Manage a text file
+file = FileManager(filename, encoding='UTF-8')
+
+# Create the file
+file.write_file(data)
+
+# It can also be done using the open/write API
+with file.open(create=True):
+    file.write(data)
+
+# Show the file
+print(file.read_file(filename))
+
+# It can also be done using the open/read API
+with file:
+    print(file.read())
+```
+"""
 from __future__ import annotations
 
 from typing import Iterator
@@ -68,6 +94,21 @@ class FileManager:
             Defaults to False.
             encoding (str, optional): The file encoding, only needed for text files.
             Defaults to None.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        # Create a file manager
+        file = FileManager('path/to/filename')
+
+        # File can be opened directly as the manager is created
+        with FileManager('path/to/filename') as file:
+            data = file.read()
+
+        with FileManager('path/to/filename', create=True) as file:
+            file.write(data)
+        ```
         """
         self.filename = filename
         self.binary = binary
@@ -101,6 +142,31 @@ class FileManager:
 
         Returns:
             FileManager: Chains the instance.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        # A file manager can open explicitly a file
+        with file.open():
+            data = file.read()
+
+        with file.open(create=True):
+            file.write(data)
+
+        # It can also be opened implicitly
+        with file:
+            data = file.read()
+
+        # To create the file while opening implicitly
+        with file(create=True):
+            file.write(data)
+
+        # The file is also (re)opened when using the iteration protocol
+        data = [dat for dat in file]
+        ```
         """
         self.close()
 
@@ -120,6 +186,22 @@ class FileManager:
 
         Returns:
             FileManager: Chains the instance.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        # A file is closed implicitly when using the context manager
+        with file:
+            data = file.read()
+
+        # However, open/close can be explicitly called
+        file.open(create=True)
+        file.write(data)
+        file.close()
+        ```
         """
         if self._file is not None:
             self._file.close()
@@ -139,6 +221,16 @@ class FileManager:
 
         Returns:
             str|bytes: The content read from the file.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        # A file can be read all at once
+        data = file.read_file()
+        ```
         """
         with self.open():
             return self.read()
@@ -156,6 +248,16 @@ class FileManager:
 
         Returns:
             int: The number of bytes written.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        # A file can be written all at once
+        file.write_file(data)
+        ```
         """
         with self.open(create=True):
             return self.write(data)
@@ -171,6 +273,18 @@ class FileManager:
 
         Returns:
             str|bytes: The content loaded from the file, or None if the file is at EOF.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        # When calling the read API, the next chunk in the file is read.
+        # With the base class, all the content is read.
+        with file:
+            data = file.read()
+        ```
         """
         if self._file is None:
             raise ValueError("The file must be opened before reading from it!")
@@ -191,6 +305,17 @@ class FileManager:
 
         Returns:
             int: The number of bytes written.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        # When calling the write API, a chunk of data is written to the file.
+        with file(create=True):
+            file.write(data)
+        ```
         """
         if self._file is None:
             raise ValueError("The file must be opened before writing to it!")

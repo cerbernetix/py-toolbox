@@ -1,4 +1,29 @@
-"""A collection of utilities for accessing files."""
+"""A collection of utilities for accessing files.
+
+Examples:
+```python
+from toolbox.files import get_file_mode, read_file, write_file
+
+# get_file_mode() is used to build a file access mode.
+# For example to create a text file:
+with open('path/to/file', get_file_mode(create=True)) as file:
+    file.write('some content')
+
+# Create a text file
+text = 'Some content'
+write_file('path/to/file', text, encoding='UTF-8')
+
+# Create a binary file
+data = b'...'
+write_file('path/to/file', data, binary=True)
+
+# Load a text file
+text = read_file('path/to/file', encoding='UTF-8')
+
+# Load a binary file
+data = read_file('path/to/file', binary=True)
+```
+"""
 
 
 def get_file_mode(
@@ -27,6 +52,31 @@ def get_file_mode(
 
     Returns:
         str: A string representing the file access mode.
+
+    Examples:
+    ```python
+    from toolbox.files import get_file_mode
+
+    # Create a text file
+    with open('path/to/file', get_file_mode(create=True)) as file:
+        file.write('some content')
+
+    # Append to a text file
+    with open('path/to/file', get_file_mode(append=True)) as file:
+        file.write('some content')
+
+    # Read a text file
+    with open('path/to/file', get_file_mode()) as file:
+        text = file.read()
+
+    # Create a binary file
+    with open('path/to/file', get_file_mode(create=True, binary=True)) as file:
+        file.write(b'...')
+
+    # Read a binary file
+    with open('path/to/file', get_file_mode(binary=True)) as file:
+        data = file.read()
+    ```
     """
     if append:
         mode = "a"
@@ -75,6 +125,17 @@ def read_file(
 
     Returns:
         str|bytes: The content read from the file.
+
+    Examples:
+    ```python
+    from toolbox.files import read_file
+
+    # Load a text file
+    text = read_file('path/to/file', encoding='UTF-8')
+
+    # Load a binary file
+    data = read_file('path/to/file', binary=True)
+    ```
     """
     with open(
         filename,
@@ -107,6 +168,19 @@ def write_file(
 
     Returns:
         int: The number of bytes written to the file.
+
+    Examples:
+    ```python
+    from toolbox.files import write_file
+
+    # Create a text file
+    text = 'Some content'
+    write_file('path/to/file', text, encoding='UTF-8')
+
+    # Create a binary file
+    data = b'...'
+    write_file('path/to/file', data, binary=True)
+    ```
     """
     with open(
         filename,

@@ -5,6 +5,47 @@
 # <kbd>module</kbd> `toolbox.files.csv_file`
 A simple API for reading and writing CSV files. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import CSVFile, read_csv_file, write_csv_file
+
+filename = 'path/to/file.csv'
+csv_data = [
+     {'date': '2023-09-10', 'value': 42},
+     {'date': '2023-09-11', 'value': 24},
+     {'date': '2023-09-12', 'value': 44},
+]
+
+# Create a CSV file from the given data
+write_csv_file(filename, csv_data, encoding='UTF-8', dialect='excel')
+
+# Read the CSV data from an existing file
+csv_data = read_csv_file(filename, encoding='UTF-8', dialect='excel')
+
+# Use a file manager
+csv = CSVFile(filename, encoding='UTF-8', dialect='excel')
+
+# Create a CSV file from the given data
+csv.write_file(csv_data)
+
+# Read the CSV data from an existing file
+csv_data = csv.read_file()
+
+# Write CSV row by row
+with csv.open(create=True):
+     for row in csv_data:
+         csv.write(row)
+
+# Read all rows from the CSV
+csv_data = [row for row in csv]
+
+# Read the first row
+with file:
+     first = file.read()
+``` 
+
 **Global Variables**
 ---------------
 - **CSV_ENCODING**
@@ -16,7 +57,7 @@ A simple API for reading and writing CSV files.
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L325"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L457"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_csv_file`
 
@@ -63,9 +104,18 @@ For reading headless CSV, set fieldnames to False.
  - <b>`list[dict | list]`</b>:  The data read from the CSV file. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import read_csv_file
+
+csv_data = read_csv_file('path/to/file', encoding='UTF-8', dialect='excel')
+``` 
+
+
 ---
 
-<a href="../toolbox/files/csv_file.py#L380"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L519"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_csv_file`
 
@@ -114,9 +164,24 @@ The fieldnames sequence identify the order in which values from the rows are wri
  - <b>`int`</b>:  The number of bytes written to the file. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import write_csv_file
+
+csv_data = [
+    {'date': '2023-09-10', 'value': 42},
+    {'date': '2023-09-11', 'value': 24},
+    {'date': '2023-09-12', 'value': 44},
+]
+
+write_csv_file('path/to/file', csv_data, encoding='UTF-8', dialect='excel')
+``` 
+
+
 ---
 
-<a href="../toolbox/files/csv_file.py#L51"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L91"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `CSVFile`
 Offers a simple API for reading and writing CSV files. 
@@ -146,7 +211,7 @@ file = CSVFile("path/to/the/file", dialect='excel', encoding="UTF-8")
 file.write_file(csv)
 
 # read the first row of the CSV
-with file:
+with file.open():
     first = file.read()
 
 # gets the CSV in a list
@@ -161,7 +226,7 @@ with file(create=True):
 csv = file.read_file()
 ``` 
 
-<a href="../toolbox/files/csv_file.py#L92"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L132"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -213,10 +278,45 @@ The fieldnames sequence identify the order in which values from the rows are wri
 
 
 
+**Examples:**
+ ```python
+from toolbox.files import CSVFile
+
+# Create a file manager
+file = CSVFile('path/to/filename')
+
+# File can be opened directly as the manager is created
+with CSVFile('path/to/filename') as file:
+    csv_data = file.read()
+
+with CSVFile('path/to/filename', create=True) as file:
+    file.write(csv_data)
+
+# A file manager can open explicitly a file
+with file.open():
+    row = file.read()
+
+with file.open(create=True):
+    file.write(row)
+
+# It can also be opened implicitly
+with file:
+    row = file.read()
+
+# To create the file while opening implicitly
+with file(create=True):
+    file.write(row)
+
+# The file is also (re)opened when using the iteration protocol
+csv_data = [row for row in file]
+``` 
+
+
+
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L189"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L261"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -234,9 +334,27 @@ Note: it does nothing if the file is already closed.
  
  - <b>`CSVFile`</b>:  Chains the instance. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import CSVFile
+
+file = FileManager('path/to/filename')
+
+# A file is closed implicitly when using the context manager
+with file:
+    data = file.read()
+
+# However, open/close can be explicitly called
+file.open(create=True)
+file.write(data)
+file.close()
+``` 
+
 ---
 
-<a href="../toolbox/files/csv_file.py#L239"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L347"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -261,9 +379,23 @@ Note: the file must be opened upfront.
  
  - <b>`dict | list`</b>:  The content loaded from the file, or None if the file is at EOF. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import CSVFile
+
+file = CSVFile('path/to/filename')
+
+# When calling the read API, the next row in the file is read.
+with file:
+    row1 = file.read()
+    row2 = file.read()
+``` 
+
 ---
 
-<a href="../toolbox/files/csv_file.py#L204"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L292"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -288,9 +420,21 @@ Note: If the file was already opened, it is first closed, then opened in read mo
  
  - <b>`list[dict | list]`</b>:  The content read from the file. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import CSVFile
+
+file = CSVFile('path/to/filename')
+
+# A file can be read all at once
+data = file.read_file()
+``` 
+
 ---
 
-<a href="../toolbox/files/csv_file.py#L275"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L395"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -321,9 +465,23 @@ Note: the file must be opened upfront.
  
  - <b>`int`</b>:  The number of bytes written. 
 
+
+
+**Examples:**
+ ```python
+from toolbox.files import CSVFile
+
+file = CSVFile('path/to/filename')
+
+# When calling the write API, a CSV row is written to the file.
+with file(create=True):
+    file.write(row1)
+    file.write(row2)
+``` 
+
 ---
 
-<a href="../toolbox/files/csv_file.py#L218"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L316"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
@@ -352,6 +510,18 @@ Note: If the file was already opened, it is first closed, then opened in write m
 **Returns:**
  
  - <b>`int`</b>:  The number of bytes written. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import CSVFile
+
+file = CSVFile('path/to/filename')
+
+# A file can be written all at once
+file.write_file(data)
+``` 
 
 
 

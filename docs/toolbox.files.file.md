@@ -6,9 +6,35 @@
 A collection of utilities for accessing files. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import get_file_mode, read_file, write_file
+
+# get_file_mode() is used to build a file access mode.
+# For example to create a text file:
+with open('path/to/file', get_file_mode(create=True)) as file:
+     file.write('some content')
+
+# Create a text file
+text = 'Some content'
+write_file('path/to/file', text, encoding='UTF-8')
+
+# Create a binary file
+data = b'...'
+write_file('path/to/file', data, binary=True)
+
+# Load a text file
+text = read_file('path/to/file', encoding='UTF-8')
+
+# Load a binary file
+data = read_file('path/to/file', binary=True)
+``` 
+
+
 ---
 
-<a href="../toolbox/files/file.py#L4"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file.py#L29"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_file_mode`
 
@@ -43,9 +69,36 @@ The file access mode is defined by a string that contains flags for selecting th
  - <b>`str`</b>:  A string representing the file access mode. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import get_file_mode
+
+# Create a text file
+with open('path/to/file', get_file_mode(create=True)) as file:
+    file.write('some content')
+
+# Append to a text file
+with open('path/to/file', get_file_mode(append=True)) as file:
+    file.write('some content')
+
+# Read a text file
+with open('path/to/file', get_file_mode()) as file:
+    text = file.read()
+
+# Create a binary file
+with open('path/to/file', get_file_mode(create=True, binary=True)) as file:
+    file.write(b'...')
+
+# Read a binary file
+with open('path/to/file', get_file_mode(binary=True)) as file:
+    data = file.read()
+``` 
+
+
 ---
 
-<a href="../toolbox/files/file.py#L57"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file.py#L107"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_file`
 
@@ -82,9 +135,22 @@ Reads a content from a file.
  - <b>`str|bytes`</b>:  The content read from the file. 
 
 
+
+**Examples:**
+ ```python
+from toolbox.files import read_file
+
+# Load a text file
+text = read_file('path/to/file', encoding='UTF-8')
+
+# Load a binary file
+data = read_file('path/to/file', binary=True)
+``` 
+
+
 ---
 
-<a href="../toolbox/files/file.py#L88"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file.py#L149"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_file`
 
@@ -120,6 +186,21 @@ Writes a content to a file.
 **Returns:**
  
  - <b>`int`</b>:  The number of bytes written to the file. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import write_file
+
+# Create a text file
+text = 'Some content'
+write_file('path/to/file', text, encoding='UTF-8')
+
+# Create a binary file
+data = b'...'
+write_file('path/to/file', data, binary=True)
+``` 
 
 
 

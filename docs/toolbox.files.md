@@ -31,6 +31,30 @@ It contains:
     - `get_module_folder_path(module)` - Gets the path to a module's parent folder. 
     - `get_module_path(module)` - Gets the path to a module. 
 
+
+
+**Examples:**
+ ```python
+from toolbox import files
+
+# Get the path to a file below your application's root
+filename = files.get_file_path('path/to/file', 'my_package')
+
+# Create a text file
+data = "Some content"
+with files.FileManager(filename, create=True) as file:
+     file.write_file(data)
+
+# Show the file
+print(files.read_file(filename))
+
+# Delete the file
+if files.delete_path(filename):
+     print('The file has been deleted!')
+else:
+     print('Cannot delete the file!')
+``` 
+
 **Global Variables**
 ---------------
 - **file**

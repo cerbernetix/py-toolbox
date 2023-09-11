@@ -1,4 +1,44 @@
-"""A simple API for reading and writing CSV files."""
+"""A simple API for reading and writing CSV files.
+
+Examples:
+```python
+from toolbox.files import CSVFile, read_csv_file, write_csv_file
+
+filename = 'path/to/file.csv'
+csv_data = [
+    {'date': '2023-09-10', 'value': 42},
+    {'date': '2023-09-11', 'value': 24},
+    {'date': '2023-09-12', 'value': 44},
+]
+
+# Create a CSV file from the given data
+write_csv_file(filename, csv_data, encoding='UTF-8', dialect='excel')
+
+# Read the CSV data from an existing file
+csv_data = read_csv_file(filename, encoding='UTF-8', dialect='excel')
+
+# Use a file manager
+csv = CSVFile(filename, encoding='UTF-8', dialect='excel')
+
+# Create a CSV file from the given data
+csv.write_file(csv_data)
+
+# Read the CSV data from an existing file
+csv_data = csv.read_file()
+
+# Write CSV row by row
+with csv.open(create=True):
+    for row in csv_data:
+        csv.write(row)
+
+# Read all rows from the CSV
+csv_data = [row for row in csv]
+
+# Read the first row
+with file:
+    first = file.read()
+```
+"""
 from __future__ import annotations
 
 import csv
@@ -73,7 +113,7 @@ class CSVFile(FileManager):
     file.write_file(csv)
 
     # read the first row of the CSV
-    with file:
+    with file.open():
         first = file.read()
 
     # gets the CSV in a list
@@ -164,6 +204,38 @@ class CSVFile(FileManager):
             extra values in the row are ignored. Any other optional or keyword arguments are passed
             to the underlying writer instance.
 
+        Examples:
+        ```python
+        from toolbox.files import CSVFile
+
+        # Create a file manager
+        file = CSVFile('path/to/filename')
+
+        # File can be opened directly as the manager is created
+        with CSVFile('path/to/filename') as file:
+            csv_data = file.read()
+
+        with CSVFile('path/to/filename', create=True) as file:
+            file.write(csv_data)
+
+        # A file manager can open explicitly a file
+        with file.open():
+            row = file.read()
+
+        with file.open(create=True):
+            file.write(row)
+
+        # It can also be opened implicitly
+        with file:
+            row = file.read()
+
+        # To create the file while opening implicitly
+        with file(create=True):
+            file.write(row)
+
+        # The file is also (re)opened when using the iteration protocol
+        csv_data = [row for row in file]
+        ```
         """
         super().__init__(
             filename,
@@ -193,6 +265,22 @@ class CSVFile(FileManager):
 
         Returns:
             CSVFile: Chains the instance.
+
+        Examples:
+        ```python
+        from toolbox.files import CSVFile
+
+        file = FileManager('path/to/filename')
+
+        # A file is closed implicitly when using the context manager
+        with file:
+            data = file.read()
+
+        # However, open/close can be explicitly called
+        file.open(create=True)
+        file.write(data)
+        file.close()
+        ```
         """
         super().close()
 
@@ -212,6 +300,16 @@ class CSVFile(FileManager):
 
         Returns:
             list[dict | list]: The content read from the file.
+
+        Examples:
+        ```python
+        from toolbox.files import CSVFile
+
+        file = CSVFile('path/to/filename')
+
+        # A file can be read all at once
+        data = file.read_file()
+        ```
         """
         return list(self)
 
@@ -228,6 +326,16 @@ class CSVFile(FileManager):
 
         Returns:
             int: The number of bytes written.
+
+        Examples:
+        ```python
+        from toolbox.files import CSVFile
+
+        file = CSVFile('path/to/filename')
+
+        # A file can be written all at once
+        file.write_file(data)
+        ```
         """
         size = 0
         with self.open(create=True):
@@ -247,6 +355,21 @@ class CSVFile(FileManager):
 
         Returns:
             dict | list: The content loaded from the file, or None if the file is at EOF.
+
+        Examples:
+        ```python
+        from toolbox.files import CSVFile
+
+        file = CSVFile('path/to/filename')
+
+        # When calling the read API, the next row in the file is read.
+        with file:
+            row1 = file.read()
+            row2 = file.read()
+
+        # The CSV rows can also be read using the iteration protocol
+        csv_data = [row for row in file]
+        ```
         """
         if self._file is None:
             raise ValueError("The file must be opened before reading from it!")
@@ -286,6 +409,18 @@ class CSVFile(FileManager):
 
         Returns:
             int: The number of bytes written.
+
+        Examples:
+        ```python
+        from toolbox.files import CSVFile
+
+        file = CSVFile('path/to/filename')
+
+        # When calling the write API, a CSV row is written to the file.
+        with file(create=True):
+            file.write(row1)
+            file.write(row2)
+        ```
         """
         if self._file is None:
             raise ValueError("The file must be opened before writing to it!")
@@ -368,6 +503,13 @@ def read_csv_file(
 
     Returns:
         list[dict | list]: The data read from the CSV file.
+
+    Examples:
+    ```python
+    from toolbox.files import read_csv_file
+
+    csv_data = read_csv_file('path/to/file', encoding='UTF-8', dialect='excel')
+    ```
     """
     return CSVFile(
         filename,
@@ -428,6 +570,19 @@ def write_csv_file(
 
     Returns:
         int: The number of bytes written to the file.
+
+    Examples:
+    ```python
+    from toolbox.files import write_csv_file
+
+    csv_data = [
+        {'date': '2023-09-10', 'value': 42},
+        {'date': '2023-09-11', 'value': 24},
+        {'date': '2023-09-12', 'value': 44},
+    ]
+
+    write_csv_file('path/to/file', csv_data, encoding='UTF-8', dialect='excel')
+    ```
     """
     return CSVFile(
         filename,
