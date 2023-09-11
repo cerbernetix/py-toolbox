@@ -36,7 +36,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L35"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L38"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `FileManager`
 Offers a simple API for reading and writing files. 
@@ -74,7 +74,7 @@ with file(create=True):
 content = file.read_file()
 ``` 
 
-<a href="../toolbox/files/file_manager.py#L70"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L73"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -123,11 +123,177 @@ with FileManager('path/to/filename', create=True) as file:
 ``` 
 
 
+---
+
+#### <kbd>property</kbd> age
+
+Gets the age of the file. Say the time elapsed since it was last modified. 
+
+
+
+**Returns:**
+ 
+ - <b>`float`</b>:  The number of seconds elapsed since the file was modified. It will be 0 if the file does not exist. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename')
+
+if file.age > 3600:
+    print('The file is there for more than 1 hour')
+``` 
+
+---
+
+#### <kbd>property</kbd> basename
+
+Gets the base filename, without the path. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The base name of the file. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/file.txt')
+
+# Print 'file.txt'
+print(file.basename)
+``` 
+
+---
+
+#### <kbd>property</kbd> date
+
+Gets the modification date of the file. 
+
+
+
+**Returns:**
+ 
+ - <b>`float`</b>:  The last modification date of the file. It will be 0 if the file does not exist. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename')
+
+date = file.date
+``` 
+
+---
+
+#### <kbd>property</kbd> dirname
+
+Gets the folder path of the file. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The base name of the file. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/file.txt')
+
+# Print 'path/to'
+print(file.dirname)
+``` 
+
+---
+
+#### <kbd>property</kbd> ext
+
+Gets the file extension from the filename. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The extension of the file, including the dot. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/file.txt')
+
+# Print '.txt'
+print(file.ext)
+``` 
+
+---
+
+#### <kbd>property</kbd> name
+
+Gets the file name without the extension. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The name of the file without the extension. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/file.txt')
+
+# Print 'file'
+print(file.name)
+``` 
+
+---
+
+#### <kbd>property</kbd> size
+
+Gets the size of the file. 
+
+
+
+**Returns:**
+ 
+ - <b>`int`</b>:  The size of the file. It will be 0 if the file does not exist. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename')
+
+size = file.size
+``` 
+
 
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L182"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L330"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -165,7 +331,78 @@ file.close()
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L122"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L493"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+### <kbd>method</kbd> `delete`
+
+```python
+delete(must_exist: 'bool' = False) → bool
+```
+
+Deletes the file. 
+
+
+
+**Args:**
+ 
+ - <b>`must_exist`</b> (bool, optional):  Deletes the file only if it exists. Defaults to False. 
+
+
+
+**Returns:**
+ 
+ - <b>`bool`</b>:  Returns True if the file has been deleted, False otherwise. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename')
+
+# Delete if the file exists
+file.delete(True)
+
+# Delete the file anyway, will raise an error if the file does not exist
+file.delete()
+``` 
+
+---
+
+<a href="../toolbox/files/file_manager.py#L473"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+### <kbd>method</kbd> `exists`
+
+```python
+exists() → bool
+```
+
+Tells if the file already exists. 
+
+
+
+**Returns:**
+ 
+ - <b>`bool`</b>:  Returns True if the file exists, False otherwise. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename')
+
+# Read only if the file exists
+if file.exists():
+    with file:
+         data = file.read()
+``` 
+
+---
+
+<a href="../toolbox/files/file_manager.py#L270"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `open`
 
@@ -226,7 +463,7 @@ data = [dat for dat in file]
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L265"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L413"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -267,7 +504,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L213"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L361"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -306,7 +543,7 @@ data = file.read_file()
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L442"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -352,7 +589,7 @@ with file(create=True):
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L238"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L386"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
