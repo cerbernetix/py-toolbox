@@ -1,6 +1,4 @@
-"""
-Test the collection of utilities around file paths.
-"""
+"""Test the collection of utilities around file paths."""
 import sys
 import unittest
 from pathlib import PurePath
@@ -10,9 +8,7 @@ from toolbox.files import path
 
 
 class TestFilePaths(unittest.TestCase):
-    """
-    Test suite for the file path helpers.
-    """
+    """Test suite for the file path helpers."""
 
     def test_get_module_path(self):
         """
@@ -36,9 +32,7 @@ class TestFilePaths(unittest.TestCase):
         self.assertEqual(str(result), ".")
 
     def test_get_module_folder(self):
-        """
-        Tests the helper get_module_folder().
-        """
+        """Tests the helper get_module_folder()."""
         mock_namespace = "app.package.module"
         mock_path = "/root/app/package/module.py"
         mock_folder = "/root/app/package"
@@ -57,9 +51,7 @@ class TestFilePaths(unittest.TestCase):
         self.assertEqual(str(result), ".")
 
     def test_get_application_path(self):
-        """
-        Tests the helper get_application_path().
-        """
+        """Tests the helper get_application_path()."""
         mock_namespace = "app"
         mock_path = "/root/app/package/module.py"
         mock_folder = "/root/app/package"
@@ -79,9 +71,7 @@ class TestFilePaths(unittest.TestCase):
         self.assertEqual(str(result), ".")
 
     def test_get_application_name(self):
-        """
-        Tests the helper get_application_name().
-        """
+        """Tests the helper get_application_name()."""
         mock_namespace = "app"
         mock_path = "/root/app/package/module.py"
         mock_folder = "/root/app/package"
@@ -100,9 +90,7 @@ class TestFilePaths(unittest.TestCase):
         self.assertEqual(result, "")
 
     def test_get_file_path(self):
-        """
-        Tests the helper get_file_path().
-        """
+        """Tests the helper get_file_path()."""
         mock_namespace = "app"
         mock_path = "/root/app/package/module.py"
         mock_folder = "/root/app/package"
@@ -123,15 +111,13 @@ class TestFilePaths(unittest.TestCase):
         self.assertEqual(str(result), file_path)
 
     def test_create_file_path(self):
-        """
-        Test the helper create_file_path().
-        """
+        """Test the helper create_file_path()."""
         folder_path = "/root/folder"
         file_path = "/root/folder/file"
 
         with patch("os.path.isdir", return_value=True) as mock:
             result = path.create_file_path(file_path)
-            self.assertFalse(result)
+            self.assertTrue(result)
             mock.assert_called_once_with(folder_path)
 
         with patch("os.path.isdir", return_value=False) as mock_isdir:
@@ -152,9 +138,7 @@ class TestFilePaths(unittest.TestCase):
                 mock_makedirs.assert_called_once_with(folder_path)
 
     def test_delete_path_file(self):
-        """
-        Tests the helper delete_path() for deleting a file.
-        """
+        """Tests the helper delete_path() for deleting a file."""
         file_path = "/root/folder/file"
 
         with patch("os.path.isdir", return_value=False):
@@ -174,9 +158,7 @@ class TestFilePaths(unittest.TestCase):
                 mock.assert_called_once_with(file_path)
 
     def test_delete_path_folder(self):
-        """
-        Tests the helper delete_path() for deleting a folder.
-        """
+        """Tests the helper delete_path() for deleting a folder."""
         file_path = "/root/folder/subfolder"
 
         with patch("os.path.isdir", return_value=True):

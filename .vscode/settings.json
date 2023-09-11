@@ -14,5 +14,5 @@
     "python.testing.unittestEnabled": true,
     "python.analysis.autoFormatStrings": true,
     "python.analysis.autoImportCompletions": true,
-    "autoDocstring.startOnNewLine": true
+    "autoDocstring.startOnNewLine": false
 }
