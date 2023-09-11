@@ -28,6 +28,8 @@ with file:
 from __future__ import annotations
 
 import os
+from pathlib import PurePath
+from time import time
 from typing import Iterator
 
 from toolbox.files.file import get_file_mode
@@ -119,6 +121,151 @@ class FileManager:
 
         if create or append or read or write:
             self.open(create, append, read, write)
+
+    @property
+    def dirname(self) -> str:
+        """Gets the folder path of the file.
+
+        Returns:
+            str: The base name of the file.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/file.txt')
+
+        # Print 'path/to'
+        print(file.dirname)
+        ```
+        """
+        return PurePath(self.filename).parent.as_posix()
+
+    @property
+    def basename(self) -> str:
+        """Gets the base filename, without the path.
+
+        Returns:
+            str: The base name of the file.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/file.txt')
+
+        # Print 'file.txt'
+        print(file.basename)
+        ```
+        """
+        return PurePath(self.filename).name
+
+    @property
+    def name(self) -> str:
+        """Gets the file name without the extension.
+
+        Returns:
+            str: The name of the file without the extension.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/file.txt')
+
+        # Print 'file'
+        print(file.name)
+        ```
+        """
+        name, _ = os.path.splitext(self.basename)
+        return name
+
+    @property
+    def ext(self) -> str:
+        """Gets the file extension from the filename.
+
+        Returns:
+            str: The extension of the file, including the dot.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/file.txt')
+
+        # Print '.txt'
+        print(file.ext)
+        ```
+        """
+        _, ext = os.path.splitext(self.filename)
+        return ext
+
+    @property
+    def size(self) -> int:
+        """Gets the size of the file.
+
+        Returns:
+            int: The size of the file.
+            It will be 0 if the file does not exist.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        size = file.size
+        ```
+        """
+        if not self.exists():
+            return 0
+
+        return os.path.getsize(self.filename)
+
+    @property
+    def date(self) -> int:
+        """Gets the modification date of the file.
+
+        Returns:
+            float: The last modification date of the file.
+            It will be 0 if the file does not exist.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        date = file.date
+        ```
+        """
+        if not self.exists():
+            return 0
+
+        return os.path.getmtime(self.filename)
+
+    @property
+    def age(self) -> int:
+        """Gets the age of the file. Say the time elapsed since it was last modified.
+
+        Returns:
+            float: The number of seconds elapsed since the file was modified.
+            It will be 0 if the file does not exist.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        if file.age > 3600:
+            print('The file is there for more than 1 hour')
+        ```
+        """
+        if not self.exists():
+            return 0
+
+        return time() - os.path.getmtime(self.filename)
 
     def open(
         self,

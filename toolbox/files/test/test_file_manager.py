@@ -1,5 +1,6 @@
 """Test the base class for reading and writing files."""
 import unittest
+from time import time
 from unittest.mock import Mock, patch
 
 from toolbox.files import FileManager
@@ -82,6 +83,108 @@ class TestFileManager(unittest.TestCase):
             encoding=encoding,
             newline=newline,
         )
+
+    def test_dirname(self):
+        """Tests that the folder path can be extracted."""
+        file_path = "/root/folder/file.txt"
+
+        file = FileManager(file_path)
+
+        self.assertEqual(file.dirname, "/root/folder")
+
+    def test_basename(self):
+        """Tests that the file name can be extracted."""
+        file_path = "/root/folder/file.txt"
+
+        file = FileManager(file_path)
+
+        self.assertEqual(file.basename, "file.txt")
+
+    def test_name(self):
+        """Tests that the file name without the extension can be extracted."""
+        file_path = "/root/folder/file.txt"
+
+        file = FileManager(file_path)
+
+        self.assertEqual(file.name, "file")
+
+    def test_extension(self):
+        """Tests that the file extension can be extracted."""
+        file_path = "/root/folder/file.txt"
+
+        file = FileManager(file_path)
+
+        self.assertEqual(file.ext, ".txt")
+
+    def test_size(self):
+        """Tests that the file size can be read."""
+        file_path = "/root/folder/file"
+
+        file = FileManager(file_path)
+        size = 128
+
+        # The file exists
+        with patch("os.path.exists", return_value=True) as mock_exist:
+            with patch("os.path.getsize", return_value=size) as mock_size:
+                self.assertEqual(file.size, size)
+
+                mock_exist.assert_called_once_with(file.filename)
+                mock_size.assert_called_once_with(file.filename)
+
+        # The file does not exist
+        with patch("os.path.exists", return_value=False):
+            with patch("os.path.getsize", return_value=size) as mock_size:
+                self.assertEqual(file.size, 0)
+
+                mock_exist.assert_called_once_with(file.filename)
+                mock_size.assert_not_called()
+
+    def test_date(self):
+        """Tests that the file date can be read."""
+        file_path = "/root/folder/file"
+
+        file = FileManager(file_path)
+        date = time() - 3600
+
+        # The file exists
+        with patch("os.path.exists", return_value=True) as mock_exist:
+            with patch("os.path.getmtime", return_value=date) as mock_date:
+                self.assertEqual(file.date, date)
+
+                mock_exist.assert_called_once_with(file.filename)
+                mock_date.assert_called_once_with(file.filename)
+
+        # The file does not exist
+        with patch("os.path.exists", return_value=False):
+            with patch("os.path.getmtime", return_value=date) as mock_date:
+                self.assertEqual(file.date, 0)
+
+                mock_exist.assert_called_once_with(file.filename)
+                mock_date.assert_not_called()
+
+    def test_age(self):
+        """Tests that the file age can be read."""
+        file_path = "/root/folder/file"
+
+        file = FileManager(file_path)
+        age = 3600
+        date = time() - age
+
+        # The file exists
+        with patch("os.path.exists", return_value=True) as mock_exist:
+            with patch("os.path.getmtime", return_value=date) as mock_date:
+                self.assertAlmostEqual(file.age, age, 0)
+
+                mock_exist.assert_called_once_with(file.filename)
+                mock_date.assert_called_once_with(file.filename)
+
+        # The file does not exist
+        with patch("os.path.exists", return_value=False):
+            with patch("os.path.getmtime", return_value=date) as mock_date:
+                self.assertEqual(file.age, 0)
+
+                mock_exist.assert_called_once_with(file.filename)
+                mock_date.assert_not_called()
 
     @patch("builtins.open")
     def test_open(self, mock_file_open):
