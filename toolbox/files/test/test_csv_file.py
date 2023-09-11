@@ -1,6 +1,4 @@
-"""
-Test the class for reading and writing CSV files.
-"""
+"""Test the class for reading and writing CSV files."""
 import unittest
 from unittest.mock import MagicMock, Mock, patch
 
@@ -38,14 +36,10 @@ CSV_STRING = "".join(CSV_LINES_STRING)
 
 
 class TestCSVFile(unittest.TestCase):
-    """
-    Test suite for the class for reading and writing CSV files.
-    """
+    """Test suite for the class for reading and writing CSV files."""
 
     def test_construction_default(self):
-        """
-        Tests the construction of a CSV file manager with default parameters
-        """
+        """Tests the construction of a CSV file manager with default parameters."""
         file_path = "/root/folder/file"
 
         file = CSVFile(file_path)
@@ -60,9 +54,7 @@ class TestCSVFile(unittest.TestCase):
         self.assertEqual(file._writer_args, {})
 
     def test_construction_params(self):
-        """
-        Tests the construction of a CSV file manager with specific parameters
-        """
+        """Tests the construction of a CSV file manager with specific parameters."""
         file_path = "/root/folder/file"
         encoding = "ascii"
         dialect = "foo"
@@ -100,9 +92,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_construction_open(self, mock_file_open):
-        """
-        Tests the construction of a CSV file manager with opening
-        """
+        """Tests the construction of a CSV file manager with opening."""
         file_path = "/root/folder/file"
         encoding = "ascii"
         newline = ""
@@ -135,9 +125,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open(self, mock_file_open):
-        """
-        Test a file can be opened
-        """
+        """Test a file can be opened."""
         file_path = "/root/folder/file"
         encoding = "ascii"
         newline = ""
@@ -160,9 +148,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_create(self, mock_file_open):
-        """
-        Test a file can be opened for writing
-        """
+        """Test a file can be opened for writing."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -183,9 +169,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_open_close(self, mock_file_open):
-        """
-        Tests a file is closed before opening again
-        """
+        """Tests a file is closed before opening again."""
         file_path = "/root/folder/file"
 
         file = CSVFile(file_path)
@@ -202,9 +186,7 @@ class TestCSVFile(unittest.TestCase):
         mock_file_open.assert_called_once()
 
     def test_close_explicit(self):
-        """
-        Tests an opened file can be closed explicitly
-        """
+        """Tests an opened file can be closed explicitly."""
         file_path = "/root/folder/file"
 
         file = CSVFile(file_path)
@@ -220,9 +202,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_close_auto(self, mock_file_open):
-        """
-        Tests an opened file is automatically closed
-        """
+        """Tests an opened file is automatically closed."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -237,9 +217,7 @@ class TestCSVFile(unittest.TestCase):
         mock_file.close.assert_called_once()
 
     def test_read_file(self):
-        """
-        Tests a file can be read at once
-        """
+        """Tests a file can be read at once."""
         file_path = "/root/folder/file"
 
         test_cases = [
@@ -292,9 +270,7 @@ class TestCSVFile(unittest.TestCase):
                     mock_file.close.assert_called_once()
 
     def test_write_file(self):
-        """
-        Tests a file can be written at once
-        """
+        """Tests a file can be written at once."""
         file_path = "/root/folder/file"
 
         test_cases = [
@@ -359,9 +335,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_read(self, mock_file_open):
-        """
-        Tests a file can be read line by line
-        """
+        """Tests a file can be read line by line."""
         file_path = "/root/folder/file"
 
         mock_file = MagicMock()
@@ -384,9 +358,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_write(self, mock_file_open):
-        """
-        Tests a file can be written line by line
-        """
+        """Tests a file can be written line by line."""
         file_path = "/root/folder/file"
 
         data = ""
@@ -417,9 +389,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_call(self, mock_file_open):
-        """
-        Test a file can be opened by calling the instance
-        """
+        """Test a file can be opened by calling the instance."""
         file_path = "/root/folder/file"
         encoding = "ascii"
         newline = ""
@@ -439,9 +409,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_context(self, mock_file_open):
-        """
-        Tests an opened file is automatically closed
-        """
+        """Tests an opened file is automatically closed."""
         file_path = "/root/folder/file"
 
         mock_file = Mock()
@@ -460,9 +428,7 @@ class TestCSVFile(unittest.TestCase):
 
     @patch("builtins.open")
     def test_iterator(self, mock_file_open):
-        """
-        Tests a file can be read as an iterable
-        """
+        """Tests a file can be read as an iterable."""
         file_path = "/root/folder/file"
 
         mock_file = MagicMock()
@@ -488,15 +454,11 @@ class TestCSVFile(unittest.TestCase):
 
 
 class TestCSVFileHelpers(unittest.TestCase):
-    """
-    Test suite for the CSV file helpers.
-    """
+    """Test suite for the CSV file helpers."""
 
     @patch("builtins.open")
     def test_read_csv_file(self, mock_file_open):
-        """
-        Tests a CSV file can be read at once
-        """
+        """Tests a CSV file can be read at once."""
         file_path = "/root/folder/file"
 
         mock_file = MagicMock()
@@ -511,9 +473,7 @@ class TestCSVFileHelpers(unittest.TestCase):
 
     @patch("builtins.open")
     def test_write_csv_file(self, mock_file_open):
-        """
-        Tests a CSV file can be written at once
-        """
+        """Tests a CSV file can be written at once."""
         file_path = "/root/folder/file"
 
         data = ""

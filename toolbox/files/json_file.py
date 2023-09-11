@@ -1,5 +1,39 @@
-"""
-Defines a class for reading and writing JSON files.
+"""A simple API for reading and writing JSON files.
+
+Examples:
+```python
+from toolbox.files import JSONFile, read_json_file, write_json_file
+
+filename = 'path/to/file.json'
+json_data = [
+    {'date': '2023-09-10', 'value': 42},
+    {'date': '2023-09-11', 'value': 24},
+    {'date': '2023-09-12', 'value': 44},
+]
+
+# Create a JSON file from the given data
+write_json_file(filename, json_data, encoding='UTF-8', indent=2)
+
+# Read the JSON data from an existing file
+json_data = read_json_file(filename, encoding='UTF-8', indent=2)
+
+# Use a file manager
+json = JSONFile(filename, encoding='UTF-8', indent=2)
+
+# Create a JSON file from the given data
+json.write_file(json_data)
+
+# Read the JSON data from an existing file
+json_data = json.read_file()
+
+# Write JSON content
+with json.open(create=True):
+    json.write(json_data)
+
+# Read JSON content
+with file:
+    json_data = file.read()
+```
 """
 import json
 from typing import Any
@@ -14,8 +48,39 @@ JSON_INDENT = 4
 
 
 class JSONFile(FileManager):
-    """
-    Defines a class for reading and writing JSON files.
+    """Offers a simple API for reading and writing JSON files.
+
+    The class binds a filename with a set of properties so that it can be opened in a consistent
+    way.
+
+    The read API reads all the content at once, and so do the write API too.
+
+    Attributes:
+        filename (str): The path to the file to manage.
+        binary (bool): The type of file, say text. It must always be False.
+        encoding (str, optional): The file encoding.
+        indent (int, optional): The line indent.
+
+    Examples:
+    ```python
+    from toolbox.files import JSONFile
+
+    file = JSONFile("path/to/the/file.json", indent=4, encoding="UTF-8")
+
+    # write content to the file
+    file.write_file(json)
+
+    # open the file, then read its content
+    with file:
+        json = file.read()
+
+    # write data to the file
+    with file(create=True):
+        file.write(json)
+
+    # load the whole file, handling internally its opening
+    json = file.read_file()
+    ```
     """
 
     def __init__(
@@ -29,21 +94,53 @@ class JSONFile(FileManager):
         indent: int = JSON_INDENT,
         **kwargs,
     ):
-        """
-        Creates a file manager for JSON files.
+        """Creates a file manager for JSON files.
 
         Args:
-            - filename (str): The path to the file to manage.
-            - create (bool, optional): Expect to create the file. If it exists, it will be replaced.
+            filename (str): The path to the file to manage.
+            create (bool, optional): Expect to create the file. If it exists, it will be replaced.
             Defaults to False.
-            - append (bool, optional): Expect to extend the file. Data will be added at the end.
+            append (bool, optional): Expect to extend the file. Data will be added at the end.
             Defaults to False.
-            - read (bool, optional): Expect to also read the file.
+            read (bool, optional): Expect to also read the file.
             Defaults to False.
-            - write (bool, optional): Expect to also write to the file.
+            write (bool, optional): Expect to also write to the file.
             Defaults to False.
-            - encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
-            - indent (int, optional): The line indent. Defaults to JSON_INDENT.
+            encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
+            indent (int, optional): The line indent. Defaults to JSON_INDENT.
+
+        Examples:
+        ```python
+        from toolbox.files import JSONFile
+
+        # Create a file manager
+        file = JSONFile('path/to/filename')
+
+        # File can be opened directly as the manager is created
+        with JSONFile('path/to/filename') as file:
+            data = file.read()
+
+        with JSONFile('path/to/filename', create=True) as file:
+            file.write(data)
+
+        # A file manager can open explicitly a file
+        with file.open():
+            data = file.read()
+
+        with file.open(create=True):
+            file.write(data)
+
+        # It can also be opened implicitly
+        with file:
+            data = file.read()
+
+        # To create the file while opening implicitly
+        with file(create=True):
+            file.write(data)
+
+        # The file is also (re)opened when using the iteration protocol
+        data = [dat for dat in file]
+        ```
         """
         super().__init__(
             filename,
@@ -58,8 +155,7 @@ class JSONFile(FileManager):
         self.indent = indent
 
     def read(self) -> Any:
-        """
-        Reads the content from the file.
+        """Reads the content from the file.
 
         Note: the file must be opened upfront.
 
@@ -69,6 +165,17 @@ class JSONFile(FileManager):
 
         Returns:
             Any: The data read from the file.
+
+        Examples:
+        ```python
+        from toolbox.files import JSONFile
+
+        file = JSONFile('path/to/filename')
+
+        # When calling the read API, the whole JSON content is read from the file.
+        with file:
+            json = file.read()
+        ```
         """
         data = super().read()
 
@@ -78,13 +185,12 @@ class JSONFile(FileManager):
         return json.JSONDecoder().decode(data)
 
     def write(self, data: Any) -> int:
-        """
-        Writes content to the file.
+        """Writes content to the file.
 
         Note: the file must be opened upfront.
 
         Args:
-            - data (Any): The content to write to the file.
+            data (Any): The content to write to the file.
 
         Raises:
             ValueError: If the file is not opened.
@@ -92,6 +198,17 @@ class JSONFile(FileManager):
 
         Returns:
             int: The number of bytes written.
+
+        Examples:
+        ```python
+        from toolbox.files import JSONFile
+
+        file = JSONFile('path/to/filename')
+
+        # When calling the write API, the whole JSON is written to the file.
+        with file(create=True):
+            file.write(json)
+        ```
         """
         return super().write(
             json.JSONEncoder(
@@ -106,12 +223,11 @@ def read_json_file(
     encoding: str = JSON_ENCODING,
     **kwargs,
 ) -> Any:
-    """
-    Reads a JSON content from a file.
+    """Reads a JSON content from a file.
 
     Args:
-        - filename (str): The path to the file to read.
-        - encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
+        filename (str): The path to the file to read.
+        encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
 
     Raises:
         OSError: If the file cannot be read.
@@ -119,6 +235,13 @@ def read_json_file(
 
     Returns:
         Any: The data read from the JSON file.
+
+    Examples:
+    ```python
+    from toolbox.files import read_json_file
+
+    json_data = read_json_file('path/to/file', encoding='UTF-8')
+    ```
     """
     return JSONFile(filename, encoding=encoding, **kwargs).read_file()
 
@@ -130,20 +253,32 @@ def write_json_file(
     indent: int = JSON_INDENT,
     **kwargs,
 ) -> int:
-    """
-    Writes a JSON content to a file.
+    """Writes a JSON content to a file.
 
     Args:
-        - filename (str): The path to the file to write.
-        - data (Any): The content to write to the file.
-        - encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
-        - indent (int, optional): The line indent. Defaults to JSON_INDENT.
+        filename (str): The path to the file to write.
+        data (Any): The content to write to the file.
+        encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
+        indent (int, optional): The line indent. Defaults to JSON_INDENT.
 
     Raises:
         OSError: If the file cannot be written.
 
     Returns:
         int: The number of bytes written to the file.
+
+    Examples:
+    ```python
+    from toolbox.files import write_json_file
+
+    json_data = [
+        {'date': '2023-09-10', 'value': 42},
+        {'date': '2023-09-11', 'value': 24},
+        {'date': '2023-09-12', 'value': 44},
+    ]
+
+    write_json_file('path/to/file', json_data, encoding='UTF-8', indent=2)
+    ```
     """
     return JSONFile(
         filename,

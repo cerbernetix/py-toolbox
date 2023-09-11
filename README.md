@@ -35,116 +35,11 @@ pip install git+https://github.com/jsconan/py-toolbox.git
 
 `py-toolbox` offers several utilities per domain.
 
-### Files
+Please refer to the [documentation](./docs/README.md) for more information.
 
-The package `toolbox.files` offers file related utilities.
+The documentation is generated using [lazydocs](https://github.com/ml-tooling/lazydocs).
 
--   `create_file_path(path: str) -> bool`:
-
-    Creates the parent path for a file.
-
-    **Note:** exceptions are caught internally, the function will always
-    return either with `True` in case of success, or `False` otherwise.
-
-    Args:
-
-    -   path (`str`): The path to the file.
-
-    Returns:
-
-    -   `bool`: `True` if the path has been created, `False` otherwise.
-
-    ***
-
--   `delete_path(path: str) -> bool`:
-
-    Deletes the file or the folder at the given path.
-
-    If this is a folder, it must be empty.
-
-    **Note:** exceptions are caught internally, the function will always
-    return either with `True` in case of success, or `False` otherwise.
-
-    Args:
-
-    -   path (`str`): The path to the file or folder to delete.
-
-    Returns:
-
-    -   `bool`: `True` if the path has been deleted, `False` otherwise.
-
-    ***
-
--   `get_application_name(name: str) -> str`:
-
-    Gets the name of the application, based on the root folder.
-
-    Args:
-
-    -   name (`str`): The main package of the application.
-
-    Returns:
-
-    -   `str`: The name of the application.
-
-    ***
-
--   `get_application_path(name: str) -> PurePath`:
-
-    Gets the path to the application's root.
-
-    Args:
-
-    -   name (`str`): The main package of the application.
-
-    Returns:
-
-    -   `PurePath`: The path to the application's root.
-
-    ***
-
--   `get_file_path(relative: str, name: str) -> PurePath`:
-
-    Gets a full path for a file inside the application.
-
-    Args:
-
-    -   relative (`str`): The internal path the file from the application's root.
-    -   name (`str`): The main package of the application.
-
-    Returns:
-
-    -   `PurePath`: The full path.
-
-    ***
-
--   `get_module_folder_path(name: str) -> PurePath()`:
-
-    Gets the path to the folder containing the given module.
-
-    Args:
-
-    -   name (`str`): The module for which get the path.
-
-    Returns:
-
-    -   `PurePath`|`None`: The path to the folder containing the given module.
-
-    ***
-
--   `get_module_path(name: str) -> PurePath()`:
-
-    Gets the path to the given module.
-
-    Args:
-
-    -   name (`str`): The module for which get the path.
-
-    Returns:
-
-    -   `PurePath`: The path to the module.
-
-    ***
+The script `./pydoc.sh` can be used to regenerate it.
 
 ## <a name='Development'></a>Development
 
@@ -195,7 +90,7 @@ cd() {
 
 ### <a name='Codestyle'></a>Code style
 
-Code is linted using PyLint and formatted using Black.
+Code is linted using [PyLint](https://pylint.org/) and formatted using [Black](https://github.com/psf/black). The docstrings are validated using [pydocstyle](https://github.com/PyCQA/pydocstyle).
 
 ### <a name='Testing'></a>Testing
 
