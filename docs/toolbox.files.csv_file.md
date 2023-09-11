@@ -57,7 +57,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L457"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L460"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_csv_file`
 
@@ -115,7 +115,7 @@ csv_data = read_csv_file('path/to/file', encoding='UTF-8', dialect='excel')
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L519"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L522"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_csv_file`
 
@@ -312,6 +312,172 @@ csv_data = [row for row in file]
 ``` 
 
 
+---
+
+#### <kbd>property</kbd> age
+
+Gets the age of the file. Say the time elapsed since it was last modified. 
+
+
+
+**Returns:**
+ 
+ - <b>`float`</b>:  The number of seconds elapsed since the file was modified. It will be 0 if the file does not exist. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename')
+
+if file.age > 3600:
+    print('The file is there for more than 1 hour')
+``` 
+
+---
+
+#### <kbd>property</kbd> basename
+
+Gets the base filename, without the path. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The base name of the file. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/file.txt')
+
+# Print 'file.txt'
+print(file.basename)
+``` 
+
+---
+
+#### <kbd>property</kbd> date
+
+Gets the modification date of the file. 
+
+
+
+**Returns:**
+ 
+ - <b>`float`</b>:  The last modification date of the file. It will be 0 if the file does not exist. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename')
+
+date = file.date
+``` 
+
+---
+
+#### <kbd>property</kbd> dirname
+
+Gets the folder path of the file. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The base name of the file. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/file.txt')
+
+# Print 'path/to'
+print(file.dirname)
+``` 
+
+---
+
+#### <kbd>property</kbd> ext
+
+Gets the file extension from the filename. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The extension of the file, including the dot. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/file.txt')
+
+# Print '.txt'
+print(file.ext)
+``` 
+
+---
+
+#### <kbd>property</kbd> name
+
+Gets the file name without the extension. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The name of the file without the extension. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/file.txt')
+
+# Print 'file'
+print(file.name)
+``` 
+
+---
+
+#### <kbd>property</kbd> size
+
+Gets the size of the file. 
+
+
+
+**Returns:**
+ 
+ - <b>`int`</b>:  The size of the file. It will be 0 if the file does not exist. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename')
+
+size = file.size
+``` 
+
 
 
 ---
@@ -391,6 +557,9 @@ file = CSVFile('path/to/filename')
 with file:
     row1 = file.read()
     row2 = file.read()
+
+# The CSV rows can also be read using the iteration protocol
+csv_data = [row for row in file]
 ``` 
 
 ---
@@ -434,7 +603,7 @@ data = file.read_file()
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L395"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L398"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 

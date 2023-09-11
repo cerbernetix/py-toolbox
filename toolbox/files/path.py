@@ -175,12 +175,11 @@ def create_file_path(path: str) -> bool:
     try:
         if not os.path.isdir(folder):
             os.makedirs(folder)
-            return True
+
+        return True
 
     except OSError:
         return False
-
-    return False
 
 
 def delete_path(path: str) -> bool:
@@ -220,10 +219,10 @@ def delete_path(path: str) -> bool:
         else:
             os.remove(path)
 
+        return True
+
     except FileNotFoundError:
         return False
 
     except OSError:
         return False
-
-    return True
