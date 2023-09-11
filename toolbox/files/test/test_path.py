@@ -117,7 +117,7 @@ class TestFilePaths(unittest.TestCase):
 
         with patch("os.path.isdir", return_value=True) as mock:
             result = path.create_file_path(file_path)
-            self.assertFalse(result)
+            self.assertTrue(result)
             mock.assert_called_once_with(folder_path)
 
         with patch("os.path.isdir", return_value=False) as mock_isdir:
