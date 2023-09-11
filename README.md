@@ -6,6 +6,7 @@
 
 -   [Requirements](#Requirements)
 -   [Installation](#Installation)
+-   [Usage](#Usage)
 -   [Development](#Development)
     -   [Code style](#Codestyle)
     -   [Testing](#Testing)
@@ -31,7 +32,7 @@ To add `py-toolbox` to your project, run the following command:
 pip install git+https://github.com/jsconan/py-toolbox.git
 ```
 
-## Usage
+## <a name='Usage'></a>Usage
 
 `py-toolbox` offers several utilities per domain.
 
