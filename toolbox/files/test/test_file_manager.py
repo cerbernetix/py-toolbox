@@ -377,6 +377,43 @@ class TestFileManager(unittest.TestCase):
         mock_file.write.assert_called_with(content)
         mock_file.close.assert_called_once()
 
+    def test_exists(self):
+        """Tests that the file exists."""
+        file_path = "/root/folder/file"
+
+        file = FileManager(file_path)
+
+        # The file exists
+        with patch("os.path.exists", return_value=True):
+            self.assertTrue(file.exists())
+
+        # The file does not exist
+        with patch("os.path.exists", return_value=False):
+            self.assertFalse(file.exists())
+
+    def test_delete(self):
+        """Tests that the file is deleted."""
+        file_path = "/root/folder/file"
+
+        file = FileManager(file_path)
+
+        # Delete the file anyway
+        with patch("os.remove") as mock:
+            self.assertTrue(file.delete())
+            mock.assert_called_once_with(file.filename)
+
+        # Delete only if exist
+        with patch("os.remove") as mock:
+            # The file does not exist
+            with patch("os.path.exists", return_value=False):
+                self.assertFalse(file.delete(True))
+                mock.assert_not_called()
+
+            # The file exists
+            with patch("os.path.exists", return_value=True):
+                self.assertTrue(file.delete(True))
+                mock.assert_called_once()
+
     @patch("builtins.open")
     def test_call(self, mock_file_open):
         """Test a file can be opened by calling the instance."""

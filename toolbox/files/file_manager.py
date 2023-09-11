@@ -27,6 +27,7 @@ with file:
 """
 from __future__ import annotations
 
+import os
 from typing import Iterator
 
 from toolbox.files.file import get_file_mode
@@ -321,6 +322,55 @@ class FileManager:
             raise ValueError("The file must be opened before writing to it!")
 
         return self._file.write(data)
+
+    def exists(self) -> bool:
+        """Tells if the file already exists.
+
+        Returns:
+            bool: Returns True if the file exists, False otherwise.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        # Read only if the file exists
+        if file.exists():
+            with file:
+                data = file.read()
+        ```
+        """
+        return os.path.exists(self.filename)
+
+    def delete(self, must_exist: bool = False) -> bool:
+        """Deletes the file.
+
+        Args:
+            must_exist (bool, optional): Deletes the file only if it exists. Defaults to False.
+
+        Returns:
+            bool: Returns True if the file has been deleted, False otherwise.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename')
+
+        # Delete if the file exists
+        file.delete(True)
+
+        # Delete the file anyway, will raise an error if the file does not exist
+        file.delete()
+        ```
+        """
+        if must_exist and not self.exists():
+            return False
+
+        os.remove(self.filename)
+
+        return True
 
     def __call__(
         self,
