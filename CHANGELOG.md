@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   `TestCase` - Extends the default Python TestCase with more assertions.
+-   `test_cases(cases)` - Decorates a test case with parameters.
+
 ## [0.3.0] - 2023-09-12
 
 ### Added
@@ -48,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 -   Wrong use of the module path
+    It was generating the error `TypeError: expected str, bytes or os.PathLike object, not list`
 
 ## [0.1.1] - 2023-09-05
 
@@ -57,7 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
--   Wrong detection of the application path (`__main__` has no attribute)"
+-   Wrong detection of the application path, in `get_application_path()` (`__main__` has no attribute)
+    The trick used was not working, the `__main__` module has no attribute.
 
 ## [0.1.0] - 2023-09-05
 
