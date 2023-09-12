@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   `LogFile` - Offers a similar API to the Python builtin loggers for logging to a custom file.
+-   `setup_file_logging()` - Setup file logging for the application.
+-   `handle_uncaught_exceptions()` - Installs a collector for logging uncaught exceptions.
+
+### Changed
+
+-   The documentation generator clears the `./docs` folder before generating the documentation.
+
 ## [0.2.0] - 2023-09-11
 
 ### Added
