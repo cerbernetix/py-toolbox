@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2023-09-12
+
 ### Added
 
 -   `LogFile` - Offers a similar API to the Python builtin loggers for logging to a custom file.
