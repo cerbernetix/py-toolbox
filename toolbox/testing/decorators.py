@@ -60,19 +60,19 @@ def test_cases(cases: list[dict | list]) -> Callable:
         @functools.wraps(method)
         def wrapper(self, *args, **kwargs) -> None:
             for index, case in enumerate(cases):
+                title = f"case {index}"
                 case_args = args
                 case_kwargs = kwargs
 
                 if isinstance(case, dict):
-                    title = case.get("title", case.get("message", case.get("_")))
+                    title = case.get("title", case.get("message", case.get("_", title)))
                     case_kwargs = {**kwargs, **case}
 
                 elif isinstance(case, (list, tuple)):
-                    title = case[0]
+                    title = case[0] or title
                     case_args = list(case) + list(args)
 
                 else:
-                    title = f"case {index}"
                     case_args = [case] + list(args)
 
                 with self.subTest(title):

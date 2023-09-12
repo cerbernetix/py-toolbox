@@ -40,7 +40,9 @@ class TestParameters(unittest.TestCase):
             ["title", [], {"title": "foo"}, "foo"],
             ["message", [], {"message": "foo"}, "foo"],
             ["_", [], {"_": "foo"}, "foo"],
+            ["default", [], {"bar": "foo"}, "case 0"],
             ["first", ["foo"], {}, "foo"],
+            ["none", [None], {}, "case 0"],
         ]
     )
     def test_test_case_title(self, _, args, kwargs, title):
