@@ -9,6 +9,7 @@ from toolbox.files import (
     read_csv_file,
     write_csv_file,
 )
+from toolbox.testing import test_cases
 
 CSV_LINES_DICT = [
     {"first_name": "John", "last_name": "Smith", "age": "18", "city": "London"},
@@ -216,122 +217,76 @@ class TestCSVFile(unittest.TestCase):
 
         mock_file.close.assert_called_once()
 
-    def test_read_file(self):
+    @test_cases(
+        [
+            ["dictionaries", {}, CSV_LINES_STRING, CSV_LINES_DICT],
+            [
+                "fieldnames",
+                {"fieldnames": ["first_name", "last_name", "age", "city"]},
+                CSV_LINES_STRING,
+                CSV_LINES_HEADLESS,
+            ],
+            ["list", {"fieldnames": False}, CSV_LINES_STRING, CSV_LINES_LIST],
+            ["auto", {"dialect": "auto"}, CSV_LINES_STRING, CSV_LINES_DICT],
+        ]
+    )
+    def test_read_file(self, _, params, data, expected):
         """Tests a file can be read at once."""
         file_path = "/root/folder/file"
 
-        test_cases = [
-            {
-                "message": "dictionaries",
-                "params": {},
-                "data": CSV_LINES_STRING,
-                "expected": CSV_LINES_DICT,
-            },
-            {
-                "message": "fieldnames",
-                "params": {
-                    "fieldnames": ["first_name", "last_name", "age", "city"],
-                },
-                "data": CSV_LINES_STRING,
-                "expected": CSV_LINES_HEADLESS,
-            },
-            {
-                "message": "list",
-                "params": {
-                    "fieldnames": False,
-                },
-                "data": CSV_LINES_STRING,
-                "expected": CSV_LINES_LIST,
-            },
-            {
-                "message": "auto",
-                "params": {
-                    "dialect": "auto",
-                },
-                "data": CSV_LINES_STRING,
-                "expected": CSV_LINES_DICT,
-            },
+        with patch("builtins.open") as mock_file_open:
+            mock_file = MagicMock()
+            mock_file.close = Mock()
+            mock_file.read = Mock(return_value="".join(data))
+            mock_file.__iter__.return_value = data
+            mock_file_open.return_value = mock_file
+
+            file = CSVFile(file_path, **params)
+
+            self.assertEqual(file.read_file(), expected)
+
+            mock_file_open.assert_called_once()
+            mock_file.close.assert_called_once()
+
+    @test_cases(
+        [
+            ["dictionaries", {}, CSV_LINES_DICT, CSV_STRING],
+            [
+                "fieldnames",
+                {"fieldnames": ["first_name", "last_name"], "extrasaction": "ignore"},
+                CSV_LINES_DICT,
+                "".join(CSV_LINES_REDUCED),
+            ],
+            ["list", {}, CSV_LINES_LIST[1:], "".join(CSV_LINES_STRING[1:])],
+            ["auto", {"dialect": "auto"}, CSV_LINES_DICT, CSV_STRING],
         ]
-
-        for test_case in test_cases:
-            with self.subTest(test_case.get("message")):
-                with patch("builtins.open") as mock_file_open:
-                    mock_file = MagicMock()
-                    mock_file.close = Mock()
-                    mock_file.read = Mock(return_value="".join(test_case.get("data")))
-                    mock_file.__iter__.return_value = test_case.get("data")
-                    mock_file_open.return_value = mock_file
-
-                    file = CSVFile(file_path, **test_case.get("params"))
-
-                    self.assertEqual(file.read_file(), test_case.get("expected"))
-
-                    mock_file_open.assert_called_once()
-                    mock_file.close.assert_called_once()
-
-    def test_write_file(self):
+    )
+    def test_write_file(self, _, params, data, expected):
         """Tests a file can be written at once."""
         file_path = "/root/folder/file"
 
-        test_cases = [
-            {
-                "message": "dictionaries",
-                "params": {},
-                "data": CSV_LINES_DICT,
-                "expected": CSV_STRING,
-            },
-            {
-                "message": "fieldnames",
-                "params": {
-                    "fieldnames": ["first_name", "last_name"],
-                    "extrasaction": "ignore",
-                },
-                "data": CSV_LINES_DICT,
-                "expected": "".join(CSV_LINES_REDUCED),
-            },
-            {
-                "message": "list",
-                "params": {},
-                "data": CSV_LINES_LIST[1:],
-                "expected": "".join(CSV_LINES_STRING[1:]),
-            },
-            {
-                "message": "auto",
-                "params": {
-                    "dialect": "auto",
-                },
-                "data": CSV_LINES_DICT,
-                "expected": CSV_STRING,
-            },
-        ]
+        with patch("builtins.open") as mock_file_open:
+            written = ""
 
-        for test_case in test_cases:
-            with self.subTest(test_case.get("message")):
-                with patch("builtins.open") as mock_file_open:
-                    data = ""
+            def write(line):
+                nonlocal written
+                written += line
+                return len(line)
 
-                    def write(line):
-                        nonlocal data
-                        data += line
-                        return len(line)
+            mock_file = Mock()
+            mock_file.write = Mock(side_effect=write)
+            mock_file.close = Mock()
+            mock_file_open.return_value = mock_file
 
-                    mock_file = Mock()
-                    mock_file.write = Mock(side_effect=write)
-                    mock_file.close = Mock()
-                    mock_file_open.return_value = mock_file
+            file = CSVFile(file_path, **params)
 
-                    file = CSVFile(file_path, **test_case.get("params"))
+            self.assertEqual(file.write_file(data), len(expected))
 
-                    self.assertEqual(
-                        file.write_file(test_case.get("data")),
-                        len(test_case.get("expected")),
-                    )
+            self.assertEqual(written, expected)
 
-                    self.assertEqual(data, test_case.get("expected"))
-
-                    mock_file_open.assert_called_once()
-                    mock_file.write.assert_called()
-                    mock_file.close.assert_called_once()
+            mock_file_open.assert_called_once()
+            mock_file.write.assert_called()
+            mock_file.close.assert_called_once()
 
     @patch("builtins.open")
     def test_read(self, mock_file_open):
