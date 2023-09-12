@@ -12,6 +12,9 @@
 - [`toolbox.files.json_file`](./toolbox.files.json_file.md#module-toolboxfilesjson_file): A simple API for reading and writing JSON files.
 - [`toolbox.files.path`](./toolbox.files.path.md#module-toolboxfilespath): A collection of utilities around file paths.
 - [`toolbox.files.pickle_file`](./toolbox.files.pickle_file.md#module-toolboxfilespickle_file): A simple API for reading and writing pickle files.
+- [`toolbox.logging`](./toolbox.logging.md#module-toolboxlogging): The `logging` package provides several utilities for logging purpose.
+- [`toolbox.logging.config`](./toolbox.logging.config.md#module-toolboxloggingconfig): A collection of utilities for logging purpose.
+- [`toolbox.logging.log_file`](./toolbox.logging.log_file.md#module-toolboxlogginglog_file): A custom logger that writes directly to a file.
 
 ## Classes
 
@@ -19,6 +22,7 @@
 - [`file_manager.FileManager`](./toolbox.files.file_manager.md#class-filemanager): Offers a simple API for reading and writing files.
 - [`json_file.JSONFile`](./toolbox.files.json_file.md#class-jsonfile): Offers a simple API for reading and writing JSON files.
 - [`pickle_file.PickleFile`](./toolbox.files.pickle_file.md#class-picklefile): Offers a simple API for reading and writing pickle files.
+- [`log_file.LogFile`](./toolbox.logging.log_file.md#class-logfile): Offers a similar API to the Python builtin loggers for logging to a custom file.
 
 ## Functions
 
@@ -38,6 +42,8 @@
 - [`path.get_module_path`](./toolbox.files.path.md#function-get_module_path): Gets the path to the given module.
 - [`pickle_file.read_pickle_file`](./toolbox.files.pickle_file.md#function-read_pickle_file): Loads a list of objects from a file.
 - [`pickle_file.write_pickle_file`](./toolbox.files.pickle_file.md#function-write_pickle_file): Writes a list of objects to a file.
+- [`config.handle_uncaught_exceptions`](./toolbox.logging.config.md#function-handle_uncaught_exceptions): Installs a collector for logging uncaught exceptions.
+- [`config.setup_file_logging`](./toolbox.logging.config.md#function-setup_file_logging): Setup the application log to a file logger.
 
 
 ---
