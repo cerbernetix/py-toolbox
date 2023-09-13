@@ -114,7 +114,7 @@ class TestAsserts(TestCase):
         except AssertionError:
             pass
         else:
-            raise AssertionError("lists are not almost equal")
+            raise AssertionError("lists are not almost equal")  # pragma: no cover
 
     @test_cases(
         [
@@ -201,4 +201,4 @@ class TestAsserts(TestCase):
         except AssertionError:
             pass
         else:
-            raise AssertionError("lists are not almost equal")
+            raise AssertionError("lists are not almost equal")  # pragma: no cover

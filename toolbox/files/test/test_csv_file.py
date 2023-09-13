@@ -252,12 +252,24 @@ class TestCSVFile(unittest.TestCase):
         [
             ["dictionaries", {}, CSV_LINES_DICT, CSV_STRING],
             [
+                "dictionaries with fieldnames=False",
+                {"fieldnames": False},
+                CSV_LINES_DICT,
+                CSV_STRING,
+            ],
+            [
                 "fieldnames",
                 {"fieldnames": ["first_name", "last_name"], "extrasaction": "ignore"},
                 CSV_LINES_DICT,
                 "".join(CSV_LINES_REDUCED),
             ],
             ["list", {}, CSV_LINES_LIST[1:], "".join(CSV_LINES_STRING[1:])],
+            [
+                "list with fieldnames=False",
+                {"fieldnames": False},
+                CSV_LINES_LIST[1:],
+                "".join(CSV_LINES_STRING[1:]),
+            ],
             ["auto", {"dialect": "auto"}, CSV_LINES_DICT, CSV_STRING],
         ]
     )
