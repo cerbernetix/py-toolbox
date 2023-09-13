@@ -154,6 +154,7 @@ class TestConfig(unittest.TestCase):
 
         self.assertEqual(config.describe("a"), "foo")
         self.assertEqual(config.describe("b"), "")
+        self.assertEqual(config.describe("c"), "")
 
     def test_choices(self):
         """Test the choices of an option can be retrieved."""
@@ -343,6 +344,11 @@ class TestConfig(unittest.TestCase):
         del config["a"]
         self.assertNotIn("a", config)
         self.assertRaises(IndexError, lambda: config["a"])
+
+        def delete(key):
+            del config[key]
+
+        self.assertRaises(IndexError, lambda: delete("a"))
 
     def test_direct_access(self):
         """Test the access to a configuration option."""

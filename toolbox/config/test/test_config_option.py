@@ -98,6 +98,8 @@ class TestConfigOption(unittest.TestCase):
 
     def test_create_option_fail(self):
         """Test the creation of an option raises an error."""
+        self.assertRaises(ValueError, lambda: ConfigOption(""))
+        self.assertRaises(ValueError, lambda: ConfigOption("foo", mapper=True))
         self.assertRaises(ValueError, lambda: ConfigOption("foo", choices=["bar"]))
         self.assertRaises(
             ValueError, lambda: ConfigOption("foo", value="baz", choices=["bar"])
@@ -418,6 +420,7 @@ class TestConfigOption(unittest.TestCase):
         self.assertEqual(foo10, foo10.copy())
         self.assertNotEqual(foo10, foo20)
         self.assertNotEqual(foo10, bar10)
+        self.assertNotEqual(foo10, "foo10")
 
 
 class TestCreateOptions(unittest.TestCase):
