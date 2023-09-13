@@ -5,6 +5,11 @@
 ## Modules
 
 - [`toolbox`](./toolbox.md#module-toolbox): `py-toolbox` is a collection of utilities offering solutions to a set of common problems.
+- [`toolbox.config`](./toolbox.config.md#module-toolboxconfig): The `config` package provides classes for handling a configuration.
+- [`toolbox.config.config`](./toolbox.config.config.md#module-toolboxconfigconfig): A class for handling a configuration.
+- [`toolbox.config.config_option`](./toolbox.config.config_option.md#module-toolboxconfigconfig_option): A class for handling config options.
+- [`toolbox.data`](./toolbox.data.md#module-toolboxdata): A collection of data utilities.
+- [`toolbox.data.mappers`](./toolbox.data.mappers.md#module-toolboxdatamappers): A collection of data mappers.
 - [`toolbox.files`](./toolbox.files.md#module-toolboxfiles): The `files` package provides several utilities for handling files.
 - [`toolbox.files.csv_file`](./toolbox.files.csv_file.md#module-toolboxfilescsv_file): A simple API for reading and writing CSV files.
 - [`toolbox.files.file`](./toolbox.files.file.md#module-toolboxfilesfile): A collection of utilities for accessing files.
@@ -21,6 +26,9 @@
 
 ## Classes
 
+- [`config.Config`](./toolbox.config.config.md#class-config): Handles a configuration.
+- [`config_option.ConfigOption`](./toolbox.config.config_option.md#class-configoption): Handles a config option.
+- [`mappers.ValueMapper`](./toolbox.data.mappers.md#class-valuemapper): The interface for a value mapper.
 - [`csv_file.CSVFile`](./toolbox.files.csv_file.md#class-csvfile): Offers a simple API for reading and writing CSV files.
 - [`file_manager.FileManager`](./toolbox.files.file_manager.md#class-filemanager): Offers a simple API for reading and writing files.
 - [`json_file.JSONFile`](./toolbox.files.json_file.md#class-jsonfile): Offers a simple API for reading and writing JSON files.
@@ -30,6 +38,9 @@
 
 ## Functions
 
+- [`config_option.create_options`](./toolbox.config.config_option.md#function-create_options): Create options from a list of descriptors.
+- [`mappers.boolean`](./toolbox.data.mappers.md#function-boolean): Converts a value to a boolean value.
+- [`mappers.passthrough`](./toolbox.data.mappers.md#function-passthrough): A passthrough mapper. It returns the value as it is.
 - [`csv_file.read_csv_file`](./toolbox.files.csv_file.md#function-read_csv_file): Reads a CSV content from a file.
 - [`csv_file.write_csv_file`](./toolbox.files.csv_file.md#function-write_csv_file): Writes a CSV content to a file.
 - [`file.get_file_mode`](./toolbox.files.file.md#function-get_file_mode): Gets the file access mode given the expectations.
