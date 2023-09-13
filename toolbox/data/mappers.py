@@ -33,7 +33,7 @@ class ValueMapper(Protocol):
     """
 
     def __call__(self, value: Any) -> Any:
-        return value
+        return value  # pragma: no cover
 
 
 def passthrough(value: Any) -> Any:

@@ -33,7 +33,7 @@ def setup_file_logging(
     encoding: str = LOG_ENCODING,
     log_format: str = LOG_FORMAT,
     **kwargs,
-) -> None:
+) -> None:  # pragma: no cover
     """Setup the application log to a file logger.
 
     By default, a file will be created in the current working directory, named 'app.log'.
@@ -60,7 +60,7 @@ def setup_file_logging(
     )
 
 
-def handle_uncaught_exceptions() -> None:
+def handle_uncaught_exceptions() -> None:  # pragma: no cover
     """Installs a collector for logging uncaught exceptions.
 
     When an exception is not handled in the code, it will be logged with the message:
