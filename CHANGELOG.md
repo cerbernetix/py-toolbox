@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   `Config` - A class for handling a configuration.
+-   `ConfigOption` - A class for handling config options.
+-   `create_options(options)` - Creates config options from a list of descriptors.
+-   `passthrough(value)` - A passthrough mapper. It returns the value as it is.
+-   `boolean(value)` - Converts a value to a boolean value.
+
 ## [0.4.0] - 2023-09-12
 
 ### Added
