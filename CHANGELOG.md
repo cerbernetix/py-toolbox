@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+-   Increase coverage
+
+### Fixed
+
+-   Wrong use of `fieldnames=False` in `CSVFile.write()`.
+
 ## [0.5.0] - 2023-09-13
 
 ### Added
