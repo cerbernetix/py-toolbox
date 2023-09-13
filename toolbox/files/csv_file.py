@@ -433,15 +433,14 @@ class CSVFile(FileManager):
             if isinstance(data, dict):
                 header = True
 
-                if kwargs.get("fieldnames") is False:
-                    kwargs.pop("fieldnames")
-                    header = False
-
-                elif "fieldnames" not in kwargs:
+                if "fieldnames" not in kwargs or kwargs.get("fieldnames") is False:
                     kwargs["fieldnames"] = data.keys()
 
                 writer = csv.DictWriter
             else:
+                if "fieldnames" in kwargs:
+                    kwargs.pop("fieldnames")
+
                 header = False
                 writer = csv.writer
 
