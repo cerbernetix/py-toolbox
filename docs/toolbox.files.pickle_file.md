@@ -54,21 +54,24 @@ with file:
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L328"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L342"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_pickle_file`
 
 ```python
-read_pickle_file(filename: 'str', **kwargs) → list
+read_pickle_file(filename: 'str', iterator: 'bool' = False, **kwargs) → Iterable
 ```
 
 Loads a list of objects from a file. 
+
+The returned value can be either a list (default) or an iterator (when the iterator parameter is True). 
 
 
 
 **Args:**
  
  - <b>`filename`</b> (str):  The path to the file to read. 
+ - <b>`iterator`</b> (bool, optional):  When True, the function will return an iterator instead of a list. Defaults to False. 
  - <b>`fix_imports`</b> (bool, optional):  If fix_imports is true and protocol is less than 3, pickle will try to map the new Python 3 names to the old module names used in Python 2, so that the pickle data stream is readable with Python 2. Defaults to True. 
  - <b>`encoding`</b> (str, optional):  Tell pickle how to decode 8-bit string instances pickled by Python 2. The encoding can be ‘bytes’ to read these 8-bit string instances as bytes objects. Using encoding='latin1' is required for unpickling NumPy arrays and instances of datetime, date and time pickled by Python 2. Defaults to ‘ASCII’. 
  - <b>`errors`</b> (str, optional):  Tell pickle how to decode 8-bit string instances pickled by Python 2. Defaults to ‘strict’. 
@@ -85,7 +88,7 @@ Loads a list of objects from a file.
 
 **Returns:**
  
- - <b>`list`</b>:  The list of objects read from the file. 
+ - <b>`Iterable`</b>:  The list of objects read from the file. 
 
 
 
@@ -94,12 +97,16 @@ Loads a list of objects from a file.
 from toolbox.files import read_pickle_file
 
 data = read_pickle_file('path/to/file')
+
+# An iterator can be returned instead of a list
+for obj in read_pickle_file('path/to/file', iterator=True):
+    print(obj
 ``` 
 
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L369"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L392"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_pickle_file`
 
@@ -432,7 +439,7 @@ size = file.size
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L260"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L274"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -481,12 +488,20 @@ data = [obj for obj in file]
 ### <kbd>method</kbd> `read_file`
 
 ```python
-read_file() → list
+read_file(iterator: 'bool' = False) → Iterable
 ```
 
 Reads all the content from the file. 
 
+The returned value can be either a list (default) or an iterator (when the iterator parameter is True). 
+
 Note: If the file was already opened, it is first closed, then opened in read mode. 
+
+
+
+**Args:**
+ 
+ - <b>`iterator`</b> (bool, optional):  When True, the function will return an iterator instead of a list. Defaults to False. 
 
 
 
@@ -499,7 +514,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 **Returns:**
  
- - <b>`list`</b>:  The content read from the file. 
+ - <b>`Iterable`</b>:  The content read from the file. 
 
 
 
@@ -511,11 +526,15 @@ file = PickleFile('path/to/filename')
 
 # A file can be read all at once
 data = file.read_file()
+
+# An iterator can be returned instead of a list
+for obj in file.read_file(iterator=True):
+    print(obj)
 ``` 
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L295"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L309"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -562,7 +581,7 @@ with file(create=True):
 
 ---
 
-<a href="../toolbox/files/pickle_file.py#L229"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/pickle_file.py#L243"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
