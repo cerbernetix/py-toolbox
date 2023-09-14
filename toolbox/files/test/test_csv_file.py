@@ -1,6 +1,7 @@
 """Test the class for reading and writing CSV files."""
 import unittest
 import zipfile
+from typing import Iterator
 from unittest.mock import MagicMock, Mock, patch
 
 from toolbox.files import (
@@ -245,10 +246,32 @@ class TestCSVFile(unittest.TestCase):
 
             file = CSVFile(file_path, **params)
 
-            self.assertEqual(file.read_file(), expected)
+            result = file.read_file()
+            self.assertIsInstance(result, list)
+            self.assertEqual(result, expected)
 
             mock_file_open.assert_called_once()
             mock_file.close.assert_called_once()
+
+    @patch("builtins.open")
+    def test_read_file_iterator(self, mock_file_open):
+        """Tests a file can be read at once using an iterator."""
+        file_path = "/root/folder/file"
+
+        mock_file = MagicMock()
+        mock_file.close = Mock()
+        mock_file.read = Mock(return_value="".join(CSV_LINES_STRING))
+        mock_file.__iter__.return_value = CSV_LINES_STRING
+        mock_file_open.return_value = mock_file
+
+        file = CSVFile(file_path)
+
+        result = file.read_file(iterator=True)
+        self.assertIsInstance(result, Iterator)
+        self.assertEqual(list(result), CSV_LINES_DICT)
+
+        mock_file_open.assert_called_once()
+        mock_file.close.assert_called_once()
 
     @test_cases(
         [
@@ -435,7 +458,26 @@ class TestCSVFileHelpers(unittest.TestCase):
         mock_file.__iter__.return_value = CSV_LINES_STRING
         mock_file_open.return_value = mock_file
 
-        self.assertEqual(read_csv_file(file_path), CSV_LINES_DICT)
+        result = read_csv_file(file_path)
+        self.assertIsInstance(result, list)
+        self.assertEqual(result, CSV_LINES_DICT)
+
+        mock_file_open.assert_called_once()
+        mock_file.close.assert_called_once()
+
+    @patch("builtins.open")
+    def test_read_csv_file_iterator(self, mock_file_open):
+        """Tests a file can be read at once using an iterator."""
+        file_path = "/root/folder/file"
+
+        mock_file = MagicMock()
+        mock_file.close = Mock()
+        mock_file.__iter__.return_value = CSV_LINES_STRING
+        mock_file_open.return_value = mock_file
+
+        result = read_csv_file(file_path, iterator=True)
+        self.assertIsInstance(result, Iterator)
+        self.assertEqual(list(result), CSV_LINES_DICT)
 
         mock_file_open.assert_called_once()
         mock_file.close.assert_called_once()
@@ -532,7 +574,39 @@ class TestCSVFileHelpers(unittest.TestCase):
 
         zip_mock.open.assert_called_once_with(filename, "r")
 
+        self.assertIsInstance(result, list)
         self.assertEqual(result, expected)
+
+    @patch("zipfile.ZipFile")
+    def test_read_zip_csv_iterator(self, zip_mock):
+        """Tests it reads a CSV from a Zip using an iterator."""
+        buffer = bytes(CSV_STRING, encoding="utf-8")
+
+        zip_content_mock = Mock()
+        zip_content_mock.return_value = zip_content_mock
+        zip_content_mock.decode.return_value = CSV_STRING
+
+        zip_file_mock = MagicMock()
+        zip_file_mock.return_value = zip_file_mock
+        zip_file_mock.__enter__.return_value = zip_file_mock
+        zip_file_mock.read.return_value = zip_content_mock
+
+        zip_mock.return_value = zip_mock
+        zip_mock.__enter__.return_value = zip_mock
+        zip_mock.open.return_value = zip_file_mock
+        zip_mock.infolist.return_value = [
+            zipfile.ZipInfo("foo.bar"),
+            zipfile.ZipInfo("FOO.CSV"),
+            zipfile.ZipInfo("foo.baz"),
+            zipfile.ZipInfo("bar.csv"),
+        ]
+
+        result = read_zip_csv(buffer, iterator=True)
+
+        zip_mock.open.assert_called_once_with("FOO.CSV", "r")
+
+        self.assertIsInstance(result, Iterator)
+        self.assertEqual(list(result), CSV_LINES_DICT)
 
     @patch("zipfile.ZipFile")
     def test_read_zip_csv_failure(self, zip_mock):
