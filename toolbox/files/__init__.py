@@ -15,6 +15,7 @@ It contains:
     - `write_json_file(filename, data, ...)` - Writes content to a JSON file at once.
     - `read_pickle_file(filename, ...)` - Reads all the content from a pickle file at once.
     - `write_pickle_file(filename, data, ...)` - Writes content to a pickle file at once.
+    - `fetch_content(url, ...)` - Fetch content from a remote HTTP address.
 - File helpers:
     - `get_file_mode()` - Gets the file mode given the desired access type.
     - `create_file_path(filepath)` - Creates the path to the given filename.
@@ -46,6 +47,12 @@ if files.delete_path(filename):
     print('The file has been deleted!')
 else:
     print('Cannot delete the file!')
+
+# Fetch text content from a remote address
+text = file.fetch_content("http://example.com/text")
+
+# Fetch binary content from a remote address
+data = file.fetch_content("http://example.com/data", binary=True)
 ```
 """
 from toolbox.files.csv_file import (
@@ -55,7 +62,7 @@ from toolbox.files.csv_file import (
     read_csv_file,
     write_csv_file,
 )
-from toolbox.files.file import get_file_mode, read_file, write_file
+from toolbox.files.file import fetch_content, get_file_mode, read_file, write_file
 from toolbox.files.file_manager import FileManager
 from toolbox.files.json_file import (
     JSON_ENCODING,

@@ -2,7 +2,9 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from toolbox.files import get_file_mode, read_file, write_file
+import requests
+
+from toolbox.files import fetch_content, get_file_mode, read_file, write_file
 from toolbox.testing import test_cases
 
 
@@ -35,7 +37,6 @@ class TestFileHelpers(unittest.TestCase):
     )
     def test_get_file_mode(self, _, params, expected):
         """Tests the helper get_file_mode()."""
-
         self.assertEqual(
             get_file_mode(**params),
             expected,
@@ -109,3 +110,69 @@ class TestFileHelpers(unittest.TestCase):
 
             mock_file_open.assert_called_with(file_path, **open_params)
             mock_file.write.assert_called_with(content)
+
+    @test_cases(
+        [
+            [
+                "default",
+                "http://example.com/data",
+                {},
+                {"url": "http://example.com/data", "timeout": (6, 30)},
+                b"0123456789ABCDEF",
+                "0123456789ABCDEF",
+                "0123456789ABCDEF",
+            ],
+            [
+                "binary",
+                "http://example.com/data",
+                {"binary": True},
+                {"url": "http://example.com/data", "timeout": (6, 30)},
+                b"0123456789ABCDEF",
+                "0123456789ABCDEF",
+                b"0123456789ABCDEF",
+            ],
+            [
+                "timeout",
+                "http://example.com/data",
+                {"timeout": 10},
+                {"url": "http://example.com/data", "timeout": 10},
+                b"0123456789ABCDEF",
+                "0123456789ABCDEF",
+                "0123456789ABCDEF",
+            ],
+            [
+                "other params",
+                "http://example.com/data",
+                {"params": {}},
+                {"url": "http://example.com/data", "timeout": (6, 30), "params": {}},
+                b"0123456789ABCDEF",
+                "0123456789ABCDEF",
+                "0123456789ABCDEF",
+            ],
+        ]
+    )
+    @patch("requests.get")
+    def test_fetch_content(
+        self, _, url, params, called_with, content, text, expected, mock_request
+    ):
+        """Tests that a content can be fetched."""
+        mock_response = Mock()
+        mock_response.content = content
+        mock_response.text = text
+        mock_request.return_value = mock_response
+
+        result = fetch_content(url, **params)
+
+        self.assertEqual(result, expected)
+        mock_request.assert_called_with(**called_with)
+
+    @patch("requests.get")
+    def test_fetch_content_failure(self, mock_request):
+        """Tests that fetching a content can raise error."""
+        url = "http://example.com/data"
+
+        mock_response = Mock()
+        mock_response.raise_for_status = Mock(side_effect=requests.HTTPError("foo"))
+        mock_request.return_value = mock_response
+
+        self.assertRaises(requests.HTTPError, lambda: fetch_content(url))

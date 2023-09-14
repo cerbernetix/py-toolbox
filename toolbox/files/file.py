@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.files import get_file_mode, read_file, write_file
+from toolbox.files import fetch_content, get_file_mode, read_file, write_file
 
 # get_file_mode() is used to build a file access mode.
 # For example to create a text file:
@@ -22,8 +22,15 @@ text = read_file('path/to/file', encoding='UTF-8')
 
 # Load a binary file
 data = read_file('path/to/file', binary=True)
+
+# Fetch text content from a remote address
+text = fetch_content("http://example.com/text")
+
+# Fetch binary content from a remote address
+data = fetch_content("http://example.com/data", binary=True)
 ```
 """
+import requests
 
 
 def get_file_mode(
@@ -36,7 +43,7 @@ def get_file_mode(
     """Gets the file access mode given the expectations.
 
     The file access mode is defined by a string that contains flags for selecting the modes.
-    More info at https://docs.python.org/3/library/functions.html#open
+    For more info see [builtin open](https://docs.python.org/3/library/functions.html#open).
 
     Args:
         create (bool, optional): Expect to create the file. If it exists, it will be replaced.
@@ -189,3 +196,54 @@ def write_file(
         **kwargs,
     ) as file:
         return file.write(data)
+
+
+def fetch_content(
+    url: str,
+    binary: bool = False,
+    timeout: int | tuple = (6, 30),
+    **kwargs,
+) -> str | bytes:
+    """Downloads content from the given URL.
+
+    It uses an HTTP/GET request to fetch the remote data.
+
+    Under the hood, it relies on requests to process the query.
+
+    Args:
+        url (str): The URL of the content to fetch.
+        binary (bool): Tells if the content is binary (True) or text (False). When True,
+        the function will return a bytes sequence, otherwise it will return a string sequence.
+        timeout (int | tuple): The request timeout. Defaults to (6, 30).
+        **kwargs: Additional parameters for the GET request. For more info, see [requests/api](https://requests.readthedocs.io/en/latest/api/).
+
+    Raises:
+        requests.RequestException: There was an ambiguous exception that occurred while handling
+        the request.
+        requests.ConnectionError: A Connection error occurred.
+        requests.HTTPError: An HTTP error occurred.
+        requests.URLRequired: A valid URL is required to make a request.
+        requests.TooManyRedirects: Too many redirects.
+        requests.ConnectTimeout: The request timed out while trying to connect to the remote server.
+        Requests that produced this error are safe to retry.
+        requests.ReadTimeout: The server did not send any data in the allotted amount of time.
+        requests.Timeout: The request timed out. Catching this error will catch both ConnectTimeout
+        and ReadTimeout errors.
+
+    Returns:
+        str | bytes: Returns a bytes buffer.
+
+    Examples:
+    ```python
+    from toolbox.files import fetch_content
+
+    # Fetch text content from a remote address
+    text = fetch_content("http://example.com/text")
+
+    # Fetch binary content from a remote address
+    data = fetch_content("http://example.com/data", binary=True)
+    ```
+    """
+    response = requests.get(url=url, timeout=timeout, **kwargs)
+    response.raise_for_status()
+    return response.content if binary else response.text
