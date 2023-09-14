@@ -1,5 +1,6 @@
 """Test the class for reading and writing CSV files."""
 import unittest
+import zipfile
 from unittest.mock import MagicMock, Mock, patch
 
 from toolbox.files import (
@@ -7,6 +8,7 @@ from toolbox.files import (
     CSV_ENCODING,
     CSVFile,
     read_csv_file,
+    read_zip_csv,
     write_csv_file,
 )
 from toolbox.testing import test_cases
@@ -462,3 +464,87 @@ class TestCSVFileHelpers(unittest.TestCase):
         mock_file_open.assert_called_once()
         mock_file.write.assert_called()
         mock_file.close.assert_called_once()
+
+    @test_cases(
+        [
+            [
+                "default",
+                {},
+                "FOO.CSV",
+                CSV_STRING,
+                CSV_LINES_DICT,
+            ],
+            [
+                "filename given",
+                {"filename": "bar.csv"},
+                "bar.csv",
+                CSV_STRING,
+                CSV_LINES_DICT,
+            ],
+            [
+                "fieldnames given",
+                {"fieldnames": ["first_name", "last_name", "age", "city"]},
+                "FOO.CSV",
+                CSV_STRING,
+                CSV_LINES_HEADLESS,
+            ],
+            [
+                "fieldnames=False",
+                {"fieldnames": False},
+                "FOO.CSV",
+                CSV_STRING,
+                CSV_LINES_LIST,
+            ],
+            [
+                "dialect auto",
+                {"dialect": "auto"},
+                "FOO.CSV",
+                CSV_STRING,
+                CSV_LINES_DICT,
+            ],
+        ]
+    )
+    @patch("zipfile.ZipFile")
+    def test_read_zip_csv(self, _, params, filename, content, expected, zip_mock):
+        """Tests it reads a CSV from a Zip."""
+        buffer = bytes(content, encoding="utf-8")
+
+        zip_content_mock = Mock()
+        zip_content_mock.return_value = zip_content_mock
+        zip_content_mock.decode.return_value = content
+
+        zip_file_mock = MagicMock()
+        zip_file_mock.return_value = zip_file_mock
+        zip_file_mock.__enter__.return_value = zip_file_mock
+        zip_file_mock.read.return_value = zip_content_mock
+
+        zip_mock.return_value = zip_mock
+        zip_mock.__enter__.return_value = zip_mock
+        zip_mock.open.return_value = zip_file_mock
+        zip_mock.infolist.return_value = [
+            zipfile.ZipInfo("foo.bar"),
+            zipfile.ZipInfo("FOO.CSV"),
+            zipfile.ZipInfo("foo.baz"),
+            zipfile.ZipInfo("bar.csv"),
+        ]
+
+        result = read_zip_csv(buffer, **params)
+
+        zip_mock.open.assert_called_once_with(filename, "r")
+
+        self.assertEqual(result, expected)
+
+    @patch("zipfile.ZipFile")
+    def test_read_zip_csv_failure(self, zip_mock):
+        """Tests it fails reading a CSV from a Zip."""
+        buffer = b"12345"
+
+        zip_mock.return_value = zip_mock
+        zip_mock.__enter__.return_value = zip_mock
+        zip_mock.infolist.return_value = [
+            zipfile.ZipInfo("foo.bar"),
+            zipfile.ZipInfo("foo.baz"),
+        ]
+
+        self.assertRaises(FileNotFoundError, lambda: read_zip_csv(buffer))
+        self.assertRaises(FileNotFoundError, lambda: read_zip_csv(buffer, "foo.csv"))

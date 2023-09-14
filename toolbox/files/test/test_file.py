@@ -1,8 +1,17 @@
 """Test the utilities for accessing files."""
 import unittest
-from unittest.mock import Mock, patch
+import zipfile
+from unittest.mock import MagicMock, Mock, patch
 
-from toolbox.files import get_file_mode, read_file, write_file
+import requests
+
+from toolbox.files import (
+    fetch_content,
+    get_file_mode,
+    read_file,
+    read_zip_file,
+    write_file,
+)
 from toolbox.testing import test_cases
 
 
@@ -35,7 +44,6 @@ class TestFileHelpers(unittest.TestCase):
     )
     def test_get_file_mode(self, _, params, expected):
         """Tests the helper get_file_mode()."""
-
         self.assertEqual(
             get_file_mode(**params),
             expected,
@@ -109,3 +117,120 @@ class TestFileHelpers(unittest.TestCase):
 
             mock_file_open.assert_called_with(file_path, **open_params)
             mock_file.write.assert_called_with(content)
+
+    @test_cases(
+        [
+            [
+                "default",
+                "http://example.com/data",
+                {},
+                {"url": "http://example.com/data", "timeout": (6, 30)},
+                b"0123456789ABCDEF",
+                "0123456789ABCDEF",
+                "0123456789ABCDEF",
+            ],
+            [
+                "binary",
+                "http://example.com/data",
+                {"binary": True},
+                {"url": "http://example.com/data", "timeout": (6, 30)},
+                b"0123456789ABCDEF",
+                "0123456789ABCDEF",
+                b"0123456789ABCDEF",
+            ],
+            [
+                "timeout",
+                "http://example.com/data",
+                {"timeout": 10},
+                {"url": "http://example.com/data", "timeout": 10},
+                b"0123456789ABCDEF",
+                "0123456789ABCDEF",
+                "0123456789ABCDEF",
+            ],
+            [
+                "other params",
+                "http://example.com/data",
+                {"params": {}},
+                {"url": "http://example.com/data", "timeout": (6, 30), "params": {}},
+                b"0123456789ABCDEF",
+                "0123456789ABCDEF",
+                "0123456789ABCDEF",
+            ],
+        ]
+    )
+    @patch("requests.get")
+    def test_fetch_content(
+        self, _, url, params, called_with, content, text, expected, mock_request
+    ):
+        """Tests that a content can be fetched."""
+        mock_response = Mock()
+        mock_response.content = content
+        mock_response.text = text
+        mock_request.return_value = mock_response
+
+        result = fetch_content(url, **params)
+
+        self.assertEqual(result, expected)
+        mock_request.assert_called_with(**called_with)
+
+    @patch("requests.get")
+    def test_fetch_content_failure(self, mock_request):
+        """Tests that fetching a content can raise error."""
+        url = "http://example.com/data"
+
+        mock_response = Mock()
+        mock_response.raise_for_status = Mock(side_effect=requests.HTTPError("foo"))
+        mock_request.return_value = mock_response
+
+        self.assertRaises(requests.HTTPError, lambda: fetch_content(url))
+
+    @test_cases(
+        [
+            ["default", {}, "foo.bar"],
+            ["filename given", {"filename": "bar.txt"}, "bar.txt"],
+            ["extension given", {"ext": ".txt"}, "FOO.TXT"],
+        ]
+    )
+    @patch("zipfile.ZipFile")
+    def test_read_zip_file(self, _, params, filename, zip_mock):
+        """Tests it reads a file from a Zip."""
+        content = "0123456789ABCDEF"
+        buffer = bytes(content, encoding="utf-8")
+
+        zip_file_mock = MagicMock()
+        zip_file_mock.return_value = zip_file_mock
+        zip_file_mock.__enter__.return_value = zip_file_mock
+        zip_file_mock.read.return_value = content
+
+        zip_mock.return_value = zip_mock
+        zip_mock.__enter__.return_value = zip_mock
+        zip_mock.open.return_value = zip_file_mock
+        zip_mock.infolist.return_value = [
+            zipfile.ZipInfo("foo.bar"),
+            zipfile.ZipInfo("FOO.TXT"),
+            zipfile.ZipInfo("foo.baz"),
+            zipfile.ZipInfo("bar.txt"),
+        ]
+
+        result = read_zip_file(buffer, **params)
+
+        zip_mock.open.assert_called_once_with(filename, "r")
+
+        self.assertEqual(result, content)
+
+    @patch("zipfile.ZipFile")
+    def test_read_zip_file_failure(self, zip_mock):
+        """Tests it fails reading a file from a Zip."""
+        buffer = b"12345"
+
+        zip_mock.return_value = zip_mock
+        zip_mock.__enter__.return_value = zip_mock
+        zip_mock.infolist.return_value = [
+            zipfile.ZipInfo("foo.bar"),
+            zipfile.ZipInfo("foo.baz"),
+        ]
+
+        self.assertRaises(
+            FileNotFoundError, lambda: read_zip_file(buffer, filename="foo.txt")
+        )
+        self.assertRaises(FileNotFoundError, lambda: read_zip_file(buffer, ext=".tx"))

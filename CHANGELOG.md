@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2023-09-14
+
+### Added
+
+-   `fetch_content(url, ...)` - Fetch content from a remote HTTP address.
+-   `read_zip_file(buffer, ...)` - Reads a file content from a Zip archive.
+-   `read_zip_csv(buffer, ...)` - Reads a CSV content from a Zip.
+
 ## [0.5.1] - 2023-09-13
 
 ### Changed
