@@ -291,17 +291,24 @@ class CSVFile(FileManager):
 
         return self
 
-    def read_file(self) -> list[dict | list]:
+    def read_file(self, iterator: bool = False) -> Iterable[dict | list]:
         """Reads all the content from the file.
 
+        The returned value can be either a list (default) or an iterator (when the iterator
+        parameter is True).
+
         Note: If the file was already opened, it is first closed, then opened in read mode.
+
+        Args:
+            iterator (bool, optional): When True, the function will return an iterator instead of a
+            list. Defaults to False.
 
         Raises:
             OSError: If the file cannot be read.
             FileNotFoundError: If the file does not exist.
 
         Returns:
-            list[dict | list]: The content read from the file.
+            Iterable[dict | list]: The content read from the file.
 
         Examples:
         ```python
@@ -311,8 +318,15 @@ class CSVFile(FileManager):
 
         # A file can be read all at once
         data = file.read_file()
+
+        # An iterator can be returned instead of a list
+        for row in file.read_file(iterator=True):
+            print(row)
         ```
         """
+        if iterator:
+            return self.close()
+
         return list(self)
 
     def write_file(self, data: Iterable[dict | list]) -> int:
@@ -462,9 +476,13 @@ def read_csv_file(
     filename: str,
     encoding: str = CSV_ENCODING,
     dialect: str = CSV_DIALECT,
+    iterator: bool = False,
     **kwargs,
-) -> list[dict | list]:
+) -> Iterable[dict | list]:
     """Reads a CSV content from a file.
+
+    The returned value can be either a list (default) or an iterator (when the iterator parameter
+    is True).
 
     Args:
         filename (str): The path to the file to read.
@@ -472,6 +490,8 @@ def read_csv_file(
         dialect (str, optional): The CSV dialect to use. If 'auto' is given, the reader will
         try detecting the CSV dialect by reading a sample at the head of the file.
         Defaults to CSV_DIALECT.
+        iterator (bool, optional): When True, the function will return an iterator instead of a
+        list. Defaults to False.
         delimiter (str, optional): A one-character string used to separate fields.
         Defaults to ','.
         doublequote (bool, optional): Controls how instances of quotechar appearing inside a
@@ -503,13 +523,17 @@ def read_csv_file(
         FileNotFoundError: If the file does not exist.
 
     Returns:
-        list[dict | list]: The data read from the CSV file.
+        Iterable[dict | list]: The data read from the CSV file.
 
     Examples:
     ```python
     from toolbox.files import read_csv_file
 
     csv_data = read_csv_file('path/to/file', encoding='UTF-8', dialect='excel')
+
+    # An iterator can be returned instead of a list
+    for row in read_csv_file('path/to/file', iterator=True):
+        print(row)
     ```
     """
     return CSVFile(
@@ -517,7 +541,7 @@ def read_csv_file(
         encoding=encoding,
         dialect=dialect,
         **kwargs,
-    ).read_file()
+    ).read_file(iterator)
 
 
 def write_csv_file(
@@ -599,9 +623,13 @@ def read_zip_csv(
     encoding: str = CSV_ENCODING,
     decoding_errors: str = "ignore",
     dialect: str = CSV_DIALECT,
+    iterator: bool = False,
     **kwargs,
-) -> list[dict | list]:
+) -> Iterable[dict | list]:
     """Reads a CSV content from a Zip.
+
+    The returned value can be either a list (default) or an iterator (when the iterator parameter
+    is True).
 
     Args:
         buffer (bytes): A buffer of bytes representing the zipped content.
@@ -615,6 +643,8 @@ def read_zip_csv(
         dialect (str, optional): The CSV dialect to use. If 'auto' is given, the reader will
         try detecting the CSV dialect by reading a sample at the head of the file.
         Defaults to CSV_DIALECT.
+        iterator (bool, optional): When True, the function will return an iterator instead of a
+        list. Defaults to False.
         delimiter (str, optional): A one-character string used to separate fields.
         Defaults to ','.
         doublequote (bool, optional): Controls how instances of quotechar appearing inside a
@@ -645,7 +675,7 @@ def read_zip_csv(
         FileNotFoundError: If the file does not exist.
 
     Returns:
-        list[dict | list]: The data read from the CSV file.
+        Iterable[dict | list]: The data read from the CSV file.
 
     Examples:
     ```python
@@ -659,20 +689,28 @@ def read_zip_csv(
 
         # The specified CSV file will be extracted from the archive
         csv_data = read_zip_csv(zip, 'foo.csv')
+
+        # An iterator can be returned instead of a list
+        for row in read_zip_csv(zip, iterator=True):
+            print(row)
     ```
     """
     content = read_zip_file(buffer, filename=filename, ext=".csv")
     text = content.decode(encoding=encoding, errors=decoding_errors)
 
     if kwargs.get("fieldnames") is False:
-        reader = csv.reader
+        reader_factory = csv.reader
         kwargs.pop("fieldnames")
     else:
-        reader = csv.DictReader
+        reader_factory = csv.DictReader
 
     if dialect == "auto":
         dialect = csv.Sniffer().sniff(text[:CSV_SAMPLE_SIZE])
 
     lines = re.split(r"[\r\n]+", text.strip("\r\n"))
+    reader = reader_factory(lines, dialect=dialect, **kwargs)
 
-    return list(reader(lines, dialect=dialect, **kwargs))
+    if iterator:
+        return reader
+
+    return list(reader)

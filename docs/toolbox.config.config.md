@@ -632,7 +632,7 @@ set_option(
     value: Any = None,
     default: Any = None,
     description: str = None,
-    mapper: Callable = <function passthrough at 0x1030c9580>,
+    mapper: Callable = <function passthrough at 0x101b45580>,
     choices: list = None
 ) → None
 ```

@@ -125,7 +125,7 @@ __init__(
     value: 'Any' = None,
     default: 'Any' = None,
     description: 'str' = '',
-    mapper: 'ValueMapper' = <function passthrough at 0x1030c9580>,
+    mapper: 'ValueMapper' = <function passthrough at 0x101b45580>,
     choices: 'Iterable' = None
 ) → None
 ```

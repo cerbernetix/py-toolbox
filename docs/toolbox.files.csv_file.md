@@ -57,7 +57,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L461"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L475"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_csv_file`
 
@@ -66,11 +66,14 @@ read_csv_file(
     filename: 'str',
     encoding: 'str' = 'utf-8',
     dialect: 'str' = 'unix',
+    iterator: 'bool' = False,
     **kwargs
-) → list[dict | list]
+) → Iterable[dict | list]
 ```
 
 Reads a CSV content from a file. 
+
+The returned value can be either a list (default) or an iterator (when the iterator parameter is True). 
 
 
 
@@ -79,6 +82,7 @@ Reads a CSV content from a file.
  - <b>`filename`</b> (str):  The path to the file to read. 
  - <b>`encoding`</b> (str, optional):  The file encoding. Defaults to CSV_ENCODING. 
  - <b>`dialect`</b> (str, optional):  The CSV dialect to use. If 'auto' is given, the reader will try detecting the CSV dialect by reading a sample at the head of the file. Defaults to CSV_DIALECT. 
+ - <b>`iterator`</b> (bool, optional):  When True, the function will return an iterator instead of a list. Defaults to False. 
  - <b>`delimiter`</b> (str, optional):  A one-character string used to separate fields. Defaults to ','. 
  - <b>`doublequote`</b> (bool, optional):  Controls how instances of quotechar appearing inside a field should themselves be quoted. When True, the character is doubled. When False, the escapechar is used as a prefix to the quotechar. Defaults to True. 
  - <b>`escapechar`</b> (str, optional):   A one-character string used to removes any special meaning from the following character. Defaults to None, which disables escaping. 
@@ -101,7 +105,7 @@ For reading headless CSV, set fieldnames to False.
 
 **Returns:**
  
- - <b>`list[dict | list]`</b>:  The data read from the CSV file. 
+ - <b>`Iterable[dict | list]`</b>:  The data read from the CSV file. 
 
 
 
@@ -110,12 +114,16 @@ For reading headless CSV, set fieldnames to False.
 from toolbox.files import read_csv_file
 
 csv_data = read_csv_file('path/to/file', encoding='UTF-8', dialect='excel')
+
+# An iterator can be returned instead of a list
+for row in read_csv_file('path/to/file', iterator=True):
+    print(row)
 ``` 
 
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L523"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L547"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_csv_file`
 
@@ -181,7 +189,7 @@ write_csv_file('path/to/file', csv_data, encoding='UTF-8', dialect='excel')
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L596"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L620"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_zip_csv`
 
@@ -192,11 +200,14 @@ read_zip_csv(
     encoding: 'str' = 'utf-8',
     decoding_errors: 'str' = 'ignore',
     dialect: 'str' = 'unix',
+    iterator: 'bool' = False,
     **kwargs
-) → list[dict | list]
+) → Iterable[dict | list]
 ```
 
 Reads a CSV content from a Zip. 
+
+The returned value can be either a list (default) or an iterator (when the iterator parameter is True). 
 
 
 
@@ -207,6 +218,7 @@ Reads a CSV content from a Zip.
  - <b>`encoding`</b> (str, optional):  The file encoding. Defaults to CSV_ENCODING. 
  - <b>`decoding_errors`</b> (str, optional):  Controls how decoding errors are handled. If 'strict', a UnicodeError exception is raised. Other possible values are 'ignore', 'replace', and any other name registered via codecs.register_error(). See Error Handlers for details. Defaults to "ignore". 
  - <b>`dialect`</b> (str, optional):  The CSV dialect to use. If 'auto' is given, the reader will try detecting the CSV dialect by reading a sample at the head of the file. Defaults to CSV_DIALECT. 
+ - <b>`iterator`</b> (bool, optional):  When True, the function will return an iterator instead of a list. Defaults to False. 
  - <b>`delimiter`</b> (str, optional):  A one-character string used to separate fields. Defaults to ','. 
  - <b>`doublequote`</b> (bool, optional):  Controls how instances of quotechar appearing inside a field should themselves be quoted. When True, the character is doubled. When False, the escapechar is used as a prefix to the quotechar. Defaults to True. 
  - <b>`escapechar`</b> (str, optional):   A one-character string used to removes any special meaning from the following character. Defaults to None, which disables escaping. 
@@ -228,7 +240,7 @@ For reading headless CSV, set fieldnames to False.
 
 **Returns:**
  
- - <b>`list[dict | list]`</b>:  The data read from the CSV file. 
+ - <b>`Iterable[dict | list]`</b>:  The data read from the CSV file. 
 
 
 
@@ -244,6 +256,10 @@ with open('path/to/file.zip', 'rb') as file:
 
     # The specified CSV file will be extracted from the archive
     csv_data = read_zip_csv(zip, 'foo.csv')
+
+    # An iterator can be returned instead of a list
+    for row in read_zip_csv(zip, iterator=True):
+         print(row)
 ``` 
 
 
@@ -588,7 +604,7 @@ file.close()
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L349"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L363"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -637,12 +653,20 @@ csv_data = [row for row in file]
 ### <kbd>method</kbd> `read_file`
 
 ```python
-read_file() → list[dict | list]
+read_file(iterator: 'bool' = False) → Iterable[dict | list]
 ```
 
 Reads all the content from the file. 
 
+The returned value can be either a list (default) or an iterator (when the iterator parameter is True). 
+
 Note: If the file was already opened, it is first closed, then opened in read mode. 
+
+
+
+**Args:**
+ 
+ - <b>`iterator`</b> (bool, optional):  When True, the function will return an iterator instead of a list. Defaults to False. 
 
 
 
@@ -655,7 +679,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 **Returns:**
  
- - <b>`list[dict | list]`</b>:  The content read from the file. 
+ - <b>`Iterable[dict | list]`</b>:  The content read from the file. 
 
 
 
@@ -667,11 +691,15 @@ file = CSVFile('path/to/filename')
 
 # A file can be read all at once
 data = file.read_file()
+
+# An iterator can be returned instead of a list
+for row in file.read_file(iterator=True):
+    print(row)
 ``` 
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L400"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L414"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -718,7 +746,7 @@ with file(create=True):
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L318"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/csv_file.py#L332"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
