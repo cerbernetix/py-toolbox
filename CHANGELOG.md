@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+-   `read_pickle_file(...)` and `PickleFile.read_file()` - Can either return a list (default) or an iterator (when the iterator parameter is True).
+-   `read_csv_file(...)` and `CSVFile.read_file()` - Can either return a list (default) or an iterator (when the iterator parameter is True).
+-   `read_zip_csv(buffer, ...)` - Can either return a list (default) or an iterator (when the iterator parameter is True).
+
 ## [0.6.0] - 2023-09-14
 
 ### Added
