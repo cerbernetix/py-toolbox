@@ -1,6 +1,7 @@
 """Test the class for reading and writing pickle files."""
 import pickle
 import unittest
+from typing import Iterator
 from unittest.mock import Mock, mock_open, patch
 
 from toolbox.files import PickleFile
@@ -199,7 +200,28 @@ class TestPickleFile(unittest.TestCase):
         with patch("builtins.open", mock_open(read_data=data)) as mock_file_open:
             file = PickleFile(file_path)
 
-            self.assertEqual(file.read_file(), expected)
+            result = file.read_file()
+            self.assertIsInstance(result, list)
+            self.assertEqual(result, expected)
+
+            mock_file_open.assert_called_once()
+
+    def test_read_file_iterator(self):
+        """Tests a file can be read at once using an iterator."""
+        file_path = "/root/folder/file"
+        data = (
+            pickle.dumps(DATA_DICT)
+            + pickle.dumps(DATA_LIST)
+            + pickle.dumps(DATA_STRING)
+        )
+        expected = [DATA_DICT, DATA_LIST, DATA_STRING]
+
+        with patch("builtins.open", mock_open(read_data=data)) as mock_file_open:
+            file = PickleFile(file_path)
+
+            result = file.read_file(iterator=True)
+            self.assertIsInstance(result, Iterator)
+            self.assertEqual(list(result), expected)
 
             mock_file_open.assert_called_once()
 
@@ -379,7 +401,27 @@ class TestPickleFileHelpers(unittest.TestCase):
         expected = [DATA_DICT, DATA_LIST, DATA_STRING]
 
         with patch("builtins.open", mock_open(read_data=data)) as mock_file_open:
-            self.assertEqual(read_pickle_file(file_path), expected)
+            result = read_pickle_file(file_path)
+            self.assertIsInstance(result, list)
+            self.assertEqual(result, expected)
+
+            mock_file_open.assert_called_once()
+
+    @patch("builtins.open")
+    def test_read_pickle_file_iterator(self, mock_file_open):
+        """Tests a pickle file can be read at once using an iterator."""
+        file_path = "/root/folder/file"
+        data = (
+            pickle.dumps(DATA_DICT)
+            + pickle.dumps(DATA_LIST)
+            + pickle.dumps(DATA_STRING)
+        )
+        expected = [DATA_DICT, DATA_LIST, DATA_STRING]
+
+        with patch("builtins.open", mock_open(read_data=data)) as mock_file_open:
+            result = read_pickle_file(file_path, iterator=True)
+            self.assertIsInstance(result, Iterator)
+            self.assertEqual(list(result), expected)
 
             mock_file_open.assert_called_once()
 

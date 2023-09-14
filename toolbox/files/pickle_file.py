@@ -202,17 +202,24 @@ class PickleFile(FileManager):
             key: value for key, value in kwargs.items() if key in PICKLE_WRITER_PARAMS
         }
 
-    def read_file(self) -> list:
+    def read_file(self, iterator: bool = False) -> Iterable:
         """Reads all the content from the file.
 
+        The returned value can be either a list (default) or an iterator (when the iterator
+        parameter is True).
+
         Note: If the file was already opened, it is first closed, then opened in read mode.
+
+        Args:
+            iterator (bool, optional): When True, the function will return an iterator instead of a
+            list. Defaults to False.
 
         Raises:
             OSError: If the file cannot be read.
             FileNotFoundError: If the file does not exist.
 
         Returns:
-            list: The content read from the file.
+            Iterable: The content read from the file.
 
         Examples:
         ```python
@@ -222,8 +229,15 @@ class PickleFile(FileManager):
 
         # A file can be read all at once
         data = file.read_file()
+
+        # An iterator can be returned instead of a list
+        for obj in file.read_file(iterator=True):
+            print(obj)
         ```
         """
+        if iterator:
+            return self.close()
+
         return list(self)
 
     def write_file(self, data: Iterable) -> int:
@@ -325,11 +339,16 @@ class PickleFile(FileManager):
         return self._file.write(pickle.dumps(data, **self._writer_args))
 
 
-def read_pickle_file(filename: str, **kwargs) -> list:
+def read_pickle_file(filename: str, iterator: bool = False, **kwargs) -> Iterable:
     """Loads a list of objects from a file.
+
+    The returned value can be either a list (default) or an iterator (when the iterator parameter
+    is True).
 
     Args:
         filename (str): The path to the file to read.
+        iterator (bool, optional): When True, the function will return an iterator instead of a
+        list. Defaults to False.
         fix_imports (bool, optional): If fix_imports is true and protocol is less than 3,
         pickle will try to map the new Python 3 names to the old module names used in Python 2,
         so that the pickle data stream is readable with Python 2. Defaults to True.
@@ -351,19 +370,23 @@ def read_pickle_file(filename: str, **kwargs) -> list:
         FileNotFoundError: If the file does not exist.
 
     Returns:
-        list: The list of objects read from the file.
+        Iterable: The list of objects read from the file.
 
     Examples:
     ```python
     from toolbox.files import read_pickle_file
 
     data = read_pickle_file('path/to/file')
+
+    # An iterator can be returned instead of a list
+    for obj in read_pickle_file('path/to/file', iterator=True):
+        print(obj
     ```
     """
     return PickleFile(
         filename,
         **kwargs,
-    ).read_file()
+    ).read_file(iterator)
 
 
 def write_pickle_file(filename: str, data: Iterable, **kwargs) -> int:
