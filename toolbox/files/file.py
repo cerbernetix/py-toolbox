@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.files import fetch_content, get_file_mode, read_file, write_file
+from toolbox.files import fetch_content, get_file_mode, read_file, read_zip_file, write_file
 
 # get_file_mode() is used to build a file access mode.
 # For example to create a text file:
@@ -28,8 +28,15 @@ text = fetch_content("http://example.com/text")
 
 # Fetch binary content from a remote address
 data = fetch_content("http://example.com/data", binary=True)
+
+# Considering the fetched content is a zip archive, extract the first file
+content = read_zip_file(data)
 ```
 """
+import os
+import zipfile
+from io import BytesIO
+
 import requests
 
 
@@ -247,3 +254,68 @@ def fetch_content(
     response = requests.get(url=url, timeout=timeout, **kwargs)
     response.raise_for_status()
     return response.content if binary else response.text
+
+
+def read_zip_file(buffer: bytes, filename: str = None, ext: str = None) -> bytes:
+    """Extracts a file content from a Zip archive.
+
+    If a filename is given, the corresponding file will be extracted from the archive. Otherwise,
+    if a file extension is given, the first file having this extension in the archive will be
+    extracted. If no filename nor extension is given, the fist available file is extracted.
+
+    Args:
+        buffer (bytes): A buffer of bytes representing the Zip archive.
+        filename (str, optional): The name of the file to extract from the zip. If omitted, and the
+        extension is given, the first file having the extension will be selected. Otherwise, the
+        first available file will be selected. Defaults to None.
+        ext (str, optional): The extension of the file to extract from the zip. This value is used
+        if the filename is omitted, and in this case, the first file having the extension will be
+        selected. Defaults to None.
+
+    Raises:
+        FileNotFoundError: If the file does not exist.
+
+    Returns:
+        bytes: The content of the file extracted from the Zip archive.
+
+    Examples:
+    ```python
+    from toolbox.files import read_zip
+
+    with open('path/to/file.zip', 'rb') as file:
+        zip = file.read()
+
+        # The first file in the archive will be extracted
+        data = read_zip(zip)
+
+        # The specified file will be extracted from the archive
+        data = read_zip(zip, filename='foo')
+
+        # The first file having the extension will be extracted from the archive
+        data = read_zip(zip, ext='.txt')
+    ```
+    """
+    with zipfile.ZipFile(BytesIO(buffer)) as zip_file:
+        found = False
+        for info in zip_file.infolist():
+            if filename:
+                if filename == info.filename:
+                    found = True
+                    break
+
+            elif ext:
+                _, file_extension = os.path.splitext(info.filename)
+                if file_extension.lower() == ext:
+                    filename = info.filename
+                    found = True
+                    break
+            else:
+                filename = info.filename
+                found = True
+                break
+
+        if not found:
+            raise FileNotFoundError("The file does not exist in the archive.")
+
+        with zip_file.open(filename, "r") as file:
+            return file.read()

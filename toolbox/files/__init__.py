@@ -16,6 +16,7 @@ It contains:
     - `read_pickle_file(filename, ...)` - Reads all the content from a pickle file at once.
     - `write_pickle_file(filename, data, ...)` - Writes content to a pickle file at once.
     - `fetch_content(url, ...)` - Fetch content from a remote HTTP address.
+    - `read_zip_file(buffer, ...)` - Reads a file content from a Zip archive.
 - File helpers:
     - `get_file_mode()` - Gets the file mode given the desired access type.
     - `create_file_path(filepath)` - Creates the path to the given filename.
@@ -53,6 +54,9 @@ text = file.fetch_content("http://example.com/text")
 
 # Fetch binary content from a remote address
 data = file.fetch_content("http://example.com/data", binary=True)
+
+# Considering the fetched data is a zip archive, extract the first file
+content = file.read_zip_file(data)
 ```
 """
 from toolbox.files.csv_file import (
@@ -62,7 +66,13 @@ from toolbox.files.csv_file import (
     read_csv_file,
     write_csv_file,
 )
-from toolbox.files.file import fetch_content, get_file_mode, read_file, write_file
+from toolbox.files.file import (
+    fetch_content,
+    get_file_mode,
+    read_file,
+    read_zip_file,
+    write_file,
+)
 from toolbox.files.file_manager import FileManager
 from toolbox.files.json_file import (
     JSON_ENCODING,

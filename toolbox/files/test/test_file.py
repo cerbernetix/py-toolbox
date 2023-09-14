@@ -1,10 +1,17 @@
 """Test the utilities for accessing files."""
 import unittest
-from unittest.mock import Mock, patch
+import zipfile
+from unittest.mock import MagicMock, Mock, patch
 
 import requests
 
-from toolbox.files import fetch_content, get_file_mode, read_file, write_file
+from toolbox.files import (
+    fetch_content,
+    get_file_mode,
+    read_file,
+    read_zip_file,
+    write_file,
+)
 from toolbox.testing import test_cases
 
 
@@ -176,3 +183,54 @@ class TestFileHelpers(unittest.TestCase):
         mock_request.return_value = mock_response
 
         self.assertRaises(requests.HTTPError, lambda: fetch_content(url))
+
+    @test_cases(
+        [
+            ["default", {}, "foo.bar"],
+            ["filename given", {"filename": "bar.txt"}, "bar.txt"],
+            ["extension given", {"ext": ".txt"}, "FOO.TXT"],
+        ]
+    )
+    @patch("zipfile.ZipFile")
+    def test_read_zip_file(self, _, params, filename, zip_mock):
+        """Tests it reads a file from a Zip."""
+        content = "0123456789ABCDEF"
+        buffer = bytes(content, encoding="utf-8")
+
+        zip_file_mock = MagicMock()
+        zip_file_mock.return_value = zip_file_mock
+        zip_file_mock.__enter__.return_value = zip_file_mock
+        zip_file_mock.read.return_value = content
+
+        zip_mock.return_value = zip_mock
+        zip_mock.__enter__.return_value = zip_mock
+        zip_mock.open.return_value = zip_file_mock
+        zip_mock.infolist.return_value = [
+            zipfile.ZipInfo("foo.bar"),
+            zipfile.ZipInfo("FOO.TXT"),
+            zipfile.ZipInfo("foo.baz"),
+            zipfile.ZipInfo("bar.txt"),
+        ]
+
+        result = read_zip_file(buffer, **params)
+
+        zip_mock.open.assert_called_once_with(filename, "r")
+
+        self.assertEqual(result, content)
+
+    @patch("zipfile.ZipFile")
+    def test_read_zip_file_failure(self, zip_mock):
+        """Tests it fails reading a file from a Zip."""
+        buffer = b"12345"
+
+        zip_mock.return_value = zip_mock
+        zip_mock.__enter__.return_value = zip_mock
+        zip_mock.infolist.return_value = [
+            zipfile.ZipInfo("foo.bar"),
+            zipfile.ZipInfo("foo.baz"),
+        ]
+
+        self.assertRaises(
+            FileNotFoundError, lambda: read_zip_file(buffer, filename="foo.txt")
+        )
+        self.assertRaises(FileNotFoundError, lambda: read_zip_file(buffer, ext=".tx"))
