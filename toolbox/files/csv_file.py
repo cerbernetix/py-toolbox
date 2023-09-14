@@ -42,8 +42,10 @@ with file:
 from __future__ import annotations
 
 import csv
+import re
 from typing import Iterable
 
+from toolbox.files.file import read_zip_file
 from toolbox.files.file_manager import FileManager
 
 # The default data encoding for CSV files
@@ -589,3 +591,88 @@ def write_csv_file(
         dialect=dialect,
         **kwargs,
     ).write_file(data)
+
+
+def read_zip_csv(
+    buffer: bytes,
+    filename: str = None,
+    encoding: str = CSV_ENCODING,
+    decoding_errors: str = "ignore",
+    dialect: str = CSV_DIALECT,
+    **kwargs,
+) -> list[dict | list]:
+    """Reads a CSV content from a Zip.
+
+    Args:
+        buffer (bytes): A buffer of bytes representing the zipped content.
+        filename (str, optional): The name of the file to extract from the zip If omitted, the first
+        file having a '.csv' extension will be selected. Defaults to None.
+        encoding (str, optional): The file encoding. Defaults to CSV_ENCODING.
+        decoding_errors (str, optional): Controls how decoding errors are handled. If 'strict', a
+        UnicodeError exception is raised. Other possible values are 'ignore', 'replace', and any
+        other name registered via codecs.register_error(). See Error Handlers for details.
+        Defaults to "ignore".
+        dialect (str, optional): The CSV dialect to use. If 'auto' is given, the reader will
+        try detecting the CSV dialect by reading a sample at the head of the file.
+        Defaults to CSV_DIALECT.
+        delimiter (str, optional): A one-character string used to separate fields.
+        Defaults to ','.
+        doublequote (bool, optional): Controls how instances of quotechar appearing inside a
+        field should themselves be quoted. When True, the character is doubled. When False, the
+        escapechar is used as a prefix to the quotechar. Defaults to True.
+        escapechar (str, optional):  A one-character string used to removes any special meaning
+        from the following character. Defaults to None, which disables escaping.
+        quotechar (str, optional): A one-character string used to quote fields containing
+        special characters, such as the delimiter or quotechar, or which contain new-line
+        characters. Defaults to '"'.
+        quoting (bool, optional): Controls when quotes should be be recognized by the reader.
+        It can take on any of the QUOTE_* constants. Defaults to QUOTE_MINIMAL.
+        skipinitialspace (bool, optional): When True, spaces immediately following the
+        delimiter are ignored. The default is False.
+        strict (bool, optional):  When True, raise exception Error on bad CSV input.
+        Defaults to False.
+        fieldnames (sequence, optional): The name of each column in the CSV. If fieldnames is
+        omitted, the values in the first row of the file will be used as the fieldnames. Regardless
+        of how the fieldnames are determined, the dictionary preserves their original ordering.
+        If a row has more fields than fieldnames, the remaining data is put in a list and stored
+        with the fieldname specified by restkey (which defaults to None). If a non-blank row has
+        fewer fields than fieldnames, the missing values are filled-in with the value of restval
+        (which defaults to None).
+
+        For reading headless CSV, set fieldnames to False.
+
+    Raises:
+        FileNotFoundError: If the file does not exist.
+
+    Returns:
+        list[dict | list]: The data read from the CSV file.
+
+    Examples:
+    ```python
+    from toolbox.files import read_zip_csv
+
+    with open('path/to/file.zip', 'rb') as file:
+        zip = file.read()
+
+        # The first CSV file in the archive will be extracted
+        csv_data = read_zip_csv(zip)
+
+        # The specified CSV file will be extracted from the archive
+        csv_data = read_zip_csv(zip, 'foo.csv')
+    ```
+    """
+    content = read_zip_file(buffer, filename=filename, ext=".csv")
+    text = content.decode(encoding=encoding, errors=decoding_errors)
+
+    if kwargs.get("fieldnames") is False:
+        reader = csv.reader
+        kwargs.pop("fieldnames")
+    else:
+        reader = csv.DictReader
+
+    if dialect == "auto":
+        dialect = csv.Sniffer().sniff(text[:CSV_SAMPLE_SIZE])
+
+    lines = re.split(r"[\r\n]+", text.strip("\r\n"))
+
+    return list(reader(lines, dialect=dialect, **kwargs))
