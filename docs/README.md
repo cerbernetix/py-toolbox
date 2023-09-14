@@ -42,9 +42,12 @@
 - [`mappers.boolean`](./toolbox.data.mappers.md#function-boolean): Converts a value to a boolean value.
 - [`mappers.passthrough`](./toolbox.data.mappers.md#function-passthrough): A passthrough mapper. It returns the value as it is.
 - [`csv_file.read_csv_file`](./toolbox.files.csv_file.md#function-read_csv_file): Reads a CSV content from a file.
+- [`csv_file.read_zip_csv`](./toolbox.files.csv_file.md#function-read_zip_csv): Reads a CSV content from a Zip.
 - [`csv_file.write_csv_file`](./toolbox.files.csv_file.md#function-write_csv_file): Writes a CSV content to a file.
+- [`file.fetch_content`](./toolbox.files.file.md#function-fetch_content): Downloads content from the given URL.
 - [`file.get_file_mode`](./toolbox.files.file.md#function-get_file_mode): Gets the file access mode given the expectations.
 - [`file.read_file`](./toolbox.files.file.md#function-read_file): Reads a content from a file.
+- [`file.read_zip_file`](./toolbox.files.file.md#function-read_zip_file): Extracts a file content from a Zip archive.
 - [`file.write_file`](./toolbox.files.file.md#function-write_file): Writes a content to a file.
 - [`json_file.read_json_file`](./toolbox.files.json_file.md#function-read_json_file): Reads a JSON content from a file.
 - [`json_file.write_json_file`](./toolbox.files.json_file.md#function-write_json_file): Writes a JSON content to a file.
