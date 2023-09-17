@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2023-09-17
+
 ### Changed
 
 -   Move the tests to a dedicated folder outside of the source code. This will avoid polluting the exports.
