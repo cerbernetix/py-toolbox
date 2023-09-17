@@ -32,7 +32,6 @@ config = Config({"foo": "bar", "value": 42})
 from typing import Any, Callable, Iterator
 
 from toolbox.config.config_option import ConfigOption, create_options
-from toolbox.data import passthrough
 
 
 class Config:
@@ -373,7 +372,7 @@ class Config:
         value: Any = None,
         default: Any = None,
         description: str = None,
-        mapper: Callable = passthrough,
+        mapper: Callable = None,
         choices: list = None,
     ) -> None:
         """Adds a configuration option.
@@ -387,7 +386,7 @@ class Config:
             description (str, optional): A description for the option.
             Defaults to "".
             mapper (ConfigOptionMapper, optional): A mapper function for casting the value.
-            Defaults to passthrough.
+            Defaults to None.
             choices (Iterable, optional): A list of possible values.
 
         Examples:

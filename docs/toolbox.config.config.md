@@ -40,7 +40,7 @@ config = Config({"foo": "bar", "value": 42})
 
 ---
 
-<a href="../toolbox/config/config.py#L38"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L37"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Config`
 Handles a configuration. 
@@ -101,7 +101,7 @@ data = config.get_config()
 config.set_config(data)
 ``` 
 
-<a href="../toolbox/config/config.py#L96"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L95"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -145,7 +145,7 @@ config = Config({"foo": "bar"},
 
 ---
 
-<a href="../toolbox/config/config.py#L324"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L323"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `choices`
 
@@ -181,7 +181,7 @@ config.choices("bar") # ()
 
 ---
 
-<a href="../toolbox/config/config.py#L300"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L299"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `describe`
 
@@ -217,7 +217,7 @@ config.describe("bar") # ""
 
 ---
 
-<a href="../toolbox/config/config.py#L275"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L274"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `drop`
 
@@ -253,7 +253,7 @@ config.drop("bar") # False
 
 ---
 
-<a href="../toolbox/config/config.py#L182"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -295,7 +295,7 @@ config.get("bar", "foo") # "foo"
 
 ---
 
-<a href="../toolbox/config/config.py#L432"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L431"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_config`
 
@@ -326,7 +326,7 @@ config.get_config() # {"foo": "bar"}
 
 ---
 
-<a href="../toolbox/config/config.py#L349"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L348"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_option`
 
@@ -362,7 +362,7 @@ config.get_option("bar") # None
 
 ---
 
-<a href="../toolbox/config/config.py#L413"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L412"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_options`
 
@@ -393,7 +393,7 @@ config.get_options() # [{"name": "foo", "value": "bar", "default": None, ...}]
 
 ---
 
-<a href="../toolbox/config/config.py#L161"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L160"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `has`
 
@@ -429,7 +429,7 @@ config.has("bar") # False
 
 ---
 
-<a href="../toolbox/config/config.py#L137"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L136"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `keys`
 
@@ -465,7 +465,7 @@ print(list(keys)) # ["foo"]
 
 ---
 
-<a href="../toolbox/config/config.py#L248"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L247"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset`
 
@@ -503,7 +503,7 @@ config.reset("bar") # Create the option "bar" with the value None
 
 ---
 
-<a href="../toolbox/config/config.py#L480"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L479"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset_config`
 
@@ -534,7 +534,7 @@ config.get_config() # {"foo": None}
 
 ---
 
-<a href="../toolbox/config/config.py#L213"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L212"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set`
 
@@ -581,7 +581,7 @@ config.set("bar", "bar") # Create the option "bar" with the value "bar"
 
 ---
 
-<a href="../toolbox/config/config.py#L452"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L451"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_config`
 
@@ -622,7 +622,7 @@ config.set_config({"foo": "bar"})
 
 ---
 
-<a href="../toolbox/config/config.py#L370"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config.py#L369"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_option`
 
@@ -632,7 +632,7 @@ set_option(
     value: Any = None,
     default: Any = None,
     description: str = None,
-    mapper: Callable = <function passthrough at 0x101b45580>,
+    mapper: Callable = None,
     choices: list = None
 ) → None
 ```
@@ -647,7 +647,7 @@ Adds a configuration option.
  - <b>`value`</b> (Any, optional):  The initial value of the option. Defaults to None. 
  - <b>`default`</b> (Any, optional):  The value returned when there is no defined value. Defaults to None. 
  - <b>`description`</b> (str, optional):  A description for the option. Defaults to "". 
- - <b>`mapper`</b> (ConfigOptionMapper, optional):  A mapper function for casting the value. Defaults to passthrough. 
+ - <b>`mapper`</b> (ConfigOptionMapper, optional):  A mapper function for casting the value. Defaults to None. 
  - <b>`choices`</b> (Iterable, optional):  A list of possible values. 
 
 

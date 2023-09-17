@@ -1,11 +1,8 @@
 #!/bin/sh
 rm -rf docs
 lazydocs \
-    --ignored-modules toolbox.config.test \
-    --ignored-modules toolbox.data.test \
-    --ignored-modules toolbox.files.test \
-    --ignored-modules toolbox.logging.test \
-    --ignored-modules toolbox.testing.test \
+    --ignored-modules tests \
     --overview-file=README.md \
-    --validate .
+    --validate \
+    .
 rm docs/.pages

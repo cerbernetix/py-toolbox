@@ -30,7 +30,7 @@ print(age.get())  # 20
 
 ---
 
-<a href="../toolbox/config/config_option.py#L417"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L420"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `create_options`
 
@@ -125,7 +125,7 @@ __init__(
     value: 'Any' = None,
     default: 'Any' = None,
     description: 'str' = '',
-    mapper: 'ValueMapper' = <function passthrough at 0x101b45580>,
+    mapper: 'ValueMapper' = None,
     choices: 'Iterable' = None
 ) → None
 ```
@@ -142,7 +142,7 @@ The name is mandatory.
  - <b>`value`</b> (Any, optional):  The initial value of the option. Defaults to None. 
  - <b>`default`</b> (Any, optional):  The value returned when there is no defined value. Defaults to None. 
  - <b>`description`</b> (str, optional):  A description for the option. Defaults to "". 
- - <b>`mapper`</b> (ConfigOptionMapper, optional):  A mapper function for casting the value. Defaults to passthrough. 
+ - <b>`mapper`</b> (ConfigOptionMapper, optional):  A mapper function for casting the value. Defaults to None. 
  - <b>`choices`</b> (Iterable, optional):  A list of possible values. Defaults to None. 
 
 
@@ -242,7 +242,7 @@ The current value of the option.
 
 ---
 
-<a href="../toolbox/config/config_option.py#L378"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L381"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `cast`
 
@@ -266,7 +266,7 @@ Casts and format a value to what is expected by the config option.
 
 ---
 
-<a href="../toolbox/config/config_option.py#L182"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L185"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `copy`
 
@@ -298,7 +298,7 @@ print(name is name2) # False
 
 ---
 
-<a href="../toolbox/config/config_option.py#L233"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L236"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -333,7 +333,7 @@ print(name.get()) # "John"
 
 ---
 
-<a href="../toolbox/config/config_option.py#L209"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L212"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_dict`
 
@@ -362,7 +362,7 @@ print(name.get_dict()) # {"name": "foo", "value": "bar", "default": None, ...}
 
 ---
 
-<a href="../toolbox/config/config_option.py#L300"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L303"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset`
 
@@ -380,7 +380,7 @@ Resets the option to its default value.
 
 ---
 
-<a href="../toolbox/config/config_option.py#L256"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set`
 
@@ -429,7 +429,7 @@ print(name.get()) # "bob"
 
 ---
 
-<a href="../toolbox/config/config_option.py#L316"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L319"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_default`
 
@@ -476,7 +476,7 @@ print(name.get()) # ""
 
 ---
 
-<a href="../toolbox/config/config_option.py#L358"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/config/config_option.py#L361"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_description`
 
