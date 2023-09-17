@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+-   Move the tests to a dedicated folder outside of the source code. This will avoid polluting the exports.
+
+### Fixed
+
+-   Better default value for the config option mapper (None instead of a default mapper function).
+
 ## [0.7.0] - 2023-09-14
 
 ### Changed
