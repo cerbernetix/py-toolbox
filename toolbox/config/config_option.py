@@ -66,7 +66,7 @@ class ConfigOption:
         value: Any = None,
         default: Any = None,
         description: str = "",
-        mapper: ValueMapper = passthrough,
+        mapper: ValueMapper = None,
         choices: Iterable = None,
     ) -> None:
         """Creates a named configuration option.
@@ -82,7 +82,7 @@ class ConfigOption:
             description (str, optional): A description for the option.
             Defaults to "".
             mapper (ConfigOptionMapper, optional): A mapper function for casting the value.
-            Defaults to passthrough.
+            Defaults to None.
             choices (Iterable, optional): A list of possible values.
             Defaults to None.
 
@@ -104,6 +104,9 @@ class ConfigOption:
         """
         if not name:
             raise ValueError("The name is mandatory for a config option.")
+
+        if mapper is None:
+            mapper = passthrough
 
         if not callable(mapper):
             raise ValueError("A valid mapper is needed for casting the option's value.")
