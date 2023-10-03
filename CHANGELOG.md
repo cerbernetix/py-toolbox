@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   Script for running the unit tests and presenting the coverage.
+-   Script for applying the linter.
+-   Script for applying the formatting.
+
+### Fixed
+
+-   Correct the dependencies declaration.
+
 ## [0.8.0] - 2023-09-17
 
 ### Changed
