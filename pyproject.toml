@@ -1,14 +1,15 @@
 [build-system]
-requires = ["setuptools>=61.0", "requests>=2.31.0"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "py-toolbox"
-version = "0.8.0"
+version = "0.8.1"
 authors = [{ name = "Jean-Sébastien CONAN", email = "jsconan@gmail.com" }]
 description = "A set of utilities for Python projects"
 readme = "README.md"
 requires-python = ">=3.7"
+dependencies = ["requests>=2.31.0"]
 classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
@@ -18,3 +19,16 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/jsconan/py-toolbox"
 "Bug Tracker" = "https://github.com/jsconan/py-toolbox/issues"
+
+[project.optional-dependencies]
+linting = ['pylint==2.17.5']
+formatting = ['black==23.9.1']
+dev = ["pylint==2.17.5"]
+test = ["coverage==7.3.1"]
+
+[tool.pylint]
+max-line-length = 100
+disable = [
+  "R0903", # (too-few-public-methods)
+  "R0913", # (too-many-arguments)
+]
