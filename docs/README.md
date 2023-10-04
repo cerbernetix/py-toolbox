@@ -55,6 +55,7 @@
 - [`path.delete_path`](./toolbox.files.path.md#function-delete_path): Deletes the file or the folder at the given path.
 - [`path.get_application_name`](./toolbox.files.path.md#function-get_application_name): Gets the name of the application, based on the root folder.
 - [`path.get_application_path`](./toolbox.files.path.md#function-get_application_path): Gets the path to the application's root.
+- [`path.get_cache_path`](./toolbox.files.path.md#function-get_cache_path): Gets the path to a cache folder.
 - [`path.get_file_path`](./toolbox.files.path.md#function-get_file_path): Gets a full path for a file inside the application.
 - [`path.get_module_folder_path`](./toolbox.files.path.md#function-get_module_folder_path): Gets the path to the folder containing the given module.
 - [`path.get_module_path`](./toolbox.files.path.md#function-get_module_path): Gets the path to the given module.

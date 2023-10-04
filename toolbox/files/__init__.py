@@ -91,6 +91,7 @@ from toolbox.files.path import (
     delete_path,
     get_application_name,
     get_application_path,
+    get_cache_path,
     get_file_path,
     get_module_folder_path,
     get_module_path,
