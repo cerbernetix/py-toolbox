@@ -176,3 +176,33 @@ class TestFilePaths(unittest.TestCase):
                 result = path.delete_path(file_path)
                 self.assertFalse(result)
                 mock.assert_called_once_with(file_path)
+
+    def test_get_cache_path(self):
+        """Tests the helper get_cache_path()."""
+        mock_path = "cache"
+        cache_path = "~/.cache"
+        cache_folder = f"{cache_path}/foo"
+
+        with patch("os.path.expanduser", return_value=mock_path) as expanduser_mock:
+            self.assertEqual(path.get_cache_path(), mock_path)
+            expanduser_mock.assert_called_once_with(cache_path)
+
+        with patch("os.path.expanduser", return_value=mock_path) as expanduser_mock:
+            self.assertEqual(path.get_cache_path("foo"), mock_path)
+            expanduser_mock.assert_called_once_with(cache_folder)
+
+        with patch("os.path.expanduser", return_value=mock_path) as expanduser_mock:
+            with patch("os.path.exists", return_value=False) as mock_exists:
+                with patch("os.makedirs") as mock_makedirs:
+                    self.assertEqual(path.get_cache_path("foo", True), mock_path)
+                    mock_exists.assert_called_once_with(mock_path)
+                    mock_makedirs.assert_called_once_with(mock_path)
+                    expanduser_mock.assert_called_once_with(cache_folder)
+
+        with patch("os.path.expanduser", return_value=mock_path) as expanduser_mock:
+            with patch("os.path.exists", return_value=True) as mock_exists:
+                with patch("os.makedirs") as mock_makedirs:
+                    self.assertEqual(path.get_cache_path("foo", True), mock_path)
+                    mock_exists.assert_called_once_with(mock_path)
+                    mock_makedirs.assert_not_called()
+                    expanduser_mock.assert_called_once_with(cache_folder)

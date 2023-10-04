@@ -42,6 +42,9 @@ import os
 import sys
 from pathlib import PurePath
 
+# The patch to the cache folder
+CACHE_PATH = "~/.cache"
+
 
 def get_module_path(name: str) -> PurePath():
     """Gets the path to the given module.
@@ -226,3 +229,45 @@ def delete_path(path: str) -> bool:
 
     except OSError:
         return False
+
+
+def get_cache_path(name: str = None, create: bool = False) -> str:
+    """Gets the path to a cache folder.
+
+    Without any argument, it will return with the root of the cache folder.
+
+    When the name parameter is set, it will be used as a subfolder.
+
+    The create parameter allows to make sure the path exists.
+
+    Args:
+        name (str, optional): A name for a subfolder. Defaults to None.
+        create (bool, optional): When `True` ensures that the folder exists. Defaults to False.
+
+    Raises:
+        OSError: If the path cannot be created.
+
+    Returns:
+        str: The path to the cache folder.
+
+    Examples:
+    ```python
+    from toolbox.files import get_cache_path
+
+    # Get the cache root folder
+    cache = get_cache_path()
+
+    # Get a cache folder
+    cache = get_cache_path("foo")
+
+    # Get a cache folder, making sure the path exists
+    cache = get_cache_path("foo", True)
+    ```
+    """
+    cache_path = os.path.join(CACHE_PATH, name) if name is not None else CACHE_PATH
+    cache_path = os.path.expanduser(cache_path)
+
+    if create and not os.path.exists(cache_path):
+        os.makedirs(cache_path)
+
+    return cache_path
