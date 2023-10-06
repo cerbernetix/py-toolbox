@@ -4,10 +4,12 @@ It contains:
 - Value mappers:
     - `passthrough(value)` - A passthrough mapper. It returns the value as it is.
     - `boolean(value)` - Converts a value to a boolean value.
+- `ValueExtractor()` - A tool for extracting values from a set of possible entries.
 
 Examples:
 ```python
 from toolbox.data import mappers
+from toolbox.data import ValueExtractor
 
 # Passthrough a value
 print(mappers.passthrough("foo")) # "foo"
@@ -20,6 +22,17 @@ print(mappers.boolean("1")) # True
 print(mappers.boolean("False")) # False
 print(mappers.boolean("Off")) # False
 print(mappers.boolean("0")) # False
+
+# Extracts a date from various possible entries
+extractor = ValueExtractor(["date", "time", "day"])
+data = [{"date": "2023-10-06"}, {"day": "2023-02-20"}, {"time": "2023-06-12"}]
+print([extractor.extract(row) for row in data]) # ["2023-10-06", "2023-02-20", "2023-06-12"]
+
+# Extracts a number from various possible entries, casting it to an integer
+extractor = ValueExtractor(["value", "val", "number"], int)
+data = [{"val": "42"}, {"value": 12, {"number": 100}]
+print([extractor.extract(row) for row in data]) # [42, 12, 100]
 ```
 """
 from toolbox.data.mappers import ValueMapper, boolean, passthrough
+from toolbox.data.value_extractor import ValueExtractor
