@@ -15,6 +15,13 @@ print(mappers.boolean("1")) # True
 print(mappers.boolean("False")) # False
 print(mappers.boolean("Off")) # False
 print(mappers.boolean("0")) # False
+
+# Gets a float
+mapper = mappers.decimal(",")
+print(mapper("3,14")) # 3.14
+
+mapper = mappers.decimal(",", ".")
+print(mapper("3.753.323,184")) # 3753323.184
 ```
 """
 from typing import Any, Protocol
@@ -92,3 +99,40 @@ def boolean(value: Any) -> bool:
         return False
 
     return bool(value)
+
+
+def decimal(separator: str = None, thousands: str = None) -> ValueMapper:
+    """Creates a mapper for casting decimal values to floats.
+
+    Args:
+        separator (str, optional): The decimal separator. Defaults to None.
+        thousands (str, optional): An optional thousands separator. Defaults to None.
+
+    Returns:
+        ValueMapper: Returns a mapper function that can be used for casting a decimal
+        value into a float.
+
+    Examples:
+    ```python
+    from toolbox.data import decimal
+
+    mapper = decimal(",")
+    print(mapper("3,14")) # 3.14
+
+    mapper = decimal(",", ".")
+    print(mapper("3.753.323,184")) # 3753323.184
+    ```
+    """
+
+    def mapper(value: str) -> float:
+        value = str(value)
+
+        if thousands is not None:
+            value = value.replace(thousands, "")
+
+        if separator is not None:
+            value = value.replace(separator, ".")
+
+        return float(value)
+
+    return mapper
