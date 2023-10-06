@@ -22,12 +22,19 @@ print(mappers.boolean("1")) # True
 print(mappers.boolean("False")) # False
 print(mappers.boolean("Off")) # False
 print(mappers.boolean("0")) # False
+
+# Gets a float
+mapper = mappers.decimal(",")
+print(mapper("3,14")) # 3.14
+
+mapper = mappers.decimal(",", ".")
+print(mapper("3.753.323,184")) # 3753323.184
 ``` 
 
 
 ---
 
-<a href="../toolbox/data/mappers.py#L39"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/data/mappers.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `passthrough`
 
@@ -64,7 +71,7 @@ print(passthrough({})) # {}
 
 ---
 
-<a href="../toolbox/data/mappers.py#L61"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/data/mappers.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `boolean`
 
@@ -112,7 +119,46 @@ print(boolean({})) # False
 
 ---
 
-<a href="../toolbox/data/mappers.py#L23"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/data/mappers.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+## <kbd>function</kbd> `decimal`
+
+```python
+decimal(separator: str = None, thousands: str = None) → ValueMapper
+```
+
+Creates a mapper for casting decimal values to floats. 
+
+
+
+**Args:**
+ 
+ - <b>`separator`</b> (str, optional):  The decimal separator. Defaults to None. 
+ - <b>`thousands`</b> (str, optional):  An optional thousands separator. Defaults to None. 
+
+
+
+**Returns:**
+ 
+ - <b>`ValueMapper`</b>:  Returns a mapper function that can be used for casting a decimal value into a float. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.data import decimal
+
+mapper = decimal(",")
+print(mapper("3,14")) # 3.14
+
+mapper = decimal(",", ".")
+print(mapper("3.753.323,184")) # 3753323.184
+``` 
+
+
+---
+
+<a href="../toolbox/data/mappers.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `ValueMapper`
 The interface for a value mapper. 

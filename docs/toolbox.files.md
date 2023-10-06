@@ -33,6 +33,7 @@ It contains:
     - `get_file_path(filename, package)` - Gets the path to a file inside the application. 
     - `get_module_folder_path(module)` - Gets the path to a module's parent folder. 
     - `get_module_path(module)` - Gets the path to a module. 
+    - `get_cache_path(name, create)` - Gets the path to a cache folder. 
 
 
 
