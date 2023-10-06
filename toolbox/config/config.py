@@ -385,7 +385,7 @@ class Config:
             Defaults to None.
             description (str, optional): A description for the option.
             Defaults to "".
-            mapper (ConfigOptionMapper, optional): A mapper function for casting the value.
+            mapper (ValueMapper, optional): A mapper function for casting the value.
             Defaults to None.
             choices (Iterable, optional): A list of possible values.
 

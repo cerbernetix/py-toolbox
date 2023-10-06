@@ -42,7 +42,7 @@ class ConfigOption:
         value (Any, readonly): The current value of the option.
         default (Any, readonly): The default value for the option.
         description (str, readonly): A description of the option.
-        mapper (ConfigOptionMapper, readonly): The mapper applied to cast and format the value.
+        mapper (ValueMapper, readonly): The mapper applied to cast and format the value.
         choices (tuple, readonly): The list of possible values for the option.
 
 
@@ -81,7 +81,7 @@ class ConfigOption:
             Defaults to None.
             description (str, optional): A description for the option.
             Defaults to "".
-            mapper (ConfigOptionMapper, optional): A mapper function for casting the value.
+            mapper (ValueMapper, optional): A mapper function for casting the value.
             Defaults to None.
             choices (Iterable, optional): A list of possible values.
             Defaults to None.
@@ -169,7 +169,7 @@ class ConfigOption:
         """The mapper applied to cast and format the value.
 
         Returns:
-            ConfigOptionMapper: The mapper applied to cast and format the value.
+            ValueMapper: The mapper applied to cast and format the value.
         """
         return self._mapper
 
