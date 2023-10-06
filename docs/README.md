@@ -42,6 +42,7 @@
 
 - [`config_option.create_options`](./toolbox.config.config_option.md#function-create_options): Create options from a list of descriptors.
 - [`mappers.boolean`](./toolbox.data.mappers.md#function-boolean): Converts a value to a boolean value.
+- [`mappers.decimal`](./toolbox.data.mappers.md#function-decimal): Creates a mapper for casting decimal values to floats.
 - [`mappers.passthrough`](./toolbox.data.mappers.md#function-passthrough): A passthrough mapper. It returns the value as it is.
 - [`csv_file.read_csv_file`](./toolbox.files.csv_file.md#function-read_csv_file): Reads a CSV content from a file.
 - [`csv_file.read_zip_csv`](./toolbox.files.csv_file.md#function-read_zip_csv): Reads a CSV content from a Zip.

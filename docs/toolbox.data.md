@@ -9,7 +9,8 @@ It contains:
 - Value mappers: 
     - `passthrough(value)` - A passthrough mapper. It returns the value as it is. 
     - `boolean(value)` - Converts a value to a boolean value. 
-- `ValueExtractor()` - A tool for extracting values from a set of possible entries. 
+    - `decimal(separator, thousands)` - Creates a mapper for casting decimal values to floats. 
+- `ValueExtractor(entries, mapper)` - A tool for extracting values from a set of possible entries. 
 
 
 
@@ -29,6 +30,13 @@ print(mappers.boolean("1")) # True
 print(mappers.boolean("False")) # False
 print(mappers.boolean("Off")) # False
 print(mappers.boolean("0")) # False
+
+# Gets a float
+mapper = mappers.decimal(",")
+print(mapper("3,14")) # 3.14
+
+mapper = mappers.decimal(",", ".")
+print(mapper("3.753.323,184")) # 3753323.184
 
 # Extracts a date from various possible entries
 extractor = ValueExtractor(["date", "time", "day"])
