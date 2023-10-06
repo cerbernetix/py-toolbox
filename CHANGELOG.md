@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   `get_cache_path()`: Gets the path to a cache folder.
--   `ValueExtractor()` - A tool for extracting values from a set of possible entries.
+-   `get_cache_path(name, create)` - Gets the path to a cache folder.
+-   `ValueExtractor(entries, mapper)` - A tool for extracting values from a set of possible entries.
+-   `decimal(separator, thousands)` - Creates a mapper for casting decimal values to floats.
 
 ## [0.8.1] - 2023-10-03
 
