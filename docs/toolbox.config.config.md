@@ -647,7 +647,7 @@ Adds a configuration option.
  - <b>`value`</b> (Any, optional):  The initial value of the option. Defaults to None. 
  - <b>`default`</b> (Any, optional):  The value returned when there is no defined value. Defaults to None. 
  - <b>`description`</b> (str, optional):  A description for the option. Defaults to "". 
- - <b>`mapper`</b> (ConfigOptionMapper, optional):  A mapper function for casting the value. Defaults to None. 
+ - <b>`mapper`</b> (ValueMapper, optional):  A mapper function for casting the value. Defaults to None. 
  - <b>`choices`</b> (Iterable, optional):  A list of possible values. 
 
 

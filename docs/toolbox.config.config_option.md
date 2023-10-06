@@ -95,7 +95,7 @@ Options can have a description, and can be constrained to a list of possible val
  - <b>`value`</b> (Any, readonly):  The current value of the option. 
  - <b>`default`</b> (Any, readonly):  The default value for the option. 
  - <b>`description`</b> (str, readonly):  A description of the option. 
- - <b>`mapper`</b> (ConfigOptionMapper, readonly):  The mapper applied to cast and format the value. 
+ - <b>`mapper`</b> (ValueMapper, readonly):  The mapper applied to cast and format the value. 
  - <b>`choices`</b> (tuple, readonly):  The list of possible values for the option. 
 
 
@@ -142,7 +142,7 @@ The name is mandatory.
  - <b>`value`</b> (Any, optional):  The initial value of the option. Defaults to None. 
  - <b>`default`</b> (Any, optional):  The value returned when there is no defined value. Defaults to None. 
  - <b>`description`</b> (str, optional):  A description for the option. Defaults to "". 
- - <b>`mapper`</b> (ConfigOptionMapper, optional):  A mapper function for casting the value. Defaults to None. 
+ - <b>`mapper`</b> (ValueMapper, optional):  A mapper function for casting the value. Defaults to None. 
  - <b>`choices`</b> (Iterable, optional):  A list of possible values. Defaults to None. 
 
 
@@ -212,7 +212,7 @@ The mapper applied to cast and format the value.
 
 **Returns:**
  
- - <b>`ConfigOptionMapper`</b>:  The mapper applied to cast and format the value. 
+ - <b>`ValueMapper`</b>:  The mapper applied to cast and format the value. 
 
 ---
 

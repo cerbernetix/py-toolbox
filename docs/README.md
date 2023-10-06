@@ -10,6 +10,7 @@
 - [`toolbox.config.config_option`](./toolbox.config.config_option.md#module-toolboxconfigconfig_option): A class for handling config options.
 - [`toolbox.data`](./toolbox.data.md#module-toolboxdata): A collection of data utilities.
 - [`toolbox.data.mappers`](./toolbox.data.mappers.md#module-toolboxdatamappers): A collection of data mappers.
+- [`toolbox.data.value_extractor`](./toolbox.data.value_extractor.md#module-toolboxdatavalue_extractor): A tool for extracting values from a set of possible entries.
 - [`toolbox.files`](./toolbox.files.md#module-toolboxfiles): The `files` package provides several utilities for handling files.
 - [`toolbox.files.csv_file`](./toolbox.files.csv_file.md#module-toolboxfilescsv_file): A simple API for reading and writing CSV files.
 - [`toolbox.files.file`](./toolbox.files.file.md#module-toolboxfilesfile): A collection of utilities for accessing files.
@@ -29,6 +30,7 @@
 - [`config.Config`](./toolbox.config.config.md#class-config): Handles a configuration.
 - [`config_option.ConfigOption`](./toolbox.config.config_option.md#class-configoption): Handles a config option.
 - [`mappers.ValueMapper`](./toolbox.data.mappers.md#class-valuemapper): The interface for a value mapper.
+- [`value_extractor.ValueExtractor`](./toolbox.data.value_extractor.md#class-valueextractor): Extracts a value from a set of possible entries.
 - [`csv_file.CSVFile`](./toolbox.files.csv_file.md#class-csvfile): Offers a simple API for reading and writing CSV files.
 - [`file_manager.FileManager`](./toolbox.files.file_manager.md#class-filemanager): Offers a simple API for reading and writing files.
 - [`json_file.JSONFile`](./toolbox.files.json_file.md#class-jsonfile): Offers a simple API for reading and writing JSON files.
