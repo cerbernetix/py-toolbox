@@ -33,6 +33,7 @@ from time import time
 from typing import Iterator
 
 from toolbox.files.file import get_file_mode
+from toolbox.files.path import create_file_path
 
 
 class FileManager:
@@ -518,6 +519,30 @@ class FileManager:
         os.remove(self.filename)
 
         return True
+
+    def create_path(self) -> bool:
+        """Creates the parent path of the file.
+
+        Note: exceptions are caught internally, the function will always
+        return either with `True` in case of success, or `False` otherwise.
+
+        Returns:
+            bool: `True` if the path has been created, `False` otherwise.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename"')
+
+        # Create the parent folder to the file
+        if file.create_path():
+            print('The path to the parent folder has been created!')
+        else:
+            print('The path has not been created!')
+        ```
+        """
+        return create_file_path(self.filename)
 
     def __call__(
         self,
