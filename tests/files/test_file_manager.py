@@ -517,6 +517,35 @@ class TestFileManager(unittest.TestCase):
                 self.assertTrue(file.delete(True))
                 mock.assert_called_once()
 
+    def test_create_path(self):
+        """Tests that the path to the file is created."""
+        folder_path = "/root/folder"
+        file_path = "/root/folder/file"
+
+        file = FileManager(file_path)
+
+        with patch("os.path.isdir", return_value=True) as mock:
+            result = file.create_path()
+            self.assertTrue(result)
+            mock.assert_called_once_with(folder_path)
+
+        with patch("os.path.isdir", return_value=False) as mock_isdir:
+            with patch("os.makedirs") as mock_makedirs:
+                result = file.create_path()
+                self.assertTrue(result)
+                mock_isdir.assert_called_once_with(folder_path)
+                mock_makedirs.assert_called_once_with(folder_path)
+
+        with patch("os.path.isdir", return_value=False) as mock_isdir:
+            with patch("os.makedirs", side_effect=OSError("error")) as mock_makedirs:
+                result = file.create_path()
+                self.assertFalse(result)
+                mock_isdir.assert_called_once_with(folder_path)
+                mock_makedirs.assert_called_once_with(folder_path)
+                mock_makedirs.assert_called_once_with(folder_path)
+                mock_makedirs.assert_called_once_with(folder_path)
+                mock_makedirs.assert_called_once_with(folder_path)
+
     @patch("builtins.open")
     def test_call(self, mock_file_open):
         """Test a file can be opened by calling the instance."""

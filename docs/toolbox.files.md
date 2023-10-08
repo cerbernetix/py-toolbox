@@ -74,6 +74,7 @@ csv_data = file.read_zip_csv(data)
 **Global Variables**
 ---------------
 - **file**
+- **path**
 - **file_manager**
 - **csv_file**
 - **CSV_DIALECT**
@@ -81,7 +82,6 @@ csv_data = file.read_zip_csv(data)
 - **json_file**
 - **JSON_ENCODING**
 - **JSON_INDENT**
-- **path**
 - **pickle_file**
 
 

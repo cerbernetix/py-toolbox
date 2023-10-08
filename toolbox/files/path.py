@@ -167,7 +167,7 @@ def create_file_path(path: str) -> bool:
     from toolbox.files import create_file_path
 
     # Create the parent folder to the file
-    if create_file_path('path/to/file):
+    if create_file_path('path/to/file'):
         print('The path to the parent folder has been created!')
     else:
         print('The path has not been created!')
@@ -204,13 +204,13 @@ def delete_path(path: str) -> bool:
     from toolbox.files import delete_path
 
     # Delete a file
-    if delete_path('path/to/file):
+    if delete_path('path/to/file'):
         print('The file has been deleted!')
     else:
         print('Cannot delete the file!')
 
     # Delete a folder
-    if delete_path('path/to/folder):
+    if delete_path('path/to/folder'):
         print('The folder has been deleted!')
     else:
         print('Cannot delete the folder, is it empty?')
