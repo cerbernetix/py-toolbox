@@ -36,7 +36,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L38"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L39"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `FileManager`
 Offers a simple API for reading and writing files. 
@@ -74,7 +74,7 @@ with file(create=True):
 content = file.read_file()
 ``` 
 
-<a href="../toolbox/files/file_manager.py#L73"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L74"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -293,7 +293,7 @@ size = file.size
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L330"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L331"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -331,7 +331,42 @@ file.close()
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L493"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L523"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+### <kbd>method</kbd> `create_path`
+
+```python
+create_path() → bool
+```
+
+Creates the parent path of the file. 
+
+Note: exceptions are caught internally, the function will always return either with `True` in case of success, or `False` otherwise. 
+
+
+
+**Returns:**
+ 
+ - <b>`bool`</b>:  `True` if the path has been created, `False` otherwise. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename"')
+
+# Create the parent folder to the file
+if file.create_path():
+    print('The path to the parent folder has been created!')
+else:
+    print('The path has not been created!')
+``` 
+
+---
+
+<a href="../toolbox/files/file_manager.py#L494"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete`
 
@@ -370,7 +405,7 @@ file.delete()
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L473"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L474"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `exists`
 
@@ -402,7 +437,7 @@ if file.exists():
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L270"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L271"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `open`
 
@@ -463,7 +498,7 @@ data = [dat for dat in file]
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L413"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L414"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -504,7 +539,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L361"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L362"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -543,7 +578,7 @@ data = file.read_file()
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L442"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L443"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -589,7 +624,7 @@ with file(create=True):
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L386"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L387"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
