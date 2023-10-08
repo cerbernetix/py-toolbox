@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `ValueExtractor(entries, mapper)` - A tool for extracting values from a set of possible entries.
 -   `decimal(separator, thousands)` - Creates a mapper for casting decimal values to floats.
 -   `Weekday(day)` - Gets the date of a weekday given a particular date.
+-   `FileManager.create_path()` - Creates the parent path of the file.
 
 ## [0.8.1] - 2023-10-03
 
