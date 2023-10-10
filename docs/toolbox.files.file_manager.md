@@ -293,6 +293,68 @@ size = file.size
 
 ---
 
+<a href="../toolbox/files/file_manager.py#L494"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+### <kbd>method</kbd> `check`
+
+```python
+check(
+    must_exist: 'bool' = None,
+    min_time: 'int' = None,
+    max_time: 'int' = None,
+    min_age: 'int' = None,
+    max_age: 'int' = None,
+    min_size: 'int' = None,
+    max_size: 'int' = None
+) → bool
+```
+
+Tells if the file is valid with respect to the specified criteria. 
+
+
+
+**Args:**
+ 
+ - <b>`must_exist`</b> (bool, optional):  Should the file exist (True) or not (False). Defaults to None. 
+ - <b>`min_time`</b> (int, optional):  The file must be created after the given timestamp. Defaults to None. 
+ - <b>`max_time`</b> (int, optional):  The file must be created before the given timestamp. Defaults to None. 
+ - <b>`min_age`</b> (int, optional):  The file must be older than the given age in seconds. Defaults to None. 
+ - <b>`max_age`</b> (int, optional):  The file must be younger than the given age in seconds. Defaults to None. 
+ - <b>`min_size`</b> (int, optional):  The file must be greater than the given size in bytes. Defaults to None. 
+ - <b>`max_size`</b> (int, optional):  The file must be smaller than the given size in bytes. Defaults to None. 
+
+
+
+**Returns:**
+ 
+ - <b>`bool`</b>:  Returns True if the file matches the specified criteria, otherwise, False. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.files import FileManager
+
+file = FileManager('path/to/filename"')
+
+# Check the file is not too old
+if file.check(max_age=14400):
+    print('The file is still up to date.')
+else:
+    print('The file must be updated!')
+
+# Check the file is not too big
+if file.check(max_size=4096):
+    print('The file can accept more data.')
+else:
+    print('The file must be trimmed!')
+``` 
+
+# Check the file has been created before a given date if file.check(min_time=datetime(2023, 10, 10).timestamp()): print('The file has been created before.') else: print('The file has been created after!') ```
+
+
+---
+
 <a href="../toolbox/files/file_manager.py#L331"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
@@ -331,7 +393,7 @@ file.close()
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L523"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L626"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create_path`
 
@@ -366,7 +428,7 @@ else:
 
 ---
 
-<a href="../toolbox/files/file_manager.py#L494"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../toolbox/files/file_manager.py#L597"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete`
 
