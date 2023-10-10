@@ -124,7 +124,10 @@ def decimal(separator: str = None, thousands: str = None) -> ValueMapper:
     ```
     """
 
-    def mapper(value: str) -> float:
+    def mapper(value: str | float | int) -> float:
+        if isinstance(value, (float | int)):
+            return value
+
         value = str(value)
 
         if thousands is not None:

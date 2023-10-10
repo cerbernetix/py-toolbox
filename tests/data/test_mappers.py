@@ -62,6 +62,8 @@ class TestDataMappers(unittest.TestCase):
     @test_cases(
         [
             ["Default", None, None, "3.14", 3.14],
+            ["Float", None, None, 3.14, 3.14],
+            ["Int", None, None, 42, 42],
             ["Comma", ",", None, "3,14", 3.14],
             ["Thousands", ",", ".", "3.753.323,184", 3753323.184],
         ]
