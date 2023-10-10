@@ -1,11 +1,18 @@
 """Test the base class for reading and writing files."""
+import datetime
 import unittest
 from time import time
 from unittest.mock import Mock, patch
 
 from toolbox.files import FileManager
+from toolbox.testing import test_cases
 
 # pylint: disable=protected-access
+
+PREVIOUS = datetime.datetime(2023, 10, 9).timestamp()
+CURRENT = datetime.datetime(2023, 10, 10).timestamp()
+NEXT = datetime.datetime(2023, 10, 11).timestamp()
+DELAY = 60 * 60 * 12
 
 
 class TestFileManager(unittest.TestCase):
@@ -493,6 +500,175 @@ class TestFileManager(unittest.TestCase):
         # The file does not exist
         with patch("os.path.exists", return_value=False):
             self.assertFalse(file.exists())
+
+    @patch("os.path.getsize", return_value=1024)
+    @patch("os.path.getmtime", return_value=CURRENT)
+    @test_cases(
+        [
+            {
+                "_": "None, exist",
+                "params": {},
+                "exist": True,
+                "expected": True,
+            },
+            {
+                "_": "None, not exist",
+                "params": {},
+                "exist": False,
+                "expected": True,
+            },
+            {
+                "_": "Must exist, exist",
+                "params": {"must_exist": True},
+                "exist": True,
+                "expected": True,
+            },
+            {
+                "_": "Must exist, not exist",
+                "params": {"must_exist": True},
+                "exist": False,
+                "expected": False,
+            },
+            {
+                "_": "Must not exist, exist",
+                "params": {"must_exist": False},
+                "exist": True,
+                "expected": False,
+            },
+            {
+                "_": "Must not exist, not exist",
+                "params": {"must_exist": False},
+                "exist": False,
+                "expected": True,
+            },
+            {
+                "_": "Min time OK, exist",
+                "params": {"min_time": PREVIOUS},
+                "exist": True,
+                "expected": True,
+            },
+            {
+                "_": "Min time NOK, exist",
+                "params": {"min_time": NEXT},
+                "exist": True,
+                "expected": False,
+            },
+            {
+                "_": "Min time, not exist",
+                "params": {"min_time": PREVIOUS},
+                "exist": False,
+                "expected": False,
+            },
+            {
+                "_": "Max time OK, exist",
+                "params": {"max_time": NEXT},
+                "exist": True,
+                "expected": True,
+            },
+            {
+                "_": "Max time NOK, exist",
+                "params": {"max_time": PREVIOUS},
+                "exist": True,
+                "expected": False,
+            },
+            {
+                "_": "Max time, not exist",
+                "params": {"max_time": NEXT},
+                "exist": False,
+                "expected": False,
+            },
+            {
+                "_": "Min age OK, exist",
+                "params": {"min_age": DELAY},
+                "exist": True,
+                "expected": True,
+                "today": NEXT,
+            },
+            {
+                "_": "Min age NOK, exist",
+                "params": {"min_age": DELAY},
+                "exist": True,
+                "expected": False,
+                "today": CURRENT,
+            },
+            {
+                "_": "Min age, not exist",
+                "params": {"min_age": DELAY},
+                "exist": False,
+                "expected": False,
+                "today": PREVIOUS,
+            },
+            {
+                "_": "Max age OK, exist",
+                "params": {"max_age": DELAY},
+                "exist": True,
+                "expected": True,
+                "today": PREVIOUS,
+            },
+            {
+                "_": "Max age NOK, exist",
+                "params": {"max_age": DELAY},
+                "exist": True,
+                "expected": False,
+                "today": NEXT,
+            },
+            {
+                "_": "Max age, not exist",
+                "params": {"max_age": DELAY},
+                "exist": False,
+                "expected": False,
+                "today": PREVIOUS,
+            },
+            {
+                "_": "Min size OK, exist",
+                "params": {"min_size": 1000},
+                "exist": True,
+                "expected": True,
+            },
+            {
+                "_": "Min size NOK, exist",
+                "params": {"min_size": 2000},
+                "exist": True,
+                "expected": False,
+            },
+            {
+                "_": "Min size, not exist",
+                "params": {"min_size": 1000},
+                "exist": False,
+                "expected": False,
+            },
+            {
+                "_": "Max size OK, exist",
+                "params": {"max_size": 2000},
+                "exist": True,
+                "expected": True,
+            },
+            {
+                "_": "Max size NOK, exist",
+                "params": {"max_size": 1000},
+                "exist": True,
+                "expected": False,
+            },
+            {
+                "_": "Max size, not exist",
+                "params": {"max_size": 2000},
+                "exist": False,
+                "expected": False,
+            },
+        ]
+    )
+    def test_check(
+        self, _size_mock, _time_mock, _, params, exist, expected, today=CURRENT
+    ):
+        """Tests that the file is valid with respect to the specified criteria."""
+        file_path = "/root/folder/file"
+
+        file = FileManager(file_path)
+
+        # The file exists
+        with patch("time.time", return_value=today):
+            with patch("os.path.exists", return_value=exist):
+                self.assertEqual(file.check(**params), expected)
 
     def test_delete(self):
         """Tests that the file is deleted."""

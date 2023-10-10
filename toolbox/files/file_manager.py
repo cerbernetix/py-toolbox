@@ -28,8 +28,8 @@ with file:
 from __future__ import annotations
 
 import os
+import time
 from pathlib import PurePath
-from time import time
 from typing import Iterator
 
 from toolbox.files.file import get_file_mode
@@ -266,7 +266,7 @@ class FileManager:
         if not self.exists():
             return 0
 
-        return time() - os.path.getmtime(self.filename)
+        return time.time() - os.path.getmtime(self.filename)
 
     def open(
         self,
@@ -490,6 +490,109 @@ class FileManager:
         ```
         """
         return os.path.exists(self.filename)
+
+    def check(
+        self,
+        must_exist: bool = None,
+        min_time: int = None,
+        max_time: int = None,
+        min_age: int = None,
+        max_age: int = None,
+        min_size: int = None,
+        max_size: int = None,
+    ) -> bool:
+        """Tells if the file is valid with respect to the specified criteria.
+
+        Args:
+            must_exist (bool, optional): Should the file exist (True) or not (False).
+            Defaults to None.
+            min_time (int, optional): The file must be created after the given timestamp.
+            Defaults to None.
+            max_time (int, optional): The file must be created before the given timestamp.
+            Defaults to None.
+            min_age (int, optional): The file must be older than the given age in seconds.
+            Defaults to None.
+            max_age (int, optional): The file must be younger than the given age in seconds.
+            Defaults to None.
+            min_size (int, optional): The file must be greater than the given size in bytes.
+            Defaults to None.
+            max_size (int, optional): The file must be smaller than the given size in bytes.
+            Defaults to None.
+
+        Returns:
+            bool: Returns True if the file matches the specified criteria, otherwise, False.
+
+        Examples:
+        ```python
+        from toolbox.files import FileManager
+
+        file = FileManager('path/to/filename"')
+
+        # Check the file is not too old
+        if file.check(max_age=14400):
+            print('The file is still up to date.')
+        else:
+            print('The file must be updated!')
+
+        # Check the file is not too big
+        if file.check(max_size=4096):
+            print('The file can accept more data.')
+        else:
+            print('The file must be trimmed!')
+        ```
+
+        # Check the file has been created before a given date
+        if file.check(min_time=datetime(2023, 10, 10).timestamp()):
+            print('The file has been created before.')
+        else:
+            print('The file has been created after!')
+        ```
+        """
+        exist = self.exists()
+
+        if must_exist is False:
+            return not exist
+
+        if must_exist and not exist:
+            return False
+
+        if min_time is not None or max_time is not None:
+            if not exist:
+                return False
+
+            file_time = self.date
+
+            if min_time is not None and file_time <= min_time:
+                return False
+
+            if max_time is not None and file_time >= max_time:
+                return False
+
+        if min_age is not None or max_age is not None:
+            if not exist:
+                return False
+
+            file_age = self.age
+
+            if min_age is not None and file_age <= min_age:
+                return False
+
+            if max_age is not None and file_age >= max_age:
+                return False
+
+        if min_size is not None or max_size is not None:
+            if not exist:
+                return False
+
+            file_size = self.size
+
+            if min_size is not None and file_size <= min_size:
+                return False
+
+            if max_size is not None and file_size >= max_size:
+                return False
+
+        return True
 
     def delete(self, must_exist: bool = False) -> bool:
         """Deletes the file.
