@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `decimal(separator, thousands)` - Creates a mapper for casting decimal values to floats.
 -   `Weekday(day)` - Gets the date of a weekday given a particular date.
 -   `FileManager.create_path()` - Creates the parent path of the file.
+-   `FileManager.check(...)` - Tells if the file is valid with respect to the specified criteria.
 
 ## [0.8.1] - 2023-10-03
 
