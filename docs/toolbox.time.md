@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/time/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.time`
 A collection of time related utilities. 

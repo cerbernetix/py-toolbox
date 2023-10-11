@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/files/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files`
 The `files` package provides several utilities for handling files. 

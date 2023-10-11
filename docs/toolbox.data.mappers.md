@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/data/mappers.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/mappers.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.data.mappers`
 A collection of data mappers. 
@@ -34,7 +34,7 @@ print(mapper("3.753.323,184")) # 3753323.184
 
 ---
 
-<a href="../toolbox/data/mappers.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/mappers.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `passthrough`
 
@@ -71,7 +71,7 @@ print(passthrough({})) # {}
 
 ---
 
-<a href="../toolbox/data/mappers.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/mappers.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `boolean`
 
@@ -119,7 +119,7 @@ print(boolean({})) # False
 
 ---
 
-<a href="../toolbox/data/mappers.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/mappers.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `decimal`
 
@@ -158,7 +158,7 @@ print(mapper("3.753.323,184")) # 3753323.184
 
 ---
 
-<a href="../toolbox/data/mappers.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/mappers.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `ValueMapper`
 The interface for a value mapper. 

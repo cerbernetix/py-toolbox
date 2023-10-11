@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+-   Move the package to the `src` directory.
+
 ### Added
 
 -   `get_cache_path(name, create)` - Gets the path to a cache folder.

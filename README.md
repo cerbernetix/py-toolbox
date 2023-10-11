@@ -57,6 +57,7 @@ cd py-toolbox
 python3 -m venv ".venv"
 source "./venv/bin/activate"
 pip install -r requirements.txt
+pip install -e .
 ```
 
 **Note:** For deactivating the virtual env, call the command `deactivate`.

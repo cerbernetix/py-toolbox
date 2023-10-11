@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/logging/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/logging/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.logging`
 The `logging` package provides several utilities for logging purpose. 

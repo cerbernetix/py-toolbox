@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/files/csv_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files.csv_file`
 A simple API for reading and writing CSV files. 
@@ -57,7 +57,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L475"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L475"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_csv_file`
 
@@ -123,7 +123,7 @@ for row in read_csv_file('path/to/file', iterator=True):
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L547"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L547"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_csv_file`
 
@@ -189,7 +189,7 @@ write_csv_file('path/to/file', csv_data, encoding='UTF-8', dialect='excel')
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L620"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L620"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_zip_csv`
 
@@ -265,7 +265,7 @@ with open('path/to/file.zip', 'rb') as file:
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L93"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L93"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `CSVFile`
 Offers a simple API for reading and writing CSV files. 
@@ -310,7 +310,7 @@ with file(create=True):
 csv = file.read_file()
 ``` 
 
-<a href="../toolbox/files/csv_file.py#L134"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L134"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -566,7 +566,7 @@ size = file.size
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L263"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L263"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -604,7 +604,7 @@ file.close()
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L363"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L363"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -648,7 +648,7 @@ csv_data = [row for row in file]
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -699,7 +699,7 @@ for row in file.read_file(iterator=True):
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L414"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L414"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -746,7 +746,7 @@ with file(create=True):
 
 ---
 
-<a href="../toolbox/files/csv_file.py#L332"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/csv_file.py#L332"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 

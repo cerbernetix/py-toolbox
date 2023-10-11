@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/files/json_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/json_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files.json_file`
 A simple API for reading and writing JSON files. 
@@ -49,7 +49,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/json_file.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/json_file.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_json_file`
 
@@ -91,7 +91,7 @@ json_data = read_json_file('path/to/file', encoding='UTF-8')
 
 ---
 
-<a href="../toolbox/files/json_file.py#L249"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/json_file.py#L249"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_json_file`
 
@@ -146,7 +146,7 @@ write_json_file('path/to/file', json_data, encoding='UTF-8', indent=2)
 
 ---
 
-<a href="../toolbox/files/json_file.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/json_file.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `JSONFile`
 Offers a simple API for reading and writing JSON files. 
@@ -187,7 +187,7 @@ with file(create=True):
 json = file.read_file()
 ``` 
 
-<a href="../toolbox/files/json_file.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/json_file.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -424,7 +424,7 @@ size = file.size
 
 ---
 
-<a href="../toolbox/files/json_file.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/json_file.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -464,7 +464,7 @@ with file:
 
 ---
 
-<a href="../toolbox/files/json_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/json_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 

@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/time/weekday.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.time.weekday`
 A tool for getting the date of a weekday. 
@@ -47,7 +47,7 @@ print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 
 ---
 
-<a href="../toolbox/time/weekday.py#L45"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L45"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Weekday`
 Gets the date of a weekday given a particular date. 
@@ -80,7 +80,7 @@ print(weekday.previous_date("2023-10-06")) # "2023-09-29"
 print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 ``` 
 
-<a href="../toolbox/time/weekday.py#L75"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L75"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -126,7 +126,7 @@ print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 
 ---
 
-<a href="../toolbox/time/weekday.py#L162"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L162"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `closest`
 
@@ -164,7 +164,7 @@ print(weekday.closest(SUNDAY)) # -2
 
 ---
 
-<a href="../toolbox/time/weekday.py#L276"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L276"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `closest_date`
 
@@ -210,7 +210,7 @@ print(weekday.closest_date("2023-10-06")) # "2023-10-06"
 
 ---
 
-<a href="../toolbox/time/weekday.py#L108"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L108"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `next`
 
@@ -248,7 +248,7 @@ print(weekday.next(SUNDAY)) # 5
 
 ---
 
-<a href="../toolbox/time/weekday.py#L194"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L194"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `next_date`
 
@@ -297,7 +297,7 @@ print(weekday.next_date("2023-10-06", True)) # "2023-10-06"
 
 ---
 
-<a href="../toolbox/time/weekday.py#L135"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L135"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `previous`
 
@@ -335,7 +335,7 @@ print(weekday.previous(SUNDAY)) # 2
 
 ---
 
-<a href="../toolbox/time/weekday.py#L235"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/time/weekday.py#L235"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `previous_date`
 
