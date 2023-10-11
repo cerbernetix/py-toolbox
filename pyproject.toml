@@ -32,3 +32,18 @@ disable = [
   "R0903", # (too-few-public-methods)
   "R0913", # (too-many-arguments)
 ]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.coverage.run]
+branch = true
+relative_files = true
+source = ["src"]
+
+[tool.coverage.paths]
+source = ["src"]
+tests = ["tests/"]
