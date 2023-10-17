@@ -61,9 +61,7 @@ class ValueExtractor:
             mapper = passthrough
 
         if not callable(mapper):
-            raise ValueError(
-                "A valid mapper is needed for casting the extracted value."
-            )
+            raise ValueError("A valid mapper is needed for casting the extracted value.")
 
         self._entries = (entries,) if isinstance(entries, str) else tuple(entries)
         self._mapper = mapper
