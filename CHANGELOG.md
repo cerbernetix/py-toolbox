@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+-   `get_combination_index(combination, max_value)`: Gets the index of a combination.
+-   `get_combination_from_index(index, length, max_value)`: Gets the combination corresponding to a particular index.
 -   `get_cache_path(name, create)` - Gets the path to a cache folder.
 -   `ValueExtractor(entries, mapper)` - A tool for extracting values from a set of possible entries.
 -   `decimal(separator, thousands)` - Creates a mapper for casting decimal values to floats.
