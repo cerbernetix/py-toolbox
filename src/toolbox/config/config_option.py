@@ -307,9 +307,7 @@ class ConfigOption:
             ValueError: If a list of choices is defined and the default value is not defined.
         """
         if self._choices and self._default is None:
-            raise ValueError(
-                f"The option '{self._name}' does not have a default value."
-            )
+            raise ValueError(f"The option '{self._name}' does not have a default value.")
 
         if self._choices:
             self._value = self._default

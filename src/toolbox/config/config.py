@@ -523,9 +523,7 @@ class Config:
         if name in self._options:
             return self._options[name].get()
 
-        raise AttributeError(
-            f"'{self.__class__.__name__}' object has no attribute '{name}'"
-        )
+        raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
 
     def __getitem__(self, name: str) -> Any:
         """Gets the value of a configuration option.

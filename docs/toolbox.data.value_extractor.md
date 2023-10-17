@@ -106,7 +106,7 @@ The mapper applied to cast and format the extracted value.
 
 ---
 
-<a href="../src/toolbox/data/value_extractor.py#L90"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/value_extractor.py#L88"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `extract`
 

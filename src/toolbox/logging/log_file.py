@@ -470,9 +470,7 @@ class LogFile:
         ```
         """
         if not self._file_handler:
-            self._file_handler = logging.FileHandler(
-                self._filename, encoding=self._encoding
-            )
+            self._file_handler = logging.FileHandler(self._filename, encoding=self._encoding)
             self._file_handler.setLevel(self._level)
             self._file_handler.setFormatter(self._formatter)
 
