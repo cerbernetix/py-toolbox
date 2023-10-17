@@ -30,7 +30,7 @@ print(age.get())  # 20
 
 ---
 
-<a href="../src/toolbox/config/config_option.py#L420"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/config/config_option.py#L418"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `create_options`
 
@@ -242,7 +242,7 @@ The current value of the option.
 
 ---
 
-<a href="../src/toolbox/config/config_option.py#L381"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/config/config_option.py#L379"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `cast`
 
@@ -429,7 +429,7 @@ print(name.get()) # "bob"
 
 ---
 
-<a href="../src/toolbox/config/config_option.py#L319"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/config/config_option.py#L317"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_default`
 
@@ -476,7 +476,7 @@ print(name.get()) # ""
 
 ---
 
-<a href="../src/toolbox/config/config_option.py#L361"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/config/config_option.py#L359"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_description`
 

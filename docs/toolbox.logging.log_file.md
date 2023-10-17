@@ -233,7 +233,7 @@ print(logger.name)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L481"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/logging/log_file.py#L479"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -306,7 +306,7 @@ logger.debug('For debug purpose: %d given to %s', value, action)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L508"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/logging/log_file.py#L506"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete`
 

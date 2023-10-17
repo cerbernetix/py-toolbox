@@ -21,6 +21,8 @@
 - [`toolbox.logging`](./toolbox.logging.md#module-toolboxlogging): The `logging` package provides several utilities for logging purpose.
 - [`toolbox.logging.config`](./toolbox.logging.config.md#module-toolboxloggingconfig): A collection of utilities for logging purpose.
 - [`toolbox.logging.log_file`](./toolbox.logging.log_file.md#module-toolboxlogginglog_file): A custom logger that writes directly to a file.
+- [`toolbox.math`](./toolbox.math.md#module-toolboxmath): A collection of Math related tools.
+- [`toolbox.math.combination`](./toolbox.math.combination.md#module-toolboxmathcombination): A set of functions for working with combinations.
 - [`toolbox.testing`](./toolbox.testing.md#module-toolboxtesting): The `testing` package provides utilities for testing purpose.
 - [`toolbox.testing.decorators`](./toolbox.testing.decorators.md#module-toolboxtestingdecorators): A collection of decorators for testing purpose.
 - [`toolbox.testing.test_case`](./toolbox.testing.test_case.md#module-toolboxtestingtest_case): Extends the default Python TestCase with more assertions.
@@ -69,6 +71,8 @@
 - [`pickle_file.write_pickle_file`](./toolbox.files.pickle_file.md#function-write_pickle_file): Writes a list of objects to a file.
 - [`config.handle_uncaught_exceptions`](./toolbox.logging.config.md#function-handle_uncaught_exceptions): Installs a collector for logging uncaught exceptions.
 - [`config.setup_file_logging`](./toolbox.logging.config.md#function-setup_file_logging): Setup the application log to a file logger.
+- [`combination.get_combination_from_index`](./toolbox.math.combination.md#function-get_combination_from_index): Gets the combination corresponding to a particular index.
+- [`combination.get_combination_index`](./toolbox.math.combination.md#function-get_combination_index): Gets the index of a combination.
 - [`decorators.test_cases`](./toolbox.testing.decorators.md#function-test_cases): Creates a decorator for parametric test cases.
 
 
