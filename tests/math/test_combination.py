@@ -2,7 +2,7 @@
 import unittest
 from typing import Iterator
 
-from toolbox.math import get_combination_from_index, get_combination_index
+from toolbox.math import get_combination_from_rank, get_combination_rank
 from toolbox.testing import test_cases
 
 
@@ -49,15 +49,15 @@ class TestCombination(unittest.TestCase):
             [[10, 11, 12], 12, 220],
         ]
     )
-    def test_get_combination_index(self, combination, max_value, index):
-        """Test get_combination_index."""
-        self.assertEqual(get_combination_index(combination, max_value), index)
+    def test_get_combination_rank(self, combination, max_value, rank):
+        """Test get_combination_rank."""
+        self.assertEqual(get_combination_rank(combination, max_value), rank)
 
-    def test_get_combination_index_error(self):
-        """Test get_combination_index errors."""
-        self.assertRaises(ValueError, get_combination_index, [1, 2], 0)
-        self.assertRaises(ValueError, get_combination_index, [], 2)
-        self.assertRaises(ValueError, get_combination_index, [0], 2)
+    def test_get_combination_rank_error(self):
+        """Test get_combination_rank errors."""
+        self.assertRaises(ValueError, get_combination_rank, [1, 2], 0)
+        self.assertRaises(ValueError, get_combination_rank, [], 2)
+        self.assertRaises(ValueError, get_combination_rank, [0], 2)
 
     @test_cases(
         [
@@ -96,15 +96,15 @@ class TestCombination(unittest.TestCase):
             [220, 3, 12, [10, 11, 12]],
         ]
     )
-    def test_get_combination_from_index(self, index, length, max_value, combination):
-        """Test get_combination_from_index."""
-        iterator = get_combination_from_index(index, length, max_value)
+    def test_get_combination_from_rank(self, rank, length, max_value, combination):
+        """Test get_combination_from_rank."""
+        iterator = get_combination_from_rank(rank, length, max_value)
         self.assertIsInstance(iterator, Iterator)
         self.assertEqual(list(iterator), combination)
 
-    def test_get_combination_from_index_error(self):
-        """Test get_combination_from_index errors."""
-        self.assertRaises(ValueError, lambda: list(get_combination_from_index(0, 2, 4)))
-        self.assertRaises(ValueError, lambda: list(get_combination_from_index(1, 0, 4)))
-        self.assertRaises(ValueError, lambda: list(get_combination_from_index(1, 2, 0)))
-        self.assertRaises(ValueError, lambda: list(get_combination_from_index(11, 2, 5)))
+    def test_get_combination_from_rank_error(self):
+        """Test get_combination_from_rank errors."""
+        self.assertRaises(ValueError, lambda: list(get_combination_from_rank(0, 2, 4)))
+        self.assertRaises(ValueError, lambda: list(get_combination_from_rank(1, 0, 4)))
+        self.assertRaises(ValueError, lambda: list(get_combination_from_rank(1, 2, 0)))
+        self.assertRaises(ValueError, lambda: list(get_combination_from_rank(11, 2, 5)))
