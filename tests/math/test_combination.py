@@ -57,7 +57,8 @@ class TestCombination(unittest.TestCase):
         """Test get_combination_rank errors."""
         self.assertRaises(ValueError, get_combination_rank, [1, 2], 0)
         self.assertRaises(ValueError, get_combination_rank, [], 2)
-        self.assertRaises(ValueError, get_combination_rank, [0], 2)
+        self.assertRaises(ValueError, get_combination_rank, [0, 0], 5)
+        self.assertRaises(ValueError, get_combination_rank, [1, 2, 3], 2)
 
     @test_cases(
         [

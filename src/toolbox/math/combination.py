@@ -54,12 +54,20 @@ def get_combination_rank(combination: Iterable[int], max_value: int = 52) -> int
     if not length:
         raise ValueError("The combination must contain values")
 
+    if length > max_value:
+        raise ValueError("The combination cannot have move values than the max value")
+
+    if length == 1:
+        return combination[0]
+
+    if length == max_value:
+        return 1
+
     rank = comb(max_value, length)
-    for idx in range(length):
-        value = combination[idx]
+    for index, value in enumerate(combination):
         if value < 1:
             raise ValueError("The combination must not contain values lower than 1")
-        rank -= comb(max_value - value, length - idx)
+        rank -= comb(max_value - value, length - index)
 
     return rank
 
@@ -110,16 +118,24 @@ def get_combination_from_rank(
     if rank > max_rank:
         raise ValueError("The rank must not be greater than the number of possible combinations")
 
+    if length == 1:
+        yield rank
+        return
+
+    if length == max_value:
+        for value in range(1, length + 1):
+            yield value
+        return
+
     idx = max_rank - rank
-    for pos in range(length, 0, -1):
-        val_idx = 0
+
+    for index in range(length, 0, -1):
         value = 0
         while True:
-            tmp_idx = comb(max_value - value, pos)
+            tmp_idx = comb(max_value - value, index)
             if tmp_idx <= idx:
-                val_idx = tmp_idx
+                idx -= tmp_idx
                 break
             value += 1
 
-        idx -= val_idx
         yield value
