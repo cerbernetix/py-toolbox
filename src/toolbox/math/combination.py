@@ -2,125 +2,116 @@
 
 Examples:
 ```python
-from toolbox.math import get_combination_index, get_combination_from_index
+from toolbox.math import get_combination_rank, get_combination_from_rank
 
-# Get the index of a combination
-print(get_combination_index([1,3,5], 8))
+# Get the rank of a combination of 3 numbers
+print(get_combination_rank([1, 3, 5]))
 
-# Get the combination from an index
-print(list(get_combination_from_index(5, 8)))
+# Get the combination of 3 numbers ranked at position 5
+print(list(get_combination_from_rank(5, 3)))
 ```
 """
 from math import comb
-from typing import Iterable, Iterator
+from typing import Iterable
 
 
-def get_combination_index(combination: Iterable[int], max_value: int = 52) -> int:
-    """Gets the index of a combination.
+def get_combination_rank(combination: Iterable[int], offset: int = 0) -> int:
+    """Gets the rank of a combination.
 
-    The values in the combination must be in the range 1..max_value included.
+    The combination is sorted before computing the rank.
 
-    The first index is 1.
-    The last index if equal to `comb(12, len(combination))`
-
-    The combination is sorted before computing the index.
+    The rank starts at 0.
+    The values in the combination must start at 0. Negative numbers will raise an error.
 
     Args:
-        combination (Iterable[int]): The combination to index.
-        max_value (int, optional): The maximum value for the combination. Defaults to 52.
+        combination (Iterable[int]): The combination to rank.
+        offset (int, optional): An offset to remove from the values if they don't start at 0.
+        Defaults to 0.
 
     Raises:
-        ValueError: If the max_value is lower than 1.
-        ValueError: If the combination is empty.
-        ValueError: If the combination contains values lower than 1.
+        ValueError: If the combination contains negative values.
 
     Returns:
-        int: The index of the combination.
+        int: The rank of the combination, starting at 0.
 
     Examples:
     ```python
-    from toolbox.math import get_combination_index
+    from toolbox.math import get_combination_rank
 
-    # Get the index of a combination for 3 numbers out of 8
-    print(get_combination_index([1,3,5], 8))
+    # Get the rank of a combination of 3 numbers
+    print(get_combination_rank([1, 3, 5]))
     ```
     """
-    combination = sorted(combination)
-    length = len(combination)
+    rank = 0
+    for index, value in enumerate(sorted(combination)):
+        value -= offset
 
-    if max_value < 1:
-        raise ValueError("The max value must not be lower than 1")
+        if value == index:
+            continue
 
-    if not length:
-        raise ValueError("The combination must contain values")
+        rank += comb(value, index + 1)
 
-    index = comb(max_value, length)
-    for idx in range(length):
-        value = combination[idx]
-        if value < 1:
-            raise ValueError("The combination must not contain values lower than 1")
-        index -= comb(max_value - value, length - idx)
-
-    return index
+    return rank
 
 
-def get_combination_from_index(
-    index: int,
-    length: int = 2,
-    max_value: int = 52,
-) -> Iterator[int]:
-    """Gets the combination corresponding to a particular index.
+def get_combination_from_rank(rank: int, length: int = 2, offset: int = 0) -> list[int]:
+    """Gets the combination corresponding to a particular rank.
 
-    The values in the combination will be in the range 1..max_value included.
-
-    The index must be in the range 1..comb(12, len(combination)) included.
+    The rank must start at 0.
 
     Args:
-        index (int): The index of the combination.
+        rank (int): The rank of the combination.
         length (int, optional): The length of the combination. Defaults to 2.
-        max_value (int, optional): The maximum value for the combination. Defaults to 52.
+        offset (int, optional): An offset to add to the values if they must not start at 0.
+        Defaults to 0.
 
     Raises:
-        ValueError: If the length is lower than 1.
-        ValueError: If the max_value is lower than 1.
-        ValueError: If the index is lower than 1 or greater than the number of combinations.
+        ValueError: If the rank is negative.
+        ValueError: If the length is negative
 
-
-    Yields:
-        Iterator[int]: A number from the combination corresponding to the index.
+    Returns:
+        list[int]: The combination corresponding to the rank, sorted by ascending values.
 
     Examples:
     ```python
-    from toolbox.math import get_combination_from_index
+    from toolbox.math import get_combination_from_rank
 
-    # Get the combination for 3 numbers out of 8 from an index
-    print(list(get_combination_from_index(5, 3, 8)))
+    # Get the combination of 3 numbers ranked at position 5
+    print(list(get_combination_from_rank(5, 3)))
     ```
     """
-    if length < 1:
-        raise ValueError("The combination length must not be lower than 1")
+    if rank < 0:
+        raise ValueError("The rank must not be negative")
 
-    if max_value < 1:
-        raise ValueError("The max value must not be lower than 1")
+    if length < 0:
+        raise ValueError("The length must not be negative")
 
-    max_index = comb(max_value, length)
+    if length == 0:
+        return []
 
-    if index < 1:
-        raise ValueError("The index must not be lower than 1")
+    if length == 1:
+        return [rank + offset]
 
-    if index > max_index:
-        raise ValueError("The index must not be greater than the number of possible combinations")
+    combination = [0] * length
 
-    idx = max_index - index
-    for pos in range(length, 0, -1):
-        val_idx = 0
-        value = 0
-        while True:
-            tmp_idx = comb(max_value - value, pos)
-            if tmp_idx <= idx:
-                val_idx = tmp_idx
-                break
-            value += 1
+    binomial = 0
+    val = 0
+    b = 1
+    while b <= rank:
+        val += 1
+        binomial = b
+        b = (b * (val + length)) // val
 
-        idx -= val_idx
-        yield value
+    for index in range(length - 1, 1, -1):
+        rank -= binomial
+        binomial = (binomial * (index + 1)) // (val + index)
+        combination[index] = val + index + offset
+
+        while binomial > rank:
+            val -= 1
+            binomial = (binomial * val) // (val + index)
+
+    combination[1] = val + 1 + offset
+    combination[0] = rank - binomial + offset
+
+    return combination

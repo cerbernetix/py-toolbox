@@ -6,20 +6,20 @@
 A collection of Math related tools. 
 
 It contains: 
-- `get_combination_index(combination, max_value)`: Gets the index of a combination. 
-- `get_combination_from_index(index, length, max_value)`: Gets the combination corresponding to a particular index. 
+- `get_combination_rank(combination, offset)`: Gets the rank of a combination. 
+- `get_combination_from_rank(rank, length, offset)`: Gets the combination corresponding to a particular rank. 
 
 
 
 **Examples:**
  ```python
-from toolbox.math import get_combination_index, get_combination_from_index
+from toolbox.math import get_combination_rank, get_combination_from_rank
 
-# Get the index of a combination
-print(get_combination_index([1,3,5], 8))
+# Get the rank of a combination of 3 numbers
+print(get_combination_rank([1, 3, 5]))
 
-# Get the combination from an index
-print(list(get_combination_from_index(5, 8)))
+# Get the combination of 3 numbers ranked at position 5
+print(list(get_combination_from_rank(5, 3)))
 ``` 
 
 **Global Variables**
