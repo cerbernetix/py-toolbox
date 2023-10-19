@@ -5,7 +5,7 @@ Examples:
 from toolbox.math import get_combination_rank, get_combination_from_rank
 
 # Get the rank of a combination of 3 numbers
-print(get_combination_rank([1,3,5]))
+print(get_combination_rank([1, 3, 5]))
 
 # Get the combination of 3 numbers ranked at position 5
 print(list(get_combination_from_rank(5, 3)))
@@ -29,7 +29,7 @@ def get_combination_rank(combination: Iterable[int], offset: int = 0) -> int:
         Defaults to 0.
 
     Raises:
-        ValueError: If the combination contains values lower than 0.
+        ValueError: If the combination contains negative values.
 
     Returns:
         int: The rank of the combination, starting at 0.
@@ -39,7 +39,7 @@ def get_combination_rank(combination: Iterable[int], offset: int = 0) -> int:
     from toolbox.math import get_combination_rank
 
     # Get the rank of a combination of 3 numbers
-    print(get_combination_rank([1,3,5]))
+    print(get_combination_rank([1, 3, 5]))
     ```
     """
     rank = 0

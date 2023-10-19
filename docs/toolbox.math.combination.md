@@ -12,7 +12,7 @@ A set of functions for working with combinations.
 from toolbox.math import get_combination_rank, get_combination_from_rank
 
 # Get the rank of a combination of 3 numbers
-print(get_combination_rank([1,3,5]))
+print(get_combination_rank([1, 3, 5]))
 
 # Get the combination of 3 numbers ranked at position 5
 print(list(get_combination_from_rank(5, 3)))
@@ -46,7 +46,7 @@ The rank starts at 0. The values in the combination must start at 0. Negative nu
 
 **Raises:**
  
- - <b>`ValueError`</b>:  If the combination contains values lower than 0. 
+ - <b>`ValueError`</b>:  If the combination contains negative values. 
 
 
 
@@ -61,7 +61,7 @@ The rank starts at 0. The values in the combination must start at 0. Negative nu
 from toolbox.math import get_combination_rank
 
 # Get the rank of a combination of 3 numbers
-print(get_combination_rank([1,3,5]))
+print(get_combination_rank([1, 3, 5]))
 ``` 
 
 
