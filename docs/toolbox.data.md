@@ -47,6 +47,14 @@ print([extractor.extract(row) for row in data]) # ["2023-10-06", "2023-02-20", "
 extractor = ValueExtractor(["value", "val", "number"], int)
 data = [{"val": "42"}, {"value": 12, {"number": 100}]
 print([extractor.extract(row) for row in data]) # [42, 12, 100]
+
+# Build full names from multiple entries
+extractor = ValueExtractor(["firstname", "lastname"], " ".join)
+data = [
+     {"firstname": "John", "lastname": "Smith"},
+     {"firstname": "Jane", "lastname": "Doe"},
+]
+print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 ``` 
 
 **Global Variables**

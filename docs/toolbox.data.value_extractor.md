@@ -11,16 +11,25 @@ A tool for extracting values from a set of possible entries.
  ```python
 from toolbox.data import ValueExtractor
 
+# Extracts a date from various possible entries
 extractor = ValueExtractor(["date", "time", "day"])
 data = [{"date": "2023-10-06"}, {"day": "2023-02-20"}, {"time": "2023-06-12"}]
 print([extractor.extract(row) for row in data]) # ["2023-10-06", "2023-02-20", "2023-06-12"]
+
+# Build full names from multiple entries
+extractor = ValueExtractor(["firstname", "lastname"], " ".join)
+data = [
+     {"firstname": "John", "lastname": "Smith"},
+     {"firstname": "Jane", "lastname": "Doe"},
+]
+print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 ``` 
 
 
 
 ---
 
-<a href="../src/toolbox/data/value_extractor.py#L17"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/value_extractor.py#L26"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `ValueExtractor`
 Extracts a value from a set of possible entries. 
@@ -43,7 +52,7 @@ data = [{"date": "2023-10-06"}, {"day": "2023-02-20"}, {"time": "2023-06-12"}]
 print([extractor.extract(row) for row in data]) # ["2023-10-06", "2023-02-20", "2023-06-12"]
 ``` 
 
-<a href="../src/toolbox/data/value_extractor.py#L35"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/value_extractor.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -106,7 +115,54 @@ The mapper applied to cast and format the extracted value.
 
 ---
 
-<a href="../src/toolbox/data/value_extractor.py#L88"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/data/value_extractor.py#L131"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+### <kbd>method</kbd> `aggregate`
+
+```python
+aggregate(structure: dict) → Any
+```
+
+Aggregates a value from the specified structure. 
+
+
+
+**Args:**
+ 
+ - <b>`structure`</b> (dict):  The structure from which aggregate the value. 
+
+
+
+**Returns:**
+ 
+ - <b>`Any`</b>:  The value aggregated from the structure. 
+
+
+
+**Examples:**
+ ```python
+from toolbox.data import ValueExtractor
+
+# Build full names from multiple entries
+extractor = ValueExtractor(["firstname", "lastname"], " ".join)
+data = [
+    {"firstname": "John", "lastname": "Smith"},
+    {"firstname": "Jane", "lastname": "Doe"},
+]
+print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
+
+# Build a list from multiple entries
+extractor = ValueExtractor(["value_1", "value_2", "value_3"])
+data = [
+    {"value_1": 42, "value_2": 12, "value_3": 100},
+    {"value_1": 10, "value_2": 20, "value_3": 30},
+]
+print([extractor.aggregate(row) for row in data]) # [[42, 12, 100], [10, 20, 30]]
+``` 
+
+---
+
+<a href="../src/toolbox/data/value_extractor.py#L97"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `extract`
 
