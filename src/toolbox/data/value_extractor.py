@@ -4,9 +4,18 @@ Examples:
 ```python
 from toolbox.data import ValueExtractor
 
+# Extracts a date from various possible entries
 extractor = ValueExtractor(["date", "time", "day"])
 data = [{"date": "2023-10-06"}, {"day": "2023-02-20"}, {"time": "2023-06-12"}]
 print([extractor.extract(row) for row in data]) # ["2023-10-06", "2023-02-20", "2023-06-12"]
+
+# Build full names from multiple entries
+extractor = ValueExtractor(["firstname", "lastname"], " ".join)
+data = [
+    {"firstname": "John", "lastname": "Smith"},
+    {"firstname": "Jane", "lastname": "Doe"},
+]
+print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 ```
 """
 from typing import Any, Iterable
@@ -118,3 +127,35 @@ class ValueExtractor:
                 return self._mapper(structure[name])
 
         return None
+
+    def aggregate(self, structure: dict) -> Any:
+        """Aggregates a value from the specified structure.
+
+        Args:
+            structure (dict): The structure from which aggregate the value.
+
+        Returns:
+            Any: The value aggregated from the structure.
+
+        Examples:
+        ```python
+        from toolbox.data import ValueExtractor
+
+        # Build full names from multiple entries
+        extractor = ValueExtractor(["firstname", "lastname"], " ".join)
+        data = [
+            {"firstname": "John", "lastname": "Smith"},
+            {"firstname": "Jane", "lastname": "Doe"},
+        ]
+        print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
+
+        # Build a list from multiple entries
+        extractor = ValueExtractor(["value_1", "value_2", "value_3"])
+        data = [
+            {"value_1": 42, "value_2": 12, "value_3": 100},
+            {"value_1": 10, "value_2": 20, "value_3": 30},
+        ]
+        print([extractor.aggregate(row) for row in data]) # [[42, 12, 100], [10, 20, 30]]
+        ```
+        """
+        return self._mapper([structure[name] for name in self._entries if name in structure])

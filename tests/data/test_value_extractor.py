@@ -53,3 +53,32 @@ class TestValueExtractor(unittest.TestCase):
         extractor = ValueExtractor(entries, mapper)
         for row, value in data:
             self.assertEqual(extractor.extract(row), value)
+
+    @test_cases(
+        [
+            [
+                ["firstname", "lastname"],
+                " ".join,
+                [
+                    ({"firstname": "John", "lastname": "Smith"}, "John Smith"),
+                    ({"firstname": "Jane", "lastname": "Doe"}, "Jane Doe"),
+                    ({"firstname": "John"}, "John"),
+                    ({"lastname": "Doe"}, "Doe"),
+                ],
+            ],
+            [
+                ["value_1", "value_2", "value_3"],
+                None,
+                [
+                    ({"value_1": 42, "value_2": 12, "value_3": 100}, [42, 12, 100]),
+                    ({"value_1": 10, "value_2": 20, "value_3": 30}, [10, 20, 30]),
+                    ({"value_1": 42}, [42]),
+                ],
+            ],
+        ]
+    )
+    def test_aggregate(self, entries, mapper, data):
+        """Tests a value can be aggregated."""
+        extractor = ValueExtractor(entries, mapper)
+        for row, value in data:
+            self.assertEqual(extractor.aggregate(row), value)
