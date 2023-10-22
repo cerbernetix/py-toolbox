@@ -30,7 +30,7 @@ from __future__ import annotations
 import os
 import time
 from pathlib import PurePath
-from typing import Iterator
+from typing import Iterable, Iterator
 
 from toolbox.files.file import get_file_mode
 from toolbox.files.path import create_file_path
@@ -359,17 +359,22 @@ class FileManager:
 
         return self
 
-    def read_file(self) -> str | bytes:
+    def read_file(self, iterator: bool = False) -> str | bytes | Iterable[str | bytes]:
         """Reads all the content from the file.
 
         Note: If the file was already opened, it is first closed, then opened in read mode.
+
+        Args:
+            iterator (bool, optional): When True, the function will return an iterator instead.
+            However, with the base implementation, it will return the whole content of the file
+            from a unique iteration. Defaults to False.
 
         Raises:
             OSError: If the file cannot be read.
             FileNotFoundError: If the file does not exist.
 
         Returns:
-            str|bytes: The content read from the file.
+            str | bytes | Iterable[str | bytes]: The content read from the file.
 
         Examples:
         ```python
@@ -379,8 +384,15 @@ class FileManager:
 
         # A file can be read all at once
         data = file.read_file()
+
+        # An iterator can be returned instead
+        for data in file.read_file(iterator=True):
+            print(data)
         ```
         """
+        if iterator:
+            return self.close()
+
         with self.open():
             return self.read()
 

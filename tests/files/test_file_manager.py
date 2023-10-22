@@ -2,6 +2,7 @@
 import datetime
 import unittest
 from time import time
+from typing import Iterator
 from unittest.mock import Mock, patch
 
 from toolbox.files import FileManager
@@ -393,6 +394,38 @@ class TestFileManager(unittest.TestCase):
         mock_file.close.assert_called()
 
     @patch("builtins.open")
+    def test_read_file_iterator(self, mock_file_open):
+        """Tests a file can be read at once using an iterator."""
+        file_path = "/root/folder/file"
+        content = "foo"
+        count = 1
+        index = 0
+
+        def read():
+            nonlocal index
+            index += 1
+
+            if index <= count:
+                return content
+
+            return ""
+
+        mock_file = Mock()
+        mock_file.read = Mock(side_effect=read)
+        mock_file.close = Mock()
+        mock_file_open.return_value = mock_file
+
+        file = FileManager(file_path)
+
+        result = file.read_file(iterator=True)
+        self.assertIsInstance(result, Iterator)
+        self.assertEqual(list(result), [content])
+
+        mock_file_open.assert_called_once()
+        mock_file.read.assert_called()
+        mock_file.close.assert_called_once()
+
+    @patch("builtins.open")
     def test_write_file(self, mock_file_open):
         """Tests a file can be written at once."""
         file_path = "/root/folder/file"
@@ -657,9 +690,7 @@ class TestFileManager(unittest.TestCase):
             },
         ]
     )
-    def test_check(
-        self, _size_mock, _time_mock, _, params, exist, expected, today=CURRENT
-    ):
+    def test_check(self, _size_mock, _time_mock, _, params, exist, expected, today=CURRENT):
         """Tests that the file is valid with respect to the specified criteria."""
         file_path = "/root/folder/file"
 
