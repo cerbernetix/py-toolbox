@@ -293,7 +293,7 @@ size = file.size
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L494"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/file_manager.py#L506"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `check`
 
@@ -393,7 +393,7 @@ file.close()
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L626"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/file_manager.py#L638"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create_path`
 
@@ -428,7 +428,7 @@ else:
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L597"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/file_manager.py#L609"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete`
 
@@ -467,7 +467,7 @@ file.delete()
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L474"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/file_manager.py#L486"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `exists`
 
@@ -560,7 +560,7 @@ data = [dat for dat in file]
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L414"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/file_manager.py#L426"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -606,12 +606,18 @@ with file:
 ### <kbd>method</kbd> `read_file`
 
 ```python
-read_file() → str | bytes
+read_file(iterator: 'bool' = False) → str | bytes | Iterable[str | bytes]
 ```
 
 Reads all the content from the file. 
 
 Note: If the file was already opened, it is first closed, then opened in read mode. 
+
+
+
+**Args:**
+ 
+ - <b>`iterator`</b> (bool, optional):  When True, the function will return an iterator instead. However, with the base implementation, it will return the whole content of the file from a unique iteration. Defaults to False. 
 
 
 
@@ -624,7 +630,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 **Returns:**
  
- - <b>`str|bytes`</b>:  The content read from the file. 
+ - <b>`str | bytes | Iterable[str | bytes]`</b>:  The content read from the file. 
 
 
 
@@ -636,11 +642,15 @@ file = FileManager('path/to/filename')
 
 # A file can be read all at once
 data = file.read_file()
+
+# An iterator can be returned instead
+for data in file.read_file(iterator=True):
+    print(data)
 ``` 
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L443"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/file_manager.py#L455"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -686,7 +696,7 @@ with file(create=True):
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L387"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/toolbox/files/file_manager.py#L399"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
