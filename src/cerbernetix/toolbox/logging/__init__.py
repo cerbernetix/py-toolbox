@@ -11,7 +11,7 @@ Examples:
 ```python
 import logging
 
-from toolbox.logging import LogFile, setup_file_logging, handle_uncaught_exceptions
+from cerbernetix.toolbox.logging import LogFile, setup_file_logging, handle_uncaught_exceptions
 
 logging.setup_file_logging('path/to/app.log')
 logging.handle_uncaught_exceptions()
@@ -36,14 +36,14 @@ if __name__ == "__main__":
     main()
 ```
 """
-from toolbox.logging.config import (
+from cerbernetix.toolbox.logging.config import (
     LOG_ENCODING,
     LOG_FILE,
     LOG_FORMAT,
     handle_uncaught_exceptions,
     setup_file_logging,
 )
-from toolbox.logging.log_file import (
+from cerbernetix.toolbox.logging.log_file import (
     LOG_FILE_LOG_FORMAT,
     LOG_FILE_NAME,
     LOG_FILE_PATTERN,

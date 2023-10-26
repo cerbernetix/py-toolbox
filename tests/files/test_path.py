@@ -4,7 +4,7 @@ import unittest
 from pathlib import PurePath
 from unittest.mock import Mock, patch
 
-from toolbox.files import path
+from cerbernetix.toolbox.files import path
 
 
 class TestFilePaths(unittest.TestCase):

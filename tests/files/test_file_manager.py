@@ -5,8 +5,8 @@ from time import time
 from typing import Iterator
 from unittest.mock import Mock, patch
 
-from toolbox.files import FileManager
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.files import FileManager
+from cerbernetix.toolbox.testing import test_cases
 
 # pylint: disable=protected-access
 

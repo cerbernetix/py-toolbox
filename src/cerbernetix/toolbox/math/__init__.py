@@ -7,7 +7,7 @@ particular rank.
 
 Examples:
 ```python
-from toolbox.math import get_combination_rank, get_combination_from_rank
+from cerbernetix.toolbox.math import get_combination_rank, get_combination_from_rank
 
 # Get the rank of a combination of 3 numbers
 print(get_combination_rank([1, 3, 5]))
@@ -16,4 +16,4 @@ print(get_combination_rank([1, 3, 5]))
 print(list(get_combination_from_rank(5, 3)))
 ```
 """
-from toolbox.math.combination import get_combination_from_rank, get_combination_rank
+from cerbernetix.toolbox.math.combination import get_combination_from_rank, get_combination_rank

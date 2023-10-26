@@ -9,8 +9,8 @@ It contains:
 
 Examples:
 ```python
-from toolbox.data import mappers
-from toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import mappers
+from cerbernetix.toolbox.data import ValueExtractor
 
 # Passthrough a value
 print(mappers.passthrough("foo")) # "foo"
@@ -50,5 +50,5 @@ data = [
 print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 ```
 """
-from toolbox.data.mappers import ValueMapper, boolean, decimal, passthrough
-from toolbox.data.value_extractor import ValueExtractor
+from cerbernetix.toolbox.data.mappers import ValueMapper, boolean, decimal, passthrough
+from cerbernetix.toolbox.data.value_extractor import ValueExtractor

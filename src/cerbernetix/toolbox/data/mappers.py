@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.data import mappers
+from cerbernetix.toolbox.data import mappers
 
 # Passthrough a value
 print(mappers.passthrough("foo")) # "foo"
@@ -54,7 +54,7 @@ def passthrough(value: Any) -> Any:
 
     Examples:
     ```python
-    from toolbox.data import passthrough
+    from cerbernetix.toolbox.data import passthrough
 
     print(passthrough("foo")) # "foo"
     print(passthrough(42)) # 42
@@ -76,7 +76,7 @@ def boolean(value: Any) -> bool:
 
     Examples:
     ```python
-    from toolbox.data import boolean
+    from cerbernetix.toolbox.data import boolean
 
     print(boolean(True)) # True
     print(boolean("True")) # True
@@ -114,7 +114,7 @@ def decimal(separator: str = None, thousands: str = None) -> ValueMapper:
 
     Examples:
     ```python
-    from toolbox.data import decimal
+    from cerbernetix.toolbox.data import decimal
 
     mapper = decimal(",")
     print(mapper("3,14")) # 3.14

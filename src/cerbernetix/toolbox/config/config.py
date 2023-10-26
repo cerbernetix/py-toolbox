@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 # Create an empty configuration
 config = Config()
@@ -31,7 +31,7 @@ config = Config({"foo": "bar", "value": 42})
 """
 from typing import Any, Callable, Iterator
 
-from toolbox.config.config_option import ConfigOption, create_options
+from cerbernetix.toolbox.config.config_option import ConfigOption, create_options
 
 
 class Config:
@@ -46,7 +46,7 @@ class Config:
 
     Examples:
     ```python
-    from toolbox.config import Config
+    from cerbernetix.toolbox.config import Config
 
     # Create an empty configuration
     config = Config()
@@ -109,7 +109,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         # Create an empty configuration
         config = Config()
@@ -143,7 +143,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config()
         keys = config.keys()
@@ -168,7 +168,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -195,7 +195,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -229,7 +229,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -258,7 +258,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -282,7 +282,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -307,7 +307,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config(options=[ConfigOption("foo", "bar", description="FooBar")])
 
@@ -332,7 +332,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config(options=[ConfigOption("foo", "bar", choices=["foo", "bar"])])
 
@@ -356,7 +356,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config(options=[ConfigOption("foo", "bar")])
 
@@ -391,7 +391,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config()
 
@@ -419,7 +419,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -439,7 +439,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -466,7 +466,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config()
 
@@ -484,7 +484,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -512,7 +512,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -541,7 +541,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -574,7 +574,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -597,7 +597,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -624,7 +624,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar", "value": 42})
 
@@ -646,7 +646,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar"})
 
@@ -667,7 +667,7 @@ class Config:
 
         Examples:
         ```python
-        from toolbox.config import Config
+        from cerbernetix.toolbox.config import Config
 
         config = Config({"foo": "bar", "value": 42})
 

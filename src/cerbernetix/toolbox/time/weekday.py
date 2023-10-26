@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -47,7 +47,7 @@ class Weekday:
 
     Examples:
     ```python
-    from toolbox.time import Weekday, FRIDAY
+    from cerbernetix.toolbox.time import Weekday, FRIDAY
 
     weekday = Weekday(FRIDAY)
 
@@ -79,7 +79,7 @@ class Weekday:
             day (int): The weekday to bind.
 
         ```python
-        from toolbox.time import Weekday, FRIDAY
+        from cerbernetix.toolbox.time import Weekday, FRIDAY
 
         weekday = Weekday(FRIDAY)
 
@@ -119,7 +119,7 @@ class Weekday:
 
         Examples:
         ```python
-        from toolbox.time import Weekday, FRIDAY
+        from cerbernetix.toolbox.time import Weekday, FRIDAY
 
         weekday = Weekday(FRIDAY)
 
@@ -146,7 +146,7 @@ class Weekday:
 
         Examples:
         ```python
-        from toolbox.time import Weekday, FRIDAY
+        from cerbernetix.toolbox.time import Weekday, FRIDAY
 
         weekday = Weekday(FRIDAY)
 
@@ -173,7 +173,7 @@ class Weekday:
 
         Examples:
         ```python
-        from toolbox.time import Weekday, FRIDAY
+        from cerbernetix.toolbox.time import Weekday, FRIDAY
 
         weekday = Weekday(FRIDAY)
 
@@ -212,7 +212,7 @@ class Weekday:
 
         Examples:
         ```python
-        from toolbox.time import Weekday, FRIDAY
+        from cerbernetix.toolbox.time import Weekday, FRIDAY
 
         weekday = Weekday(FRIDAY)
 
@@ -253,7 +253,7 @@ class Weekday:
 
         Examples:
         ```python
-        from toolbox.time import Weekday, FRIDAY
+        from cerbernetix.toolbox.time import Weekday, FRIDAY
 
         weekday = Weekday(FRIDAY)
 
@@ -291,7 +291,7 @@ class Weekday:
 
         Examples:
         ```python
-        from toolbox.time import Weekday, FRIDAY
+        from cerbernetix.toolbox.time import Weekday, FRIDAY
 
         weekday = Weekday(FRIDAY)
 

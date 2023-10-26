@@ -5,7 +5,7 @@ It contains:
 
 Examples:
 ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -29,7 +29,7 @@ print(weekday.previous_date("2023-10-06")) # "2023-09-29"
 print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 ```
 """
-from toolbox.time.weekday import (
+from cerbernetix.toolbox.time.weekday import (
     FRIDAY,
     MONDAY,
     SATURDAY,

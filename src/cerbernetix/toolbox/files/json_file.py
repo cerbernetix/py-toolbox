@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.files import JSONFile, read_json_file, write_json_file
+from cerbernetix.toolbox.files import JSONFile, read_json_file, write_json_file
 
 filename = 'path/to/file.json'
 json_data = [
@@ -38,7 +38,7 @@ with file:
 import json
 from typing import Any
 
-from toolbox.files.file_manager import FileManager
+from cerbernetix.toolbox.files.file_manager import FileManager
 
 # The default data encoding for JSON files
 JSON_ENCODING = "utf-8"
@@ -63,7 +63,7 @@ class JSONFile(FileManager):
 
     Examples:
     ```python
-    from toolbox.files import JSONFile
+    from cerbernetix.toolbox.files import JSONFile
 
     file = JSONFile("path/to/the/file.json", indent=4, encoding="UTF-8")
 
@@ -111,7 +111,7 @@ class JSONFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import JSONFile
+        from cerbernetix.toolbox.files import JSONFile
 
         # Create a file manager
         file = JSONFile('path/to/filename')
@@ -168,7 +168,7 @@ class JSONFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import JSONFile
+        from cerbernetix.toolbox.files import JSONFile
 
         file = JSONFile('path/to/filename')
 
@@ -201,7 +201,7 @@ class JSONFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import JSONFile
+        from cerbernetix.toolbox.files import JSONFile
 
         file = JSONFile('path/to/filename')
 
@@ -238,7 +238,7 @@ def read_json_file(
 
     Examples:
     ```python
-    from toolbox.files import read_json_file
+    from cerbernetix.toolbox.files import read_json_file
 
     json_data = read_json_file('path/to/file', encoding='UTF-8')
     ```
@@ -269,7 +269,7 @@ def write_json_file(
 
     Examples:
     ```python
-    from toolbox.files import write_json_file
+    from cerbernetix.toolbox.files import write_json_file
 
     json_data = [
         {'date': '2023-09-10', 'value': 42},

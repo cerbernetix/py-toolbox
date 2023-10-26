@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.files import PickleFile, read_pickle_file, write_pickle_file
+from cerbernetix.toolbox.files import PickleFile, read_pickle_file, write_pickle_file
 
 filename = 'path/to/file.pkl'
 data = [
@@ -44,7 +44,7 @@ from __future__ import annotations
 import pickle
 from typing import Iterable
 
-from toolbox.files.file_manager import FileManager
+from cerbernetix.toolbox.files.file_manager import FileManager
 
 # The parameters that will be forwarded to the pickle reader
 PICKLE_READER_PARAMS = [
@@ -80,7 +80,7 @@ class PickleFile(FileManager):
 
     Examples:
     ```python
-    from toolbox.files import PickleFile
+    from cerbernetix.toolbox.files import PickleFile
 
     file = PickleFile("path/to/the/file")
 
@@ -154,7 +154,7 @@ class PickleFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import PickleFile
+        from cerbernetix.toolbox.files import PickleFile
 
         # Create a file manager
         file = PickleFile('path/to/filename')
@@ -223,7 +223,7 @@ class PickleFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import PickleFile
+        from cerbernetix.toolbox.files import PickleFile
 
         file = PickleFile('path/to/filename')
 
@@ -256,7 +256,7 @@ class PickleFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import PickleFile
+        from cerbernetix.toolbox.files import PickleFile
 
         file = PickleFile('path/to/filename')
 
@@ -285,7 +285,7 @@ class PickleFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import PickleFile
+        from cerbernetix.toolbox.files import PickleFile
 
         file = PickleFile('path/to/filename')
 
@@ -323,7 +323,7 @@ class PickleFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import PickleFile
+        from cerbernetix.toolbox.files import PickleFile
 
         file = PickleFile('path/to/filename')
 
@@ -374,7 +374,7 @@ def read_pickle_file(filename: str, iterator: bool = False, **kwargs) -> Iterabl
 
     Examples:
     ```python
-    from toolbox.files import read_pickle_file
+    from cerbernetix.toolbox.files import read_pickle_file
 
     data = read_pickle_file('path/to/file')
 
@@ -416,7 +416,7 @@ def write_pickle_file(filename: str, data: Iterable, **kwargs) -> int:
 
     Examples:
     ```python
-    from toolbox.files import write_pickle_file
+    from cerbernetix.toolbox.files import write_pickle_file
 
     data = [
         {'date': '2023-09-10', 'value': 42},

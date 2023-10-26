@@ -1,8 +1,8 @@
 """Test the collection of data mappers."""
 import unittest
 
-from toolbox.data import boolean, decimal, passthrough
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.data import boolean, decimal, passthrough
+from cerbernetix.toolbox.testing import test_cases
 
 
 class TestDataMappers(unittest.TestCase):

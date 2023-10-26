@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 filename = 'path/to/file.txt'
 data = "Some content"
@@ -32,8 +32,8 @@ import time
 from pathlib import PurePath
 from typing import Iterable, Iterator
 
-from toolbox.files.file import get_file_mode
-from toolbox.files.path import create_file_path
+from cerbernetix.toolbox.files.file import get_file_mode
+from cerbernetix.toolbox.files.path import create_file_path
 
 
 class FileManager:
@@ -53,7 +53,7 @@ class FileManager:
 
     Examples:
     ```python
-    from toolbox.files import FileManager
+    from cerbernetix.toolbox.files import FileManager
 
     file = FileManager("path/to/the/file", binary=False, encoding="UTF-8")
 
@@ -101,7 +101,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         # Create a file manager
         file = FileManager('path/to/filename')
@@ -132,7 +132,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/file.txt')
 
@@ -151,7 +151,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/file.txt')
 
@@ -170,7 +170,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/file.txt')
 
@@ -190,7 +190,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/file.txt')
 
@@ -211,7 +211,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -233,7 +233,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -255,7 +255,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -294,7 +294,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -338,7 +338,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -378,7 +378,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -412,7 +412,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -437,7 +437,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -469,7 +469,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -491,7 +491,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -536,7 +536,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename"')
 
@@ -617,7 +617,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename')
 
@@ -646,7 +646,7 @@ class FileManager:
 
         Examples:
         ```python
-        from toolbox.files import FileManager
+        from cerbernetix.toolbox.files import FileManager
 
         file = FileManager('path/to/filename"')
 

@@ -4,7 +4,7 @@ import zipfile
 from typing import Iterator
 from unittest.mock import MagicMock, Mock, patch
 
-from toolbox.files import (
+from cerbernetix.toolbox.files import (
     CSV_DIALECT,
     CSV_ENCODING,
     CSVFile,
@@ -12,7 +12,7 @@ from toolbox.files import (
     read_zip_csv,
     write_csv_file,
 )
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.testing import test_cases
 
 CSV_LINES_DICT = [
     {"first_name": "John", "last_name": "Smith", "age": "18", "city": "London"},

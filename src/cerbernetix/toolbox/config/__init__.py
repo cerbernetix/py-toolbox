@@ -7,7 +7,7 @@ It contains:
 
 Examples:
 ```python
-from toolbox.config import Config, ConfigOption
+from cerbernetix.toolbox.config import Config, ConfigOption
 
 # Create a few options
 name = ConfigOption("name", mapper=str, default="")
@@ -54,5 +54,5 @@ config = Config(options=["name", "date", "value"])
 config = Config({"foo": "bar", "value": 42})
 ```
 """
-from toolbox.config.config import Config
-from toolbox.config.config_option import ConfigOption, create_options
+from cerbernetix.toolbox.config.config import Config
+from cerbernetix.toolbox.config.config_option import ConfigOption, create_options

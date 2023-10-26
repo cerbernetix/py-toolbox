@@ -1,8 +1,8 @@
 """Test the tool for extracting values from a set of possible entries."""
 import unittest
 
-from toolbox.data import ValueExtractor, passthrough
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.data import ValueExtractor, passthrough
+from cerbernetix.toolbox.testing import test_cases
 
 
 class TestValueExtractor(unittest.TestCase):

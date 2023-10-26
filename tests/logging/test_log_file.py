@@ -3,7 +3,7 @@ import logging
 import unittest
 from unittest.mock import Mock, patch
 
-from toolbox.logging import LOG_ENCODING, LOG_FILE_LOG_FORMAT, LOG_FILE_NAME, LogFile
+from cerbernetix.toolbox.logging import LOG_ENCODING, LOG_FILE_LOG_FORMAT, LOG_FILE_NAME, LogFile
 
 # pylint: disable=protected-access
 
@@ -149,9 +149,7 @@ class TestLogFile(unittest.TestCase):
     @patch("atexit.register")
     @patch("logging.FileHandler")
     @patch("logging.LogRecord")
-    def test_log_file_log_full_params(
-        self, mock_record: Mock, mock_file_handler: Mock, _
-    ):
+    def test_log_file_log_full_params(self, mock_record: Mock, mock_file_handler: Mock, _):
         """Tests the message is logged with the given param."""
 
         logger = LogFile()
@@ -188,9 +186,7 @@ class TestLogFile(unittest.TestCase):
     @patch("atexit.register")
     @patch("logging.FileHandler")
     @patch("logging.LogRecord")
-    def test_log_file_log_not_logged(
-        self, mock_record: Mock, mock_file_handler: Mock, _
-    ):
+    def test_log_file_log_not_logged(self, mock_record: Mock, mock_file_handler: Mock, _):
         """Tests the message is not logged as the level is too low."""
 
         logger = LogFile()
@@ -301,9 +297,7 @@ class TestLogFile(unittest.TestCase):
         mock_file_handler.return_value = mock
         mock_record.return_value = "ok"
 
-        logger.error(
-            "foo bar bar", 1, 2, 3, pathname="foo.bar", lineno=10, exc_info=("oops",)
-        )
+        logger.error("foo bar bar", 1, 2, 3, pathname="foo.bar", lineno=10, exc_info=("oops",))
 
         mock_record.assert_called_once_with(
             name=logger.name,

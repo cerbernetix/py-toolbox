@@ -1,8 +1,8 @@
 """Test the set of functions for working with combinations."""
 import unittest
 
-from toolbox.math import get_combination_from_rank, get_combination_rank
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.math import get_combination_from_rank, get_combination_rank
+from cerbernetix.toolbox.testing import test_cases
 
 
 class TestCombination(unittest.TestCase):

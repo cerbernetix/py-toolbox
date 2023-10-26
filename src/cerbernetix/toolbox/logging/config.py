@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.logging import setup_file_logging, handle_uncaught_exceptions
+from cerbernetix.toolbox.logging import setup_file_logging, handle_uncaught_exceptions
 
 setup_file_logging('path/to/file.log')
 handle_uncaught_exceptions()
@@ -46,7 +46,7 @@ def setup_file_logging(
 
     Examples:
     ```python
-    from toolbox.logging import setup_file_logging
+    from cerbernetix.toolbox.logging import setup_file_logging
 
     setup_file_logging('path/to/file.log')
     ```
@@ -68,7 +68,7 @@ def handle_uncaught_exceptions() -> None:  # pragma: no cover
 
     Examples:
     ```python
-    from toolbox.logging import handle_uncaught_exceptions
+    from cerbernetix.toolbox.logging import handle_uncaught_exceptions
 
     handle_uncaught_exceptions()
 

@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox import testing
+from cerbernetix.toolbox import testing
 
 # Parameters can be given either as list of arguments or either as dictionaries.
 # In both cases, the parameters must be present in the signature of the test method.
@@ -40,7 +40,7 @@ def test_cases(cases: list[dict | list]) -> Callable:
 
     Examples:
     ```python
-    from toolbox.testing import test_cases
+    from cerbernetix.toolbox.testing import test_cases
     @test_cases([
         ["adding numbers", [10, 20, 12], 42],
         {

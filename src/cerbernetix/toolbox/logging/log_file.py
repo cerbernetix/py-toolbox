@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 # Create a log file at the current directory, named 'trace.log'
 logger = LogFile()
@@ -28,8 +28,8 @@ from __future__ import annotations
 import atexit
 import logging
 
-from toolbox.files import delete_path
-from toolbox.logging.config import LOG_ENCODING
+from cerbernetix.toolbox.files import delete_path
+from cerbernetix.toolbox.logging.config import LOG_ENCODING
 
 # The name of the logger, also used for the log events
 LOG_FILE_NAME = "trace"
@@ -56,7 +56,7 @@ class LogFile:
 
     Examples:
     ```python
-    from toolbox.logging import LogFile
+    from cerbernetix.toolbox.logging import LogFile
 
     logger = LogFile()
 
@@ -86,7 +86,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         # Create a log file at the current directory, named 'trace.log'
         logger = LogFile()
@@ -123,7 +123,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -142,7 +142,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -160,7 +160,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -178,7 +178,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -196,7 +196,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -216,7 +216,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -241,7 +241,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -279,7 +279,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -347,7 +347,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -378,7 +378,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -409,7 +409,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -440,7 +440,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -460,7 +460,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -487,7 +487,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 
@@ -511,7 +511,7 @@ class LogFile:
 
         Examples:
         ```python
-        from toolbox.logging import LogFile
+        from cerbernetix.toolbox.logging import LogFile
 
         logger = LogFile()
 

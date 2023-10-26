@@ -1,5 +1,5 @@
 """Test the TestCase class with more assertions."""
-from toolbox.testing import TestCase, test_cases
+from cerbernetix.toolbox.testing import TestCase, test_cases
 
 
 class TestAsserts(TestCase):
