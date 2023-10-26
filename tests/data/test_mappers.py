@@ -1,8 +1,8 @@
 """Test the collection of data mappers."""
 import unittest
 
-from toolbox.data import boolean, passthrough
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.data import boolean, decimal, passthrough
+from cerbernetix.toolbox.testing import test_cases
 
 
 class TestDataMappers(unittest.TestCase):
@@ -58,3 +58,17 @@ class TestDataMappers(unittest.TestCase):
     def test_boolean(self, value_set, value_get):
         """Test the value is converted to boolean."""
         self.assertEqual(boolean(value_set), value_get)
+
+    @test_cases(
+        [
+            ["Default", None, None, "3.14", 3.14],
+            ["Float", None, None, 3.14, 3.14],
+            ["Int", None, None, 42, 42],
+            ["Comma", ",", None, "3,14", 3.14],
+            ["Thousands", ",", ".", "3.753.323,184", 3753323.184],
+        ]
+    )
+    def test_decimal(self, _, separator, thousands, value_set, value_get):
+        """Test the value is casted to a float."""
+        mapper = decimal(separator, thousands)
+        self.assertEqual(mapper(value_set), value_get)

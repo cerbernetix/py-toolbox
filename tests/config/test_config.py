@@ -1,9 +1,9 @@
 """Test the class for handling a configuration."""
 import unittest
 
-from toolbox.config import Config, ConfigOption
-from toolbox.data.mappers import passthrough
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.config import Config, ConfigOption
+from cerbernetix.toolbox.data.mappers import passthrough
+from cerbernetix.toolbox.testing import test_cases
 
 
 class TestConfig(unittest.TestCase):

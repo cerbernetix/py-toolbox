@@ -5,14 +5,14 @@ from unittest.mock import MagicMock, Mock, patch
 
 import requests
 
-from toolbox.files import (
+from cerbernetix.toolbox.files import (
     fetch_content,
     get_file_mode,
     read_file,
     read_zip_file,
     write_file,
 )
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.testing import test_cases
 
 
 class TestFileHelpers(unittest.TestCase):
@@ -230,7 +230,5 @@ class TestFileHelpers(unittest.TestCase):
             zipfile.ZipInfo("foo.baz"),
         ]
 
-        self.assertRaises(
-            FileNotFoundError, lambda: read_zip_file(buffer, filename="foo.txt")
-        )
+        self.assertRaises(FileNotFoundError, lambda: read_zip_file(buffer, filename="foo.txt"))
         self.assertRaises(FileNotFoundError, lambda: read_zip_file(buffer, ext=".tx"))

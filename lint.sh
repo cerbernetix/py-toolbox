@@ -1,2 +1,2 @@
 #!/bin/sh
-pylint toolbox
+pylint src

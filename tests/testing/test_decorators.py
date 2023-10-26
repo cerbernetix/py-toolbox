@@ -3,7 +3,7 @@ import unittest
 from typing import Callable
 from unittest.mock import Mock, patch
 
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.testing import test_cases
 
 
 class TestParameters(unittest.TestCase):

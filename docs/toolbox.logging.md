@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/logging/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.logging`
 The `logging` package provides several utilities for logging purpose. 
@@ -18,7 +18,7 @@ It contains:
  ```python
 import logging
 
-from toolbox.logging import LogFile, setup_file_logging, handle_uncaught_exceptions
+from cerbernetix.toolbox.logging import LogFile, setup_file_logging, handle_uncaught_exceptions
 
 logging.setup_file_logging('path/to/app.log')
 logging.handle_uncaught_exceptions()
@@ -45,11 +45,9 @@ if __name__ == "__main__":
 
 **Global Variables**
 ---------------
-- **config**
 - **LOG_ENCODING**
 - **LOG_FILE**
 - **LOG_FORMAT**
-- **log_file**
 - **LOG_FILE_LOG_FORMAT**
 - **LOG_FILE_NAME**
 - **LOG_FILE_PATTERN**

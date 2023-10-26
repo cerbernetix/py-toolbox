@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/testing/test_case.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/test_case.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.testing.test_case`
 Extends the default Python TestCase with more assertions. 
@@ -9,7 +9,7 @@ Extends the default Python TestCase with more assertions.
 
 **Examples:**
  ```python
-from toolbox import testing
+from cerbernetix.toolbox import testing
 
 class TestMyStuff(testing.TestCase)
      def test_list(self):
@@ -23,7 +23,7 @@ class TestMyStuff(testing.TestCase)
 
 ---
 
-<a href="../toolbox/testing/test_case.py#L19"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/test_case.py#L19"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `TestCase`
 Test class with additional assertions. 
@@ -33,7 +33,7 @@ Test class with additional assertions.
 
 ---
 
-<a href="../toolbox/testing/test_case.py#L22"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/test_case.py#L22"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `assertListsAlmostEqual`
 
@@ -65,7 +65,7 @@ Asserts that 2 lists of float numbers are almost equal by the number of places.
 
 **Examples:**
  ```python
-from toolbox import testing
+from cerbernetix.toolbox import testing
 
 class TestMyStuff(testing.TestCase)
     def test_almost_equal(self):
@@ -74,7 +74,7 @@ class TestMyStuff(testing.TestCase)
 
 ---
 
-<a href="../toolbox/testing/test_case.py#L79"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/test_case.py#L79"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `assertListsNotAlmostEqual`
 
@@ -106,7 +106,7 @@ Asserts that 2 lists of float numbers are not almost equal by the number of plac
 
 **Examples:**
  ```python
-from toolbox import testing
+from cerbernetix.toolbox import testing
 
 class TestMyStuff(testing.TestCase)
     def test_almost_equal(self):

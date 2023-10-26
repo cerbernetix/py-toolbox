@@ -1,9 +1,9 @@
 """Test the class for handling config options."""
 import unittest
 
-from toolbox.config import ConfigOption, create_options
-from toolbox.data import boolean, passthrough
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.config import ConfigOption, create_options
+from cerbernetix.toolbox.data import boolean, passthrough
+from cerbernetix.toolbox.testing import test_cases
 
 
 class TestConfigOption(unittest.TestCase):
@@ -83,9 +83,7 @@ class TestConfigOption(unittest.TestCase):
             ],
         ]
     )
-    def test_create_option(
-        self, _, params, name, value, default, description, mapper, choices
-    ):
+    def test_create_option(self, _, params, name, value, default, description, mapper, choices):
         """Test the creation of an option."""
 
         option = ConfigOption(**params)
@@ -101,12 +99,8 @@ class TestConfigOption(unittest.TestCase):
         self.assertRaises(ValueError, lambda: ConfigOption(""))
         self.assertRaises(ValueError, lambda: ConfigOption("foo", mapper=True))
         self.assertRaises(ValueError, lambda: ConfigOption("foo", choices=["bar"]))
-        self.assertRaises(
-            ValueError, lambda: ConfigOption("foo", value="baz", choices=["bar"])
-        )
-        self.assertRaises(
-            ValueError, lambda: ConfigOption("foo", default="baz", choices=["bar"])
-        )
+        self.assertRaises(ValueError, lambda: ConfigOption("foo", value="baz", choices=["bar"]))
+        self.assertRaises(ValueError, lambda: ConfigOption("foo", default="baz", choices=["bar"]))
 
     def test_copy_option(self):
         """Test the copy of an option."""

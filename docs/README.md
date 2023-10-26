@@ -10,6 +10,7 @@
 - [`toolbox.config.config_option`](./toolbox.config.config_option.md#module-toolboxconfigconfig_option): A class for handling config options.
 - [`toolbox.data`](./toolbox.data.md#module-toolboxdata): A collection of data utilities.
 - [`toolbox.data.mappers`](./toolbox.data.mappers.md#module-toolboxdatamappers): A collection of data mappers.
+- [`toolbox.data.value_extractor`](./toolbox.data.value_extractor.md#module-toolboxdatavalue_extractor): A tool for extracting values from a set of possible entries.
 - [`toolbox.files`](./toolbox.files.md#module-toolboxfiles): The `files` package provides several utilities for handling files.
 - [`toolbox.files.csv_file`](./toolbox.files.csv_file.md#module-toolboxfilescsv_file): A simple API for reading and writing CSV files.
 - [`toolbox.files.file`](./toolbox.files.file.md#module-toolboxfilesfile): A collection of utilities for accessing files.
@@ -20,26 +21,33 @@
 - [`toolbox.logging`](./toolbox.logging.md#module-toolboxlogging): The `logging` package provides several utilities for logging purpose.
 - [`toolbox.logging.config`](./toolbox.logging.config.md#module-toolboxloggingconfig): A collection of utilities for logging purpose.
 - [`toolbox.logging.log_file`](./toolbox.logging.log_file.md#module-toolboxlogginglog_file): A custom logger that writes directly to a file.
+- [`toolbox.math`](./toolbox.math.md#module-toolboxmath): A collection of Math related tools.
+- [`toolbox.math.combination`](./toolbox.math.combination.md#module-toolboxmathcombination): A set of functions for working with combinations.
 - [`toolbox.testing`](./toolbox.testing.md#module-toolboxtesting): The `testing` package provides utilities for testing purpose.
 - [`toolbox.testing.decorators`](./toolbox.testing.decorators.md#module-toolboxtestingdecorators): A collection of decorators for testing purpose.
 - [`toolbox.testing.test_case`](./toolbox.testing.test_case.md#module-toolboxtestingtest_case): Extends the default Python TestCase with more assertions.
+- [`toolbox.time`](./toolbox.time.md#module-toolboxtime): A collection of time related utilities.
+- [`toolbox.time.weekday`](./toolbox.time.weekday.md#module-toolboxtimeweekday): A tool for getting the date of a weekday.
 
 ## Classes
 
 - [`config.Config`](./toolbox.config.config.md#class-config): Handles a configuration.
 - [`config_option.ConfigOption`](./toolbox.config.config_option.md#class-configoption): Handles a config option.
 - [`mappers.ValueMapper`](./toolbox.data.mappers.md#class-valuemapper): The interface for a value mapper.
+- [`value_extractor.ValueExtractor`](./toolbox.data.value_extractor.md#class-valueextractor): Extracts a value from a set of possible entries.
 - [`csv_file.CSVFile`](./toolbox.files.csv_file.md#class-csvfile): Offers a simple API for reading and writing CSV files.
 - [`file_manager.FileManager`](./toolbox.files.file_manager.md#class-filemanager): Offers a simple API for reading and writing files.
 - [`json_file.JSONFile`](./toolbox.files.json_file.md#class-jsonfile): Offers a simple API for reading and writing JSON files.
 - [`pickle_file.PickleFile`](./toolbox.files.pickle_file.md#class-picklefile): Offers a simple API for reading and writing pickle files.
 - [`log_file.LogFile`](./toolbox.logging.log_file.md#class-logfile): Offers a similar API to the Python builtin loggers for logging to a custom file.
 - [`test_case.TestCase`](./toolbox.testing.test_case.md#class-testcase): Test class with additional assertions.
+- [`weekday.Weekday`](./toolbox.time.weekday.md#class-weekday): Gets the date of a weekday given a particular date.
 
 ## Functions
 
 - [`config_option.create_options`](./toolbox.config.config_option.md#function-create_options): Create options from a list of descriptors.
 - [`mappers.boolean`](./toolbox.data.mappers.md#function-boolean): Converts a value to a boolean value.
+- [`mappers.decimal`](./toolbox.data.mappers.md#function-decimal): Creates a mapper for casting decimal values to floats.
 - [`mappers.passthrough`](./toolbox.data.mappers.md#function-passthrough): A passthrough mapper. It returns the value as it is.
 - [`csv_file.read_csv_file`](./toolbox.files.csv_file.md#function-read_csv_file): Reads a CSV content from a file.
 - [`csv_file.read_zip_csv`](./toolbox.files.csv_file.md#function-read_zip_csv): Reads a CSV content from a Zip.
@@ -55,6 +63,7 @@
 - [`path.delete_path`](./toolbox.files.path.md#function-delete_path): Deletes the file or the folder at the given path.
 - [`path.get_application_name`](./toolbox.files.path.md#function-get_application_name): Gets the name of the application, based on the root folder.
 - [`path.get_application_path`](./toolbox.files.path.md#function-get_application_path): Gets the path to the application's root.
+- [`path.get_cache_path`](./toolbox.files.path.md#function-get_cache_path): Gets the path to a cache folder.
 - [`path.get_file_path`](./toolbox.files.path.md#function-get_file_path): Gets a full path for a file inside the application.
 - [`path.get_module_folder_path`](./toolbox.files.path.md#function-get_module_folder_path): Gets the path to the folder containing the given module.
 - [`path.get_module_path`](./toolbox.files.path.md#function-get_module_path): Gets the path to the given module.
@@ -62,6 +71,8 @@
 - [`pickle_file.write_pickle_file`](./toolbox.files.pickle_file.md#function-write_pickle_file): Writes a list of objects to a file.
 - [`config.handle_uncaught_exceptions`](./toolbox.logging.config.md#function-handle_uncaught_exceptions): Installs a collector for logging uncaught exceptions.
 - [`config.setup_file_logging`](./toolbox.logging.config.md#function-setup_file_logging): Setup the application log to a file logger.
+- [`combination.get_combination_from_rank`](./toolbox.math.combination.md#function-get_combination_from_rank): Gets the combination corresponding to a particular rank.
+- [`combination.get_combination_rank`](./toolbox.math.combination.md#function-get_combination_rank): Gets the rank of a combination.
 - [`decorators.test_cases`](./toolbox.testing.decorators.md#function-test_cases): Creates a decorator for parametric test cases.
 
 

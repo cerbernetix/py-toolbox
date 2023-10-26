@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/config/config_option.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.config.config_option`
 A class for handling config options. 
@@ -9,7 +9,7 @@ A class for handling config options.
 
 **Examples:**
  ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 # Create a few options
 name = ConfigOption("name", mapper=str, default="")
@@ -30,7 +30,7 @@ print(age.get())  # 20
 
 ---
 
-<a href="../toolbox/config/config_option.py#L420"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L418"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `create_options`
 
@@ -62,7 +62,7 @@ Depending on the type of the descriptor, the following will be done:
 
 **Examples:**
  ```python
-from toolbox.config import create_options
+from cerbernetix.toolbox.config import create_options
 
 for option in create_options([
     ConfigOption("foo"), # a copy will be created
@@ -76,7 +76,7 @@ for option in create_options([
 
 ---
 
-<a href="../toolbox/config/config_option.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `ConfigOption`
 Handles a config option. 
@@ -95,7 +95,7 @@ Options can have a description, and can be constrained to a list of possible val
  - <b>`value`</b> (Any, readonly):  The current value of the option. 
  - <b>`default`</b> (Any, readonly):  The default value for the option. 
  - <b>`description`</b> (str, readonly):  A description of the option. 
- - <b>`mapper`</b> (ConfigOptionMapper, readonly):  The mapper applied to cast and format the value. 
+ - <b>`mapper`</b> (ValueMapper, readonly):  The mapper applied to cast and format the value. 
  - <b>`choices`</b> (tuple, readonly):  The list of possible values for the option. 
 
 
@@ -104,7 +104,7 @@ Options can have a description, and can be constrained to a list of possible val
 
 **Examples:**
  ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 name = ConfigOption("name", mapper=str, default="bob")
 
@@ -115,7 +115,7 @@ name.set("John")
 print(name.get()) # "John"
 ``` 
 
-<a href="../toolbox/config/config_option.py#L63"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L63"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -142,7 +142,7 @@ The name is mandatory.
  - <b>`value`</b> (Any, optional):  The initial value of the option. Defaults to None. 
  - <b>`default`</b> (Any, optional):  The value returned when there is no defined value. Defaults to None. 
  - <b>`description`</b> (str, optional):  A description for the option. Defaults to "". 
- - <b>`mapper`</b> (ConfigOptionMapper, optional):  A mapper function for casting the value. Defaults to None. 
+ - <b>`mapper`</b> (ValueMapper, optional):  A mapper function for casting the value. Defaults to None. 
  - <b>`choices`</b> (Iterable, optional):  A list of possible values. Defaults to None. 
 
 
@@ -157,7 +157,7 @@ The name is mandatory.
 
 **Examples:**
  ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 name = ConfigOption("name", mapper=str, default="", description="The username")
 age = ConfigOption("age", mapper=int, default=0)
@@ -212,7 +212,7 @@ The mapper applied to cast and format the value.
 
 **Returns:**
  
- - <b>`ConfigOptionMapper`</b>:  The mapper applied to cast and format the value. 
+ - <b>`ValueMapper`</b>:  The mapper applied to cast and format the value. 
 
 ---
 
@@ -242,7 +242,7 @@ The current value of the option.
 
 ---
 
-<a href="../toolbox/config/config_option.py#L381"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L379"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `cast`
 
@@ -266,7 +266,7 @@ Casts and format a value to what is expected by the config option.
 
 ---
 
-<a href="../toolbox/config/config_option.py#L185"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L185"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `copy`
 
@@ -286,7 +286,7 @@ Gets a copy of the option.
 
 **Examples:**
  ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 name = ConfigOption("name", mapper=str, default="", description="The username")
 
@@ -298,7 +298,7 @@ print(name is name2) # False
 
 ---
 
-<a href="../toolbox/config/config_option.py#L236"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L236"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -320,7 +320,7 @@ It returns the default value if the value is not defined yet.
 
 **Examples:**
  ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 name = ConfigOption("name", mapper=str, default="bob")
 
@@ -333,7 +333,7 @@ print(name.get()) # "John"
 
 ---
 
-<a href="../toolbox/config/config_option.py#L212"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L212"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_dict`
 
@@ -353,7 +353,7 @@ Gets the option as a dictionary.
 
 **Examples:**
  ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 name = ConfigOption("foo", "bar")
 
@@ -362,7 +362,7 @@ print(name.get_dict()) # {"name": "foo", "value": "bar", "default": None, ...}
 
 ---
 
-<a href="../toolbox/config/config_option.py#L303"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L303"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset`
 
@@ -380,7 +380,7 @@ Resets the option to its default value.
 
 ---
 
-<a href="../toolbox/config/config_option.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set`
 
@@ -414,7 +414,7 @@ Sets the value of the option.
 
 **Examples:**
  ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 name = ConfigOption("name", mapper=str, default="bob")
 
@@ -429,7 +429,7 @@ print(name.get()) # "bob"
 
 ---
 
-<a href="../toolbox/config/config_option.py#L319"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L317"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_default`
 
@@ -463,7 +463,7 @@ Sets the default value of the option.
 
 **Examples:**
  ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 name = ConfigOption("name", mapper=str, default="bob")
 
@@ -476,7 +476,7 @@ print(name.get()) # ""
 
 ---
 
-<a href="../toolbox/config/config_option.py#L361"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config_option.py#L359"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_description`
 
@@ -493,7 +493,7 @@ Sets the description of the option.
  - <b>`description`</b> (str):  A description for the option. 
 
 ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 name = ConfigOption("name")
 

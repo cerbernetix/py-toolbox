@@ -2,7 +2,7 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from toolbox.files import (
+from cerbernetix.toolbox.files import (
     JSON_ENCODING,
     JSON_INDENT,
     JSONFile,

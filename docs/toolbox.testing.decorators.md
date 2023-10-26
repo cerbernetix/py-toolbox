@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/testing/decorators.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/decorators.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.testing.decorators`
 A collection of decorators for testing purpose. 
@@ -9,7 +9,7 @@ A collection of decorators for testing purpose.
 
 **Examples:**
  ```python
-from toolbox import testing
+from cerbernetix.toolbox import testing
 
 # Parameters can be given either as list of arguments or either as dictionaries.
 # In both cases, the parameters must be present in the signature of the test method.
@@ -28,7 +28,7 @@ def test_addition(self, title, params, expected):
 
 ---
 
-<a href="../toolbox/testing/decorators.py#L25"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/decorators.py#L25"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `test_cases`
 
@@ -60,7 +60,7 @@ Creates a decorator for parametric test cases.
 
 **Examples:**
  ```python
-from toolbox.testing import test_cases
+from cerbernetix.toolbox.testing import test_cases
 @test_cases([
     ["adding numbers", [10, 20, 12], 42],
     {

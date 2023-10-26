@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/files/path.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files.path`
 A collection of utilities around file paths. 
@@ -9,7 +9,7 @@ A collection of utilities around file paths.
 
 **Examples:**
  ```python
-from toolbox.files import (
+from cerbernetix.toolbox.files import (
      create_file_path,
      delete_path,
      get_application_name,
@@ -45,10 +45,13 @@ else:
      print('The path has not been created!')
 ``` 
 
+**Global Variables**
+---------------
+- **CACHE_PATH**
 
 ---
 
-<a href="../toolbox/files/path.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L49"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_module_path`
 
@@ -74,7 +77,7 @@ Gets the path to the given module.
 
 **Examples:**
  ```python
-from toolbox.files import get_module_path
+from cerbernetix.toolbox.files import get_module_path
 
 # Get the path of the module foo
 path = get_module_path('foo')
@@ -83,7 +86,7 @@ path = get_module_path('foo')
 
 ---
 
-<a href="../toolbox/files/path.py#L69"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L72"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_module_folder_path`
 
@@ -109,7 +112,7 @@ Gets the path to the folder containing the given module.
 
 **Examples:**
  ```python
-from toolbox.files import get_module_folder_path
+from cerbernetix.toolbox.files import get_module_folder_path
 
 # Get the path to the folder containing the module foo
 path = get_module_folder_path('foo')
@@ -118,7 +121,7 @@ path = get_module_folder_path('foo')
 
 ---
 
-<a href="../toolbox/files/path.py#L89"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L92"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_application_path`
 
@@ -144,7 +147,7 @@ Gets the path to the application's root.
 
 **Examples:**
  ```python
-from toolbox.files import get_application_path
+from cerbernetix.toolbox.files import get_application_path
 
 # Get the path to the application, given the main package
 app_path = get_application_path('my_package')
@@ -153,7 +156,7 @@ app_path = get_application_path('my_package')
 
 ---
 
-<a href="../toolbox/files/path.py#L109"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L112"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_application_name`
 
@@ -179,7 +182,7 @@ Gets the name of the application, based on the root folder.
 
 **Examples:**
  ```python
-from toolbox.files import get_application_name
+from cerbernetix.toolbox.files import get_application_name
 
 # Get the name of the application, given the main package
 print(get_application_name('my_package'))
@@ -188,7 +191,7 @@ print(get_application_name('my_package'))
 
 ---
 
-<a href="../toolbox/files/path.py#L129"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L132"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_file_path`
 
@@ -215,7 +218,7 @@ Gets a full path for a file inside the application.
 
 **Examples:**
  ```python
-from toolbox.files import get_file_path
+from cerbernetix.toolbox.files import get_file_path
 
 # Get the path to a file below your application's root
 filename = get_file_path('path/to/file', 'my_package')
@@ -224,7 +227,7 @@ filename = get_file_path('path/to/file', 'my_package')
 
 ---
 
-<a href="../toolbox/files/path.py#L150"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L153"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `create_file_path`
 
@@ -252,10 +255,10 @@ Note: exceptions are caught internally, the function will always return either w
 
 **Examples:**
  ```python
-from toolbox.files import create_file_path
+from cerbernetix.toolbox.files import create_file_path
 
 # Create the parent folder to the file
-if create_file_path('path/to/file):
+if create_file_path('path/to/file'):
     print('The path to the parent folder has been created!')
 else:
     print('The path has not been created!')
@@ -264,7 +267,7 @@ else:
 
 ---
 
-<a href="../toolbox/files/path.py#L185"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L188"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `delete_path`
 
@@ -294,19 +297,73 @@ Note: exceptions are caught internally, the function will always return either w
 
 **Examples:**
  ```python
-from toolbox.files import delete_path
+from cerbernetix.toolbox.files import delete_path
 
 # Delete a file
-if delete_path('path/to/file):
+if delete_path('path/to/file'):
     print('The file has been deleted!')
 else:
     print('Cannot delete the file!')
 
 # Delete a folder
-if delete_path('path/to/folder):
+if delete_path('path/to/folder'):
     print('The folder has been deleted!')
 else:
     print('Cannot delete the folder, is it empty?')
+``` 
+
+
+---
+
+<a href="../src/cerbernetix/toolbox/files/path.py#L234"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+## <kbd>function</kbd> `get_cache_path`
+
+```python
+get_cache_path(name: str = None, create: bool = False) → str
+```
+
+Gets the path to a cache folder. 
+
+Without any argument, it will return with the root of the cache folder. 
+
+When the name parameter is set, it will be used as a subfolder. 
+
+The create parameter allows to make sure the path exists. 
+
+
+
+**Args:**
+ 
+ - <b>`name`</b> (str, optional):  A name for a subfolder. Defaults to None. 
+ - <b>`create`</b> (bool, optional):  When `True` ensures that the folder exists. Defaults to False. 
+
+
+
+**Raises:**
+ 
+ - <b>`OSError`</b>:  If the path cannot be created. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The path to the cache folder. 
+
+
+
+**Examples:**
+ ```python
+from cerbernetix.toolbox.files import get_cache_path
+
+# Get the cache root folder
+cache = get_cache_path()
+
+# Get a cache folder
+cache = get_cache_path("foo")
+
+# Get a cache folder, making sure the path exists
+cache = get_cache_path("foo", True)
 ``` 
 
 

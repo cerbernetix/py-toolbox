@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../toolbox/logging/config.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/config.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.logging.config`
 A collection of utilities for logging purpose. 
@@ -9,7 +9,7 @@ A collection of utilities for logging purpose.
 
 **Examples:**
  ```python
-from toolbox.logging import setup_file_logging, handle_uncaught_exceptions
+from cerbernetix.toolbox.logging import setup_file_logging, handle_uncaught_exceptions
 
 setup_file_logging('path/to/file.log')
 handle_uncaught_exceptions()
@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
 ---
 
-<a href="../toolbox/logging/config.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/config.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `setup_file_logging`
 
@@ -60,7 +60,7 @@ By default, a file will be created in the current working directory, named 'app.
 
 **Examples:**
  ```python
-from toolbox.logging import setup_file_logging
+from cerbernetix.toolbox.logging import setup_file_logging
 
 setup_file_logging('path/to/file.log')
 ``` 
@@ -68,7 +68,7 @@ setup_file_logging('path/to/file.log')
 
 ---
 
-<a href="../toolbox/logging/config.py#L63"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/config.py#L63"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `handle_uncaught_exceptions`
 
@@ -84,7 +84,7 @@ When an exception is not handled in the code, it will be logged with the message
 
 **Examples:**
  ```python
-from toolbox.logging import handle_uncaught_exceptions
+from cerbernetix.toolbox.logging import handle_uncaught_exceptions
 
 handle_uncaught_exceptions()
 
