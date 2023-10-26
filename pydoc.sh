@@ -4,5 +4,5 @@ lazydocs \
     --ignored-modules tests \
     --overview-file=README.md \
     --validate \
-    src
+    src/cerbernetix
 rm docs/.pages

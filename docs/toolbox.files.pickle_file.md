@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/files/pickle_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files.pickle_file`
 A simple API for reading and writing pickle files. 
@@ -9,7 +9,7 @@ A simple API for reading and writing pickle files.
 
 **Examples:**
  ```python
-from toolbox.files import PickleFile, read_pickle_file, write_pickle_file
+from cerbernetix.toolbox.files import PickleFile, read_pickle_file, write_pickle_file
 
 filename = 'path/to/file.pkl'
 data = [
@@ -54,7 +54,7 @@ with file:
 
 ---
 
-<a href="../src/toolbox/files/pickle_file.py#L342"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L342"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_pickle_file`
 
@@ -94,7 +94,7 @@ The returned value can be either a list (default) or an iterator (when the itera
 
 **Examples:**
  ```python
-from toolbox.files import read_pickle_file
+from cerbernetix.toolbox.files import read_pickle_file
 
 data = read_pickle_file('path/to/file')
 
@@ -106,7 +106,7 @@ for obj in read_pickle_file('path/to/file', iterator=True):
 
 ---
 
-<a href="../src/toolbox/files/pickle_file.py#L392"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L392"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_pickle_file`
 
@@ -142,7 +142,7 @@ Writes a list of objects to a file.
 
 **Examples:**
  ```python
-from toolbox.files import write_pickle_file
+from cerbernetix.toolbox.files import write_pickle_file
 
 data = [
     {'date': '2023-09-10', 'value': 42},
@@ -156,7 +156,7 @@ write_pickle_file('path/to/file', data)
 
 ---
 
-<a href="../src/toolbox/files/pickle_file.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `PickleFile`
 Offers a simple API for reading and writing pickle files. 
@@ -176,7 +176,7 @@ The read API does not allow to size the data to read. However, it reads the file
 
 **Examples:**
  ```python
-from toolbox.files import PickleFile
+from cerbernetix.toolbox.files import PickleFile
 
 file = PickleFile("path/to/the/file")
 
@@ -200,7 +200,7 @@ file.write_file(data)
 data = file.read_file()
 ``` 
 
-<a href="../src/toolbox/files/pickle_file.py#L108"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L108"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -237,7 +237,7 @@ Creates a file manager for pickle files.
 
 **Examples:**
  ```python
-from toolbox.files import PickleFile
+from cerbernetix.toolbox.files import PickleFile
 
 # Create a file manager
 file = PickleFile('path/to/filename')
@@ -285,7 +285,7 @@ Gets the age of the file. Say the time elapsed since it was last modified.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -309,7 +309,7 @@ Gets the base filename, without the path.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -333,7 +333,7 @@ Gets the modification date of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -356,7 +356,7 @@ Gets the folder path of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -380,7 +380,7 @@ Gets the file extension from the filename.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -404,7 +404,7 @@ Gets the file name without the extension.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -428,7 +428,7 @@ Gets the size of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -439,7 +439,7 @@ size = file.size
 
 ---
 
-<a href="../src/toolbox/files/pickle_file.py#L274"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L274"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -468,7 +468,7 @@ Note: the file must be opened upfront.
 
 **Examples:**
  ```python
-from toolbox.files import PickleFile
+from cerbernetix.toolbox.files import PickleFile
 
 file = PickleFile('path/to/filename')
 
@@ -483,7 +483,7 @@ data = [obj for obj in file]
 
 ---
 
-<a href="../src/toolbox/files/pickle_file.py#L205"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L205"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -520,7 +520,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 **Examples:**
  ```python
-from toolbox.files import PickleFile
+from cerbernetix.toolbox.files import PickleFile
 
 file = PickleFile('path/to/filename')
 
@@ -534,7 +534,7 @@ for obj in file.read_file(iterator=True):
 
 ---
 
-<a href="../src/toolbox/files/pickle_file.py#L309"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L309"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -569,7 +569,7 @@ Note: the file must be opened upfront.
 
 **Examples:**
  ```python
-from toolbox.files import PickleFile
+from cerbernetix.toolbox.files import PickleFile
 
 file = PickleFile('path/to/filename')
 
@@ -581,7 +581,7 @@ with file(create=True):
 
 ---
 
-<a href="../src/toolbox/files/pickle_file.py#L243"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L243"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
@@ -615,7 +615,7 @@ Note: If the file was already opened, it is first closed, then opened in write m
 
 **Examples:**
  ```python
-from toolbox.files import PickleFile
+from cerbernetix.toolbox.files import PickleFile
 
 file = PickleFile('path/to/filename')
 

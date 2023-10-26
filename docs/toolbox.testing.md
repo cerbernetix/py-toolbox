@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/testing/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.testing`
 The `testing` package provides utilities for testing purpose. 
@@ -13,7 +13,7 @@ It contains:
 
 **Examples:**
  ```python
-from toolbox import testing
+from cerbernetix.toolbox import testing
 
 class TestMyStuff(testing.TestCase)
 
@@ -34,10 +34,6 @@ class TestMyStuff(testing.TestCase)
          self.assertListsAlmostEqual(generator(), [1.23, 3.14, 1.61])
 ``` 
 
-**Global Variables**
----------------
-- **decorators**
-- **test_case**
 
 
 

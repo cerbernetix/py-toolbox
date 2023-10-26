@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/files/file_manager.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files.file_manager`
 A simple class for reading and writing files. 
@@ -9,7 +9,7 @@ A simple class for reading and writing files.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 filename = 'path/to/file.txt'
 data = "Some content"
@@ -36,7 +36,7 @@ with file:
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L39"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L39"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `FileManager`
 Offers a simple API for reading and writing files. 
@@ -57,7 +57,7 @@ The read API does not allow to size the data to read. The FileManager reads all 
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager("path/to/the/file", binary=False, encoding="UTF-8")
 
@@ -74,7 +74,7 @@ with file(create=True):
 content = file.read_file()
 ``` 
 
-<a href="../src/toolbox/files/file_manager.py#L74"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L74"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -109,7 +109,7 @@ Creates a file manager.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 # Create a file manager
 file = FileManager('path/to/filename')
@@ -139,7 +139,7 @@ Gets the age of the file. Say the time elapsed since it was last modified.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -163,7 +163,7 @@ Gets the base filename, without the path.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -187,7 +187,7 @@ Gets the modification date of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -210,7 +210,7 @@ Gets the folder path of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -234,7 +234,7 @@ Gets the file extension from the filename.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -258,7 +258,7 @@ Gets the file name without the extension.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -282,7 +282,7 @@ Gets the size of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -293,7 +293,7 @@ size = file.size
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L506"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L506"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `check`
 
@@ -333,7 +333,7 @@ Tells if the file is valid with respect to the specified criteria.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename"')
 
@@ -355,7 +355,7 @@ else:
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L331"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L331"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -377,7 +377,7 @@ Note: it does nothing if the file is already closed.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -393,7 +393,7 @@ file.close()
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L638"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L638"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `create_path`
 
@@ -415,7 +415,7 @@ Note: exceptions are caught internally, the function will always return either w
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename"')
 
@@ -428,7 +428,7 @@ else:
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L609"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L609"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete`
 
@@ -454,7 +454,7 @@ Deletes the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -467,7 +467,7 @@ file.delete()
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L486"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L486"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `exists`
 
@@ -487,7 +487,7 @@ Tells if the file already exists.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -499,7 +499,7 @@ if file.exists():
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L271"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L271"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `open`
 
@@ -535,7 +535,7 @@ Note: If the file was already opened, it is first closed.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -560,7 +560,7 @@ data = [dat for dat in file]
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L426"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L426"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -589,7 +589,7 @@ Note: the file must be opened upfront.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -601,7 +601,7 @@ with file:
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L362"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L362"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -636,7 +636,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -650,7 +650,7 @@ for data in file.read_file(iterator=True):
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L455"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L455"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -685,7 +685,7 @@ Note: the file must be opened upfront.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -696,7 +696,7 @@ with file(create=True):
 
 ---
 
-<a href="../src/toolbox/files/file_manager.py#L399"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file_manager.py#L399"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
@@ -730,7 +730,7 @@ Note: If the file was already opened, it is first closed, then opened in write m
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 

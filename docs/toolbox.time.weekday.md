@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/time/weekday.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.time.weekday`
 A tool for getting the date of a weekday. 
@@ -9,7 +9,7 @@ A tool for getting the date of a weekday.
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -47,7 +47,7 @@ print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 
 ---
 
-<a href="../src/toolbox/time/weekday.py#L45"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L45"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Weekday`
 Gets the date of a weekday given a particular date. 
@@ -56,7 +56,7 @@ Gets the date of a weekday given a particular date.
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -80,7 +80,7 @@ print(weekday.previous_date("2023-10-06")) # "2023-09-29"
 print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 ``` 
 
-<a href="../src/toolbox/time/weekday.py#L75"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L75"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -97,7 +97,7 @@ Binds a weekday so that we can get a date from it.
  - <b>`day`</b> (int):  The weekday to bind. 
 
 ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -126,7 +126,7 @@ print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 
 ---
 
-<a href="../src/toolbox/time/weekday.py#L162"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L162"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `closest`
 
@@ -154,7 +154,7 @@ If the weekday is None, it uses the current date.
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -164,7 +164,7 @@ print(weekday.closest(SUNDAY)) # -2
 
 ---
 
-<a href="../src/toolbox/time/weekday.py#L276"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L276"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `closest_date`
 
@@ -198,7 +198,7 @@ If the date is None, it uses the current date.
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -210,7 +210,7 @@ print(weekday.closest_date("2023-10-06")) # "2023-10-06"
 
 ---
 
-<a href="../src/toolbox/time/weekday.py#L108"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L108"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `next`
 
@@ -238,7 +238,7 @@ If the weekday is None, it uses the current date.
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -248,7 +248,7 @@ print(weekday.next(SUNDAY)) # 5
 
 ---
 
-<a href="../src/toolbox/time/weekday.py#L194"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L194"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `next_date`
 
@@ -283,7 +283,7 @@ If the date is None, it uses the current date.
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -297,7 +297,7 @@ print(weekday.next_date("2023-10-06", True)) # "2023-10-06"
 
 ---
 
-<a href="../src/toolbox/time/weekday.py#L135"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L135"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `previous`
 
@@ -325,7 +325,7 @@ If the weekday is None, it uses the current date.
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -335,7 +335,7 @@ print(weekday.previous(SUNDAY)) # 2
 
 ---
 
-<a href="../src/toolbox/time/weekday.py#L235"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/weekday.py#L235"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `previous_date`
 
@@ -370,7 +370,7 @@ If the date is None, it uses the current date.
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
