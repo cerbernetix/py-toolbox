@@ -17,8 +17,8 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/jsconan/py-toolbox"
-"Bug Tracker" = "https://github.com/jsconan/py-toolbox/issues"
+"Homepage" = "https://github.com/cerbernetix/py-toolbox"
+"Bug Tracker" = "https://github.com/cerbernetix/py-toolbox/issues"
 
 [project.optional-dependencies]
 linting = ['pylint==2.17.5']
