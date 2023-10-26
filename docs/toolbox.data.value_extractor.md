@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/data/value_extractor.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/value_extractor.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.data.value_extractor`
 A tool for extracting values from a set of possible entries. 
@@ -9,7 +9,7 @@ A tool for extracting values from a set of possible entries.
 
 **Examples:**
  ```python
-from toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import ValueExtractor
 
 # Extracts a date from various possible entries
 extractor = ValueExtractor(["date", "time", "day"])
@@ -29,7 +29,7 @@ print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 
 ---
 
-<a href="../src/toolbox/data/value_extractor.py#L26"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/value_extractor.py#L26"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `ValueExtractor`
 Extracts a value from a set of possible entries. 
@@ -45,14 +45,14 @@ Extracts a value from a set of possible entries.
 
 **Examples:**
  ```python
-from toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import ValueExtractor
 
 extractor = ValueExtractor(["date", "time", "day"])
 data = [{"date": "2023-10-06"}, {"day": "2023-02-20"}, {"time": "2023-06-12"}]
 print([extractor.extract(row) for row in data]) # ["2023-10-06", "2023-02-20", "2023-06-12"]
 ``` 
 
-<a href="../src/toolbox/data/value_extractor.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/value_extractor.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -79,7 +79,7 @@ Creates a value extractor.
 
 **Examples:**
  ```python
-from toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import ValueExtractor
 
 extractor = ValueExtractor(["date", "time", "day"])
 data = [{"date": "2023-10-06"}, {"day": "2023-02-20"}, {"time": "2023-06-12"}]
@@ -115,7 +115,7 @@ The mapper applied to cast and format the extracted value.
 
 ---
 
-<a href="../src/toolbox/data/value_extractor.py#L131"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/value_extractor.py#L131"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `aggregate`
 
@@ -141,7 +141,7 @@ Aggregates a value from the specified structure.
 
 **Examples:**
  ```python
-from toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import ValueExtractor
 
 # Build full names from multiple entries
 extractor = ValueExtractor(["firstname", "lastname"], " ".join)
@@ -162,7 +162,7 @@ print([extractor.aggregate(row) for row in data]) # [[42, 12, 100], [10, 20, 30]
 
 ---
 
-<a href="../src/toolbox/data/value_extractor.py#L97"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/value_extractor.py#L97"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `extract`
 
@@ -190,7 +190,7 @@ It checks successively each entry configured till one exists in the structure, a
 
 **Examples:**
  ```python
-from toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import ValueExtractor
 
 # Extracts a date from various possible entries
 extractor = ValueExtractor(["date", "time", "day"])

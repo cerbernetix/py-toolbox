@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/config/config.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.config.config`
 A class for handling a configuration. 
@@ -9,7 +9,7 @@ A class for handling a configuration.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 # Create an empty configuration
 config = Config()
@@ -40,7 +40,7 @@ config = Config({"foo": "bar", "value": 42})
 
 ---
 
-<a href="../src/toolbox/config/config.py#L37"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L37"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Config`
 Handles a configuration. 
@@ -56,7 +56,7 @@ A configuration is a set of named options that can have a value and a default va
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 # Create an empty configuration
 config = Config()
@@ -101,7 +101,7 @@ data = config.get_config()
 config.set_config(data)
 ``` 
 
-<a href="../src/toolbox/config/config.py#L95"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L95"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -124,7 +124,7 @@ A configuration is a set of named options that can have a value and a default va
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 # Create an empty configuration
 config = Config()
@@ -145,7 +145,7 @@ config = Config({"foo": "bar"},
 
 ---
 
-<a href="../src/toolbox/config/config.py#L323"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L323"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `choices`
 
@@ -171,7 +171,7 @@ Gets the possible values of a configuration option.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config(options=[ConfigOption("foo", "bar", choices=["foo", "bar"])])
 
@@ -181,7 +181,7 @@ config.choices("bar") # ()
 
 ---
 
-<a href="../src/toolbox/config/config.py#L299"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L299"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `describe`
 
@@ -207,7 +207,7 @@ Gets the description of a configuration option.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config(options=[ConfigOption("foo", "bar", description="FooBar")])
 
@@ -217,7 +217,7 @@ config.describe("bar") # ""
 
 ---
 
-<a href="../src/toolbox/config/config.py#L274"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L274"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `drop`
 
@@ -243,7 +243,7 @@ Removes a configuration option.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config({"foo": "bar"})
 
@@ -253,7 +253,7 @@ config.drop("bar") # False
 
 ---
 
-<a href="../src/toolbox/config/config.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get`
 
@@ -284,7 +284,7 @@ A default value in case the option does not exist can be supplied.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config({"foo": "bar"})
 
@@ -295,7 +295,7 @@ config.get("bar", "foo") # "foo"
 
 ---
 
-<a href="../src/toolbox/config/config.py#L431"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L431"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_config`
 
@@ -317,7 +317,7 @@ Each key will be the name of an option, and the value will be the actual value o
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config({"foo": "bar"})
 
@@ -326,7 +326,7 @@ config.get_config() # {"foo": "bar"}
 
 ---
 
-<a href="../src/toolbox/config/config.py#L348"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L348"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_option`
 
@@ -352,7 +352,7 @@ Gets a config option.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config(options=[ConfigOption("foo", "bar")])
 
@@ -362,7 +362,7 @@ config.get_option("bar") # None
 
 ---
 
-<a href="../src/toolbox/config/config.py#L412"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L412"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `get_options`
 
@@ -384,7 +384,7 @@ Each option is exported entirely to a dictionary using `option.get_dict()`.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config({"foo": "bar"})
 
@@ -393,7 +393,7 @@ config.get_options() # [{"name": "foo", "value": "bar", "default": None, ...}]
 
 ---
 
-<a href="../src/toolbox/config/config.py#L160"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L160"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `has`
 
@@ -419,7 +419,7 @@ Tells if a configuration option exists.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config({"foo": "bar"})
 
@@ -429,7 +429,7 @@ config.has("bar") # False
 
 ---
 
-<a href="../src/toolbox/config/config.py#L136"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L136"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `keys`
 
@@ -451,7 +451,7 @@ The view object changes according to the changes in the list of options.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config()
 keys = config.keys()
@@ -465,7 +465,7 @@ print(list(keys)) # ["foo"]
 
 ---
 
-<a href="../src/toolbox/config/config.py#L247"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L247"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset`
 
@@ -493,7 +493,7 @@ If the corresponding option exists, its value will be updated. Otherwise, a new 
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config({"foo": "bar"})
 
@@ -503,7 +503,7 @@ config.reset("bar") # Create the option "bar" with the value None
 
 ---
 
-<a href="../src/toolbox/config/config.py#L479"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L479"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset_config`
 
@@ -523,7 +523,7 @@ Resets all configuration options to their default value.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config({"foo": "bar"})
 
@@ -534,7 +534,7 @@ config.get_config() # {"foo": None}
 
 ---
 
-<a href="../src/toolbox/config/config.py#L212"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L212"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set`
 
@@ -571,7 +571,7 @@ If the corresponding option exists, its value will be updated. Otherwise, a new 
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config({"foo": "bar"})
 
@@ -581,7 +581,7 @@ config.set("bar", "bar") # Create the option "bar" with the value "bar"
 
 ---
 
-<a href="../src/toolbox/config/config.py#L451"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L451"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_config`
 
@@ -613,7 +613,7 @@ If an option does not exist in the configuration, it will be created with defaul
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config()
 
@@ -622,7 +622,7 @@ config.set_config({"foo": "bar"})
 
 ---
 
-<a href="../src/toolbox/config/config.py#L369"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/config.py#L369"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_option`
 
@@ -654,7 +654,7 @@ Adds a configuration option.
 
 **Examples:**
  ```python
-from toolbox.config import Config
+from cerbernetix.toolbox.config import Config
 
 config = Config()
 

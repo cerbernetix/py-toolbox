@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.files import CSVFile, read_csv_file, write_csv_file
+from cerbernetix.toolbox.files import CSVFile, read_csv_file, write_csv_file
 
 filename = 'path/to/file.csv'
 csv_data = [
@@ -45,8 +45,8 @@ import csv
 import re
 from typing import Iterable
 
-from toolbox.files.file import read_zip_file
-from toolbox.files.file_manager import FileManager
+from cerbernetix.toolbox.files.file import read_zip_file
+from cerbernetix.toolbox.files.file_manager import FileManager
 
 # The default data encoding for CSV files
 CSV_ENCODING = "utf-8"
@@ -107,7 +107,7 @@ class CSVFile(FileManager):
 
     Examples:
     ```python
-    from toolbox.files import CSVFile
+    from cerbernetix.toolbox.files import CSVFile
 
     file = CSVFile("path/to/the/file", dialect='excel', encoding="UTF-8")
 
@@ -208,7 +208,7 @@ class CSVFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import CSVFile
+        from cerbernetix.toolbox.files import CSVFile
 
         # Create a file manager
         file = CSVFile('path/to/filename')
@@ -270,7 +270,7 @@ class CSVFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import CSVFile
+        from cerbernetix.toolbox.files import CSVFile
 
         file = FileManager('path/to/filename')
 
@@ -312,7 +312,7 @@ class CSVFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import CSVFile
+        from cerbernetix.toolbox.files import CSVFile
 
         file = CSVFile('path/to/filename')
 
@@ -345,7 +345,7 @@ class CSVFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import CSVFile
+        from cerbernetix.toolbox.files import CSVFile
 
         file = CSVFile('path/to/filename')
 
@@ -374,7 +374,7 @@ class CSVFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import CSVFile
+        from cerbernetix.toolbox.files import CSVFile
 
         file = CSVFile('path/to/filename')
 
@@ -428,7 +428,7 @@ class CSVFile(FileManager):
 
         Examples:
         ```python
-        from toolbox.files import CSVFile
+        from cerbernetix.toolbox.files import CSVFile
 
         file = CSVFile('path/to/filename')
 
@@ -527,7 +527,7 @@ def read_csv_file(
 
     Examples:
     ```python
-    from toolbox.files import read_csv_file
+    from cerbernetix.toolbox.files import read_csv_file
 
     csv_data = read_csv_file('path/to/file', encoding='UTF-8', dialect='excel')
 
@@ -598,7 +598,7 @@ def write_csv_file(
 
     Examples:
     ```python
-    from toolbox.files import write_csv_file
+    from cerbernetix.toolbox.files import write_csv_file
 
     csv_data = [
         {'date': '2023-09-10', 'value': 42},
@@ -679,7 +679,7 @@ def read_zip_csv(
 
     Examples:
     ```python
-    from toolbox.files import read_zip_csv
+    from cerbernetix.toolbox.files import read_zip_csv
 
     with open('path/to/file.zip', 'rb') as file:
         zip = file.read()

@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/config/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/config/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.config`
 The `config` package provides classes for handling a configuration. 
@@ -14,7 +14,7 @@ It contains:
 
 **Examples:**
  ```python
-from toolbox.config import Config, ConfigOption
+from cerbernetix.toolbox.config import Config, ConfigOption
 
 # Create a few options
 name = ConfigOption("name", mapper=str, default="")
@@ -61,10 +61,6 @@ config = Config(options=["name", "date", "value"])
 config = Config({"foo": "bar", "value": 42})
 ``` 
 
-**Global Variables**
----------------
-- **config_option**
-- **config**
 
 
 

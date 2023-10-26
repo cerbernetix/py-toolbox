@@ -3,8 +3,8 @@ import unittest
 from datetime import date
 from unittest.mock import patch
 
-from toolbox.testing import test_cases
-from toolbox.time import (
+from cerbernetix.toolbox.testing import test_cases
+from cerbernetix.toolbox.time import (
     FRIDAY,
     MONDAY,
     SATURDAY,

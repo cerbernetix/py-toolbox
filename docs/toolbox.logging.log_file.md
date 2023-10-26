@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/logging/log_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.logging.log_file`
 A custom logger that writes directly to a file. 
@@ -9,7 +9,7 @@ A custom logger that writes directly to a file.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 # Create a log file at the current directory, named 'trace.log'
 logger = LogFile()
@@ -40,7 +40,7 @@ logger.error('An error occurred: %s', error)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `LogFile`
 Offers a similar API to the Python builtin loggers for logging to a custom file. 
@@ -61,14 +61,14 @@ This is useful for keeping an audit log, aside the main log, or tracing a partic
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
 logger.info('The received value is %d', value)
 ``` 
 
-<a href="../src/toolbox/logging/log_file.py#L67"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L67"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -98,7 +98,7 @@ Creates a file logger.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 # Create a log file at the current directory, named 'trace.log'
 logger = LogFile()
@@ -129,7 +129,7 @@ The file encoding.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -152,7 +152,7 @@ The filename of the log.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -176,7 +176,7 @@ The accepted log level.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -199,7 +199,7 @@ The format for the log events.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -222,7 +222,7 @@ The name of the logger.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -233,7 +233,7 @@ print(logger.name)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L479"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L479"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -255,7 +255,7 @@ Note: If the file was already closed, it does nothing. This method is automatica
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -266,7 +266,7 @@ logger.close() # not necessary since it will be called automatically upon exit.
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L359"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L359"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `debug`
 
@@ -297,7 +297,7 @@ Logs a debug message. Formatted string as for classical logging is supported.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -306,7 +306,7 @@ logger.debug('For debug purpose: %d given to %s', value, action)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L506"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L506"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete`
 
@@ -326,7 +326,7 @@ Deletes the log file.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -335,7 +335,7 @@ logger.delete()
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L421"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L421"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `error`
 
@@ -366,7 +366,7 @@ Logs an error message. Formatted string as for classical logging is supported.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -375,7 +375,7 @@ logger.error('An error occurred: %s', error)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L328"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L328"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `info`
 
@@ -406,7 +406,7 @@ Logs an info message. Formatted string as for classical logging is supported.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -415,7 +415,7 @@ logger.info('The received value is %d', value)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `log`
 
@@ -447,7 +447,7 @@ Logs a message with the given level.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -459,7 +459,7 @@ logger.log(logging.ERROR, 'An error occurred: %s', error)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L452"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L452"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `open`
 
@@ -481,7 +481,7 @@ Note: If the file was already opened, it does nothing. This method is automatica
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -492,7 +492,7 @@ logger.info('Something was done at %s', datetime.now())
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L233"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L233"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_format`
 
@@ -518,7 +518,7 @@ Sets the log format.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -527,7 +527,7 @@ logger.set_format('[%(asctime)s][%(levelname)s]: %(message)s')
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L208"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L208"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_level`
 
@@ -553,7 +553,7 @@ Sets the log level.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 
@@ -562,7 +562,7 @@ logger.set_level(logging.DEBUG)
 
 ---
 
-<a href="../src/toolbox/logging/log_file.py#L390"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L390"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `warn`
 
@@ -593,7 +593,7 @@ Logs a warning message. Formatted string as for classical logging is supported.
 
 **Examples:**
  ```python
-from toolbox.logging import LogFile
+from cerbernetix.toolbox.logging import LogFile
 
 logger = LogFile()
 

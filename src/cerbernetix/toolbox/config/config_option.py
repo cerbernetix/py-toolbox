@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.config import ConfigOption
+from cerbernetix.toolbox.config import ConfigOption
 
 # Create a few options
 name = ConfigOption("name", mapper=str, default="")
@@ -24,7 +24,7 @@ from __future__ import annotations
 
 from typing import Any, Iterable, Iterator
 
-from toolbox.data import ValueMapper, passthrough
+from cerbernetix.toolbox.data import ValueMapper, passthrough
 
 
 class ConfigOption:
@@ -48,7 +48,7 @@ class ConfigOption:
 
     Examples:
     ```python
-    from toolbox.config import ConfigOption
+    from cerbernetix.toolbox.config import ConfigOption
 
     name = ConfigOption("name", mapper=str, default="bob")
 
@@ -94,7 +94,7 @@ class ConfigOption:
 
         Examples:
         ```python
-        from toolbox.config import ConfigOption
+        from cerbernetix.toolbox.config import ConfigOption
 
         name = ConfigOption("name", mapper=str, default="", description="The username")
         age = ConfigOption("age", mapper=int, default=0)
@@ -190,7 +190,7 @@ class ConfigOption:
 
         Examples:
         ```python
-        from toolbox.config import ConfigOption
+        from cerbernetix.toolbox.config import ConfigOption
 
         name = ConfigOption("name", mapper=str, default="", description="The username")
 
@@ -217,7 +217,7 @@ class ConfigOption:
 
         Examples:
         ```python
-        from toolbox.config import ConfigOption
+        from cerbernetix.toolbox.config import ConfigOption
 
         name = ConfigOption("foo", "bar")
 
@@ -243,7 +243,7 @@ class ConfigOption:
 
         Examples:
         ```python
-        from toolbox.config import ConfigOption
+        from cerbernetix.toolbox.config import ConfigOption
 
         name = ConfigOption("name", mapper=str, default="bob")
 
@@ -272,7 +272,7 @@ class ConfigOption:
 
         Examples:
         ```python
-        from toolbox.config import ConfigOption
+        from cerbernetix.toolbox.config import ConfigOption
 
         name = ConfigOption("name", mapper=str, default="bob")
 
@@ -330,7 +330,7 @@ class ConfigOption:
 
         Examples:
         ```python
-        from toolbox.config import ConfigOption
+        from cerbernetix.toolbox.config import ConfigOption
 
         name = ConfigOption("name", mapper=str, default="bob")
 
@@ -363,7 +363,7 @@ class ConfigOption:
             description (str): A description for the option.
 
         ```python
-        from toolbox.config import ConfigOption
+        from cerbernetix.toolbox.config import ConfigOption
 
         name = ConfigOption("name")
 
@@ -432,7 +432,7 @@ def create_options(options: Iterable) -> Iterator[ConfigOption]:
 
     Examples:
     ```python
-    from toolbox.config import create_options
+    from cerbernetix.toolbox.config import create_options
 
     for option in create_options([
         ConfigOption("foo"), # a copy will be created

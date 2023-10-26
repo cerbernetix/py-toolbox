@@ -32,7 +32,7 @@ It contains:
 
 Examples:
 ```python
-from toolbox import files
+from cerbernetix.toolbox import files
 
 # Get the path to a file below your application's root
 filename = files.get_file_path('path/to/file', 'my_package')
@@ -64,7 +64,7 @@ content = file.read_zip_file(data)
 csv_data = file.read_zip_csv(data)
 ```
 """
-from toolbox.files.csv_file import (
+from cerbernetix.toolbox.files.csv_file import (
     CSV_DIALECT,
     CSV_ENCODING,
     CSVFile,
@@ -72,22 +72,22 @@ from toolbox.files.csv_file import (
     read_zip_csv,
     write_csv_file,
 )
-from toolbox.files.file import (
+from cerbernetix.toolbox.files.file import (
     fetch_content,
     get_file_mode,
     read_file,
     read_zip_file,
     write_file,
 )
-from toolbox.files.file_manager import FileManager
-from toolbox.files.json_file import (
+from cerbernetix.toolbox.files.file_manager import FileManager
+from cerbernetix.toolbox.files.json_file import (
     JSON_ENCODING,
     JSON_INDENT,
     JSONFile,
     read_json_file,
     write_json_file,
 )
-from toolbox.files.path import (
+from cerbernetix.toolbox.files.path import (
     create_file_path,
     delete_path,
     get_application_name,
@@ -97,4 +97,4 @@ from toolbox.files.path import (
     get_module_folder_path,
     get_module_path,
 )
-from toolbox.files.pickle_file import PickleFile, read_pickle_file, write_pickle_file
+from cerbernetix.toolbox.files.pickle_file import PickleFile, read_pickle_file, write_pickle_file

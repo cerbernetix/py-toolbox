@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/files/file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files.file`
 A collection of utilities for accessing files. 
@@ -9,7 +9,7 @@ A collection of utilities for accessing files.
 
 **Examples:**
  ```python
-from toolbox.files import fetch_content, get_file_mode, read_file, read_zip_file, write_file
+from cerbernetix.toolbox.files import fetch_content, get_file_mode, read_file, read_zip_file, write_file
 
 # get_file_mode() is used to build a file access mode.
 # For example to create a text file:
@@ -43,7 +43,7 @@ content = read_zip_file(data)
 
 ---
 
-<a href="../src/toolbox/files/file.py#L43"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L43"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_file_mode`
 
@@ -81,7 +81,7 @@ The file access mode is defined by a string that contains flags for selecting th
 
 **Examples:**
  ```python
-from toolbox.files import get_file_mode
+from cerbernetix.toolbox.files import get_file_mode
 
 # Create a text file
 with open('path/to/file', get_file_mode(create=True)) as file:
@@ -107,7 +107,7 @@ with open('path/to/file', get_file_mode(binary=True)) as file:
 
 ---
 
-<a href="../src/toolbox/files/file.py#L121"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L121"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_file`
 
@@ -147,7 +147,7 @@ Reads a content from a file.
 
 **Examples:**
  ```python
-from toolbox.files import read_file
+from cerbernetix.toolbox.files import read_file
 
 # Load a text file
 text = read_file('path/to/file', encoding='UTF-8')
@@ -159,7 +159,7 @@ data = read_file('path/to/file', binary=True)
 
 ---
 
-<a href="../src/toolbox/files/file.py#L163"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L163"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_file`
 
@@ -200,7 +200,7 @@ Writes a content to a file.
 
 **Examples:**
  ```python
-from toolbox.files import write_file
+from cerbernetix.toolbox.files import write_file
 
 # Create a text file
 text = 'Some content'
@@ -214,7 +214,7 @@ write_file('path/to/file', data, binary=True)
 
 ---
 
-<a href="../src/toolbox/files/file.py#L208"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L208"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `fetch_content`
 
@@ -265,7 +265,7 @@ Under the hood, it relies on requests to process the query.
 
 **Examples:**
  ```python
-from toolbox.files import fetch_content
+from cerbernetix.toolbox.files import fetch_content
 
 # Fetch text content from a remote address
 text = fetch_content("http://example.com/text")
@@ -277,7 +277,7 @@ data = fetch_content("http://example.com/data", binary=True)
 
 ---
 
-<a href="../src/toolbox/files/file.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_zip_file`
 
@@ -313,7 +313,7 @@ If a filename is given, the corresponding file will be extracted from the archiv
 
 **Examples:**
  ```python
-from toolbox.files import read_zip
+from cerbernetix.toolbox.files import read_zip
 
 with open('path/to/file.zip', 'rb') as file:
     zip = file.read()

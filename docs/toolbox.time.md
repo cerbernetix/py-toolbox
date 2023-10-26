@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/time/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.time`
 A collection of time related utilities. 
@@ -12,7 +12,7 @@ It contains:
 
 **Examples:**
  ```python
-from toolbox.time import Weekday, FRIDAY
+from cerbernetix.toolbox.time import Weekday, FRIDAY
 
 weekday = Weekday(FRIDAY)
 
@@ -38,7 +38,6 @@ print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 
 **Global Variables**
 ---------------
-- **weekday**
 - **FRIDAY**
 - **MONDAY**
 - **SATURDAY**

@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/files/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files`
 The `files` package provides several utilities for handling files. 
@@ -39,7 +39,7 @@ It contains:
 
 **Examples:**
  ```python
-from toolbox import files
+from cerbernetix.toolbox import files
 
 # Get the path to a file below your application's root
 filename = files.get_file_path('path/to/file', 'my_package')
@@ -73,16 +73,10 @@ csv_data = file.read_zip_csv(data)
 
 **Global Variables**
 ---------------
-- **file**
-- **path**
-- **file_manager**
-- **csv_file**
 - **CSV_DIALECT**
 - **CSV_ENCODING**
-- **json_file**
 - **JSON_ENCODING**
 - **JSON_INDENT**
-- **pickle_file**
 
 
 

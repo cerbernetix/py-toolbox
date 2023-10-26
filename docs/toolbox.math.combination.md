@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/math/combination.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/math/combination.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.math.combination`
 A set of functions for working with combinations. 
@@ -9,7 +9,7 @@ A set of functions for working with combinations.
 
 **Examples:**
  ```python
-from toolbox.math import get_combination_rank, get_combination_from_rank
+from cerbernetix.toolbox.math import get_combination_rank, get_combination_from_rank
 
 # Get the rank of a combination of 3 numbers
 print(get_combination_rank([1, 3, 5]))
@@ -21,7 +21,7 @@ print(list(get_combination_from_rank(5, 3)))
 
 ---
 
-<a href="../src/toolbox/math/combination.py#L18"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/math/combination.py#L18"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_combination_rank`
 
@@ -58,7 +58,7 @@ The rank starts at 0. The values in the combination must start at 0. Negative nu
 
 **Examples:**
  ```python
-from toolbox.math import get_combination_rank
+from cerbernetix.toolbox.math import get_combination_rank
 
 # Get the rank of a combination of 3 numbers
 print(get_combination_rank([1, 3, 5]))
@@ -67,7 +67,7 @@ print(get_combination_rank([1, 3, 5]))
 
 ---
 
-<a href="../src/toolbox/math/combination.py#L57"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/math/combination.py#L57"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_combination_from_rank`
 
@@ -108,7 +108,7 @@ The rank must start at 0.
 
 **Examples:**
  ```python
-from toolbox.math import get_combination_from_rank
+from cerbernetix.toolbox.math import get_combination_from_rank
 
 # Get the combination of 3 numbers ranked at position 5
 print(list(get_combination_from_rank(5, 3)))

@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.files import (
+from cerbernetix.toolbox.files import (
     create_file_path,
     delete_path,
     get_application_name,
@@ -57,7 +57,7 @@ def get_module_path(name: str) -> PurePath():
 
     Examples:
     ```python
-    from toolbox.files import get_module_path
+    from cerbernetix.toolbox.files import get_module_path
 
     # Get the path of the module foo
     path = get_module_path('foo')
@@ -80,7 +80,7 @@ def get_module_folder_path(name: str) -> PurePath():
 
     Examples:
     ```python
-    from toolbox.files import get_module_folder_path
+    from cerbernetix.toolbox.files import get_module_folder_path
 
     # Get the path to the folder containing the module foo
     path = get_module_folder_path('foo')
@@ -100,7 +100,7 @@ def get_application_path(name: str) -> PurePath:
 
     Examples:
     ```python
-    from toolbox.files import get_application_path
+    from cerbernetix.toolbox.files import get_application_path
 
     # Get the path to the application, given the main package
     app_path = get_application_path('my_package')
@@ -120,7 +120,7 @@ def get_application_name(name: str) -> str:
 
     Examples:
     ```python
-    from toolbox.files import get_application_name
+    from cerbernetix.toolbox.files import get_application_name
 
     # Get the name of the application, given the main package
     print(get_application_name('my_package'))
@@ -141,7 +141,7 @@ def get_file_path(relative: str, name: str) -> PurePath:
 
     Examples:
     ```python
-    from toolbox.files import get_file_path
+    from cerbernetix.toolbox.files import get_file_path
 
     # Get the path to a file below your application's root
     filename = get_file_path('path/to/file', 'my_package')
@@ -164,7 +164,7 @@ def create_file_path(path: str) -> bool:
 
     Examples:
     ```python
-    from toolbox.files import create_file_path
+    from cerbernetix.toolbox.files import create_file_path
 
     # Create the parent folder to the file
     if create_file_path('path/to/file'):
@@ -201,7 +201,7 @@ def delete_path(path: str) -> bool:
 
     Examples:
     ```python
-    from toolbox.files import delete_path
+    from cerbernetix.toolbox.files import delete_path
 
     # Delete a file
     if delete_path('path/to/file'):
@@ -252,7 +252,7 @@ def get_cache_path(name: str = None, create: bool = False) -> str:
 
     Examples:
     ```python
-    from toolbox.files import get_cache_path
+    from cerbernetix.toolbox.files import get_cache_path
 
     # Get the cache root folder
     cache = get_cache_path()

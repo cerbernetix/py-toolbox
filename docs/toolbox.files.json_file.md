@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/files/json_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files.json_file`
 A simple API for reading and writing JSON files. 
@@ -9,7 +9,7 @@ A simple API for reading and writing JSON files.
 
 **Examples:**
  ```python
-from toolbox.files import JSONFile, read_json_file, write_json_file
+from cerbernetix.toolbox.files import JSONFile, read_json_file, write_json_file
 
 filename = 'path/to/file.json'
 json_data = [
@@ -49,7 +49,7 @@ with file:
 
 ---
 
-<a href="../src/toolbox/files/json_file.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_json_file`
 
@@ -83,7 +83,7 @@ Reads a JSON content from a file.
 
 **Examples:**
  ```python
-from toolbox.files import read_json_file
+from cerbernetix.toolbox.files import read_json_file
 
 json_data = read_json_file('path/to/file', encoding='UTF-8')
 ``` 
@@ -91,7 +91,7 @@ json_data = read_json_file('path/to/file', encoding='UTF-8')
 
 ---
 
-<a href="../src/toolbox/files/json_file.py#L249"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L249"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_json_file`
 
@@ -132,7 +132,7 @@ Writes a JSON content to a file.
 
 **Examples:**
  ```python
-from toolbox.files import write_json_file
+from cerbernetix.toolbox.files import write_json_file
 
 json_data = [
     {'date': '2023-09-10', 'value': 42},
@@ -146,7 +146,7 @@ write_json_file('path/to/file', json_data, encoding='UTF-8', indent=2)
 
 ---
 
-<a href="../src/toolbox/files/json_file.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `JSONFile`
 Offers a simple API for reading and writing JSON files. 
@@ -168,7 +168,7 @@ The read API reads all the content at once, and so do the write API too.
 
 **Examples:**
  ```python
-from toolbox.files import JSONFile
+from cerbernetix.toolbox.files import JSONFile
 
 file = JSONFile("path/to/the/file.json", indent=4, encoding="UTF-8")
 
@@ -187,7 +187,7 @@ with file(create=True):
 json = file.read_file()
 ``` 
 
-<a href="../src/toolbox/files/json_file.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -222,7 +222,7 @@ Creates a file manager for JSON files.
 
 **Examples:**
  ```python
-from toolbox.files import JSONFile
+from cerbernetix.toolbox.files import JSONFile
 
 # Create a file manager
 file = JSONFile('path/to/filename')
@@ -270,7 +270,7 @@ Gets the age of the file. Say the time elapsed since it was last modified.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -294,7 +294,7 @@ Gets the base filename, without the path.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -318,7 +318,7 @@ Gets the modification date of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -341,7 +341,7 @@ Gets the folder path of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -365,7 +365,7 @@ Gets the file extension from the filename.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -389,7 +389,7 @@ Gets the file name without the extension.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -413,7 +413,7 @@ Gets the size of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -424,7 +424,7 @@ size = file.size
 
 ---
 
-<a href="../src/toolbox/files/json_file.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -453,7 +453,7 @@ Note: the file must be opened upfront.
 
 **Examples:**
  ```python
-from toolbox.files import JSONFile
+from cerbernetix.toolbox.files import JSONFile
 
 file = JSONFile('path/to/filename')
 
@@ -464,7 +464,7 @@ with file:
 
 ---
 
-<a href="../src/toolbox/files/json_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -499,7 +499,7 @@ Note: the file must be opened upfront.
 
 **Examples:**
  ```python
-from toolbox.files import JSONFile
+from cerbernetix.toolbox.files import JSONFile
 
 file = JSONFile('path/to/filename')
 

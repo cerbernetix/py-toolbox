@@ -6,7 +6,7 @@ It contains:
 
 Examples:
 ```python
-from toolbox import testing
+from cerbernetix.toolbox import testing
 
 class TestMyStuff(testing.TestCase)
 
@@ -27,5 +27,5 @@ class TestMyStuff(testing.TestCase)
         self.assertListsAlmostEqual(generator(), [1.23, 3.14, 1.61])
 ```
 """
-from toolbox.testing.decorators import test_cases
-from toolbox.testing.test_case import TestCase
+from cerbernetix.toolbox.testing.decorators import test_cases
+from cerbernetix.toolbox.testing.test_case import TestCase

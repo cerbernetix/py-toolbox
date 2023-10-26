@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/data/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/__init__.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.data`
 A collection of data utilities. 
@@ -16,8 +16,8 @@ It contains:
 
 **Examples:**
  ```python
-from toolbox.data import mappers
-from toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import mappers
+from cerbernetix.toolbox.data import ValueExtractor
 
 # Passthrough a value
 print(mappers.passthrough("foo")) # "foo"
@@ -57,10 +57,6 @@ data = [
 print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 ``` 
 
-**Global Variables**
----------------
-- **mappers**
-- **value_extractor**
 
 
 

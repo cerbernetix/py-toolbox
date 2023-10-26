@@ -29,7 +29,7 @@ The dependencies are managed by `pip` using the file `requirements.txt`.
 To add `py-toolbox` to your project, run the following command:
 
 ```sh
-pip install git+https://github.com/jsconan/py-toolbox.git
+pip install git+https://github.com/cerbernetix/py-toolbox.git
 ```
 
 ## <a name='Usage'></a>Usage
@@ -47,7 +47,7 @@ The script `./pydoc.sh` can be used to regenerate it.
 Check out the repository:
 
 ```sh
-git clone git@github.com:jsconan/py-toolbox.git
+git clone git@github.com:cerbernetix/py-toolbox.git
 ```
 
 Then, create the virtual env and install the dependencies:

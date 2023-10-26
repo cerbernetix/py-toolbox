@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import ValueExtractor
 
 # Extracts a date from various possible entries
 extractor = ValueExtractor(["date", "time", "day"])
@@ -20,7 +20,7 @@ print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 """
 from typing import Any, Iterable
 
-from toolbox.data.mappers import ValueMapper, passthrough
+from cerbernetix.toolbox.data.mappers import ValueMapper, passthrough
 
 
 class ValueExtractor:
@@ -33,7 +33,7 @@ class ValueExtractor:
 
     Examples:
     ```python
-    from toolbox.data import ValueExtractor
+    from cerbernetix.toolbox.data import ValueExtractor
 
     extractor = ValueExtractor(["date", "time", "day"])
     data = [{"date": "2023-10-06"}, {"day": "2023-02-20"}, {"time": "2023-06-12"}]
@@ -59,7 +59,7 @@ class ValueExtractor:
 
         Examples:
         ```python
-        from toolbox.data import ValueExtractor
+        from cerbernetix.toolbox.data import ValueExtractor
 
         extractor = ValueExtractor(["date", "time", "day"])
         data = [{"date": "2023-10-06"}, {"day": "2023-02-20"}, {"time": "2023-06-12"}]
@@ -109,7 +109,7 @@ class ValueExtractor:
 
         Examples:
         ```python
-        from toolbox.data import ValueExtractor
+        from cerbernetix.toolbox.data import ValueExtractor
 
         # Extracts a date from various possible entries
         extractor = ValueExtractor(["date", "time", "day"])
@@ -139,7 +139,7 @@ class ValueExtractor:
 
         Examples:
         ```python
-        from toolbox.data import ValueExtractor
+        from cerbernetix.toolbox.data import ValueExtractor
 
         # Build full names from multiple entries
         extractor = ValueExtractor(["firstname", "lastname"], " ".join)

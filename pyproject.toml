@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "py-toolbox"
+name = "cerbernetix.toolbox"
 version = "0.8.1"
 authors = [{ name = "Jean-Sébastien CONAN", email = "jsconan@gmail.com" }]
 description = "A set of utilities for Python projects"
@@ -17,8 +17,8 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/jsconan/py-toolbox"
-"Bug Tracker" = "https://github.com/jsconan/py-toolbox/issues"
+"Homepage" = "https://github.com/cerbernetix/py-toolbox"
+"Bug Tracker" = "https://github.com/cerbernetix/py-toolbox/issues"
 
 [project.optional-dependencies]
 linting = ['pylint==2.17.5']

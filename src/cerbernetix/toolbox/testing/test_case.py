@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox import testing
+from cerbernetix.toolbox import testing
 
 class TestMyStuff(testing.TestCase)
     def test_list(self):
@@ -35,7 +35,7 @@ class TestCase(unittest.TestCase):
 
         Examples:
         ```python
-        from toolbox import testing
+        from cerbernetix.toolbox import testing
 
         class TestMyStuff(testing.TestCase)
             def test_almost_equal(self):
@@ -92,7 +92,7 @@ class TestCase(unittest.TestCase):
 
         Examples:
         ```python
-        from toolbox import testing
+        from cerbernetix.toolbox import testing
 
         class TestMyStuff(testing.TestCase)
             def test_almost_equal(self):

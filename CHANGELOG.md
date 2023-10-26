@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+-   Move the package to the `cerbernetix` namespace.
 -   Move the package to the `src` directory.
 -   `FileManager.read_file(iterator)` - Accepts to return an iterator from `read_file()` instead of immediately the content.
 

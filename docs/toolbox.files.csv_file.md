@@ -1,6 +1,6 @@
 <!-- markdownlint-disable -->
 
-<a href="../src/toolbox/files/csv_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.files.csv_file`
 A simple API for reading and writing CSV files. 
@@ -9,7 +9,7 @@ A simple API for reading and writing CSV files.
 
 **Examples:**
  ```python
-from toolbox.files import CSVFile, read_csv_file, write_csv_file
+from cerbernetix.toolbox.files import CSVFile, read_csv_file, write_csv_file
 
 filename = 'path/to/file.csv'
 csv_data = [
@@ -57,7 +57,7 @@ with file:
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L475"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L475"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_csv_file`
 
@@ -111,7 +111,7 @@ For reading headless CSV, set fieldnames to False.
 
 **Examples:**
  ```python
-from toolbox.files import read_csv_file
+from cerbernetix.toolbox.files import read_csv_file
 
 csv_data = read_csv_file('path/to/file', encoding='UTF-8', dialect='excel')
 
@@ -123,7 +123,7 @@ for row in read_csv_file('path/to/file', iterator=True):
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L547"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L547"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_csv_file`
 
@@ -175,7 +175,7 @@ The fieldnames sequence identify the order in which values from the rows are wri
 
 **Examples:**
  ```python
-from toolbox.files import write_csv_file
+from cerbernetix.toolbox.files import write_csv_file
 
 csv_data = [
     {'date': '2023-09-10', 'value': 42},
@@ -189,7 +189,7 @@ write_csv_file('path/to/file', csv_data, encoding='UTF-8', dialect='excel')
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L620"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L620"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_zip_csv`
 
@@ -246,7 +246,7 @@ For reading headless CSV, set fieldnames to False.
 
 **Examples:**
  ```python
-from toolbox.files import read_zip_csv
+from cerbernetix.toolbox.files import read_zip_csv
 
 with open('path/to/file.zip', 'rb') as file:
     zip = file.read()
@@ -265,7 +265,7 @@ with open('path/to/file.zip', 'rb') as file:
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L93"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L93"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `CSVFile`
 Offers a simple API for reading and writing CSV files. 
@@ -287,7 +287,7 @@ The read API does not allow to size the data to read. However, it reads the file
 
 **Examples:**
  ```python
-from toolbox.files import CSVFile
+from cerbernetix.toolbox.files import CSVFile
 
 file = CSVFile("path/to/the/file", dialect='excel', encoding="UTF-8")
 
@@ -310,7 +310,7 @@ with file(create=True):
 csv = file.read_file()
 ``` 
 
-<a href="../src/toolbox/files/csv_file.py#L134"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L134"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -364,7 +364,7 @@ The fieldnames sequence identify the order in which values from the rows are wri
 
 **Examples:**
  ```python
-from toolbox.files import CSVFile
+from cerbernetix.toolbox.files import CSVFile
 
 # Create a file manager
 file = CSVFile('path/to/filename')
@@ -412,7 +412,7 @@ Gets the age of the file. Say the time elapsed since it was last modified.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -436,7 +436,7 @@ Gets the base filename, without the path.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -460,7 +460,7 @@ Gets the modification date of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -483,7 +483,7 @@ Gets the folder path of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -507,7 +507,7 @@ Gets the file extension from the filename.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -531,7 +531,7 @@ Gets the file name without the extension.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/file.txt')
 
@@ -555,7 +555,7 @@ Gets the size of the file.
 
 **Examples:**
  ```python
-from toolbox.files import FileManager
+from cerbernetix.toolbox.files import FileManager
 
 file = FileManager('path/to/filename')
 
@@ -566,7 +566,7 @@ size = file.size
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L263"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L263"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -588,7 +588,7 @@ Note: it does nothing if the file is already closed.
 
 **Examples:**
  ```python
-from toolbox.files import CSVFile
+from cerbernetix.toolbox.files import CSVFile
 
 file = FileManager('path/to/filename')
 
@@ -604,7 +604,7 @@ file.close()
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L363"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L363"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -633,7 +633,7 @@ Note: the file must be opened upfront.
 
 **Examples:**
  ```python
-from toolbox.files import CSVFile
+from cerbernetix.toolbox.files import CSVFile
 
 file = CSVFile('path/to/filename')
 
@@ -648,7 +648,7 @@ csv_data = [row for row in file]
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -685,7 +685,7 @@ Note: If the file was already opened, it is first closed, then opened in read mo
 
 **Examples:**
  ```python
-from toolbox.files import CSVFile
+from cerbernetix.toolbox.files import CSVFile
 
 file = CSVFile('path/to/filename')
 
@@ -699,7 +699,7 @@ for row in file.read_file(iterator=True):
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L414"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L414"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -734,7 +734,7 @@ Note: the file must be opened upfront.
 
 **Examples:**
  ```python
-from toolbox.files import CSVFile
+from cerbernetix.toolbox.files import CSVFile
 
 file = CSVFile('path/to/filename')
 
@@ -746,7 +746,7 @@ with file(create=True):
 
 ---
 
-<a href="../src/toolbox/files/csv_file.py#L332"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L332"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 
@@ -780,7 +780,7 @@ Note: If the file was already opened, it is first closed, then opened in write m
 
 **Examples:**
  ```python
-from toolbox.files import CSVFile
+from cerbernetix.toolbox.files import CSVFile
 
 file = CSVFile('path/to/filename')
 

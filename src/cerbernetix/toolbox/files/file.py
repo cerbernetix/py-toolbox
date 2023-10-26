@@ -2,7 +2,7 @@
 
 Examples:
 ```python
-from toolbox.files import fetch_content, get_file_mode, read_file, read_zip_file, write_file
+from cerbernetix.toolbox.files import fetch_content, get_file_mode, read_file, read_zip_file, write_file
 
 # get_file_mode() is used to build a file access mode.
 # For example to create a text file:
@@ -69,7 +69,7 @@ def get_file_mode(
 
     Examples:
     ```python
-    from toolbox.files import get_file_mode
+    from cerbernetix.toolbox.files import get_file_mode
 
     # Create a text file
     with open('path/to/file', get_file_mode(create=True)) as file:
@@ -142,7 +142,7 @@ def read_file(
 
     Examples:
     ```python
-    from toolbox.files import read_file
+    from cerbernetix.toolbox.files import read_file
 
     # Load a text file
     text = read_file('path/to/file', encoding='UTF-8')
@@ -185,7 +185,7 @@ def write_file(
 
     Examples:
     ```python
-    from toolbox.files import write_file
+    from cerbernetix.toolbox.files import write_file
 
     # Create a text file
     text = 'Some content'
@@ -242,7 +242,7 @@ def fetch_content(
 
     Examples:
     ```python
-    from toolbox.files import fetch_content
+    from cerbernetix.toolbox.files import fetch_content
 
     # Fetch text content from a remote address
     text = fetch_content("http://example.com/text")
@@ -280,7 +280,7 @@ def read_zip_file(buffer: bytes, filename: str = None, ext: str = None) -> bytes
 
     Examples:
     ```python
-    from toolbox.files import read_zip
+    from cerbernetix.toolbox.files import read_zip
 
     with open('path/to/file.zip', 'rb') as file:
         zip = file.read()
