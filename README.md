@@ -10,6 +10,7 @@
 -   [Development](#Development)
     -   [Code style](#Codestyle)
     -   [Testing](#Testing)
+    -   [Document](#Document)
 -   [License](#License)
 
 <!-- vscode-markdown-toc-config
@@ -26,10 +27,22 @@ The dependencies are managed by `pip` using the file `requirements.txt`.
 
 ## <a name='Installation'></a>Installation
 
-To add `py-toolbox` to your project, run the following command:
+To add `py-toolbox` to your project, run the following command. This will add the last released version to you project:
 
 ```sh
-pip install git+https://github.com/cerbernetix/py-toolbox.git
+pip install --upgrade cerbernetix.toolbox
+```
+
+For getting the last unstable version, the package needs to be installed from the source code. The following command will grab the last develop version:
+
+```sh
+pip install --upgrade git+https://github.com/cerbernetix/py-toolbox.git@develop
+```
+
+If you prefer using ssh:
+
+```sh
+pip install --upgrade git+ssh://git@github.com/cerbernetix/py-toolbox.git@develop
 ```
 
 ## <a name='Usage'></a>Usage
@@ -37,10 +50,6 @@ pip install git+https://github.com/cerbernetix/py-toolbox.git
 `py-toolbox` offers several utilities per domain.
 
 Please refer to the [documentation](./docs/README.md) for more information.
-
-The documentation is generated using [lazydocs](https://github.com/ml-tooling/lazydocs).
-
-The script `./pydoc.sh` can be used to regenerate it.
 
 ## <a name='Development'></a>Development
 
@@ -103,6 +112,14 @@ Unit tests are made using `unittest`. To run them:
 ```sh
 python3 -m unittest
 ```
+
+### <a name='Document'></a>Document
+
+Docstrings are written following the [Google docstrings format](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings).
+
+The documentation is generated using [lazydocs](https://github.com/ml-tooling/lazydocs).
+
+The script `./pydoc.sh` can be used to regenerate it.
 
 ## <a name='License'></a>License
 
