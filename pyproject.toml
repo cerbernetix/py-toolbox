@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cerbernetix.toolbox"
-version = "0.9.0"
+version = "0.9.1"
 authors = [{ name = "Jean-Sébastien CONAN", email = "jsconan@gmail.com" }]
 description = "A set of utilities for Python projects"
 readme = "README.md"
