@@ -5,6 +5,7 @@ from unittest.mock import Mock, patch
 
 from cerbernetix.toolbox.files import (
     JSON_ENCODING,
+    JSON_ENSURE_ASCII,
     JSON_INDENT,
     JSON_SKIP_KEYS,
     JSON_SORT_KEYS,
@@ -50,6 +51,7 @@ class TestJSONFile(unittest.TestCase):
         self.assertEqual(file.indent, JSON_INDENT)
         self.assertEqual(file.sort_keys, JSON_SORT_KEYS)
         self.assertEqual(file.skip_keys, JSON_SKIP_KEYS)
+        self.assertEqual(file.ensure_ascii, JSON_ENSURE_ASCII)
         self.assertEqual(file.encoding, JSON_ENCODING)
         self.assertIsNone(file._file)
         self.assertEqual(file._open_args, {})
@@ -61,6 +63,7 @@ class TestJSONFile(unittest.TestCase):
         indent = 2
         sort_keys = True
         skip_keys = True
+        ensure_ascii = True
         newline = "\n"
 
         file = JSONFile(
@@ -69,6 +72,7 @@ class TestJSONFile(unittest.TestCase):
             indent=indent,
             sort_keys=sort_keys,
             skip_keys=skip_keys,
+            ensure_ascii=ensure_ascii,
             newline=newline,
         )
 
@@ -77,6 +81,7 @@ class TestJSONFile(unittest.TestCase):
         self.assertEqual(file.indent, indent)
         self.assertEqual(file.sort_keys, sort_keys)
         self.assertEqual(file.skip_keys, skip_keys)
+        self.assertEqual(file.ensure_ascii, ensure_ascii)
         self.assertEqual(file.encoding, encoding)
         self.assertIsNone(file._file)
         self.assertEqual(file._open_args, {"newline": newline})
