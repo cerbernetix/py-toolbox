@@ -35,6 +35,7 @@ with file:
     json_data = file.read()
 ```
 """
+
 import json
 from typing import Any
 
@@ -45,6 +46,21 @@ JSON_ENCODING = "utf-8"
 
 # The default indent for JSON files
 JSON_INDENT = 4
+
+# The default separators for JSON files
+JSON_SEPARATORS = None
+
+# The default value for whether or not to sort the keys in JSON files
+JSON_SORT_KEYS = False
+
+# The default value for whether or not to skip the keys not having an allowed type in JSON files
+JSON_SKIP_KEYS = False
+
+# The default value for escaping non-ascii chars in JSON files
+JSON_ENSURE_ASCII = True
+
+# The default value for forbidding the control chars in JSON files
+JSON_STRICT = True
 
 
 class JSONFile(FileManager):
@@ -60,6 +76,11 @@ class JSONFile(FileManager):
         binary (bool): The type of file, say text. It must always be False.
         encoding (str, optional): The file encoding.
         indent (int, optional): The line indent.
+        separators (tuple, optional): The separators for key/values, a.k.a `(', ', ': ')`.
+        sort_keys (bool, optional): Whether or not to sort the keys.
+        skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
+        ensure_ascii (bool, optional): Whether or not to escape non-ascii chars.
+        strict (bool, optional): Whether or not to forbid control chars.
 
     Examples:
     ```python
@@ -92,6 +113,11 @@ class JSONFile(FileManager):
         write: bool = False,
         encoding: str = JSON_ENCODING,
         indent: int = JSON_INDENT,
+        separators: tuple = JSON_SEPARATORS,
+        sort_keys: bool = JSON_SORT_KEYS,
+        skip_keys: bool = JSON_SKIP_KEYS,
+        ensure_ascii: bool = JSON_ENSURE_ASCII,
+        strict: bool = JSON_STRICT,
         **kwargs,
     ):
         """Creates a file manager for JSON files.
@@ -108,6 +134,15 @@ class JSONFile(FileManager):
             Defaults to False.
             encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
             indent (int, optional): The line indent. Defaults to JSON_INDENT.
+            separators (tuple, optional): The separators for key/values, a.k.a `(', ', ': ')`.
+            Defaults to JSON_SEPARATORS.
+            sort_keys (bool, optional): Whether or not to sort the keys. Defaults to JSON_SORT_KEYS.
+            skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
+            Defaults to JSON_SKIP_KEYS.
+            ensure_ascii (bool, optional): Whether or not to escape non-ascii chars.
+            Defaults to JSON_ENSURE_ASCII.
+            strict (bool, optional): Whether or not to forbid control chars.
+            Defaults to JSON_STRICT.
 
         Examples:
         ```python
@@ -153,6 +188,11 @@ class JSONFile(FileManager):
             **kwargs,
         )
         self.indent = indent
+        self.separators = separators
+        self.sort_keys = sort_keys
+        self.skip_keys = skip_keys
+        self.ensure_ascii = ensure_ascii
+        self.strict = strict
 
     def read(self) -> Any:
         """Reads the content from the file.
@@ -182,7 +222,7 @@ class JSONFile(FileManager):
         if not data:
             return None
 
-        return json.JSONDecoder().decode(data)
+        return json.JSONDecoder(strict=self.strict).decode(data)
 
     def write(self, data: Any) -> int:
         """Writes content to the file.
@@ -212,8 +252,11 @@ class JSONFile(FileManager):
         """
         return super().write(
             json.JSONEncoder(
-                sort_keys=True,
+                skipkeys=self.skip_keys,
+                ensure_ascii=self.ensure_ascii,
+                sort_keys=self.sort_keys,
                 indent=self.indent,
+                separators=self.separators,
             ).encode(data)
         )
 
@@ -221,6 +264,7 @@ class JSONFile(FileManager):
 def read_json_file(
     filename: str,
     encoding: str = JSON_ENCODING,
+    strict: bool = JSON_STRICT,
     **kwargs,
 ) -> Any:
     """Reads a JSON content from a file.
@@ -228,6 +272,7 @@ def read_json_file(
     Args:
         filename (str): The path to the file to read.
         encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
+        strict (bool, optional): Whether or not to forbid control chars. Defaults to JSON_STRICT.
 
     Raises:
         OSError: If the file cannot be read.
@@ -243,7 +288,7 @@ def read_json_file(
     json_data = read_json_file('path/to/file', encoding='UTF-8')
     ```
     """
-    return JSONFile(filename, encoding=encoding, **kwargs).read_file()
+    return JSONFile(filename, encoding=encoding, strict=strict, **kwargs).read_file()
 
 
 def write_json_file(
@@ -251,6 +296,10 @@ def write_json_file(
     data: Any,
     encoding: str = JSON_ENCODING,
     indent: int = JSON_INDENT,
+    separators: tuple = JSON_SEPARATORS,
+    sort_keys: bool = JSON_SORT_KEYS,
+    skip_keys: bool = JSON_SKIP_KEYS,
+    ensure_ascii: bool = JSON_ENSURE_ASCII,
     **kwargs,
 ) -> int:
     """Writes a JSON content to a file.
@@ -260,6 +309,13 @@ def write_json_file(
         data (Any): The content to write to the file.
         encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
         indent (int, optional): The line indent. Defaults to JSON_INDENT.
+        separators (tuple, optional): The separators for key/values, a.k.a `(', ', ': ')`.
+        Defaults to JSON_SEPARATORS.
+        sort_keys (bool, optional): Whether or not to sort the keys. Defaults to JSON_SORT_KEYS.
+        skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
+        Defaults to JSON_SKIP_KEYS.
+        ensure_ascii (bool, optional): Whether or not to escape non-ascii chars.
+        Defaults to JSON_ENSURE_ASCII.
 
     Raises:
         OSError: If the file cannot be written.
@@ -284,5 +340,9 @@ def write_json_file(
         filename,
         encoding=encoding,
         indent=indent,
+        separators=separators,
+        sort_keys=sort_keys,
+        skip_keys=skip_keys,
+        ensure_ascii=ensure_ascii,
         **kwargs,
     ).write_file(data)

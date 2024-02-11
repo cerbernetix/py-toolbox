@@ -76,7 +76,12 @@ csv_data = file.read_zip_csv(data)
 - **CSV_DIALECT**
 - **CSV_ENCODING**
 - **JSON_ENCODING**
+- **JSON_ENSURE_ASCII**
 - **JSON_INDENT**
+- **JSON_SEPARATORS**
+- **JSON_SKIP_KEYS**
+- **JSON_SORT_KEYS**
+- **JSON_STRICT**
 
 
 

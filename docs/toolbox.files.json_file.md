@@ -46,15 +46,25 @@ with file:
 ---------------
 - **JSON_ENCODING**
 - **JSON_INDENT**
+- **JSON_SEPARATORS**
+- **JSON_SORT_KEYS**
+- **JSON_SKIP_KEYS**
+- **JSON_ENSURE_ASCII**
+- **JSON_STRICT**
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/json_file.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L264"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_json_file`
 
 ```python
-read_json_file(filename: str, encoding: str = 'utf-8', **kwargs) → Any
+read_json_file(
+    filename: str,
+    encoding: str = 'utf-8',
+    strict: bool = True,
+    **kwargs
+) → Any
 ```
 
 Reads a JSON content from a file. 
@@ -65,6 +75,7 @@ Reads a JSON content from a file.
  
  - <b>`filename`</b> (str):  The path to the file to read. 
  - <b>`encoding`</b> (str, optional):  The file encoding. Defaults to JSON_ENCODING. 
+ - <b>`strict`</b> (bool, optional):  Whether or not to forbid control chars. Defaults to JSON_STRICT. 
 
 
 
@@ -91,7 +102,7 @@ json_data = read_json_file('path/to/file', encoding='UTF-8')
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/json_file.py#L249"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_json_file`
 
@@ -101,6 +112,10 @@ write_json_file(
     data: Any,
     encoding: str = 'utf-8',
     indent: int = 4,
+    separators: tuple = None,
+    sort_keys: bool = False,
+    skip_keys: bool = False,
+    ensure_ascii: bool = True,
     **kwargs
 ) → int
 ```
@@ -115,6 +130,10 @@ Writes a JSON content to a file.
  - <b>`data`</b> (Any):  The content to write to the file. 
  - <b>`encoding`</b> (str, optional):  The file encoding. Defaults to JSON_ENCODING. 
  - <b>`indent`</b> (int, optional):  The line indent. Defaults to JSON_INDENT. 
+ - <b>`separators`</b> (tuple, optional):  The separators for key/values, a.k.a `(', ', ': ')`. Defaults to JSON_SEPARATORS. 
+ - <b>`sort_keys`</b> (bool, optional):  Whether or not to sort the keys. Defaults to JSON_SORT_KEYS. 
+ - <b>`skip_keys`</b> (bool, optional):  Whether or not to skip the keys not having an allowed type. Defaults to JSON_SKIP_KEYS. 
+ - <b>`ensure_ascii`</b> (bool, optional):  Whether or not to escape non-ascii chars. Defaults to JSON_ENSURE_ASCII. 
 
 
 
@@ -146,7 +165,7 @@ write_json_file('path/to/file', json_data, encoding='UTF-8', indent=2)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/json_file.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L66"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `JSONFile`
 Offers a simple API for reading and writing JSON files. 
@@ -163,6 +182,11 @@ The read API reads all the content at once, and so do the write API too.
  - <b>`binary`</b> (bool):  The type of file, say text. It must always be False. 
  - <b>`encoding`</b> (str, optional):  The file encoding. 
  - <b>`indent`</b> (int, optional):  The line indent. 
+ - <b>`separators`</b> (tuple, optional):  The separators for key/values, a.k.a `(', ', ': ')`. 
+ - <b>`sort_keys`</b> (bool, optional):  Whether or not to sort the keys. 
+ - <b>`skip_keys`</b> (bool, optional):  Whether or not to skip the keys not having an allowed type. 
+ - <b>`ensure_ascii`</b> (bool, optional):  Whether or not to escape non-ascii chars. 
+ - <b>`strict`</b> (bool, optional):  Whether or not to forbid control chars. 
 
 
 
@@ -187,7 +211,7 @@ with file(create=True):
 json = file.read_file()
 ``` 
 
-<a href="../src/cerbernetix/toolbox/files/json_file.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L107"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -200,6 +224,11 @@ __init__(
     write: bool = False,
     encoding: str = 'utf-8',
     indent: int = 4,
+    separators: tuple = None,
+    sort_keys: bool = False,
+    skip_keys: bool = False,
+    ensure_ascii: bool = True,
+    strict: bool = True,
     **kwargs
 )
 ```
@@ -217,6 +246,11 @@ Creates a file manager for JSON files.
  - <b>`write`</b> (bool, optional):  Expect to also write to the file. Defaults to False. 
  - <b>`encoding`</b> (str, optional):  The file encoding. Defaults to JSON_ENCODING. 
  - <b>`indent`</b> (int, optional):  The line indent. Defaults to JSON_INDENT. 
+ - <b>`separators`</b> (tuple, optional):  The separators for key/values, a.k.a `(', ', ': ')`. Defaults to JSON_SEPARATORS. 
+ - <b>`sort_keys`</b> (bool, optional):  Whether or not to sort the keys. Defaults to JSON_SORT_KEYS. 
+ - <b>`skip_keys`</b> (bool, optional):  Whether or not to skip the keys not having an allowed type. Defaults to JSON_SKIP_KEYS. 
+ - <b>`ensure_ascii`</b> (bool, optional):  Whether or not to escape non-ascii chars. Defaults to JSON_ENSURE_ASCII. 
+ - <b>`strict`</b> (bool, optional):  Whether or not to forbid control chars. Defaults to JSON_STRICT. 
 
 
 
@@ -424,7 +458,7 @@ size = file.size
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/json_file.py#L157"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L197"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -464,7 +498,7 @@ with file:
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/json_file.py#L187"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/json_file.py#L227"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 

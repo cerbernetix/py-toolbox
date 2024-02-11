@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+-   Add options to JSONFile implementation (sort_keys, skip_keys, ensure_ascii, separators, strict).
+
 ### Fixed
 
 -   Fix the link to the documentation in the readme.
