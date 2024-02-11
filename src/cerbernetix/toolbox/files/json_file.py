@@ -47,6 +47,9 @@ JSON_ENCODING = "utf-8"
 # The default indent for JSON files
 JSON_INDENT = 4
 
+# The default separators for JSON files
+JSON_SEPARATORS = None
+
 # The default value for whether or not to sort the keys in JSON files
 JSON_SORT_KEYS = False
 
@@ -73,6 +76,7 @@ class JSONFile(FileManager):
         binary (bool): The type of file, say text. It must always be False.
         encoding (str, optional): The file encoding.
         indent (int, optional): The line indent.
+        separators (tuple, optional): The separators for key/values, a.k.a `(', ', ': ')`.
         sort_keys (bool, optional): Whether or not to sort the keys.
         skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
         ensure_ascii (bool, optional): Whether or not to escape non-ascii chars.
@@ -109,6 +113,7 @@ class JSONFile(FileManager):
         write: bool = False,
         encoding: str = JSON_ENCODING,
         indent: int = JSON_INDENT,
+        separators: tuple = JSON_SEPARATORS,
         sort_keys: bool = JSON_SORT_KEYS,
         skip_keys: bool = JSON_SKIP_KEYS,
         ensure_ascii: bool = JSON_ENSURE_ASCII,
@@ -129,6 +134,8 @@ class JSONFile(FileManager):
             Defaults to False.
             encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
             indent (int, optional): The line indent. Defaults to JSON_INDENT.
+            separators (tuple, optional): The separators for key/values, a.k.a `(', ', ': ')`.
+            Defaults to JSON_SEPARATORS.
             sort_keys (bool, optional): Whether or not to sort the keys. Defaults to JSON_SORT_KEYS.
             skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
             Defaults to JSON_SKIP_KEYS.
@@ -181,6 +188,7 @@ class JSONFile(FileManager):
             **kwargs,
         )
         self.indent = indent
+        self.separators = separators
         self.sort_keys = sort_keys
         self.skip_keys = skip_keys
         self.ensure_ascii = ensure_ascii
@@ -248,6 +256,7 @@ class JSONFile(FileManager):
                 ensure_ascii=self.ensure_ascii,
                 sort_keys=self.sort_keys,
                 indent=self.indent,
+                separators=self.separators,
             ).encode(data)
         )
 
@@ -287,6 +296,7 @@ def write_json_file(
     data: Any,
     encoding: str = JSON_ENCODING,
     indent: int = JSON_INDENT,
+    separators: tuple = JSON_SEPARATORS,
     sort_keys: bool = JSON_SORT_KEYS,
     skip_keys: bool = JSON_SKIP_KEYS,
     ensure_ascii: bool = JSON_ENSURE_ASCII,
@@ -299,6 +309,8 @@ def write_json_file(
         data (Any): The content to write to the file.
         encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
         indent (int, optional): The line indent. Defaults to JSON_INDENT.
+        separators (tuple, optional): The separators for key/values, a.k.a `(', ', ': ')`.
+        Defaults to JSON_SEPARATORS.
         sort_keys (bool, optional): Whether or not to sort the keys. Defaults to JSON_SORT_KEYS.
         skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
         Defaults to JSON_SKIP_KEYS.
@@ -328,6 +340,7 @@ def write_json_file(
         filename,
         encoding=encoding,
         indent=indent,
+        separators=separators,
         sort_keys=sort_keys,
         skip_keys=skip_keys,
         ensure_ascii=ensure_ascii,

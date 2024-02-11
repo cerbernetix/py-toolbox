@@ -7,6 +7,7 @@ from cerbernetix.toolbox.files import (
     JSON_ENCODING,
     JSON_ENSURE_ASCII,
     JSON_INDENT,
+    JSON_SEPARATORS,
     JSON_SKIP_KEYS,
     JSON_SORT_KEYS,
     JSON_STRICT,
@@ -25,6 +26,7 @@ JSON_STRING = """{
     ],
     "enabled": true
 }"""
+JSON_STRING_PACKED = """{"name":"test","level":20,"keywords":["one","two"],"enabled":true}"""
 JSON_STRING_SORTED = """{
     "enabled": true,
     "keywords": [
@@ -50,6 +52,7 @@ class TestJSONFile(unittest.TestCase):
         self.assertEqual(file.filename, file_path)
         self.assertFalse(file.binary)
         self.assertEqual(file.indent, JSON_INDENT)
+        self.assertEqual(file.separators, JSON_SEPARATORS)
         self.assertEqual(file.sort_keys, JSON_SORT_KEYS)
         self.assertEqual(file.skip_keys, JSON_SKIP_KEYS)
         self.assertEqual(file.ensure_ascii, JSON_ENSURE_ASCII)
@@ -63,6 +66,7 @@ class TestJSONFile(unittest.TestCase):
         file_path = "/root/folder/file"
         encoding = "ascii"
         indent = 2
+        separators = (",", ":")
         sort_keys = True
         skip_keys = True
         ensure_ascii = True
@@ -73,6 +77,7 @@ class TestJSONFile(unittest.TestCase):
             file_path,
             encoding=encoding,
             indent=indent,
+            separators=separators,
             sort_keys=sort_keys,
             skip_keys=skip_keys,
             ensure_ascii=ensure_ascii,
@@ -83,6 +88,7 @@ class TestJSONFile(unittest.TestCase):
         self.assertEqual(file.filename, file_path)
         self.assertFalse(file.binary)
         self.assertEqual(file.indent, indent)
+        self.assertEqual(file.separators, separators)
         self.assertEqual(file.sort_keys, sort_keys)
         self.assertEqual(file.skip_keys, skip_keys)
         self.assertEqual(file.ensure_ascii, ensure_ascii)
@@ -269,6 +275,25 @@ class TestJSONFile(unittest.TestCase):
 
         mock_file_open.assert_called_once()
         mock_file.write.assert_called_with(JSON_STRING_SORTED)
+        mock_file.close.assert_called_once()
+
+    @patch("builtins.open")
+    def test_write_file_packed(self, mock_file_open):
+        """Tests a file can be written at once."""
+        file_path = "/root/folder/file"
+
+        count = len(JSON_STRING)
+        mock_file = Mock()
+        mock_file.write = Mock(return_value=count)
+        mock_file.close = Mock()
+        mock_file_open.return_value = mock_file
+
+        file = JSONFile(file_path, indent=None, separators=(",", ":"))
+
+        self.assertEqual(file.write_file(JSON_DATA), count)
+
+        mock_file_open.assert_called_once()
+        mock_file.write.assert_called_with(JSON_STRING_PACKED)
         mock_file.close.assert_called_once()
 
     @patch("builtins.open")
