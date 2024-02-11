@@ -1,10 +1,12 @@
 """Test the class for reading and writing JSON files."""
+
 import unittest
 from unittest.mock import Mock, patch
 
 from cerbernetix.toolbox.files import (
     JSON_ENCODING,
     JSON_INDENT,
+    JSON_SORT_KEYS,
     JSONFile,
     read_json_file,
     write_json_file,
@@ -12,6 +14,15 @@ from cerbernetix.toolbox.files import (
 
 JSON_DATA = {"name": "test", "level": 20, "keywords": ["one", "two"], "enabled": True}
 JSON_STRING = """{
+    "name": "test",
+    "level": 20,
+    "keywords": [
+        "one",
+        "two"
+    ],
+    "enabled": true
+}"""
+JSON_STRING_SORTED = """{
     "enabled": true,
     "keywords": [
         "one",
@@ -36,6 +47,7 @@ class TestJSONFile(unittest.TestCase):
         self.assertEqual(file.filename, file_path)
         self.assertFalse(file.binary)
         self.assertEqual(file.indent, JSON_INDENT)
+        self.assertEqual(file.sort_keys, JSON_SORT_KEYS)
         self.assertEqual(file.encoding, JSON_ENCODING)
         self.assertIsNone(file._file)
         self.assertEqual(file._open_args, {})
@@ -45,13 +57,21 @@ class TestJSONFile(unittest.TestCase):
         file_path = "/root/folder/file"
         encoding = "ascii"
         indent = 2
+        sort_keys = True
         newline = "\n"
 
-        file = JSONFile(file_path, encoding=encoding, indent=indent, newline=newline)
+        file = JSONFile(
+            file_path,
+            encoding=encoding,
+            indent=indent,
+            sort_keys=sort_keys,
+            newline=newline,
+        )
 
         self.assertEqual(file.filename, file_path)
         self.assertFalse(file.binary)
         self.assertEqual(file.indent, indent)
+        self.assertEqual(file.sort_keys, sort_keys)
         self.assertEqual(file.encoding, encoding)
         self.assertIsNone(file._file)
         self.assertEqual(file._open_args, {"newline": newline})
@@ -215,6 +235,25 @@ class TestJSONFile(unittest.TestCase):
 
         mock_file_open.assert_called_once()
         mock_file.write.assert_called_with(JSON_STRING)
+        mock_file.close.assert_called_once()
+
+    @patch("builtins.open")
+    def test_write_file_sorted_keys(self, mock_file_open):
+        """Tests a file can be written at once."""
+        file_path = "/root/folder/file"
+
+        count = len(JSON_STRING)
+        mock_file = Mock()
+        mock_file.write = Mock(return_value=count)
+        mock_file.close = Mock()
+        mock_file_open.return_value = mock_file
+
+        file = JSONFile(file_path, sort_keys=True)
+
+        self.assertEqual(file.write_file(JSON_DATA), count)
+
+        mock_file_open.assert_called_once()
+        mock_file.write.assert_called_with(JSON_STRING_SORTED)
         mock_file.close.assert_called_once()
 
     @patch("builtins.open")
