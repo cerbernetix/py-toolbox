@@ -50,6 +50,9 @@ JSON_INDENT = 4
 # The default value for whether or not to sort the keys in JSON files
 JSON_SORT_KEYS = False
 
+# The default value for whether or not to skip the keys not having an allowed type in JSON files
+JSON_SKIP_KEYS = False
+
 
 class JSONFile(FileManager):
     """Offers a simple API for reading and writing JSON files.
@@ -65,6 +68,7 @@ class JSONFile(FileManager):
         encoding (str, optional): The file encoding.
         indent (int, optional): The line indent.
         sort_keys (bool, optional): Whether or not to sort the keys.
+        skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
 
     Examples:
     ```python
@@ -98,6 +102,7 @@ class JSONFile(FileManager):
         encoding: str = JSON_ENCODING,
         indent: int = JSON_INDENT,
         sort_keys: bool = JSON_SORT_KEYS,
+        skip_keys: bool = JSON_SKIP_KEYS,
         **kwargs,
     ):
         """Creates a file manager for JSON files.
@@ -115,6 +120,8 @@ class JSONFile(FileManager):
             encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
             indent (int, optional): The line indent. Defaults to JSON_INDENT.
             sort_keys (bool, optional): Whether or not to sort the keys. Defaults to JSON_SORT_KEYS.
+            skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
+            Defaults to JSON_SKIP_KEYS.
 
         Examples:
         ```python
@@ -161,6 +168,7 @@ class JSONFile(FileManager):
         )
         self.indent = indent
         self.sort_keys = sort_keys
+        self.skip_keys = skip_keys
 
     def read(self) -> Any:
         """Reads the content from the file.
@@ -220,6 +228,7 @@ class JSONFile(FileManager):
         """
         return super().write(
             json.JSONEncoder(
+                skipkeys=self.skip_keys,
                 sort_keys=self.sort_keys,
                 indent=self.indent,
             ).encode(data)
@@ -260,6 +269,7 @@ def write_json_file(
     encoding: str = JSON_ENCODING,
     indent: int = JSON_INDENT,
     sort_keys: bool = JSON_SORT_KEYS,
+    skip_keys: bool = JSON_SKIP_KEYS,
     **kwargs,
 ) -> int:
     """Writes a JSON content to a file.
@@ -270,6 +280,8 @@ def write_json_file(
         encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
         indent (int, optional): The line indent. Defaults to JSON_INDENT.
         sort_keys (bool, optional): Whether or not to sort the keys. Defaults to JSON_SORT_KEYS.
+        skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
+        Defaults to JSON_SKIP_KEYS.
 
     Raises:
         OSError: If the file cannot be written.
@@ -295,5 +307,6 @@ def write_json_file(
         encoding=encoding,
         indent=indent,
         sort_keys=sort_keys,
+        skip_keys=skip_keys,
         **kwargs,
     ).write_file(data)
