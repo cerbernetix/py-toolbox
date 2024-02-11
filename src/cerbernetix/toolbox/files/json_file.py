@@ -56,6 +56,9 @@ JSON_SKIP_KEYS = False
 # The default value for escaping non-ascii chars in JSON files
 JSON_ENSURE_ASCII = True
 
+# The default value for forbidding the control chars in JSON files
+JSON_STRICT = True
+
 
 class JSONFile(FileManager):
     """Offers a simple API for reading and writing JSON files.
@@ -73,6 +76,7 @@ class JSONFile(FileManager):
         sort_keys (bool, optional): Whether or not to sort the keys.
         skip_keys (bool, optional): Whether or not to skip the keys not having an allowed type.
         ensure_ascii (bool, optional): Whether or not to escape non-ascii chars.
+        strict (bool, optional): Whether or not to forbid control chars.
 
     Examples:
     ```python
@@ -108,6 +112,7 @@ class JSONFile(FileManager):
         sort_keys: bool = JSON_SORT_KEYS,
         skip_keys: bool = JSON_SKIP_KEYS,
         ensure_ascii: bool = JSON_ENSURE_ASCII,
+        strict: bool = JSON_STRICT,
         **kwargs,
     ):
         """Creates a file manager for JSON files.
@@ -129,6 +134,8 @@ class JSONFile(FileManager):
             Defaults to JSON_SKIP_KEYS.
             ensure_ascii (bool, optional): Whether or not to escape non-ascii chars.
             Defaults to JSON_ENSURE_ASCII.
+            strict (bool, optional): Whether or not to forbid control chars.
+            Defaults to JSON_STRICT.
 
         Examples:
         ```python
@@ -177,6 +184,7 @@ class JSONFile(FileManager):
         self.sort_keys = sort_keys
         self.skip_keys = skip_keys
         self.ensure_ascii = ensure_ascii
+        self.strict = strict
 
     def read(self) -> Any:
         """Reads the content from the file.
@@ -206,7 +214,7 @@ class JSONFile(FileManager):
         if not data:
             return None
 
-        return json.JSONDecoder().decode(data)
+        return json.JSONDecoder(strict=self.strict).decode(data)
 
     def write(self, data: Any) -> int:
         """Writes content to the file.
@@ -247,6 +255,7 @@ class JSONFile(FileManager):
 def read_json_file(
     filename: str,
     encoding: str = JSON_ENCODING,
+    strict: bool = JSON_STRICT,
     **kwargs,
 ) -> Any:
     """Reads a JSON content from a file.
@@ -254,6 +263,7 @@ def read_json_file(
     Args:
         filename (str): The path to the file to read.
         encoding (str, optional): The file encoding. Defaults to JSON_ENCODING.
+        strict (bool, optional): Whether or not to forbid control chars. Defaults to JSON_STRICT.
 
     Raises:
         OSError: If the file cannot be read.
@@ -269,7 +279,7 @@ def read_json_file(
     json_data = read_json_file('path/to/file', encoding='UTF-8')
     ```
     """
-    return JSONFile(filename, encoding=encoding, **kwargs).read_file()
+    return JSONFile(filename, encoding=encoding, strict=strict, **kwargs).read_file()
 
 
 def write_json_file(
