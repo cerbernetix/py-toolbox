@@ -50,6 +50,7 @@ with file:
 ---------------
 - **CSV_ENCODING**
 - **CSV_DIALECT**
+- **CSV_AUTO**
 - **CSV_SAMPLE_SIZE**
 - **CSV_READER_PARAMS**
 - **CSV_WRITER_PARAMS**
@@ -57,7 +58,7 @@ with file:
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L475"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L479"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_csv_file`
 
@@ -65,7 +66,7 @@ with file:
 read_csv_file(
     filename: 'str',
     encoding: 'str' = 'utf-8',
-    dialect: 'str' = 'unix',
+    dialect: 'str' = 'auto',
     iterator: 'bool' = False,
     **kwargs
 ) → Iterable[dict | list]
@@ -81,7 +82,7 @@ The returned value can be either a list (default) or an iterator (when the itera
  
  - <b>`filename`</b> (str):  The path to the file to read. 
  - <b>`encoding`</b> (str, optional):  The file encoding. Defaults to CSV_ENCODING. 
- - <b>`dialect`</b> (str, optional):  The CSV dialect to use. If 'auto' is given, the reader will try detecting the CSV dialect by reading a sample at the head of the file. Defaults to CSV_DIALECT. 
+ - <b>`dialect`</b> (str, optional):  The CSV dialect to use. If 'auto' is given, the reader will try detecting the CSV dialect by reading a sample at the head of the file. Defaults to CSV_AUTO. 
  - <b>`iterator`</b> (bool, optional):  When True, the function will return an iterator instead of a list. Defaults to False. 
  - <b>`delimiter`</b> (str, optional):  A one-character string used to separate fields. Defaults to ','. 
  - <b>`doublequote`</b> (bool, optional):  Controls how instances of quotechar appearing inside a field should themselves be quoted. When True, the character is doubled. When False, the escapechar is used as a prefix to the quotechar. Defaults to True. 
@@ -123,7 +124,7 @@ for row in read_csv_file('path/to/file', iterator=True):
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L547"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L551"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_csv_file`
 
@@ -132,7 +133,7 @@ write_csv_file(
     filename: 'str',
     data: 'Iterable[dict | list]',
     encoding: 'str' = 'utf-8',
-    dialect: 'str' = 'unix',
+    dialect: 'str' = 'excel',
     **kwargs
 ) → int
 ```
@@ -189,7 +190,7 @@ write_csv_file('path/to/file', csv_data, encoding='UTF-8', dialect='excel')
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L620"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L624"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_zip_csv`
 
@@ -199,7 +200,7 @@ read_zip_csv(
     filename: 'str' = None,
     encoding: 'str' = 'utf-8',
     decoding_errors: 'str' = 'ignore',
-    dialect: 'str' = 'unix',
+    dialect: 'str' = 'auto',
     iterator: 'bool' = False,
     **kwargs
 ) → Iterable[dict | list]
@@ -217,7 +218,7 @@ The returned value can be either a list (default) or an iterator (when the itera
  - <b>`filename`</b> (str, optional):  The name of the file to extract from the zip If omitted, the first file having a '.csv' extension will be selected. Defaults to None. 
  - <b>`encoding`</b> (str, optional):  The file encoding. Defaults to CSV_ENCODING. 
  - <b>`decoding_errors`</b> (str, optional):  Controls how decoding errors are handled. If 'strict', a UnicodeError exception is raised. Other possible values are 'ignore', 'replace', and any other name registered via codecs.register_error(). See Error Handlers for details. Defaults to "ignore". 
- - <b>`dialect`</b> (str, optional):  The CSV dialect to use. If 'auto' is given, the reader will try detecting the CSV dialect by reading a sample at the head of the file. Defaults to CSV_DIALECT. 
+ - <b>`dialect`</b> (str, optional):  The CSV dialect to use. If 'auto' is given, the reader will try detecting the CSV dialect by reading a sample at the head of the file. Defaults to CSV_AUTO. 
  - <b>`iterator`</b> (bool, optional):  When True, the function will return an iterator instead of a list. Defaults to False. 
  - <b>`delimiter`</b> (str, optional):  A one-character string used to separate fields. Defaults to ','. 
  - <b>`doublequote`</b> (bool, optional):  Controls how instances of quotechar appearing inside a field should themselves be quoted. When True, the character is doubled. When False, the escapechar is used as a prefix to the quotechar. Defaults to True. 
@@ -265,7 +266,7 @@ with open('path/to/file.zip', 'rb') as file:
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L93"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L97"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `CSVFile`
 Offers a simple API for reading and writing CSV files. 
@@ -310,7 +311,7 @@ with file(create=True):
 csv = file.read_file()
 ``` 
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L134"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L138"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -322,7 +323,7 @@ __init__(
     read: 'bool' = False,
     write: 'bool' = False,
     encoding: 'str' = 'utf-8',
-    dialect: 'str' = 'unix',
+    dialect: 'str' = 'auto',
     **kwargs
 )
 ```
@@ -339,7 +340,7 @@ Creates a file manager for CSV files.
  - <b>`read`</b> (bool, optional):  Expect to also read the file. Defaults to False. 
  - <b>`write`</b> (bool, optional):  Expect to also write to the file. Defaults to False. 
  - <b>`encoding`</b> (str, optional):  The file encoding. Defaults to CSV_ENCODING. 
- - <b>`dialect`</b> (str, optional):  The CSV dialect to use. If 'auto' is given, the reader will try detecting the CSV dialect by reading a sample at the head of the file. Defaults to CSV_DIALECT. 
+ - <b>`dialect`</b> (str, optional):  The CSV dialect to use. If 'auto' is given, the reader will try detecting the CSV dialect by reading a sample at the head of the file. Defaults to CSV_AUTO for reading or to CSV_DIALECT for writing. 
  - <b>`delimiter`</b> (str, optional):  A one-character string used to separate fields. Defaults to ",". 
  - <b>`doublequote`</b> (bool, optional):  Controls how instances of quotechar appearing inside a field should themselves be quoted. When True, the character is doubled. When False, the escapechar is used as a prefix to the quotechar. Defaults to True. 
  - <b>`escapechar`</b> (str, optional):   A one-character string used by the writer to escape the delimiter if quoting is set to QUOTE_NONE and the quotechar if doublequote is False. On reading, the escapechar removes any special meaning from the following character. Defaults to None, which disables escaping. 
@@ -566,7 +567,7 @@ size = file.size
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L263"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L267"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -604,7 +605,7 @@ file.close()
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L363"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L367"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -648,7 +649,7 @@ csv_data = [row for row in file]
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L298"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -699,7 +700,7 @@ for row in file.read_file(iterator=True):
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L414"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L418"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -746,7 +747,7 @@ with file(create=True):
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/csv_file.py#L332"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/csv_file.py#L336"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 

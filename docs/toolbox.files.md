@@ -73,6 +73,7 @@ csv_data = file.read_zip_csv(data)
 
 **Global Variables**
 ---------------
+- **CSV_AUTO**
 - **CSV_DIALECT**
 - **CSV_ENCODING**
 - **JSON_ENCODING**
