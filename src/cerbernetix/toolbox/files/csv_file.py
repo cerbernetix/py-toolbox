@@ -55,6 +55,9 @@ CSV_ENCODING = "utf-8"
 # The default CSV dialect
 CSV_DIALECT = "excel"
 
+# The value for auto-detecting the CSV dialect
+CSV_AUTO = "auto"
+
 # The amount of bytes to read for auto-detecting the CSV dialect
 CSV_SAMPLE_SIZE = 1024
 
@@ -140,7 +143,7 @@ class CSVFile(FileManager):
         read: bool = False,
         write: bool = False,
         encoding: str = CSV_ENCODING,
-        dialect: str = CSV_DIALECT,
+        dialect: str = CSV_AUTO,
         **kwargs,
     ):
         r"""Creates a file manager for CSV files.
@@ -158,7 +161,7 @@ class CSVFile(FileManager):
             encoding (str, optional): The file encoding. Defaults to CSV_ENCODING.
             dialect (str, optional): The CSV dialect to use. If 'auto' is given, the reader will
             try detecting the CSV dialect by reading a sample at the head of the file.
-            Defaults to CSV_DIALECT.
+            Defaults to CSV_AUTO for reading or to CSV_DIALECT for writing.
             delimiter (str, optional): A one-character string used to separate fields.
             Defaults to ",".
             doublequote (bool, optional): Controls how instances of quotechar appearing inside a
@@ -401,7 +404,7 @@ class CSVFile(FileManager):
                 reader = csv.DictReader
 
             dialect = self.dialect
-            if dialect == "auto":
+            if dialect == CSV_AUTO:
                 dialect = csv.Sniffer().sniff(self._file.read(CSV_SAMPLE_SIZE))
                 self._file.seek(0)
 
@@ -462,7 +465,7 @@ class CSVFile(FileManager):
                 writer = csv.writer
 
             dialect = self.dialect
-            if dialect == "auto":
+            if dialect == CSV_AUTO:
                 dialect = CSV_DIALECT
 
             self._writer = writer(self._file, dialect=dialect, **kwargs)
@@ -476,7 +479,7 @@ class CSVFile(FileManager):
 def read_csv_file(
     filename: str,
     encoding: str = CSV_ENCODING,
-    dialect: str = CSV_DIALECT,
+    dialect: str = CSV_AUTO,
     iterator: bool = False,
     **kwargs,
 ) -> Iterable[dict | list]:
@@ -490,7 +493,7 @@ def read_csv_file(
         encoding (str, optional): The file encoding. Defaults to CSV_ENCODING.
         dialect (str, optional): The CSV dialect to use. If 'auto' is given, the reader will
         try detecting the CSV dialect by reading a sample at the head of the file.
-        Defaults to CSV_DIALECT.
+        Defaults to CSV_AUTO.
         iterator (bool, optional): When True, the function will return an iterator instead of a
         list. Defaults to False.
         delimiter (str, optional): A one-character string used to separate fields.
@@ -623,7 +626,7 @@ def read_zip_csv(
     filename: str = None,
     encoding: str = CSV_ENCODING,
     decoding_errors: str = "ignore",
-    dialect: str = CSV_DIALECT,
+    dialect: str = CSV_AUTO,
     iterator: bool = False,
     **kwargs,
 ) -> Iterable[dict | list]:
@@ -643,7 +646,7 @@ def read_zip_csv(
         Defaults to "ignore".
         dialect (str, optional): The CSV dialect to use. If 'auto' is given, the reader will
         try detecting the CSV dialect by reading a sample at the head of the file.
-        Defaults to CSV_DIALECT.
+        Defaults to CSV_AUTO.
         iterator (bool, optional): When True, the function will return an iterator instead of a
         list. Defaults to False.
         delimiter (str, optional): A one-character string used to separate fields.
@@ -705,7 +708,7 @@ def read_zip_csv(
     else:
         reader_factory = csv.DictReader
 
-    if dialect == "auto":
+    if dialect == CSV_AUTO:
         dialect = csv.Sniffer().sniff(text[:CSV_SAMPLE_SIZE])
 
     lines = re.split(r"[\r\n]+", text.strip("\r\n"))

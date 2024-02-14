@@ -66,6 +66,7 @@ csv_data = file.read_zip_csv(data)
 """
 
 from cerbernetix.toolbox.files.csv_file import (
+    CSV_AUTO,
     CSV_DIALECT,
     CSV_ENCODING,
     CSVFile,
