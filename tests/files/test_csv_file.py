@@ -1,4 +1,5 @@
 """Test the class for reading and writing CSV files."""
+
 import unittest
 import zipfile
 from typing import Iterator
@@ -25,14 +26,14 @@ CSV_LINES_LIST = [
     ["Jane", "Doe", "20", "Paris"],
 ]
 CSV_LINES_STRING = [
-    '"first_name","last_name","age","city"\n',
-    '"John","Smith","18","London"\n',
-    '"Jane","Doe","20","Paris"\n',
+    "first_name,last_name,age,city\r\n",
+    "John,Smith,18,London\r\n",
+    "Jane,Doe,20,Paris\r\n",
 ]
 CSV_LINES_REDUCED = [
-    '"first_name","last_name"\n',
-    '"John","Smith"\n',
-    '"Jane","Doe"\n',
+    "first_name,last_name\r\n",
+    "John,Smith\r\n",
+    "Jane,Doe\r\n",
 ]
 CSV_STRING = "".join(CSV_LINES_STRING)
 

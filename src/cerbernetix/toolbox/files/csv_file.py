@@ -39,6 +39,7 @@ with file:
     first = file.read()
 ```
 """
+
 from __future__ import annotations
 
 import csv
@@ -52,7 +53,7 @@ from cerbernetix.toolbox.files.file_manager import FileManager
 CSV_ENCODING = "utf-8"
 
 # The default CSV dialect
-CSV_DIALECT = "unix"
+CSV_DIALECT = "excel"
 
 # The amount of bytes to read for auto-detecting the CSV dialect
 CSV_SAMPLE_SIZE = 1024
