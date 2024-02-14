@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
--   Add options to JSONFile implementation (sort_keys, skip_keys, ensure_ascii, separators, strict).
+-   Add options to JSONFile implementation (`sort_keys`, `skip_keys`, `ensure_ascii`, `separators`, `strict`).
+-   Set the default CSV dialect to `'excel'` when writing (this reflects the default value from the Python library).
+-   Set the default CSV dialect to `'auto'` when reading (the dialect will be sniffed from the first few rows).
 
 ### Fixed
 
