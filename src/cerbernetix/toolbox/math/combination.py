@@ -2,17 +2,26 @@
 
 Examples:
 ```python
-from cerbernetix.toolbox.math import get_combination_rank, get_combination_from_rank
+from cerbernetix.toolbox.math import (
+    get_combination_rank,
+    get_combination_from_rank,
+    get_combinations,
+)
 
 # Get the rank of a combination of 3 numbers
 print(get_combination_rank([1, 3, 5]))
 
 # Get the combination of 3 numbers ranked at position 5
-print(list(get_combination_from_rank(5, 3)))
+print(get_combination_from_rank(5, 3))
+
+# Get the combinations of 3 numbers from the list
+values = [1, 2, 4, 8, 16]
+print(list(get_combinations(values, 3)))
 ```
 """
+
 from math import comb
-from typing import Iterable
+from typing import Iterable, Iterator
 
 
 def get_combination_rank(combination: Iterable[int], offset: int = 0) -> int:
@@ -77,7 +86,7 @@ def get_combination_from_rank(rank: int, length: int = 2, offset: int = 0) -> li
     from cerbernetix.toolbox.math import get_combination_from_rank
 
     # Get the combination of 3 numbers ranked at position 5
-    print(list(get_combination_from_rank(5, 3)))
+    print(get_combination_from_rank(5, 3))
     ```
     """
     if rank < 0:
@@ -115,3 +124,64 @@ def get_combination_from_rank(rank: int, length: int = 2, offset: int = 0) -> li
     combination[0] = rank - binomial + offset
 
     return combination
+
+
+def get_combinations(
+    values: int | list | tuple | dict,
+    length: int = 2,
+    offset: int = 0,
+    columns: list | tuple = None,
+) -> Iterator[list]:
+    """Yields lists of combined values according to the combinations defined by the lengths.
+
+    Taking a list of values and the length of a combination, it yields each combination of length
+    elements taken from the values.
+
+    Note: Beware, the number of possible combinations grows fast with the lengths.
+    For example, 3 out of 5 gives 10 possible combinations, but 3 out of 50 gives 19600...
+
+    Args:
+        values (int | list | tuple | dict): The list of values from which build the list of
+        combinations. It can be either the length of a range of integers from 0, or a list of
+        sparse values.
+        length (int, optional): The length of each combination. Defaults to 2.
+        offset (int, optional): An offset to add to the values if they must not start at 0.
+        Defaults to 0.
+        columns (list | tuple, optional): A mapping list for retrieving the values in order from
+        the values. Defaults to None.
+
+    Yields:
+        Iterator[list]: A list of combined values by the given length.
+
+    Examples:
+    ```python
+    from cerbernetix.toolbox.math import get_combinations
+
+    # Get the combinations of 3 numbers from the list
+    values = [1, 2, 4, 8, 16]
+    print(list(get_combinations(values, 3)))
+    # [[1, 2, 4],
+    #  [1, 2, 8],
+    #  [1, 4, 8],
+    #  [2, 4, 8],
+    #  [1, 2, 16],
+    #  [1, 4, 16],
+    #  [2, 4, 16],
+    #  [1, 8, 16],
+    #  [2, 8, 16],
+    #  [4, 8, 16]]
+    ```
+    """
+    if isinstance(values, int):
+        nb_values = values
+        values = [*range(values)]
+    else:
+        nb_values = len(values)
+    nb_comb = comb(nb_values, length)
+
+    if columns is None:
+        columns = [*range(nb_values)]
+
+    for rank in range(nb_comb):
+        combination = get_combination_from_rank(rank, length)
+        yield [values[columns[index]] + offset for index in combination]
