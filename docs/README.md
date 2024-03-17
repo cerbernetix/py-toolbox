@@ -73,6 +73,7 @@
 - [`config.setup_file_logging`](./toolbox.logging.config.md#function-setup_file_logging): Setup the application log to a file logger.
 - [`combination.get_combination_from_rank`](./toolbox.math.combination.md#function-get_combination_from_rank): Gets the combination corresponding to a particular rank.
 - [`combination.get_combination_rank`](./toolbox.math.combination.md#function-get_combination_rank): Gets the rank of a combination.
+- [`combination.get_combinations`](./toolbox.math.combination.md#function-get_combinations): Yields lists of combined values according to the combinations defined by the lengths.
 - [`decorators.test_cases`](./toolbox.testing.decorators.md#function-test_cases): Creates a decorator for parametric test cases.
 
 
