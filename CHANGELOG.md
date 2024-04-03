@@ -20,6 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 -   Fix the link to the documentation in the readme.
+-   Inconsistent return value in the log action.
+-   Too many branches and returns in the file checker.
+-   A few linter issues.
 
 ## [0.9.1] - 2023-10-27
 

@@ -23,6 +23,7 @@ logger.warn('Something bad happened, but the program can continue...')
 logger.error('An error occurred: %s', error)
 ```
 """
+
 from __future__ import annotations
 
 import atexit
@@ -290,7 +291,7 @@ class LogFile:
         ```
         """
         if level < self._level:
-            return
+            return self
 
         pathname = None
         lineno = 0

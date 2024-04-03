@@ -25,6 +25,7 @@ with file:
     print(file.read())
 ```
 """
+
 from __future__ import annotations
 
 import os
@@ -319,6 +320,7 @@ class FileManager:
         """
         self.close()
 
+        # pylint: disable-next=consider-using-with
         self._file = open(
             self.filename,
             mode=get_file_mode(create, append, read, write, self.binary),
@@ -568,41 +570,26 @@ class FileManager:
         if must_exist and not exist:
             return False
 
-        if min_time is not None or max_time is not None:
-            if not exist:
-                return False
+        def fail(value: int, value_min: int, value_max: int) -> bool:
+            if value_min is not None or value_max is not None:
+                if not exist:
+                    return True
 
-            file_time = self.date
+                if value_min is not None and value <= value_min:
+                    return True
 
-            if min_time is not None and file_time <= min_time:
-                return False
+                if value_max is not None and value >= value_max:
+                    return True
+            return False
 
-            if max_time is not None and file_time >= max_time:
-                return False
+        if fail(self.date, min_time, max_time):
+            return False
 
-        if min_age is not None or max_age is not None:
-            if not exist:
-                return False
+        if fail(self.age, min_age, max_age):
+            return False
 
-            file_age = self.age
-
-            if min_age is not None and file_age <= min_age:
-                return False
-
-            if max_age is not None and file_age >= max_age:
-                return False
-
-        if min_size is not None or max_size is not None:
-            if not exist:
-                return False
-
-            file_size = self.size
-
-            if min_size is not None and file_size <= min_size:
-                return False
-
-            if max_size is not None and file_size >= max_size:
-                return False
+        if fail(self.size, min_size, max_size):
+            return False
 
         return True
 

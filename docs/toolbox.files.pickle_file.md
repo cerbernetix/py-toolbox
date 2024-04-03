@@ -54,7 +54,7 @@ with file:
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L342"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L343"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_pickle_file`
 
@@ -106,7 +106,7 @@ for obj in read_pickle_file('path/to/file', iterator=True):
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L392"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L393"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_pickle_file`
 
@@ -156,7 +156,7 @@ write_pickle_file('path/to/file', data)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L69"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `PickleFile`
 Offers a simple API for reading and writing pickle files. 
@@ -200,7 +200,7 @@ file.write_file(data)
 data = file.read_file()
 ``` 
 
-<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L108"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L109"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -439,7 +439,7 @@ size = file.size
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L274"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L275"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read`
 
@@ -483,7 +483,7 @@ data = [obj for obj in file]
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L205"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L206"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `read_file`
 
@@ -534,7 +534,7 @@ for obj in file.read_file(iterator=True):
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L309"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L310"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write`
 
@@ -581,7 +581,7 @@ with file(create=True):
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L243"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/pickle_file.py#L244"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `write_file`
 

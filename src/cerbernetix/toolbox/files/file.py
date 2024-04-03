@@ -2,7 +2,9 @@
 
 Examples:
 ```python
-from cerbernetix.toolbox.files import fetch_content, get_file_mode, read_file, read_zip_file, write_file
+from cerbernetix.toolbox.files import (
+    fetch_content, get_file_mode, read_file, read_zip_file, write_file
+)
 
 # get_file_mode() is used to build a file access mode.
 # For example to create a text file:
@@ -33,6 +35,7 @@ data = fetch_content("http://example.com/data", binary=True)
 content = read_zip_file(data)
 ```
 """
+
 import os
 import zipfile
 from io import BytesIO
@@ -222,7 +225,8 @@ def fetch_content(
         binary (bool): Tells if the content is binary (True) or text (False). When True,
         the function will return a bytes sequence, otherwise it will return a string sequence.
         timeout (int | tuple): The request timeout. Defaults to (6, 30).
-        **kwargs: Additional parameters for the GET request. For more info, see [requests/api](https://requests.readthedocs.io/en/latest/api/).
+        **kwargs: Additional parameters for the GET request. For more info, see
+        [requests/api](https://requests.readthedocs.io/en/latest/api/).
 
     Raises:
         requests.RequestException: There was an ambiguous exception that occurred while handling
