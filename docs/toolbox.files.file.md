@@ -9,7 +9,9 @@ A collection of utilities for accessing files.
 
 **Examples:**
  ```python
-from cerbernetix.toolbox.files import fetch_content, get_file_mode, read_file, read_zip_file, write_file
+from cerbernetix.toolbox.files import (
+     fetch_content, get_file_mode, read_file, read_zip_file, write_file
+)
 
 # get_file_mode() is used to build a file access mode.
 # For example to create a text file:
@@ -43,7 +45,7 @@ content = read_zip_file(data)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/file.py#L43"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_file_mode`
 
@@ -107,7 +109,7 @@ with open('path/to/file', get_file_mode(binary=True)) as file:
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/file.py#L121"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L124"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_file`
 
@@ -159,7 +161,7 @@ data = read_file('path/to/file', binary=True)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/file.py#L163"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L166"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `write_file`
 
@@ -214,7 +216,7 @@ write_file('path/to/file', data, binary=True)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/file.py#L208"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L211"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `fetch_content`
 
@@ -240,7 +242,8 @@ Under the hood, it relies on requests to process the query.
  - <b>`url`</b> (str):  The URL of the content to fetch. 
  - <b>`binary`</b> (bool):  Tells if the content is binary (True) or text (False). When True, the function will return a bytes sequence, otherwise it will return a string sequence. 
  - <b>`timeout`</b> (int | tuple):  The request timeout. Defaults to (6, 30). 
- - <b>`**kwargs`</b>:  Additional parameters for the GET request. For more info, see [requests/api](https://requests.readthedocs.io/en/latest/api/). 
+ - <b>`**kwargs`</b>:  Additional parameters for the GET request. For more info, see 
+ - <b>`[requests/api](https`</b>: //requests.readthedocs.io/en/latest/api/). 
 
 
 
@@ -277,7 +280,7 @@ data = fetch_content("http://example.com/data", binary=True)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/file.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/file.py#L263"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `read_zip_file`
 
