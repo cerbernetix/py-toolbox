@@ -17,11 +17,17 @@ print(get_combination_from_rank(5, 3))
 # Get the combinations of 3 numbers from the list
 values = [1, 2, 4, 8, 16]
 print(list(get_combinations(values, 3)))
+
+# Get the combinations of 3 numbers out of 50 from rank 200 to 500
+values = [1, 2, 4, 8, 16]
+print(list(get_combinations(50, 3, start=200, stop=300)))
 ```
 """
 
 from math import comb
 from typing import Iterable, Iterator
+
+from cerbernetix.toolbox.data.mappers import passthrough
 
 
 def get_combination_rank(combination: Iterable[int], offset: int = 0) -> int:
@@ -129,8 +135,11 @@ def get_combination_from_rank(rank: int, length: int = 2, offset: int = 0) -> li
 def get_combinations(
     values: int | list | tuple | dict,
     length: int = 2,
+    start: int = 0,
+    stop: int = None,
+    step: int = 1,
     offset: int = 0,
-    columns: list | tuple = None,
+    indexes: list | tuple = None,
 ) -> Iterator[list]:
     """Yields lists of combined values according to the combinations defined by the lengths.
 
@@ -145,10 +154,16 @@ def get_combinations(
         combinations. It can be either the length of a range of integers from 0, or a list of
         sparse values.
         length (int, optional): The length of each combination. Defaults to 2.
+        start (int, optional): The rank of the first combination to generate. Defaults to 0.
+        stop (int, optional): The rank of the last combination before what stop the generation. If
+        omitted, the maximum number of combination is taken. Defaults to None.
+        step (int, optional): The step between ranks. If start is higher than stop, the step is set
+        to a negative value. Defaults to 1.
         offset (int, optional): An offset to add to the values if they must not start at 0.
         Defaults to 0.
-        columns (list | tuple, optional): A mapping list for retrieving the values in order from
-        the values. Defaults to None.
+        indexes (list | tuple, optional): A list of indexes for retrieving the values by position.
+        Useful if the values are not indexed by sequential numbers or with a contiguous set like a
+        dictionary or a spare array. Defaults to None.
 
     Yields:
         Iterator[list]: A list of combined values by the given length.
@@ -170,18 +185,48 @@ def get_combinations(
     #  [1, 8, 16],
     #  [2, 8, 16],
     #  [4, 8, 16]]
+
+    # Get the combinations of 3 numbers from the list from rank 4 to 8
+    values = {"1": 1, "2": 2, "4": 4, "8": 8, "16": 16}
+    indexes = ["1", "2", "4", "8", "16"]
+    print(list(get_combinations(values, 3, indexes=indexes, start=4, stop=8)))
+    # [[1, 2, 16],
+    #  [1, 4, 16],
+    #  [2, 4, 16],
+    #  [1, 8, 16]]
     ```
     """
     if isinstance(values, int):
         nb_values = values
-        values = [*range(values)]
+        get_value = passthrough
     else:
         nb_values = len(values)
+        get_value = values.__getitem__
+
+    if indexes is None:
+        get_index = passthrough
+    else:
+        get_index = indexes.__getitem__
+
+    if nb_values == 0 or length == 0:
+        return
+
     nb_comb = comb(nb_values, length)
 
-    if columns is None:
-        columns = [*range(nb_values)]
+    if stop is None or stop > nb_comb:
+        stop = nb_comb
 
-    for rank in range(nb_comb):
+    if start >= nb_comb:
+        start = nb_comb - 1
+
+    if start < 0 or stop < -1:
+        raise ValueError("A combination range cannot start or stop with a negative value")
+
+    if start > stop:
+        step = -abs(step)
+    else:
+        step = abs(step)
+
+    for rank in range(start, stop, step):
         combination = get_combination_from_rank(rank, length)
-        yield [values[columns[index]] + offset for index in combination]
+        yield [get_value(get_index(position)) + offset for position in combination]
