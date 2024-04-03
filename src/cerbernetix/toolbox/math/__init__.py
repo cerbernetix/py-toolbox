@@ -4,7 +4,7 @@ It contains:
 - `get_combination_rank(combination, offset)`: Gets the rank of a combination.
 - `get_combination_from_rank(rank, length, offset)`: Gets the combination corresponding to a
 particular rank.
-- `get_combinations(values, length, offset, indexes, start, stop, step)`: Yields lists of combined
+- `get_combinations(values, length, start, stop, step, offset, indexes)`: Yields lists of combined
 values according to the combinations defined by the lengths.
 
 Examples:
