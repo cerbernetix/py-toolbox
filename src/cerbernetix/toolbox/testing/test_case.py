@@ -12,6 +12,7 @@ class TestMyStuff(testing.TestCase)
         self.assertListsAlmostEqual(create_dict(), {"value": 42.4242, "PI": 3.1415})
 ```
 """
+
 import unittest
 from typing import Iterable
 
@@ -19,9 +20,10 @@ from typing import Iterable
 class TestCase(unittest.TestCase):
     """Test class with additional assertions."""
 
+    # pylint: disable-next=invalid-name
     def assertListsAlmostEqual(
         self, first: Iterable[float], second: Iterable[float], places: int = 7
-    ):
+    ) -> None:
         """Asserts that 2 lists of float numbers are almost equal by the number of places.
 
         Args:
@@ -46,7 +48,8 @@ class TestCase(unittest.TestCase):
         second_is_iterable = isinstance(second, Iterable)
 
         if not first_is_iterable and not second_is_iterable:
-            return self.assertAlmostEqual(first, second, places)
+            self.assertAlmostEqual(first, second, places)
+            return
 
         if not first_is_iterable or not second_is_iterable:
             raise AssertionError("first != second")
@@ -76,9 +79,10 @@ class TestCase(unittest.TestCase):
 
             self.assertListsAlmostEqual(left, right, places)
 
+    # pylint: disable-next=invalid-name
     def assertListsNotAlmostEqual(
         self, first: Iterable[float], second: Iterable[float], places: int = 7
-    ):
+    ) -> None:
         """Asserts that 2 lists of float numbers are not almost equal by the number of places.
 
         Args:
