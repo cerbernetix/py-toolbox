@@ -1,6 +1,7 @@
 """Test the set of functions for working with combinations."""
 
 import unittest
+from operator import ne
 from typing import Iterator
 
 from cerbernetix.toolbox.math import (
@@ -273,14 +274,14 @@ class TestCombination(unittest.TestCase):
             ],
         )
 
-    def test_get_combinations_columns(self):
-        """Test get_combinations with a dictionary and a list of columns."""
+    def test_get_combinations_indexes(self):
+        """Test get_combinations with a dictionary and a list of indexes."""
         values = {"1": 1, "2": 2, "4": 4, "8": 8, "16": 16}
-        columns = ["1", "2", "4", "8", "16"]
-        self.assertIsInstance(get_combinations(values, 3, columns=columns), Iterator)
-        self.assertEqual(next(get_combinations(values, 3, columns=columns)), [1, 2, 4])
+        indexes = ["1", "2", "4", "8", "16"]
+        self.assertIsInstance(get_combinations(values, 3, indexes=indexes), Iterator)
+        self.assertEqual(next(get_combinations(values, 3, indexes=indexes)), [1, 2, 4])
         self.assertEqual(
-            list(get_combinations(values, 3, columns=columns)),
+            list(get_combinations(values, 3, indexes=indexes)),
             [
                 [1, 2, 4],
                 [1, 2, 8],
@@ -294,3 +295,55 @@ class TestCombination(unittest.TestCase):
                 [4, 8, 16],
             ],
         )
+
+    def test_get_combinations_range(self):
+        """Test get_combinations with a range."""
+        values = [1, 2, 4, 8, 16]
+        self.assertIsInstance(get_combinations(values, 3, start=2, stop=8, step=2), Iterator)
+        self.assertEqual(
+            list(get_combinations(values, 3, start=2, stop=8, step=2)),
+            [
+                [1, 4, 8],
+                [1, 2, 16],
+                [2, 4, 16],
+            ],
+        )
+        self.assertEqual(
+            list(get_combinations(values, 3, start=8, stop=2, step=2)),
+            [
+                [2, 8, 16],
+                [2, 4, 16],
+                [1, 2, 16],
+            ],
+        )
+        self.assertEqual(
+            list(get_combinations(values, 3, start=20, stop=-1)),
+            [
+                [4, 8, 16],
+                [2, 8, 16],
+                [1, 8, 16],
+                [2, 4, 16],
+                [1, 4, 16],
+                [1, 2, 16],
+                [2, 4, 8],
+                [1, 4, 8],
+                [1, 2, 8],
+                [1, 2, 4],
+            ],
+        )
+        self.assertEqual(
+            list(get_combinations(values, 3, start=20)),
+            [
+                [4, 8, 16],
+            ],
+        )
+
+    def test_get_combinations_empty(self):
+        """Test get_combinations returns empty."""
+        self.assertEqual(list(get_combinations(0, 3)), [])
+        self.assertEqual(list(get_combinations(5, 0)), [])
+
+    def test_get_combinations_error(self):
+        """Test get_combinations errors."""
+        self.assertRaises(ValueError, lambda: next(get_combinations(5, start=-10)))
+        self.assertRaises(ValueError, lambda: next(get_combinations(5, stop=-10)))
