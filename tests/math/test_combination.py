@@ -1,7 +1,6 @@
 """Test the set of functions for working with combinations."""
 
 import unittest
-from operator import ne
 from typing import Iterator
 
 from cerbernetix.toolbox.math import (
