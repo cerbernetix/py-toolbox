@@ -6,6 +6,7 @@ It contains:
 particular rank.
 - `get_combinations(values, length, start, stop, step, offset, indexes)`: Yields lists of combined
 values according to the combinations defined by the lengths.
+- `minmax(*args)`: Returns with the min and the max value from the given arguments.
 
 Examples:
 ```python
@@ -36,3 +37,4 @@ from cerbernetix.toolbox.math.combination import (
     get_combination_rank,
     get_combinations,
 )
+from cerbernetix.toolbox.math.utils import minmax
