@@ -7,6 +7,7 @@ particular rank.
 - `get_combinations(values, length, start, stop, step, offset, indexes)`: Yields lists of combined
 values according to the combinations defined by the lengths.
 - `minmax(*args)`: Returns with the min and the max value from the given arguments.
+- `quantity(quota, total)`: Gets a quantity with respect to a quota applied to a total.
 
 Examples:
 ```python
@@ -30,6 +31,22 @@ print(list(get_combinations(values, 3)))
 values = [1, 2, 4, 8, 16]
 print(list(get_combinations(50, 3, start=200, stop=300)))
 ```
+
+```python
+from cerbernetix.toolbox.math import minmax
+
+mini, maxi = minmax(3, 2, 6, 4, 5) # 2, 6
+```
+
+```python
+from cerbernetix.toolbox.math import quantity
+
+# Gets a size from a percentage
+size = quantity(.2, 10) # 2
+
+# Gets a size from an absolute value
+size = quantity(6, 10)  # 6
+```
 """
 
 from cerbernetix.toolbox.math.combination import (
@@ -37,4 +54,4 @@ from cerbernetix.toolbox.math.combination import (
     get_combination_rank,
     get_combinations,
 )
-from cerbernetix.toolbox.math.utils import minmax
+from cerbernetix.toolbox.math.utils import minmax, quantity
