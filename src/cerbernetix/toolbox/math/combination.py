@@ -194,6 +194,19 @@ def get_combinations(
     #  [1, 4, 16],
     #  [2, 4, 16],
     #  [1, 8, 16]]
+
+    # Get combinations from a number of values
+    print(list(get_combinations(5, 3, offset=1)))
+    # [[1, 2, 3],
+    #  [1, 2, 4],
+    #  [1, 3, 4],
+    #  [2, 3, 4],
+    #  [1, 2, 5],
+    #  [1, 3, 5],
+    #  [2, 3, 5],
+    #  [1, 4, 5],
+    #  [2, 4, 5],
+    #  [3, 4, 5]]
     ```
     """
     if isinstance(values, int):
