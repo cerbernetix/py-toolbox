@@ -40,7 +40,7 @@ logger.error('An error occurred: %s', error)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L45"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `LogFile`
 Offers a similar API to the Python builtin loggers for logging to a custom file. 
@@ -68,7 +68,7 @@ logger = LogFile()
 logger.info('The received value is %d', value)
 ``` 
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L67"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -233,7 +233,7 @@ print(logger.name)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L479"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L480"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `close`
 
@@ -266,7 +266,7 @@ logger.close() # not necessary since it will be called automatically upon exit.
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L359"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L360"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `debug`
 
@@ -306,7 +306,7 @@ logger.debug('For debug purpose: %d given to %s', value, action)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L506"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L507"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `delete`
 
@@ -335,7 +335,7 @@ logger.delete()
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L421"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L422"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `error`
 
@@ -375,7 +375,7 @@ logger.error('An error occurred: %s', error)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L328"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L329"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `info`
 
@@ -415,7 +415,7 @@ logger.info('The received value is %d', value)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L259"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L260"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `log`
 
@@ -459,7 +459,7 @@ logger.log(logging.ERROR, 'An error occurred: %s', error)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L452"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L453"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `open`
 
@@ -492,7 +492,7 @@ logger.info('Something was done at %s', datetime.now())
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L233"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L234"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_format`
 
@@ -527,7 +527,7 @@ logger.set_format('[%(asctime)s][%(levelname)s]: %(message)s')
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L208"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L209"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `set_level`
 
@@ -562,7 +562,7 @@ logger.set_level(logging.DEBUG)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/logging/log_file.py#L390"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/logging/log_file.py#L391"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `warn`
 

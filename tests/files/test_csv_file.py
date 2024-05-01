@@ -1,10 +1,12 @@
 """Test the class for reading and writing CSV files."""
+
 import unittest
 import zipfile
 from typing import Iterator
 from unittest.mock import MagicMock, Mock, patch
 
 from cerbernetix.toolbox.files import (
+    CSV_AUTO,
     CSV_DIALECT,
     CSV_ENCODING,
     CSVFile,
@@ -25,14 +27,14 @@ CSV_LINES_LIST = [
     ["Jane", "Doe", "20", "Paris"],
 ]
 CSV_LINES_STRING = [
-    '"first_name","last_name","age","city"\n',
-    '"John","Smith","18","London"\n',
-    '"Jane","Doe","20","Paris"\n',
+    "first_name,last_name,age,city\r\n",
+    "John,Smith,18,London\r\n",
+    "Jane,Doe,20,Paris\r\n",
 ]
 CSV_LINES_REDUCED = [
-    '"first_name","last_name"\n',
-    '"John","Smith"\n',
-    '"Jane","Doe"\n',
+    "first_name,last_name\r\n",
+    "John,Smith\r\n",
+    "Jane,Doe\r\n",
 ]
 CSV_STRING = "".join(CSV_LINES_STRING)
 
@@ -50,7 +52,7 @@ class TestCSVFile(unittest.TestCase):
 
         self.assertEqual(file.filename, file_path)
         self.assertFalse(file.binary)
-        self.assertEqual(file.dialect, CSV_DIALECT)
+        self.assertEqual(file.dialect, CSV_AUTO)
         self.assertEqual(file.encoding, CSV_ENCODING)
         self.assertIsNone(file._file)
         self.assertEqual(file._open_args, {"newline": ""})
@@ -230,7 +232,8 @@ class TestCSVFile(unittest.TestCase):
                 CSV_LINES_HEADLESS,
             ],
             ["list", {"fieldnames": False}, CSV_LINES_STRING, CSV_LINES_LIST],
-            ["auto", {"dialect": "auto"}, CSV_LINES_STRING, CSV_LINES_DICT],
+            ["auto", {"dialect": CSV_AUTO}, CSV_LINES_STRING, CSV_LINES_DICT],
+            ["dialect", {"dialect": CSV_DIALECT}, CSV_LINES_STRING, CSV_LINES_DICT],
         ]
     )
     def test_read_file(self, _, params, data, expected):
@@ -295,7 +298,8 @@ class TestCSVFile(unittest.TestCase):
                 CSV_LINES_LIST[1:],
                 "".join(CSV_LINES_STRING[1:]),
             ],
-            ["auto", {"dialect": "auto"}, CSV_LINES_DICT, CSV_STRING],
+            ["auto", {"dialect": CSV_AUTO}, CSV_LINES_DICT, CSV_STRING],
+            ["dialect", {"dialect": CSV_DIALECT}, CSV_LINES_DICT, CSV_STRING],
         ]
     )
     def test_write_file(self, _, params, data, expected):
@@ -325,17 +329,24 @@ class TestCSVFile(unittest.TestCase):
             mock_file.write.assert_called()
             mock_file.close.assert_called_once()
 
+    @test_cases(
+        [
+            [CSV_AUTO],
+            [CSV_DIALECT],
+        ]
+    )
     @patch("builtins.open")
-    def test_read(self, mock_file_open):
+    def test_read(self, dialect, mock_file_open):
         """Tests a file can be read line by line."""
         file_path = "/root/folder/file"
 
         mock_file = MagicMock()
         mock_file.close = Mock()
         mock_file.__iter__.return_value = CSV_LINES_STRING
+        mock_file.read.return_value = CSV_STRING
         mock_file_open.return_value = mock_file
 
-        file = CSVFile(file_path)
+        file = CSVFile(file_path, dialect=dialect)
 
         self.assertRaises(ValueError, file.read)
 
@@ -426,6 +437,7 @@ class TestCSVFile(unittest.TestCase):
         mock_file = MagicMock()
         mock_file.close = Mock()
         mock_file.__iter__.return_value = CSV_LINES_STRING
+        mock_file.read.return_value = CSV_STRING
         mock_file_open.return_value = mock_file
 
         file = CSVFile(file_path)
@@ -456,6 +468,7 @@ class TestCSVFileHelpers(unittest.TestCase):
         mock_file = MagicMock()
         mock_file.close = Mock()
         mock_file.__iter__.return_value = CSV_LINES_STRING
+        mock_file.read.return_value = CSV_STRING
         mock_file_open.return_value = mock_file
 
         result = read_csv_file(file_path)
@@ -473,6 +486,7 @@ class TestCSVFileHelpers(unittest.TestCase):
         mock_file = MagicMock()
         mock_file.close = Mock()
         mock_file.__iter__.return_value = CSV_LINES_STRING
+        mock_file.read.return_value = CSV_STRING
         mock_file_open.return_value = mock_file
 
         result = read_csv_file(file_path, iterator=True)
@@ -538,8 +552,8 @@ class TestCSVFileHelpers(unittest.TestCase):
                 CSV_LINES_LIST,
             ],
             [
-                "dialect auto",
-                {"dialect": "auto"},
+                "dialect",
+                {"dialect": CSV_DIALECT},
                 "FOO.CSV",
                 CSV_STRING,
                 CSV_LINES_DICT,

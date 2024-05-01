@@ -49,7 +49,7 @@ pip install --upgrade git+ssh://git@github.com/cerbernetix/py-toolbox.git@develo
 
 `py-toolbox` offers several utilities per domain.
 
-Please refer to the [documentation](./docs/README.md) for more information.
+Please refer to the [documentation](https://github.com/cerbernetix/py-toolbox/blob/main/docs/README.md) for more information.
 
 ## <a name='Development'></a>Development
 
@@ -64,7 +64,7 @@ Then, create the virtual env and install the dependencies:
 ```sh
 cd py-toolbox
 python3 -m venv ".venv"
-source "./venv/bin/activate"
+source ".venv/bin/activate"
 pip install -r requirements.txt
 pip install -e .
 ```

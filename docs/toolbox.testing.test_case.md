@@ -23,7 +23,7 @@ class TestMyStuff(testing.TestCase)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/testing/test_case.py#L19"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/test_case.py#L20"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `TestCase`
 Test class with additional assertions. 
@@ -33,7 +33,7 @@ Test class with additional assertions.
 
 ---
 
-<a href="../src/cerbernetix/toolbox/testing/test_case.py#L22"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/test_case.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `assertListsAlmostEqual`
 
@@ -42,7 +42,7 @@ assertListsAlmostEqual(
     first: Iterable[float],
     second: Iterable[float],
     places: int = 7
-)
+) → None
 ```
 
 Asserts that 2 lists of float numbers are almost equal by the number of places. 
@@ -74,7 +74,7 @@ class TestMyStuff(testing.TestCase)
 
 ---
 
-<a href="../src/cerbernetix/toolbox/testing/test_case.py#L79"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/testing/test_case.py#L83"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `assertListsNotAlmostEqual`
 
@@ -83,7 +83,7 @@ assertListsNotAlmostEqual(
     first: Iterable[float],
     second: Iterable[float],
     places: int = 7
-)
+) → None
 ```
 
 Asserts that 2 lists of float numbers are not almost equal by the number of places. 

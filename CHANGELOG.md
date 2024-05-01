@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2024-05-01
+
+### Added
+
+-   `get_combinations(values, length, start, stop, step, offset, indexes)`: Computes combinations given a set of values and a length.
+-   `minmax(*args)`: Returns with the min and the max value from the given arguments.
+-   `quantity(quota, total)`: Gets a quantity with respect to a quota applied to a total.
+
+### Changed
+
+-   Add options to JSONFile implementation (`sort_keys`, `skip_keys`, `ensure_ascii`, `separators`, `strict`).
+-   Set the default CSV dialect to `'excel'` when writing (this reflects the default value from the Python library).
+-   Set the default CSV dialect to `'auto'` when reading (the dialect will be sniffed from the first few rows).
+
+### Fixed
+
+-   Fix the link to the documentation in the readme.
+-   Inconsistent return value in the log action.
+-   Too many branches and returns in the file checker.
+-   A few linter issues.
+-   Typo in the instructions for the installation in dev mode.
+
 ## [0.9.1] - 2023-10-27
 
 ### Fixed

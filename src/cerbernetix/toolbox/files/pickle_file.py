@@ -39,6 +39,7 @@ with file:
     first = file.read()
 ```
 """
+
 from __future__ import annotations
 
 import pickle
@@ -134,17 +135,17 @@ class PickleFile(FileManager):
             pickle will try to map the new Python 3 names to the old module names used in Python 2,
             so that the pickle data stream is readable with Python 2. Defaults to True.
             encoding (str, optional): Tell pickle how to decode 8-bit string instances pickled by
-            Python 2. The encoding can be ‘bytes’ to read these 8-bit string instances as bytes objects.
-            Using encoding='latin1' is required for unpickling NumPy arrays and instances of datetime,
-            date and time pickled by Python 2. Defaults to ‘ASCII’.
+            Python 2. The encoding can be ‘bytes’ to read these 8-bit string instances as bytes
+            objects. Using encoding='latin1' is required for unpickling NumPy arrays and instances
+            of datetime, date and time pickled by Python 2. Defaults to ‘ASCII’.
             errors (str, optional): Tell pickle how to decode 8-bit string instances pickled by
             Python 2. Defaults to ‘strict’.
             buffers (optional): If buffers is None (the default), then all data necessary for
-            deserialization must be contained in the pickle stream. This means that the buffer_callback
-            argument was None when a Pickler was instantiated (or when dump() or dumps() was called). If
-            buffers is not None, it should be an iterable of buffer-enabled objects that is consumed
-            each time the pickle stream references an out-of-band buffer view. Such buffers have been
-            given in order to the buffer_callback of a Pickler object.
+            deserialization must be contained in the pickle stream. This means that the
+            buffer_callback argument was None when a Pickler was instantiated (or when dump() or
+            dumps() was called). If buffers is not None, it should be an iterable of buffer-enabled
+            objects that is consumed each time the pickle stream references an out-of-band buffer
+            view. Such buffers have been given in order to the buffer_callback of a Pickler object.
             buffer_callback (optional): If buffer_callback is None (the default), buffer views are
             serialized into file as part of the pickle stream. If buffer_callback is not None, then
             it can be called any number of times with a buffer view. If the callback returns a false
