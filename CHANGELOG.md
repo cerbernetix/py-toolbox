@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2024-05-01
+
 ### Added
 
 -   `get_combinations(values, length, start, stop, step, offset, indexes)`: Computes combinations given a set of values and a length.
