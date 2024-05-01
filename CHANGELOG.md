@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   `get_combinations(values, length, start, stop, step, offset, indexes)`: Computes combinations given a set of values and a length.
+-   `minmax(*args)`: Returns with the min and the max value from the given arguments.
+-   `quantity(quota, total)`: Gets a quantity with respect to a quota applied to a total.
 
 ### Changed
 
