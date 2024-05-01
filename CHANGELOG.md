@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Inconsistent return value in the log action.
 -   Too many branches and returns in the file checker.
 -   A few linter issues.
+-   Typo in the instructions for the installation in dev mode.
 
 ## [0.9.1] - 2023-10-27
 
