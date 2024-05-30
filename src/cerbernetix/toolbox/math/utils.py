@@ -16,6 +16,14 @@ size = quantity(.2, 10) # 2
 # Gets a size from an absolute value
 size = quantity(6, 10)  # 6
 ```
+
+```python
+from cerbernetix.toolbox.math import limit
+
+value = limit(1, 3, 7) # 3
+value = limit(5, 3, 7) # 5
+value = limit(9, 3, 7) # 7
+```
 """
 
 
@@ -36,6 +44,29 @@ def minmax(*args) -> tuple:
     ```
     """
     return min(*args), max(*args)
+
+
+def limit(value: int | float, min_value: int | float, max_value: int | float) -> int | float:
+    """Limits a value inside boundaries.
+
+    Args:
+        value (int | float): The value to limit.
+        min_value (int | float): The lowest possible value.
+        max_value (int | float): The highest possible value.
+
+    Returns:
+        int | float: The limited value.
+
+    Examples
+    ```python
+    from cerbernetix.toolbox.math import limit
+
+    value = limit(1, 3, 7) # 3
+    value = limit(5, 3, 7) # 5
+    value = limit(9, 3, 7) # 7
+    ```
+    """
+    return max(min_value, min(value, max_value))
 
 
 def quantity(quota: int | float, total: int) -> int:

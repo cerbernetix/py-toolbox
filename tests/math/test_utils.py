@@ -2,7 +2,7 @@
 
 import unittest
 
-from cerbernetix.toolbox.math import minmax, quantity
+from cerbernetix.toolbox.math import limit, minmax, quantity
 
 
 class TestUtils(unittest.TestCase):
@@ -18,6 +18,12 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(minmax(1, 2), (1, 2))
         self.assertEqual(minmax(2, 1), (1, 2))
         self.assertEqual(minmax(3, 2, 6, 5, 4), (2, 6))
+
+    def test_limit(self):
+        """Test limit."""
+        self.assertEqual(limit(1, 3, 7), 3)
+        self.assertEqual(limit(5, 3, 7), 5)
+        self.assertEqual(limit(9, 3, 7), 7)
 
     def test_quantity(self):
         """Test quantity."""

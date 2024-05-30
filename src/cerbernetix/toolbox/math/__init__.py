@@ -8,6 +8,7 @@ particular rank.
 values according to the combinations defined by the lengths.
 - `minmax(*args)`: Returns with the min and the max value from the given arguments.
 - `quantity(quota, total)`: Gets a quantity with respect to a quota applied to a total.
+- `limit(value, min, max)`: Limits a value inside boundaries.
 
 Examples:
 ```python
@@ -47,6 +48,14 @@ size = quantity(.2, 10) # 2
 # Gets a size from an absolute value
 size = quantity(6, 10)  # 6
 ```
+
+```python
+from cerbernetix.toolbox.math import limit
+
+value = limit(1, 3, 7) # 3
+value = limit(5, 3, 7) # 5
+value = limit(9, 3, 7) # 7
+```
 """
 
 from cerbernetix.toolbox.math.combination import (
@@ -54,4 +63,4 @@ from cerbernetix.toolbox.math.combination import (
     get_combination_rank,
     get_combinations,
 )
-from cerbernetix.toolbox.math.utils import minmax, quantity
+from cerbernetix.toolbox.math.utils import limit, minmax, quantity
