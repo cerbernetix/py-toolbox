@@ -38,6 +38,7 @@ else:
     print('The path has not been created!')
 ```
 """
+
 import os
 import sys
 from pathlib import PurePath
@@ -46,7 +47,7 @@ from pathlib import PurePath
 CACHE_PATH = "~/.cache"
 
 
-def get_module_path(name: str) -> PurePath():
+def get_module_path(name: str) -> PurePath:
     """Gets the path to the given module.
 
     Args:
@@ -69,7 +70,7 @@ def get_module_path(name: str) -> PurePath():
     return PurePath()
 
 
-def get_module_folder_path(name: str) -> PurePath():
+def get_module_folder_path(name: str) -> PurePath:
     """Gets the path to the folder containing the given module.
 
     Args:
