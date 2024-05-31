@@ -1,9 +1,9 @@
 """The `system` package provides several utilities for low level management.
 
 It contains:
-- `full_type(value)`: Return with the full qualified type of the given value.
-- `import_prop(ns)`: Import a property from the given namespace.
-- `import_callable(ns)`: Import a function from the given namespace and call it with parameters.
+- `full_type(value)`: Returns with the fully qualified type of the given value.
+- `import_prop(ns)`: Imports a property from the given namespace.
+- `import_and_call(ns)`: Imports a function from the given namespace and call it with parameters.
 
 Examples:
 ```python
@@ -24,10 +24,10 @@ except ImportError as e:
 ```
 
 ```python
-from cerbernetix.toolbox.system import import_callable
+from cerbernetix.toolbox.system import import_and_call
 
 try:
-    import_callable("lib.utils.update", "foo")
+    import_and_call("lib.utils.update", "foo")
 except ImportError as e:
     print(f"An error occurred while importing the update helper: {e}")
 except TypeError as e:
@@ -35,5 +35,5 @@ except TypeError as e:
 ```
 """
 
-from cerbernetix.toolbox.system.module import import_callable, import_prop
+from cerbernetix.toolbox.system.module import import_and_call, import_prop
 from cerbernetix.toolbox.system.type import full_type

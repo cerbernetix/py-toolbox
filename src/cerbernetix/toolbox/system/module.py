@@ -12,10 +12,10 @@ except ImportError as e:
 ```
 
 ```python
-from cerbernetix.toolbox.system import import_callable
+from cerbernetix.toolbox.system import import_and_call
 
 try:
-    import_callable("lib.utils.update", "foo")
+    import_and_call("lib.utils.update", "foo")
 except ImportError as e:
     print(f"An error occurred while importing the update helper: {e}")
 except TypeError as e:
@@ -57,7 +57,7 @@ def import_prop(namespace: str) -> Any | None:
     return None
 
 
-def import_callable(namespace: str, *args, **kwargs) -> Any:
+def import_and_call(namespace: str, *args, **kwargs) -> Any:
     """Imports a callable from the given namespace, then call it with the given parameters.
 
     Args:
@@ -74,10 +74,10 @@ def import_callable(namespace: str, *args, **kwargs) -> Any:
 
     Examples:
     ```python
-    from cerbernetix.toolbox.system import import_callable
+    from cerbernetix.toolbox.system import import_and_call
 
     try:
-        import_callable("lib.utils.update", "foo")
+        import_and_call("lib.utils.update", "foo")
     except ImportError as e:
         print(f"An error occurred while importing the update helper: {e}")
     except TypeError as e:

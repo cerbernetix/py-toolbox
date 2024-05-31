@@ -3,7 +3,7 @@
 import unittest
 from unittest.mock import patch
 
-from cerbernetix.toolbox.system import import_callable, import_prop
+from cerbernetix.toolbox.system import import_and_call, import_prop
 
 
 class TestModule(unittest.TestCase):
@@ -26,8 +26,8 @@ class TestModule(unittest.TestCase):
         import_module.assert_called_with(module_name)
 
     @patch("importlib.import_module")
-    def test_import_callable(self, import_module):
-        """Test import_callable."""
+    def test_import_and_call(self, import_module):
+        """Test import_and_call."""
 
         class _Module:
             prop = "foo"
@@ -38,8 +38,8 @@ class TestModule(unittest.TestCase):
 
         module_name = "foo.bar"
         import_module.return_value = _Module()
-        self.assertEqual(import_callable(f"{module_name}.fn"), "default")
-        self.assertEqual(import_callable(f"{module_name}.fn", "foo"), "foo")
-        self.assertRaises(TypeError, lambda: import_callable(f"{module_name}.foo"))
+        self.assertEqual(import_and_call(f"{module_name}.fn"), "default")
+        self.assertEqual(import_and_call(f"{module_name}.fn", "foo"), "foo")
+        self.assertRaises(TypeError, lambda: import_and_call(f"{module_name}.foo"))
 
         import_module.assert_called_with(module_name)
