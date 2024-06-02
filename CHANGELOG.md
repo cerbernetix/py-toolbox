@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   `full_type(value)`: Returns with the fully qualified type of the given value.
+-   `import_property(ns)`: Imports a property from the given namespace.
+-   `import_and_call(ns)`: Imports a function from the given namespace and call it with parameters.
+-   `limit(value, min, max)`: Limits a value inside boundaries.
+
 ## [0.10.0] - 2024-05-01
 
 ### Added

@@ -51,12 +51,12 @@ else:
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/path.py#L49"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L50"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_module_path`
 
 ```python
-get_module_path(name: str)
+get_module_path(name: str) → PurePath
 ```
 
 Gets the path to the given module. 
@@ -86,12 +86,12 @@ path = get_module_path('foo')
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/path.py#L72"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L73"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_module_folder_path`
 
 ```python
-get_module_folder_path(name: str)
+get_module_folder_path(name: str) → PurePath
 ```
 
 Gets the path to the folder containing the given module. 
@@ -121,7 +121,7 @@ path = get_module_folder_path('foo')
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/path.py#L92"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L93"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_application_path`
 
@@ -156,7 +156,7 @@ app_path = get_application_path('my_package')
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/path.py#L112"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L113"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_application_name`
 
@@ -191,7 +191,7 @@ print(get_application_name('my_package'))
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/path.py#L132"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L133"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_file_path`
 
@@ -227,7 +227,7 @@ filename = get_file_path('path/to/file', 'my_package')
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/path.py#L153"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L154"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `create_file_path`
 
@@ -267,7 +267,7 @@ else:
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/path.py#L188"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L189"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `delete_path`
 
@@ -315,7 +315,7 @@ else:
 
 ---
 
-<a href="../src/cerbernetix/toolbox/files/path.py#L234"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/files/path.py#L235"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_cache_path`
 
