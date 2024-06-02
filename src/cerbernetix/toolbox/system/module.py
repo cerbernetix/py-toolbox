@@ -2,10 +2,10 @@
 
 Examples:
 ```python
-from cerbernetix.toolbox.system import import_prop
+from cerbernetix.toolbox.system import import_property
 
 try:
-    update = import_prop("lib.utils.update")
+    update = import_property("lib.utils.update")
     update("foo")
 except ImportError as e:
     print(f"An error occurred while importing the update helper: {e}")
@@ -27,7 +27,7 @@ import importlib
 from typing import Any
 
 
-def import_prop(namespace: str) -> Any | None:
+def import_property(namespace: str) -> Any | None:
     """Imports a property from the given namespace.
 
     Args:
@@ -41,10 +41,10 @@ def import_prop(namespace: str) -> Any | None:
 
     Examples:
     ```python
-    from cerbernetix.toolbox.system import import_prop
+    from cerbernetix.toolbox.system import import_property
 
     try:
-        update = import_prop("lib.utils.update")
+        update = import_property("lib.utils.update")
         update("foo")
     except ImportError as e:
         print(f"An error occurred while importing the update helper: {e}")
@@ -84,7 +84,7 @@ def import_and_call(namespace: str, *args, **kwargs) -> Any:
         print(f"Unable to call the update helper: {e}")
     ```
     """
-    function = import_prop(namespace)
+    function = import_property(namespace)
 
     if not callable(function):
         raise TypeError(f"{namespace} is not callable!")
