@@ -24,6 +24,9 @@
 - [`toolbox.math`](./toolbox.math.md#module-toolboxmath): A collection of Math related tools.
 - [`toolbox.math.combination`](./toolbox.math.combination.md#module-toolboxmathcombination): A set of functions for working with combinations.
 - [`toolbox.math.utils`](./toolbox.math.utils.md#module-toolboxmathutils): A set of helper functions related to math.
+- [`toolbox.system`](./toolbox.system.md#module-toolboxsystem): The `system` package provides several utilities for low level management.
+- [`toolbox.system.module`](./toolbox.system.module.md#module-toolboxsystemmodule): A set of helpers for loading properties dynamically.
+- [`toolbox.system.type`](./toolbox.system.type.md#module-toolboxsystemtype): A set of helpers for types management.
 - [`toolbox.testing`](./toolbox.testing.md#module-toolboxtesting): The `testing` package provides utilities for testing purpose.
 - [`toolbox.testing.decorators`](./toolbox.testing.decorators.md#module-toolboxtestingdecorators): A collection of decorators for testing purpose.
 - [`toolbox.testing.test_case`](./toolbox.testing.test_case.md#module-toolboxtestingtest_case): Extends the default Python TestCase with more assertions.
@@ -75,8 +78,12 @@
 - [`combination.get_combination_from_rank`](./toolbox.math.combination.md#function-get_combination_from_rank): Gets the combination corresponding to a particular rank.
 - [`combination.get_combination_rank`](./toolbox.math.combination.md#function-get_combination_rank): Gets the rank of a combination.
 - [`combination.get_combinations`](./toolbox.math.combination.md#function-get_combinations): Yields lists of combined values according to the combinations defined by the lengths.
+- [`utils.limit`](./toolbox.math.utils.md#function-limit): Limits a value inside boundaries.
 - [`utils.minmax`](./toolbox.math.utils.md#function-minmax): Returns with the min and the max value from the arguments.
 - [`utils.quantity`](./toolbox.math.utils.md#function-quantity): Gets a quantity with respect to a quota applied to a total.
+- [`module.import_and_call`](./toolbox.system.module.md#function-import_and_call): Imports a callable from the given namespace, then call it with the given parameters.
+- [`module.import_property`](./toolbox.system.module.md#function-import_property): Imports a property from the given namespace.
+- [`type.full_type`](./toolbox.system.type.md#function-full_type): Gets the fully qualified type of a value.
 - [`decorators.test_cases`](./toolbox.testing.decorators.md#function-test_cases): Creates a decorator for parametric test cases.
 
 

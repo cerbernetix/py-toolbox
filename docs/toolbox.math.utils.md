@@ -21,10 +21,18 @@ size = quantity(.2, 10) # 2
 size = quantity(6, 10)  # 6
 ``` 
 
+```python
+from cerbernetix.toolbox.math import limit
+
+value = limit(1, 3, 7) # 3
+value = limit(5, 3, 7) # 5
+value = limit(9, 3, 7) # 7
+``` 
+
 
 ---
 
-<a href="../src/cerbernetix/toolbox/math/utils.py#L22"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/math/utils.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `minmax`
 
@@ -55,7 +63,46 @@ mini, maxi = minmax(3, 2, 6, 4, 5) # 2, 6
 
 ---
 
-<a href="../src/cerbernetix/toolbox/math/utils.py#L41"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/math/utils.py#L49"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+## <kbd>function</kbd> `limit`
+
+```python
+limit(
+    value: int | float,
+    min_value: int | float,
+    max_value: int | float
+) → int | float
+```
+
+Limits a value inside boundaries. 
+
+
+
+**Args:**
+ 
+ - <b>`value`</b> (int | float):  The value to limit. 
+ - <b>`min_value`</b> (int | float):  The lowest possible value. 
+ - <b>`max_value`</b> (int | float):  The highest possible value. 
+
+
+
+**Returns:**
+ 
+ - <b>`int | float`</b>:  The limited value. 
+
+Examples ```python
+from cerbernetix.toolbox.math import limit
+
+value = limit(1, 3, 7) # 3
+value = limit(5, 3, 7) # 5
+value = limit(9, 3, 7) # 7
+``` 
+
+
+---
+
+<a href="../src/cerbernetix/toolbox/math/utils.py#L72"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `quantity`
 

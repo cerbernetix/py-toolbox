@@ -11,6 +11,7 @@ It contains:
 - `get_combinations(values, length, start, stop, step, offset, indexes)`: Yields lists of combined values according to the combinations defined by the lengths. 
 - `minmax(*args)`: Returns with the min and the max value from the given arguments. 
 - `quantity(quota, total)`: Gets a quantity with respect to a quota applied to a total. 
+- `limit(value, min, max)`: Limits a value inside boundaries. 
 
 
 
@@ -51,6 +52,14 @@ size = quantity(.2, 10) # 2
 
 # Gets a size from an absolute value
 size = quantity(6, 10)  # 6
+``` 
+
+```python
+from cerbernetix.toolbox.math import limit
+
+value = limit(1, 3, 7) # 3
+value = limit(5, 3, 7) # 5
+value = limit(9, 3, 7) # 7
 ``` 
 
 
