@@ -3,7 +3,7 @@
 <a href="../src/cerbernetix/toolbox/time/duration.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.time.duration`
-Represents a duration in nanoseconds. 
+Represents a nanosecond duration. 
 
 
 
@@ -29,7 +29,7 @@ if d > time.monotonic_ns():
 <a href="../src/cerbernetix/toolbox/time/duration.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `Duration`
-Represents a duration in nanoseconds. 
+Represents a nanosecond duration. 
 
 
 

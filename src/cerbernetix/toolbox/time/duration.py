@@ -1,4 +1,4 @@
-"""Represents a duration in nanoseconds.
+"""Represents a nanosecond duration.
 
 Examples:
 ```python
@@ -22,7 +22,7 @@ from cerbernetix.toolbox.math.utils import limit
 
 
 class Duration:
-    """Represents a duration in nanoseconds.
+    """Represents a nanosecond duration.
 
     Attributes:
         duration (int): A number of nanoseconds representing the duration.

@@ -8,7 +8,7 @@ A collection of time related utilities.
 It contains: 
 - `Weekday(day)` - Gets the date of a weekday given a particular date. 
 - `Timer(precision)` - Capture the time spent. 
-- `Duration(duration, precision)` - Represents a duration in nanoseconds. 
+- `Duration(duration, precision)` - Represents a nanosecond duration. 
 
 
 
