@@ -7,7 +7,8 @@ A collection of time related utilities.
 
 It contains: 
 - `Weekday(day)` - Gets the date of a weekday given a particular date. 
-- `Timer()` - Capture the time spent. 
+- `Timer(precision)` - Capture the time spent. 
+- `Duration(duration, precision)` - Represents a duration in nanoseconds. 
 
 
 
@@ -26,6 +27,20 @@ print(timer.stop())    # 0:0:5
 sleep(1)
 
 print(timer.duration)  # 0:0:5
+``` 
+
+```python
+import time
+from cerbernetix.toolbox.time import Duration
+
+print(Duration(123456789)) # "0:02:03"
+print(Duration(123456789).duration) # 123456789
+
+d = Duration(time.monotonic_ns())
+d += 123456789
+
+if d > time.monotonic_ns():
+     print("not yet!)
 ``` 
 
 ```python

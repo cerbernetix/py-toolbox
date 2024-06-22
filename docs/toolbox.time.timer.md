@@ -3,7 +3,7 @@
 <a href="../src/cerbernetix/toolbox/time/timer.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `toolbox.time.timer`
-Capture the time spent. 
+Captures the time spent. 
 
 
 
@@ -41,10 +41,13 @@ Capture the time spent.
  - <b>`checked_at`</b> (int):  The timestamp of the last checkpoint. 
  - <b>`stopped_at`</b> (int):  The stop timestamp, or None if the timer is still running. 
  - <b>`stopped`</b> (bool):  True if the timer is stopped, False otherwise. 
- - <b>`till_check`</b> (int):  The time elapsed between the starting point and the last checkpoint. 
- - <b>`since_check`</b> (int):  The time elapsed since the last checkpoint. 
- - <b>`since_stop`</b> (int):  The time elapsed since the stopping point. 
- - <b>`duration`</b> (int):  The time elapsed since the starting point. 
+ - <b>`till_check`</b> (Duration):  The time elapsed between the starting point and the last checkpoint. 
+ - <b>`since_check`</b> (Duration):  The time elapsed since the last checkpoint. 
+ - <b>`since_stop`</b> (Duration):  The time elapsed since the stopping point. 
+ - <b>`duration`</b> (Duration):  The time elapsed since the starting point. 
+ - <b>`mean_duration`</b> (Duration):  The average duration of all checkpoints. 
+ - <b>`checkpoints`</b> (tuple[Duration]):  The duration for each checkpoint. 
+ - <b>`precision`</b> (int):  The desired time precision when converting durations to string. This is the unit of time up to what express the duration. 
 
 
 
@@ -65,12 +68,12 @@ sleep(1)
 print(timer.duration)  # 0:0:5
 ``` 
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L64"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
 ```python
-__init__() → None
+__init__(precision: 'int' = 3) → None
 ```
 
 Creates a timer. 
@@ -119,7 +122,7 @@ The time elapsed between the stop point and the last checkpoint also counts.
 
 **Returns:**
  
- - <b>`tuple[int]`</b>:  A tuple containing the time elapsed for each checkpoint. 
+ - <b>`tuple[Duration]`</b>:  A tuple containing the time elapsed for each checkpoint. 
 
 ---
 
@@ -133,7 +136,7 @@ If the timer is stopped, gets the total time elapsed between the start and stop 
 
 **Returns:**
  
- - <b>`int`</b>:  The time elapsed since the starting point. 
+ - <b>`Duration`</b>:  The time elapsed since the starting point. 
 
 ---
 
@@ -147,7 +150,7 @@ The time elapsed between the stop point and the last checkpoint also counts.
 
 **Returns:**
  
- - <b>`int`</b>:  The average duration of all checkpoints. 
+ - <b>`Duration`</b>:  The average duration of all checkpoints. 
 
 ---
 
@@ -161,7 +164,7 @@ If the timer is stopped, gets the time elapsed between the last checkpoint and a
 
 **Returns:**
  
- - <b>`int`</b>:  The time elapsed since the last checkpoint. 
+ - <b>`Duration`</b>:  The time elapsed since the last checkpoint. 
 
 ---
 
@@ -175,7 +178,7 @@ If the timer is still running, return 0.
 
 **Returns:**
  
- - <b>`int`</b>:  The time elapsed since the stopping point. 
+ - <b>`Duration`</b>:  The time elapsed since the stopping point. 
 
 ---
 
@@ -223,18 +226,18 @@ Gets the time elapsed between the starting point and the last checkpoint.
 
 **Returns:**
  
- - <b>`int`</b>:  The time elapsed between the starting point and the last checkpoint. 
+ - <b>`Duration`</b>:  The time elapsed between the starting point and the last checkpoint. 
 
 
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L188"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L193"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `check`
 
 ```python
-check() → int
+check() → Duration
 ```
 
 Capture a new checkpoint. 
@@ -243,7 +246,7 @@ Capture a new checkpoint.
 
 **Returns:**
  
- - <b>`int`</b>:  The time elapsed since the last checkpoint. 
+ - <b>`Duration`</b>:  The time elapsed since the last checkpoint. 
 
 
 
@@ -266,7 +269,7 @@ print(timer.duration)  # 0:0:5
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L302"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L307"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `current`
 
@@ -305,42 +308,7 @@ print(time.current())
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L359"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
-
-### <kbd>classmethod</kbd> `duration_to_string`
-
-```python
-duration_to_string(duration: 'int', precision: 'int' = 3) → str
-```
-
-Converts a duration in nanoseconds to a string presenting a split by time units. 
-
-
-
-**Args:**
- 
- - <b>`duration`</b> (int):  A duration expressed in nanoseconds. 
- - <b>`precision`</b> (int, optional):  The desired time precision. This is the unit of time up to what express the duration. Defaults to PRECISION_SECONDS. 
-
-
-
-**Returns:**
- 
- - <b>`str`</b>:  A string representing the duration as hours, minutes, and seconds. 
-
-
-
-**Examples:**
- ```python
-from cerbernetix.toolbox.time import Timer
-
-print(Timer.duration_to_string(123456789)) # "0:02:03"
-print(Timer.duration_to_string(123456789, Timer.PRECISION_NANOSECONDS)) # "0:02:03:456:789"
-``` 
-
----
-
-<a href="../src/cerbernetix/toolbox/time/timer.py#L250"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L255"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset`
 
@@ -371,45 +339,12 @@ print(timer.duration)  # 0:0:1
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L329"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
-
-### <kbd>method</kbd> `split_duration`
-
-```python
-split_duration(duration: 'int') → tuple
-```
-
-Splits a duration in nanoseconds to a tuple containing time units. 
-
-
-
-**Args:**
- 
- - <b>`duration`</b> (int):  A duration expressed in nanoseconds. 
-
-
-
-**Returns:**
- 
- - <b>`tuple`</b>:  A tuple containing time units of this form: (hours, minutes, seconds, microseconds, nanoseconds) 
-
-
-
-**Examples:**
- ```python
-from cerbernetix.toolbox.time import Timer
-
-print(Timer.split_duration(123456789)) # (0, 2, 3, 456, 789)
-``` 
-
----
-
-<a href="../src/cerbernetix/toolbox/time/timer.py#L220"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L225"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `stop`
 
 ```python
-stop() → int
+stop() → Duration
 ```
 
 Stops the timer. 
@@ -418,7 +353,7 @@ Stops the timer.
 
 **Returns:**
  
- - <b>`int`</b>:  The time elapsed since the starting point. 
+ - <b>`Duration`</b>:  The time elapsed since the starting point. 
 
 
 
@@ -441,7 +376,7 @@ print(timer.duration)  # 0:0:5
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L275"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L280"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `timestamp`
 

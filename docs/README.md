@@ -33,7 +33,8 @@
 - [`toolbox.testing.decorators`](./toolbox.testing.decorators.md#module-toolboxtestingdecorators): A collection of decorators for testing purpose.
 - [`toolbox.testing.test_case`](./toolbox.testing.test_case.md#module-toolboxtestingtest_case): Extends the default Python TestCase with more assertions.
 - [`toolbox.time`](./toolbox.time.md#module-toolboxtime): A collection of time related utilities.
-- [`toolbox.time.timer`](./toolbox.time.timer.md#module-toolboxtimetimer): Capture the time spent.
+- [`toolbox.time.duration`](./toolbox.time.duration.md#module-toolboxtimeduration): Represents a duration in nanoseconds.
+- [`toolbox.time.timer`](./toolbox.time.timer.md#module-toolboxtimetimer): Captures the time spent.
 - [`toolbox.time.weekday`](./toolbox.time.weekday.md#module-toolboxtimeweekday): A tool for getting the date of a weekday.
 
 ## Classes
@@ -48,6 +49,7 @@
 - [`pickle_file.PickleFile`](./toolbox.files.pickle_file.md#class-picklefile): Offers a simple API for reading and writing pickle files.
 - [`log_file.LogFile`](./toolbox.logging.log_file.md#class-logfile): Offers a similar API to the Python builtin loggers for logging to a custom file.
 - [`test_case.TestCase`](./toolbox.testing.test_case.md#class-testcase): Test class with additional assertions.
+- [`duration.Duration`](./toolbox.time.duration.md#class-duration): Represents a duration in nanoseconds.
 - [`timer.Timer`](./toolbox.time.timer.md#class-timer): Capture the time spent.
 - [`weekday.Weekday`](./toolbox.time.weekday.md#class-weekday): Gets the date of a weekday given a particular date.
 
