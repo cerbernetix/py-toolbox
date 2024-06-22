@@ -5,8 +5,8 @@ Examples:
 import time
 from cerbernetix.toolbox.time import Duration
 
-print(Duration(123456789)) # "0:02:03"
-print(Duration(123456789).duration) # 123456789
+print(Duration(123123456789)) # "0:02:03"
+print(Duration(123123456789).duration) # 123123456789
 
 d = Duration(time.monotonic_ns())
 d += 123456789
@@ -34,8 +34,8 @@ class Duration:
     import time
     from cerbernetix.toolbox.time import Duration
 
-    print(Duration(123456789)) # "0:02:03"
-    print(Duration(123456789).duration) # 123456789
+    print(Duration(123123456789)) # "0:02:03"
+    print(Duration(123123456789).duration) # 123123456789
 
     d = Duration(time.monotonic_ns())
     d += 123456789
@@ -45,8 +45,9 @@ class Duration:
     ```
     """
 
-    PRECISION_NANOSECONDS = 5
-    PRECISION_MICROSECONDS = 4
+    PRECISION_NANOSECONDS = 6
+    PRECISION_MICROSECONDS = 5
+    PRECISION_MILLISECONDS = 4
     PRECISION_SECONDS = 3
     PRECISION_MINUTES = 2
     PRECISION_HOURS = 1
@@ -67,8 +68,8 @@ class Duration:
         import time
         from cerbernetix.toolbox.time import Duration
 
-        print(Duration(123456789)) # "0:02:03"
-        print(Duration(123456789).duration) # 123456789
+        print(Duration(123123456789)) # "0:02:03"
+        print(Duration(123123456789).duration) # 123123456789
 
         d = Duration(time.monotonic_ns())
         d += 123456789
@@ -91,15 +92,16 @@ class Duration:
         ```python
         from cerbernetix.toolbox.time import Duration
 
-        print(Duration(123456789).split()) # (0, 2, 3, 456, 789)
+        print(Duration(123123456789).split()) # (0, 2, 3, 123, 456, 789)
         ```
         """
         duration = self.duration
         ns, duration = duration % 1000, duration // 1000
+        mi, duration = duration % 1000, duration // 1000
         ms, duration = duration % 1000, duration // 1000
         s, duration = duration % 60, duration // 60
         m, h = duration % 60, duration // 60
-        return (h, m, s, ms, ns)
+        return (h, m, s, ms, mi, ns)
 
     def to_string(self, precision: int = None) -> str:
         """Converts the duration to a string presenting a split by time units.
@@ -115,8 +117,8 @@ class Duration:
         ```python
         from cerbernetix.toolbox.time import Duration
 
-        print(Duration(123456789).to_string()) # "0:02:03"
-        print(Duration(123456789).to_string(Timer.PRECISION_NANOSECONDS)) # "0:02:03:456:789"
+        print(Duration(123123456789).to_string()) # "0:02:03"
+        print(Duration(123123456789).to_string(Timer.PRECISION_NANOSECONDS)) # "0:02:03:123:456:789"
         ```
         """
         if precision is None:
@@ -125,7 +127,10 @@ class Duration:
         units = self.split()
         precision = limit(precision, 1, len(units))
         return ":".join(
-            [str(unit).rjust((i + 1) // 2 + 1, "0") for i, unit in enumerate(units[:precision])]
+            [
+                str(unit).rjust(min((i + 1) // 2 + 1, 3), "0")
+                for i, unit in enumerate(units[:precision])
+            ]
         )
 
     def __str__(self) -> str:
