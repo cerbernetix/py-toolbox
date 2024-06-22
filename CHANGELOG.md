@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `import_property(ns)`: Imports a property from the given namespace.
 -   `import_and_call(ns)`: Imports a function from the given namespace and call it with parameters.
 -   `limit(value, min, max)`: Limits a value inside boundaries.
+-   `Timer()` - Capture the time spent.
 
 ## [0.10.0] - 2024-05-01
 
