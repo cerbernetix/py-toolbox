@@ -18,6 +18,8 @@
 - [`toolbox.files.json_file`](./toolbox.files.json_file.md#module-toolboxfilesjson_file): A simple API for reading and writing JSON files.
 - [`toolbox.files.path`](./toolbox.files.path.md#module-toolboxfilespath): A collection of utilities around file paths.
 - [`toolbox.files.pickle_file`](./toolbox.files.pickle_file.md#module-toolboxfilespickle_file): A simple API for reading and writing pickle files.
+- [`toolbox.iterators`](./toolbox.iterators.md#module-toolboxiterators): A collection of iterators.
+- [`toolbox.iterators.iter_deep`](./toolbox.iterators.iter_deep.md#module-toolboxiteratorsiter_deep): An iterator for returning elements from nested iterables.
 - [`toolbox.logging`](./toolbox.logging.md#module-toolboxlogging): The `logging` package provides several utilities for logging purpose.
 - [`toolbox.logging.config`](./toolbox.logging.config.md#module-toolboxloggingconfig): A collection of utilities for logging purpose.
 - [`toolbox.logging.log_file`](./toolbox.logging.log_file.md#module-toolboxlogginglog_file): A custom logger that writes directly to a file.
@@ -75,6 +77,7 @@
 - [`path.get_module_path`](./toolbox.files.path.md#function-get_module_path): Gets the path to the given module.
 - [`pickle_file.read_pickle_file`](./toolbox.files.pickle_file.md#function-read_pickle_file): Loads a list of objects from a file.
 - [`pickle_file.write_pickle_file`](./toolbox.files.pickle_file.md#function-write_pickle_file): Writes a list of objects to a file.
+- [`iter_deep.iter_deep`](./toolbox.iterators.iter_deep.md#function-iter_deep): Creates an iterator that returns elements from each iterable including nested ones.
 - [`config.handle_uncaught_exceptions`](./toolbox.logging.config.md#function-handle_uncaught_exceptions): Installs a collector for logging uncaught exceptions.
 - [`config.setup_file_logging`](./toolbox.logging.config.md#function-setup_file_logging): Setup the application log to a file logger.
 - [`combination.get_combination_from_rank`](./toolbox.math.combination.md#function-get_combination_from_rank): Gets the combination corresponding to a particular rank.
