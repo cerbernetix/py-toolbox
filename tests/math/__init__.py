@@ -1,1 +1,1 @@
-"""Package entry point."""
+"""Test package for the toolbox.math namespace."""
