@@ -3,7 +3,6 @@
 import unittest
 from unittest.mock import patch
 
-from cerbernetix.toolbox.testing import test_cases
 from cerbernetix.toolbox.time import Timer
 
 
@@ -155,37 +154,3 @@ class TestTimer(unittest.TestCase):
         self.assertEqual(timer.since_stop, 0)
         self.assertEqual(timer.duration, 0)
         self.assertEqual(timer.checkpoints, ())
-
-    @test_cases(
-        [
-            [0, (0, 0, 0, 0, 0)],
-            [123456789, (0, 2, 3, 456, 789)],
-            [123123123123, (34, 12, 3, 123, 123)],
-        ]
-    )
-    def test_split_duration(self, duration, split):
-        """Tests a duration can be splitted."""
-        self.assertEqual(Timer.split_duration(duration), split)
-
-    @test_cases(
-        [
-            [0, Timer.PRECISION_HOURS, "0"],
-            [0, Timer.PRECISION_MINUTES, "0:00"],
-            [0, Timer.PRECISION_SECONDS, "0:00:00"],
-            [0, Timer.PRECISION_MICROSECONDS, "0:00:00:000"],
-            [0, Timer.PRECISION_NANOSECONDS, "0:00:00:000:000"],
-            [123456789, Timer.PRECISION_HOURS, "0"],
-            [123456789, Timer.PRECISION_MINUTES, "0:02"],
-            [123456789, Timer.PRECISION_SECONDS, "0:02:03"],
-            [123456789, Timer.PRECISION_MICROSECONDS, "0:02:03:456"],
-            [123456789, Timer.PRECISION_NANOSECONDS, "0:02:03:456:789"],
-            [123123003023, Timer.PRECISION_HOURS, "34"],
-            [123123003023, Timer.PRECISION_MINUTES, "34:12"],
-            [123123003023, Timer.PRECISION_SECONDS, "34:12:03"],
-            [123123003023, Timer.PRECISION_MICROSECONDS, "34:12:03:003"],
-            [123123003023, Timer.PRECISION_NANOSECONDS, "34:12:03:003:023"],
-        ]
-    )
-    def test_duration_to_string(self, duration, precision, result):
-        """Tests a duration can be splitted."""
-        self.assertEqual(Timer.duration_to_string(duration, precision), result)

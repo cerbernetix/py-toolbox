@@ -2,7 +2,7 @@
 
 It contains:
 - `Weekday(day)` - Gets the date of a weekday given a particular date.
-- `Timer()` - Capture the time spent.
+- `Timer(precision)` - Capture the time spent.
 - `Duration(duration, precision)` - Represents a duration in nanoseconds.
 
 Examples:
