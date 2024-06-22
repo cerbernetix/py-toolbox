@@ -2,8 +2,25 @@
 
 It contains:
 - `Weekday(day)` - Gets the date of a weekday given a particular date.
+- `Timer()` - Capture the time spent.
 
 Examples:
+```python
+from time import sleep
+from cerbernetix.toolbox.time import Timer
+
+timer = Timer()
+sleep(2)
+
+print(timer.check())   # 0:0:2
+sleep(3)
+
+print(timer.stop())    # 0:0:5
+sleep(1)
+
+print(timer.duration)  # 0:0:5
+```
+
 ```python
 from cerbernetix.toolbox.time import Weekday, FRIDAY
 
@@ -29,6 +46,8 @@ print(weekday.previous_date("2023-10-06")) # "2023-09-29"
 print(weekday.previous_date("2023-10-06", True)) # "2023-10-06"
 ```
 """
+
+from cerbernetix.toolbox.time.timer import Timer
 from cerbernetix.toolbox.time.weekday import (
     FRIDAY,
     MONDAY,
