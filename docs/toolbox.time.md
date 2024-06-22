@@ -33,8 +33,8 @@ print(timer.duration)  # 0:0:5
 import time
 from cerbernetix.toolbox.time import Duration
 
-print(Duration(123456789)) # "0:02:03"
-print(Duration(123456789).duration) # 123456789
+print(Duration(123123456789)) # "0:02:03"
+print(Duration(123123456789).duration) # 123123456789
 
 d = Duration(time.monotonic_ns())
 d += 123456789

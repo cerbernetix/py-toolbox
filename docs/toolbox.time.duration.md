@@ -12,8 +12,8 @@ Represents a nanosecond duration.
 import time
 from cerbernetix.toolbox.time import Duration
 
-print(Duration(123456789)) # "0:02:03"
-print(Duration(123456789).duration) # 123456789
+print(Duration(123123456789)) # "0:02:03"
+print(Duration(123123456789).duration) # 123123456789
 
 d = Duration(time.monotonic_ns())
 d += 123456789
@@ -45,8 +45,8 @@ Represents a nanosecond duration.
 import time
 from cerbernetix.toolbox.time import Duration
 
-print(Duration(123456789)) # "0:02:03"
-print(Duration(123456789).duration) # 123456789
+print(Duration(123123456789)) # "0:02:03"
+print(Duration(123123456789).duration) # 123123456789
 
 d = Duration(time.monotonic_ns())
 d += 123456789
@@ -55,7 +55,7 @@ if d > time.monotonic_ns():
     print("not yet!)
 ``` 
 
-<a href="../src/cerbernetix/toolbox/time/duration.py#L57"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/duration.py#L58"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -79,8 +79,8 @@ Creates a duration from a number of nanoseconds.
 import time
 from cerbernetix.toolbox.time import Duration
 
-print(Duration(123456789)) # "0:02:03"
-print(Duration(123456789).duration) # 123456789
+print(Duration(123123456789)) # "0:02:03"
+print(Duration(123123456789).duration) # 123123456789
 
 d = Duration(time.monotonic_ns())
 d += 123456789
@@ -94,7 +94,7 @@ if d > time.monotonic_ns():
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/duration.py#L83"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/duration.py#L84"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `split`
 
@@ -116,12 +116,12 @@ Splits the duration into a tuple containing time units.
  ```python
 from cerbernetix.toolbox.time import Duration
 
-print(Duration(123456789).split()) # (0, 2, 3, 456, 789)
+print(Duration(123123456789).split()) # (0, 2, 3, 123, 456, 789)
 ``` 
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/duration.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/duration.py#L106"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `to_string`
 
@@ -149,8 +149,8 @@ Converts the duration to a string presenting a split by time units.
  ```python
 from cerbernetix.toolbox.time import Duration
 
-print(Duration(123456789).to_string()) # "0:02:03"
-print(Duration(123456789).to_string(Timer.PRECISION_NANOSECONDS)) # "0:02:03:456:789"
+print(Duration(123123456789).to_string()) # "0:02:03"
+print(Duration(123123456789).to_string(Timer.PRECISION_NANOSECONDS)) # "0:02:03:123:456:789"
 ``` 
 
 
