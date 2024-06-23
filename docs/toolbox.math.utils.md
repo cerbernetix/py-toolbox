@@ -116,7 +116,7 @@ Gets a quantity with respect to a quota applied to a total.
 
 **Args:**
  
- - <b>`quota`</b> (int | float):  The expected quota from the total. It can be either a percentage or an absolute value. The percentage is represented by a number between 0 and 1. An absolute value is represented by a number between 1 and the total included. 
+ - <b>`quota`</b> (int | float):  The expected quota from the total. It can be either a percentage or an absolute value. The percentage is represented by a floating number between 0 and 1 included. An absolute value is represented by a number between 1 and the total included. 
  - <b>`total`</b> (int):  The total number. 
 
 
