@@ -29,6 +29,9 @@ class TestUtils(unittest.TestCase):
         """Test quantity."""
         self.assertEqual(quantity(5, 10), 5)
         self.assertEqual(quantity(0.1, 10), 1)
+        self.assertEqual(quantity(0.33, 10), 3)
+        self.assertEqual(quantity(0.99, 10), 9)
+        self.assertEqual(quantity(1.0, 10), 10)
         self.assertEqual(quantity(1.5, 10), 1)
         self.assertEqual(quantity(-0.2, 10), 0)
         self.assertEqual(quantity(30, 10), 10)

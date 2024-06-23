@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `Duration(duration, precision)` - Represents a nanosecond duration.
 -   `iter_deep(*iterables)` - Iterator that returns elements from each iterable including nested ones.
 
+### Fixed
+
+-   `quantity(quota, total)`: It now accepts a float between 0 and 1 included.
+
 ## [0.10.0] - 2024-05-01
 
 ### Added

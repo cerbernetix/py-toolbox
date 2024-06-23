@@ -74,8 +74,8 @@ def quantity(quota: int | float, total: int) -> int:
 
     Args:
         quota (int | float): The expected quota from the total. It can be either a percentage or an
-        absolute value. The percentage is represented by a number between 0 and 1. An absolute
-        value is represented by a number between 1 and the total included.
+        absolute value. The percentage is represented by a floating number between 0 and 1 included.
+        An absolute value is represented by a number between 1 and the total included.
         total (int): The total number.
 
     Returns:
@@ -93,7 +93,7 @@ def quantity(quota: int | float, total: int) -> int:
     size = quantity(6, 10)  # 6
     ```
     """
-    if 0 < quota < 1:
+    if isinstance(quota, float) and 0.0 <= quota <= 1.0:
         return int(total * quota)
 
     return min(abs(int(quota)), total)
