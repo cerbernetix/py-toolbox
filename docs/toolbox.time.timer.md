@@ -15,13 +15,13 @@ from cerbernetix.toolbox.time import Timer
 timer = Timer()
 sleep(2)
 
-print(timer.check())   # 0:0:2
+print(timer.check())   # 00:00:02
 sleep(3)
 
-print(timer.stop())    # 0:0:5
+print(timer.stop())    # 00:00:05
 sleep(1)
 
-print(timer.duration)  # 0:0:5
+print(timer.duration)  # 00:00:05
 ``` 
 
 
@@ -47,7 +47,9 @@ Capture the time spent.
  - <b>`duration`</b> (Duration):  The time elapsed since the starting point. 
  - <b>`mean_duration`</b> (Duration):  The average duration of all checkpoints. 
  - <b>`checkpoints`</b> (tuple[Duration]):  The duration for each checkpoint. 
- - <b>`precision`</b> (int):  The desired time precision when converting durations to string. This is the unit of time up to what express the duration. 
+ - <b>`precision`</b> (int):  The desired time precision when converting durations to string. 
+ - <b>`upto`</b> (int):  The larger unit to present when converting durations to string. 
+ - <b>`style`</b> (sr):  The string format to apply to the duration. 
 
 
 
@@ -59,27 +61,39 @@ from cerbernetix.toolbox.time import Timer
 timer = Timer()
 sleep(2)
 
-print(timer.check())   # 0:0:2
+print(timer.check())   # 00:00:02
 sleep(3)
 
-print(timer.stop())    # 0:0:5
+print(timer.stop())    # 00:00:05
 sleep(1)
 
-print(timer.duration)  # 0:0:5
+print(timer.duration)  # 00:00:05
 ``` 
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L64"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
 ```python
-__init__(precision: 'int' = 3) → None
+__init__(
+    precision: 'int' = None,
+    upto: 'int' = None,
+    style: 'str' = None
+) → None
 ```
 
 Creates a timer. 
 
 
 
+**Args:**
+ 
+ - <b>`precision`</b> (int, optional):  The desired time precision when converting to string. This is the unit of time up to what express the duration. It must have a value from the constants NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS, WEEKS. Defaults to SECONDS. 
+ - <b>`upto`</b> (int, optional):  The larger unit to present. It must have a value from the constants NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS, WEEKS. Defaults to HOURS when the style is COUNTER or WEEKS when the style is FULL. 
+ - <b>`style`</b> (str, optional):  The string format to apply. It must have a value from the constants COUNTER or FULL. Defaults to COUNTER. 
+
+
+
 **Examples:**
  ```python
 from time import sleep
@@ -88,13 +102,13 @@ from cerbernetix.toolbox.time import Timer
 timer = Timer()
 sleep(2)
 
-print(timer.check())   # 0:0:2
+print(timer.check())   # 00:00:02
 sleep(3)
 
-print(timer.stop())    # 0:0:5
+print(timer.stop())    # 00:00:05
 sleep(1)
 
-print(timer.duration)  # 0:0:5
+print(timer.duration)  # 00:00:05
 ``` 
 
 
@@ -232,7 +246,7 @@ Gets the time elapsed between the starting point and the last checkpoint.
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L193"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L207"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `check`
 
@@ -258,18 +272,18 @@ from cerbernetix.toolbox.time import Timer
 timer = Timer()
 sleep(2)
 
-print(timer.check())   # 0:0:2
+print(timer.check())   # 00:00:02
 sleep(3)
 
-print(timer.stop())    # 0:0:5
+print(timer.stop())    # 00:00:05
 sleep(1)
 
-print(timer.duration)  # 0:0:5
+print(timer.duration)  # 00:00:05
 ``` 
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L307"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L321"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `current`
 
@@ -308,7 +322,7 @@ print(time.current())
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L255"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L269"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `reset`
 
@@ -328,18 +342,18 @@ from cerbernetix.toolbox.time import Timer
 timer = Timer()
 sleep(3)
 
-print(timer.stop())    # 0:0:3
+print(timer.stop())    # 00:00:03
 sleep(2)
 
 timer.reset()
 sleep(1)
 
-print(timer.duration)  # 0:0:1
+print(timer.duration)  # 00:00:01
 ``` 
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L225"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L239"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `stop`
 
@@ -365,18 +379,18 @@ from cerbernetix.toolbox.time import Timer
 timer = Timer()
 sleep(2)
 
-print(timer.check())   # 0:0:2
+print(timer.check())   # 00:00:02
 sleep(3)
 
-print(timer.stop())    # 0:0:5
+print(timer.stop())    # 00:00:05
 sleep(1)
 
-print(timer.duration)  # 0:0:5
+print(timer.duration)  # 00:00:05
 ``` 
 
 ---
 
-<a href="../src/cerbernetix/toolbox/time/timer.py#L280"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/time/timer.py#L294"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `timestamp`
 

@@ -8,13 +8,13 @@ from cerbernetix.toolbox.time import Timer
 timer = Timer()
 sleep(2)
 
-print(timer.check())   # 0:0:2
+print(timer.check())   # 00:00:02
 sleep(3)
 
-print(timer.stop())    # 0:0:5
+print(timer.stop())    # 00:00:05
 sleep(1)
 
-print(timer.duration)  # 0:0:5
+print(timer.duration)  # 00:00:05
 ```
 """
 
@@ -40,7 +40,8 @@ class Timer:
         mean_duration (Duration): The average duration of all checkpoints.
         checkpoints (tuple[Duration]): The duration for each checkpoint.
         precision (int): The desired time precision when converting durations to string.
-        This is the unit of time up to what express the duration.
+        upto (int): The larger unit to present when converting durations to string.
+        style (sr): The string format to apply to the duration.
 
     Examples:
     ```python
@@ -50,23 +51,34 @@ class Timer:
     timer = Timer()
     sleep(2)
 
-    print(timer.check())   # 0:0:2
+    print(timer.check())   # 00:00:02
     sleep(3)
 
-    print(timer.stop())    # 0:0:5
+    print(timer.stop())    # 00:00:05
     sleep(1)
 
-    print(timer.duration)  # 0:0:5
+    print(timer.duration)  # 00:00:05
     ```
     """
 
-    _ts_start: int
-    _ts_last: int
-    _ts_stop: int
-    _checkpoints: list[int]
-
-    def __init__(self, precision: int = Duration.PRECISION_SECONDS) -> None:
+    def __init__(
+        self,
+        precision: int = None,
+        upto: int = None,
+        style: str = None,
+    ) -> None:
         """Creates a timer.
+
+        Args:
+            precision (int, optional): The desired time precision when converting to string.
+            This is the unit of time up to what express the duration. It must have a value from the
+            constants NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS, WEEKS.
+            Defaults to SECONDS.
+            upto (int, optional): The larger unit to present. It must have a value from the
+            constants NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS, WEEKS.
+            Defaults to HOURS when the style is COUNTER or WEEKS when the style is FULL.
+            style (str, optional): The string format to apply. It must have a value from the
+            constants COUNTER or FULL. Defaults to COUNTER.
 
         Examples:
         ```python
@@ -76,16 +88,18 @@ class Timer:
         timer = Timer()
         sleep(2)
 
-        print(timer.check())   # 0:0:2
+        print(timer.check())   # 00:00:02
         sleep(3)
 
-        print(timer.stop())    # 0:0:5
+        print(timer.stop())    # 00:00:05
         sleep(1)
 
-        print(timer.duration)  # 0:0:5
+        print(timer.duration)  # 00:00:05
         ```
         """
         self.precision = precision
+        self.upto = upto
+        self.style = style
         self.reset()
 
     @property
@@ -131,7 +145,7 @@ class Timer:
         Returns:
             Duration: The time elapsed between the starting point and the last checkpoint.
         """
-        return Duration(self._ts_last - self._ts_start, self.precision)
+        return self._to_duration(self._ts_last - self._ts_start)
 
     @property
     def since_check(self) -> Duration:
@@ -142,7 +156,7 @@ class Timer:
         Returns:
             Duration: The time elapsed since the last checkpoint.
         """
-        return Duration(self.current() - self._ts_last, self.precision)
+        return self._to_duration(self.current() - self._ts_last)
 
     @property
     def since_stop(self) -> Duration:
@@ -154,8 +168,8 @@ class Timer:
             Duration: The time elapsed since the stopping point.
         """
         if self._ts_stop is None:
-            return Duration(0, self.precision)
-        return Duration(self.timestamp() - self._ts_stop, self.precision)
+            return self._to_duration(0)
+        return self._to_duration(self.timestamp() - self._ts_stop)
 
     @property
     def duration(self) -> Duration:
@@ -166,7 +180,7 @@ class Timer:
         Returns:
             Duration: The time elapsed since the starting point.
         """
-        return Duration(self.current() - self._ts_start, self.precision)
+        return self._to_duration(self.current() - self._ts_start)
 
     @property
     def mean_duration(self) -> Duration:
@@ -177,7 +191,7 @@ class Timer:
         Returns:
             Duration: The average duration of all checkpoints.
         """
-        return Duration(sum(self._checkpoints) // len(self._checkpoints), self.precision)
+        return self._to_duration(sum(self._checkpoints) // len(self._checkpoints))
 
     @property
     def checkpoints(self) -> tuple[Duration]:
@@ -188,7 +202,7 @@ class Timer:
         Returns:
             tuple[Duration]: A tuple containing the time elapsed for each checkpoint.
         """
-        return tuple([Duration(duration, self.precision) for duration in self._checkpoints])
+        return tuple([self._to_duration(duration) for duration in self._checkpoints])
 
     def check(self) -> Duration:
         """Capture a new checkpoint.
@@ -204,23 +218,23 @@ class Timer:
         timer = Timer()
         sleep(2)
 
-        print(timer.check())   # 0:0:2
+        print(timer.check())   # 00:00:02
         sleep(3)
 
-        print(timer.stop())    # 0:0:5
+        print(timer.stop())    # 00:00:05
         sleep(1)
 
-        print(timer.duration)  # 0:0:5
+        print(timer.duration)  # 00:00:05
         ```
         """
         if self.stopped:
-            return Duration(0, self.precision)
+            return self._to_duration(0)
 
         last = self._ts_last
         self._ts_last = self.timestamp()
         elapsed = self._ts_last - last
         self._checkpoints.append(elapsed)
-        return Duration(elapsed, self.precision)
+        return self._to_duration(elapsed)
 
     def stop(self) -> Duration:
         """Stops the timer.
@@ -236,21 +250,21 @@ class Timer:
         timer = Timer()
         sleep(2)
 
-        print(timer.check())   # 0:0:2
+        print(timer.check())   # 00:00:02
         sleep(3)
 
-        print(timer.stop())    # 0:0:5
+        print(timer.stop())    # 00:00:05
         sleep(1)
 
-        print(timer.duration)  # 0:0:5
+        print(timer.duration)  # 00:00:05
         ```
         """
         if self.stopped:
-            return Duration(0, self.precision)
+            return self._to_duration(0)
 
         self._ts_stop = self.timestamp()
         self._checkpoints.append(self._ts_stop - self._ts_last)
-        return Duration(self._ts_stop - self._ts_start, self.precision)
+        return self._to_duration(self._ts_stop - self._ts_start)
 
     def reset(self) -> None:
         """Resets the timer.
@@ -263,13 +277,13 @@ class Timer:
         timer = Timer()
         sleep(3)
 
-        print(timer.stop())    # 0:0:3
+        print(timer.stop())    # 00:00:03
         sleep(2)
 
         timer.reset()
         sleep(1)
 
-        print(timer.duration)  # 0:0:1
+        print(timer.duration)  # 00:00:01
         ```
         """
         self._ts_start = self.timestamp()
@@ -330,3 +344,19 @@ class Timer:
         ```
         """
         return self.timestamp() if self._ts_stop is None else self._ts_stop
+
+    def _to_duration(self, duration: int) -> Duration:
+        """Create a duration from the given value.
+
+        Args:
+            duration (int): The nanoseconds duration
+
+        Returns:
+            Duration: An instance of Duration with appropriate configuration.
+        """
+        return Duration(duration, precision=self.precision, upto=self.upto, style=self.style)
+
+    _ts_start: int
+    _ts_last: int
+    _ts_stop: int
+    _checkpoints: list[int]
