@@ -175,14 +175,8 @@ class TestDuration(unittest.TestCase):
 
     def test_repr(self):
         """Tests a duration can be converted to string."""
-        self.assertEqual(
-            repr(Duration(1234)),
-            "Duration(1234, precision=3, upto=5, style='counter')",
-        )
-        self.assertEqual(
-            repr(Duration(1234, 4, 7, "full")),
-            "Duration(1234, precision=4, upto=7, style='full')",
-        )
+        self.assertEqual(repr(Duration(91325008063004)), "25:22:05")
+        self.assertEqual(repr(Duration(91325008063004, upto=7, style="full")), "1d 1h 22m 5s")
 
     def test_numeric(self):
         """Tests a duration can be converted to number."""

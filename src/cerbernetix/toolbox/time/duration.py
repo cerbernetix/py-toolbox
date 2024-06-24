@@ -359,15 +359,7 @@ class Duration:
         Returns:
             str: The string representation of the duration.
         """
-        params = ", ".join(
-            (
-                f"{self.duration}",
-                f"precision={self.precision}",
-                f"upto={self.upto}",
-                f"style='{self.style}'",
-            )
-        )
-        return f"Duration({params})"
+        return self.to_string()
 
     def __index__(self) -> int:
         """Converts to a numeric value.
