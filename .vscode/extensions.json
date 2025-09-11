@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "charliermarsh.ruff",
+        "tamasfe.even-better-toml",
+        "joffreykern.markdown-toc",
+        "kevinrose.vsc-python-indent",
+        "ms-python.debugpy",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "njpwerner.autodocstring",
+        "streetsidesoftware.code-spell-checker"
+    ],
+    "unwantedRecommendations": []
+}
