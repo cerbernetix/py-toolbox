@@ -3,16 +3,18 @@
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true,
-        "source.fixAll": true
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
     },
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
     "python.defaultInterpreterPath": "${workspaceRoot}/.venv/bin/python",
     "python.terminal.focusAfterLaunch": true,
     "python.testing.unittestEnabled": true,
     "python.analysis.autoFormatStrings": true,
     "python.analysis.autoImportCompletions": true,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
     "autoDocstring.startOnNewLine": false
 }

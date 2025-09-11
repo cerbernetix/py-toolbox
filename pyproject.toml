@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "cerbernetix.toolbox"
@@ -8,7 +8,7 @@ version = "0.10.0"
 authors = [{ name = "Jean-Sébastien CONAN", email = "jsconan@gmail.com" }]
 description = "A set of utilities for Python projects"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.10,<4.0"
 dependencies = ["requests>=2.31.0"]
 classifiers = [
   "Programming Language :: Python :: 3",
@@ -20,18 +20,21 @@ classifiers = [
 "Homepage" = "https://github.com/cerbernetix/py-toolbox"
 "Bug Tracker" = "https://github.com/cerbernetix/py-toolbox/issues"
 
-[project.optional-dependencies]
-linting = ['pylint==2.17.5']
-formatting = ['black==23.9.1']
-dev = ["pylint==2.17.5"]
-test = ["coverage==7.3.1"]
 
-[tool.pylint]
-max-line-length = 100
-disable = [
-  "R0903", # (too-few-public-methods)
-  "R0913", # (too-many-arguments)
+[dependency-groups]
+dev = [
+  "coverage>=7.2.7",
+  "lazydocs>=0.4.8",
+  "pydocstyle>=6.3.0",
+  "pylint>=2.13.9",
+  "ruff>=0.13.0",
 ]
+lint = ['ruff', 'pylint']
+doc = ['lazydocs', 'pydocstyle']
+test = ["coverage"]
+
+[tool.ruff]
+line-length = 100
 
 [tool.black]
 line-length = 100
@@ -40,16 +43,52 @@ line-length = 100
 profile = "black"
 line_length = 100
 
-[tool.setuptools]
-package-dir = { "" = "src" }
+[tool.hatch.build.targets.wheel]
+packages = ["src/cerbernetix"]
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.pylint]
+max-line-length = 100
+disable = [
+  "C0302", # (too-many-lines)
+  "R0801", # (duplicate-code)
+  "R0902", # (too-many-instance-attributes)
+  "R0903", # (too-few-public-methods)
+  "R0904", # (too-many-public-methods)
+  "R0911", # (too-many-return-statements)
+  "R0913", # (too-many-arguments)
+  "R0914", # (too-many-locals)
+  "R0917", # (too-many-positional-arguments)
+  "W0511", # (fixme)
+]
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+  "too-many-lines",
+  "duplicate-code",
+  "too-many-instance-attributes",
+  "too-few-public-methods",
+  "too-many-public-methods",
+  "too-many-return-statements",
+  "too-many-arguments",
+  "too-many-locals",
+  "too-many-positional-arguments",
+  "fixme",
+]
 
 [tool.coverage.run]
 branch = true
 relative_files = true
 source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 80
+
+[tool.coverage.xml]
+output = "coverage.xml"
 
 [tool.coverage.paths]
 source = ["src"]

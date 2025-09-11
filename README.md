@@ -21,7 +21,7 @@
 
 ## <a name='Requirements'></a>Requirements
 
-The toolbox has been written in **`Python 3`**, and it needs version `3.7`.
+The toolbox has been written in **`Python 3`**, and it needs version `3.10`.
 
 The dependencies are managed by `pip` using the file `requirements.txt`.
 
