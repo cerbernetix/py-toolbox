@@ -22,9 +22,15 @@ classifiers = [
 
 
 [dependency-groups]
-dev = ["coverage>=7.2.7", "lazydocs>=0.4.8", "pylint>=2.13.9", "ruff>=0.13.0"]
+dev = [
+  "coverage>=7.2.7",
+  "lazydocs>=0.4.8",
+  "pydocstyle>=6.3.0",
+  "pylint>=2.13.9",
+  "ruff>=0.13.0",
+]
 lint = ['ruff', 'pylint']
-doc = ['lazydocs']
+doc = ['lazydocs', 'pydocstyle']
 test = ["coverage"]
 
 [tool.ruff]
