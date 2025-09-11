@@ -24,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `iter_cells(cells, nb_cols, nb_cells, col_dir)` - Iterator for returning elements from a list.
 -   `concurrent_tasks(callback, tasks)`: Calls the given callback concurrently with the given tasks.
 
+### Changed
+
+-   Migrated project from `pip` to `uv`.
+-   Set minimal Python version to `3.10`.
+
 ### Fixed
 
 -   `quantity(quota, total)`: It now accepts a float between 0 and 1 included.
