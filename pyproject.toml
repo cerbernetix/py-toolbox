@@ -8,7 +8,7 @@ version = "0.10.0"
 authors = [{ name = "Jean-Sébastien CONAN", email = "jsconan@gmail.com" }]
 description = "A set of utilities for Python projects"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.10,<4.0"
 dependencies = ["requests>=2.31.0"]
 classifiers = [
   "Programming Language :: Python :: 3",
