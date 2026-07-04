@@ -42,6 +42,10 @@ from io import BytesIO
 
 import requests
 
+DEFAULT_USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:152.0) Gecko/20100101 Firefox/152.0"
+)
+
 
 def get_file_mode(
     create: bool = False,
@@ -220,6 +224,9 @@ def fetch_content(
 
     Under the hood, it relies on requests to process the query.
 
+    If not provided through headers, the User-Agent header is set from the USER_AGENT environment
+    variable or defaults to a predefined value. See DEFAULT_USER_AGENT for the default value.
+
     Args:
         url (str): The URL of the content to fetch.
         binary (bool): Tells if the content is binary (True) or text (False). When True,
@@ -255,7 +262,15 @@ def fetch_content(
     data = fetch_content("http://example.com/data", binary=True)
     ```
     """
-    response = requests.get(url=url, timeout=timeout, **kwargs)
+    headers = kwargs.pop("headers", None) or {}
+    keys = {key.lower(): key for key in headers.keys()}
+    user_agent = headers.pop(keys.get("user-agent", "User-Agent"), None)
+
+    if not user_agent:
+        user_agent = os.getenv("USER_AGENT", DEFAULT_USER_AGENT)
+    headers["User-Agent"] = user_agent
+
+    response = requests.get(url=url, timeout=timeout, headers=headers, **kwargs)
     response.raise_for_status()
     return response.content if binary else response.text
 

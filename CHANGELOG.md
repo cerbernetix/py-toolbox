@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Migrated project from `pip` to `uv`.
 -   Set minimal Python version to `3.10`.
+-   Added support for `USER_AGENT` environment variable in `fetch_content()` to override the default user-agent when not provided via headers.
 
 ### Fixed
 

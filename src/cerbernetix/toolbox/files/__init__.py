@@ -75,6 +75,7 @@ from cerbernetix.toolbox.files.csv_file import (
     write_csv_file,
 )
 from cerbernetix.toolbox.files.file import (
+    DEFAULT_USER_AGENT,
     fetch_content,
     get_file_mode,
     read_file,
