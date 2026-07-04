@@ -1,4 +1,6 @@
 """Test the utilities for accessing files."""
+
+import os
 import unittest
 import zipfile
 from unittest.mock import MagicMock, Mock, patch
@@ -6,6 +8,7 @@ from unittest.mock import MagicMock, Mock, patch
 import requests
 
 from cerbernetix.toolbox.files import (
+    DEFAULT_USER_AGENT,
     fetch_content,
     get_file_mode,
     read_file,
@@ -124,7 +127,11 @@ class TestFileHelpers(unittest.TestCase):
                 "default",
                 "http://example.com/data",
                 {},
-                {"url": "http://example.com/data", "timeout": (6, 30)},
+                {
+                    "url": "http://example.com/data",
+                    "timeout": (6, 30),
+                    "headers": {"User-Agent": DEFAULT_USER_AGENT},
+                },
                 b"0123456789ABCDEF",
                 "0123456789ABCDEF",
                 "0123456789ABCDEF",
@@ -133,7 +140,11 @@ class TestFileHelpers(unittest.TestCase):
                 "binary",
                 "http://example.com/data",
                 {"binary": True},
-                {"url": "http://example.com/data", "timeout": (6, 30)},
+                {
+                    "url": "http://example.com/data",
+                    "timeout": (6, 30),
+                    "headers": {"User-Agent": DEFAULT_USER_AGENT},
+                },
                 b"0123456789ABCDEF",
                 "0123456789ABCDEF",
                 b"0123456789ABCDEF",
@@ -142,7 +153,11 @@ class TestFileHelpers(unittest.TestCase):
                 "timeout",
                 "http://example.com/data",
                 {"timeout": 10},
-                {"url": "http://example.com/data", "timeout": 10},
+                {
+                    "url": "http://example.com/data",
+                    "timeout": 10,
+                    "headers": {"User-Agent": DEFAULT_USER_AGENT},
+                },
                 b"0123456789ABCDEF",
                 "0123456789ABCDEF",
                 "0123456789ABCDEF",
@@ -151,7 +166,12 @@ class TestFileHelpers(unittest.TestCase):
                 "other params",
                 "http://example.com/data",
                 {"params": {}},
-                {"url": "http://example.com/data", "timeout": (6, 30), "params": {}},
+                {
+                    "url": "http://example.com/data",
+                    "timeout": (6, 30),
+                    "params": {},
+                    "headers": {"User-Agent": DEFAULT_USER_AGENT},
+                },
                 b"0123456789ABCDEF",
                 "0123456789ABCDEF",
                 "0123456789ABCDEF",
@@ -172,6 +192,47 @@ class TestFileHelpers(unittest.TestCase):
 
         self.assertEqual(result, expected)
         mock_request.assert_called_with(**called_with)
+
+    @patch("requests.get")
+    def test_fetch_content_uses_explicit_user_agent_header(self, mock_request):
+        """Test that an explicit User-Agent in headers takes priority."""
+
+        mock_response = Mock()
+        mock_response.text = "Content"
+        mock_response.raise_for_status = Mock()
+
+        custom_ua = "CustomBot/1.0"
+
+        with patch.object(os, "environ", {"USER_AGENT": "EnvBot/2.0"}):
+            fetch_content(
+                "https://local.test/data.txt",
+                headers={"User-Agent": custom_ua},
+            )
+        assert mock_request.call_args.kwargs["headers"]["User-Agent"] == custom_ua
+
+    @patch("requests.get")
+    def test_fetch_content_uses_env_var_user_agent(self, mock_request):
+        """Test that USER_AGENT env var is used when no header User-Agent is given."""
+
+        mock_response = Mock()
+        mock_response.text = "Content"
+        mock_response.raise_for_status = Mock()
+
+        with patch.object(os, "environ", {"USER_AGENT": "EnvBot/2.0"}):
+            fetch_content("https://local.test/data.txt")
+        assert mock_request.call_args.kwargs["headers"]["User-Agent"] == "EnvBot/2.0"
+
+    @patch("requests.get")
+    def test_fetch_content_fallback_to_default_user_agent(self, mock_request):
+        """Test that DEFAULT_USER_AGENT is used when no header or env var is set."""
+
+        mock_response = Mock()
+        mock_response.text = "Content"
+        mock_response.raise_for_status = Mock()
+
+        with patch.object(os, "environ", {}):
+            fetch_content("https://local.test/data.txt")
+        assert mock_request.call_args.kwargs["headers"]["User-Agent"] == DEFAULT_USER_AGENT
 
     @patch("requests.get")
     def test_fetch_content_failure(self, mock_request):
